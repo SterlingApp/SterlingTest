@@ -104,23 +104,23 @@ margin-left:50px;
 }
 .home-head {
 	font-size:24px;
-	font-family: Segoe UI;
+	font-family: Helvetica;
 	color: #454b4e;
 }
 .home-head1
 {
 	font-size:14px;
-	font-family: Segoe UI;
+	font-family: Helvetica;
 	color: #454b4e;
 }
 .content-head{
 	font-size:18px;
-	font-family: Segoe UI;
+	font-family: Helvetica;
 	color: #8f8f8f;
 }
 .sub-head {
 	font-size:20px;
-	font-family: Segoe UI;
+	font-family: Helvetica;
 	color: #00aff0;
 }
 
@@ -133,19 +133,28 @@ margin-left:50px;
 	border-bottom: thin solid #00aff0; 
 	width:90%;
 	color:#00aff0;
-	font-family: Segoe UI;
+	font-family: Helvetica;
+	font-size:18px;
+	
+}
+
+.HeadLine{
+	color:#00aff0;
+	font-family: Helvetica;
 	font-size:18px;
 	
 }
 
 .lineValueText{
 	color:#00aff0;
-	font-family: Segoe UI;
+	font-family: Helvetica;
 	font-size: 20px;
+	padding-top: 7px;
 }
 
 .lineHead{
 	color:#8f8f8f;
-	font-family: Segoe UI;
-	font-size: 18px;
+	font-family: Helvetica;
+	font-size: 16px;
+	padding-top: 6px;
 }

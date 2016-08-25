@@ -537,7 +537,7 @@ angular.module('starter.controllers', [])
 		if($scope.activity.EndtDate==""|| $scope.activity.startDate==""){
 			alert('Please select date');
 		}else{
-			$location.path("hsastatement");
+			//$location.path("hsastatement");
 		}
 		
 		

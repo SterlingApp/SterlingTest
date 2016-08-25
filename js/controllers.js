@@ -836,7 +836,7 @@ angular.module('starter.controllers', [])
 	
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
+		//$rootScope.hidecontent=false;
 		window.history.back();
 		//$location.path("/hsa")
 	}

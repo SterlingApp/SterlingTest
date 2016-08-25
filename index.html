@@ -7,7 +7,6 @@
 
 		<link href="lib/ionic/css/ionic.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
-		<link href="css/fonts/SEGOEUIL/font.css" rel="stylesheet">
 
 		<!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
 		<link href="css/ionic.app.css" rel="stylesheet">
@@ -25,50 +24,94 @@
 		<script src="js/app.js"></script>
 		<script src="js/controllers.js"></script>
 		<script src="js/services.js"></script>
+		<style>
+.sidenav {
+    
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
 	</head>
+	
 	<body ng-app="starter">
-		<ion-pane>
-		 
+	
+		<ion-pane >
 		
-			<div class=""   >
-				<div ng-clock ng-if="true" ng-hide="hidecontent" ng-controller="heading">
-					<div style="background-image:url(img/energysafe.jpg);background-size: 100% 120px; height:120px;" >
-						<div style="background-color:#C0CDDE ;opacity:0.6"> 
-							<img src="img/logo.png" style="width:200px" >
-							<div style="float:right">
-								
-								<button class="ion ion-android-more-vertical" ng-click="menushowhide();" style="border-radius: 50%; height:30px;width: 30px; background-color:#496E9B; float:right"></button>
-								
-								<br>
-								<div ng-if="showingMenu" class="  " style=" float:right;font-size:16px; width:120px; height:90px">
-									<div class="list" >
-										 <a class="item item-divider" href="#contact" style="background-color:#000; color:#fff;" >
-										Contact Us
-										 </a>
-										 <a class="item item-divider" ng-click="logOut()" style="background-color:#000; color:#fff;">
-										Logout
-										 </a>
-									 </div>
-								</div>
-							</div>
-						</div>
+			<div ng-cloak ng-if="true" ng-hide="hidecontent" ng-controller="heading">
+				<div style="background-size: 100%;" >
+					 <div  style=" background-color:#DEDEDE ; height:80px;">
+						  <div class="row">
+						   <img class="centerforhead" src="img/logo.png" style="height:60px" >
+						   <a ng-click='openDev();'><button class="ion ion-android-more-vertical" ng-click="openNav();" style="border-radius: 50%; margin-top: 10px; height:40px;width: 40px; background-color:#496E9B; float:right"></button></a>
+						  </div>
+					 </div>
+				</div>
+				
+				
+				<div  class="row row-no-padding" ng-hide="hidebar">
+					<div class="col" style="padding:8px;background-color:{{hsa}}"	 ng-click="changecolor1()">
+						<img src="img/new/hsa.png" class="centerforhead"  style="border-radius: 50%; height:45px;width: 45px;">
+						<span class="" style="color:#fff" ></span>
 					</div>
-					<div  class="row row-no-padding"  >
-						<div class="col" style="padding:5px;background-color:{{hsa}}" ng-click="changecolor1()">
-							<img src="img/energysafe.jpg" style="border-radius: 50%; height:40px;width: 40px; float:left">
-							<span class="home-head1" style="color:#fff;" >Health Savings Account</span>
-						</div>
-						<div class="col" style="padding:3px;background-color:{{fsa}}"ng-click="changecolor2()" >
-							<img src="img/energysafe.jpg" style="border-radius: 50%; height:40px;width: 40px; float:left">
-							<span class="home-head1" style="color:#fff;" >Flexible  Spending Account</span>
-						</div>
+					<div class="col" style="padding:8px;background-color:{{fsa}}"ng-click="changecolor2()" >
+						<img src="img/new/fsa.svg" class="centerforhead"  style="border-radius: 50%; height:45px;width: 45px;">
 					</div>
 				</div>
+				<div id="mySidenav" class="sidenav">
+					<a href="javascript:void(0)" class="closebtn" ng-click="closeNav();">&times;</a>
+					<a href="#contact" onclick='document.getElementById("mySidenav").style.width = "0";'>Contact Us</a>
+					<a ng-click="logOut()" style="margin-bottom:8px;" onclick='document.getElementById("mySidenav").style.width = "0";'>Logout</a>
+				</div>
 			</div>
+			
+			
 			<ion-nav-view></ion-nav-view>
 			
 		</ion-pane>
 		
 	</body>
 	<script src="js/jquery/dist/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
+		}
+
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+		}
+	})
+</script>
 </html>

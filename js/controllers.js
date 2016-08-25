@@ -51,7 +51,7 @@ angular.module('starter.controllers', [])
 	
 })
 
-.controller('heading', function($scope,$location,$rootScope,$stateParams, Chats) {
+.controller('heading', function($scope,$location,$rootScope,$stateParams, $cordovaDialogs, Chats) {
 	
   var i=0;
   $rootScope.hidecontent=false;
@@ -61,6 +61,15 @@ angular.module('starter.controllers', [])
   $scope.fsa="#6CA0DA";
   $scope.showingMenu=false;
   
+  $scope.openNav=function()
+  {
+	  document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  $scope.closeNav=function() {
+		document.getElementById("mySidenav").style.width = "0";
+	}
+
   $scope.changecolor1=function()
   {
 		$scope.hsa=$scope.selectColor;
@@ -95,8 +104,15 @@ angular.module('starter.controllers', [])
   
   $scope.logOut=function()
   {
-	  alert("are you want to logout")
-	  $location.path('/login');
+	   $cordovaDialogs.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
+		.then(function(buttonIndex) {
+		  if(buttonIndex=="1")
+		  {
+			   window.location='login.html#/login';
+		  }
+		  
+		});
+	  
   }
 
 })

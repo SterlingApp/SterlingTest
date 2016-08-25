@@ -103,7 +103,7 @@ margin-left:50px;
     direction: ltr;
 }
 .home-head {
-	font-size:24px;
+	font-size:20px;
 	font-family: Helvetica;
 	color: #454b4e;
 	padding-top: 10px;
@@ -165,4 +165,10 @@ margin-left:50px;
 {
 	border-bottom-width:2px;
 	border-bottom-color:#454b4e;
+}
+
+.centerforhead {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }

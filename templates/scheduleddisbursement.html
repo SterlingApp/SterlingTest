@@ -1,0 +1,104 @@
+<ion-view>
+    <head>
+		<style>
+			.col11{
+				background:#aebcd7;
+				padding: 10px;
+				text-align: center;
+			}
+			.col12{
+				background:#fdf2e9;
+				padding: 10px;
+				text-align: center;
+				
+			}
+			.p{
+				color:#5dade2;
+			}
+		</style>
+    </head>
+	<ion-content>
+		<div class="home-head lineBreakHeader" ng-click="goback();" >
+			<p ><img src="img/back_icon.svg">&nbsp;&nbsp;<span> Scheduled Disbursement</span></p>
+		</div>
+		
+		<div style="margin-left:20px; margin-top:10px">
+			<p class="lineBreak">Fee Date: 07/29/2016</p>
+		</div>
+		<div style="margin-left:20px; margin-top:10px";>
+			<p class="lineHead">Fee name</p>
+			<p class="lineValueText">Outside Investment Transfer</p>
+			<p class="lineHead">Amount</p>
+			<p class="lineValueText">$100</p>
+		</div>
+		
+		<div style="margin-left:20px; margin-top:10px">
+			<p class="lineBreak">Fee Date: 07/29/2016</p>
+		</div>
+		<div style="margin-left:20px; margin-top:10px";>
+			<p class="lineHead">Fee name</p>
+			<p class="lineValueText">To Provider</p>
+			<p class="lineHead">Amount</p>
+			<p class="lineValueText">$3</p>
+		</div>
+		
+		<div style="margin-left:20px; margin-top:10px">
+			<p class="lineBreak">Fee Date: 07/29/2016</p>
+		</div>
+		<div style="margin-left:20px; margin-top:10px";>
+			<p class="lineHead">Fee name</p>
+			<p class="lineValueText">To Provider</p>
+			<p class="lineHead">Amount</p>
+			<p class="lineValueText">$3</p>
+		</div>
+		
+		<!-- <h4 style="margin-left:5px;color:#496E9B">Transaction Date: 07/29/2016</h4>
+		<div class="card" >
+			<div style="margin-left:20px;"; >
+				<p class="content-head"><b>Transaction Id</b></p>
+				<p class="sub-head">5807</p>
+				<p class="content-head"><b>Amount</b></p>
+				<p class="sub-head">$179</p>
+				<p class="content-head"><b>Status</b></p>
+				<p class="sub-head" style="color:red">pending</p>
+				
+			</div>		
+		</div>
+		<h4 style="margin-left:5px;color:#496E9B">Transaction Date: 07/29/2016</h4>
+		<div class="card" >
+			<div style="margin-left:20px;"; >
+				<p class="content-head" ><b>Transaction Id</b></p>
+				<p class="sub-head">5812</p>
+				<p class="content-head"><b>Amount</b></p>
+				<p class="sub-head">$140</p>
+				<p class="content-head"><b>Status</b></p>
+				<p class="sub-head" style="color:green">success</p>
+				
+			</div>		
+		</div>
+		<h4 style="margin-left:5px;color:#496E9B">Transaction Date: 07/29/2016</h4>
+		<div class="card" >
+			<div style="margin-left:20px;"; >
+				<p class="content-head"><b>Transaction Id</b></p>
+				<p class="sub-head">5820</p>
+				<p class="content-head"><b>Amount</b></p>
+				<p class="sub-head">$125</p>
+				<p class="content-head"><b>Status</b></p>
+				<p class="sub-head" style="color:red">pending</p>
+				
+			</div>		
+		</div> -->
+		
+		<div class="div1 hide" ng-repeat="data in schedule_list">     
+			<div class="row">
+				<p class="sub-head">{{data.TXN_DATE}}</p>
+			</div>
+			<div class = "row">
+				<div class = "col col11 ">{{data.TXN_ID}}</div>
+				<div class="col col12">{{data.AMOUNT}}</div>
+				<div class = "col col11">{{data.STATUS}}</div>
+			</div>
+		</div>
+		<div style="height: 200px;"></div>
+    </ion-content>
+</ion-view>

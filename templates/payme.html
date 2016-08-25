@@ -1,0 +1,169 @@
+<ion-view>
+	<style>
+	
+	
+input[type=text]:focus {
+	
+  box-shadow: -8px 10px 0px -7px #5FBA7D, 8px 10px 0px -7px #5FBA7D;
+}
+	</style>
+	<ion-content>
+		<div class="home-head lineBreakHeader" ng-click="goback();" >
+			<p ><img src="img/back_icon.svg">&nbsp;&nbsp;<span> Pay Me</span></p>
+		</div>
+		<div class=" hide row">
+			<div class="col col-center">
+			  <h3 class="ion ion-arrow-left-a" onclick="window.history.back();"> Pay Me</h3> 
+			</div>
+		</div> 
+		<div class="row responsive-sm">
+			<div class="col col-75 center">
+		 
+				<div class="card">
+				   <p style="color: red;margin-left:25px">You do not have a bank account on record.You must add a bank account by logging into the sterlinghsa.com to schedule disbursement.</p>
+				</div>
+				<div class="list card">
+					<div class="item item-avatar">
+						<!-- <img src="img/logo-icon.png"> -->
+						<br>
+							<h2>Available Balance</h2>
+						<p>$1,084.70</p>
+					</div>
+
+					<div class="item item-body">
+					  
+					   <div class="list ">
+							<label class="item item-input item-select" style=" width:100%; border-bottom:#DEDEDE solid; border-top:none; border-left:none; border-right:none;" >
+							  <div class="input-label ">
+							select
+							 </div>
+							<select>
+							  <option selected > Select Bank Account</option>
+							  <option>Wells Fargo Bud</option>
+							  <option>Wells Fargo Sarah</option>
+						  
+						  </select>
+						 </label>
+						</div>
+						<div class="list ">
+							<label class="item item-input" style="border:none;" >
+							<input type="text"  class="input-box input-boxfocus" placeholder="Enter Amount" style="color:#444; ">
+							</label> 
+						 </div>
+							 
+						<div class="list">
+							<label class="item item-input "style="border:none;">
+							<input type="text" ng-click="getTransDate()" ng-model="TransDate" class="input-box input-boxfocus " placeholder="Transaction Date" style="color:#444;">
+							</label>
+						</div> 
+					   
+						<div class="list" >
+							 <label class="item item-input item-select" style=" width:100%; border-bottom:#DEDEDE solid;border-top:none; border-left:none; border-right:none;" >
+								 <div class="input-label ">
+								select
+								 </div>
+								  <select>
+								<option selected disabled>Category</option>
+								<option>Qualified</option>
+								<option>Non-Qualified</option>
+							  </select>
+							  </label>
+						</div>
+						<div class="row responsive-sm">
+							<div class="col col-50 center">
+								<button class=" button-block" type="submit"  style="background-color: #AEBCD7;color:#444;height:35px;font-size:15px;border-radius:8px">Upload Receipt</button>
+							</div> 
+						 </div> 
+					   
+						<div class="row">
+							<div class="col col-75 center">
+								<button class=" button-block" type="submit"  style="background-color: #547AAC;color:#fff;height:40px;font-size:15px;border-radius:8px">SUBMIT DISBURSEMENT</button>
+							</div> 
+						</div> 
+					   
+					  </div>
+				</div>
+			</div>
+		</div>
+		<!--the below code used for Scrolling -->
+		<div style="height: 150px;"></div>
+  
+  
+	<!-- <div class="card" >
+		<p style="color: red">You do not have a bank account on record.You must add a bank account by logging into the sterlinghsa.com to schedule disbursement.</p>
+      
+    </div>
+	
+
+	<div class="list list-inset">
+        <div class="item item-input" style="background-color: #aebcd7">
+			<div class="row">
+				<div class="col col-60">
+					<h2 style="color: green;">Available Balance</h2> 
+				</div>
+				<div class="col col-25">
+					<h2 style="color: green;">${{Availablebalance}}</h2>
+				</div>
+			</div>
+        </div>
+        
+	</div>  
+	
+	<div class="list list-inset">
+		<label class="item item-input item-select"  >
+			<div class="input-label">select</div>
+			<select>
+				<option selected> Select Payee</option>
+				<option ng-repeat="data in bank_details">{{data.DISPLAY_NAME}}</option>
+			</select>
+		</label>
+	</div>    
+	<div class="list list-inset" style="border-radius:10px">
+			<label class="item item-input" style="background-color:#F3F3F3;border-radius:10px">
+				<input type="text" placeholder="Enter Amount" ng-model="loginData.username">
+			</label>
+		</div>
+		
+	<div class="list list-inset">
+        <label class="item item-input">
+            <input type="text" placeholder="Enter Amount">
+		</label>
+	</div>	
+    <div class="list list-inset">
+        <label class="item item-input">
+            <input type="text" ng-click="getTransDate()" ng-model="TransDate" placeholder="Transaction Date">
+			</label>
+	</div>
+    <div class="list list-inset">
+        <label class="item item-input item-select">
+          <div class="input-label">
+             category
+			<select>
+				<option selected>Category</option>
+				<option ng-repeat="data in categories">{{data.DESCRIPTION}}</option>
+			</select>
+    
+            </div>
+             </label>
+      </div>
+	  
+		
+    
+    <div class="row">
+        <div class="col center text-center">
+              <button class="button button-small  button-stable" style="background-color: #aebcd7" >Upload Receipt</button>
+
+        </div> 
+     </div>
+     
+      
+      <br>
+    <div class="row">
+        <div class="col center text-center">
+              <button class="button button-stable"style="background-color: #bb680b;color: white" >Submit Disbursement</button>
+
+        </div>
+      </div>
+    <div style="height: 200px;"></div>
+  --> </ion-content>
+</ion-view>

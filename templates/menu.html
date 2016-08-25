@@ -1,0 +1,124 @@
+
+
+<ion-side-menus enable-menu-with-back-views="true"  >
+   <ion-side-menu-content >
+      <ion-nav-bar class="bar-transparent"  ng-controller="HeaderCtrl">
+         <ion-nav-buttons  side="left">
+            <button class="button icon ion-navicon"  menu-toggle="left"></button>
+         </ion-nav-buttons>
+         <ion-nav-title style="" >
+            <img src="img/logo.png" style="width:170px;background-color:#000" class="center">
+         </ion-nav-title>
+      </ion-nav-bar >
+      
+     <!--  <ion-footer-bar class="bar-light" ng-controller="FooterCtrl">
+       
+         <button class="button button-dark" ng-click="goBack()" >
+         <i class="icon ion-chevron-left"></i>Back</button>
+         <button class="button button-dark icon ion-home pull-right" ng-click="homePage()" ></button>
+         
+      </ion-footer-bar> -->
+   
+      <ion-nav-view name="menuContent"></ion-nav-view>
+   </ion-side-menu-content>
+   <ion-side-menu  side="left" ng-controller="HeaderCtrl">
+      
+      <ion-content class="width" >
+         <div style="text-align: center;">
+            <img src="img/logos.png" style="width:130px;">
+            <span>
+               <h2 style="color: #ACADAF";>Sterling</h2>
+            </span>
+         </div>
+         <ion-list class="custom">
+             <ion-item menu-close href="#/app/portfolio">
+                <i class="icon ion-home"></i>
+               <span style="margin-left: 05px;">
+               Home 
+               </span>
+            </ion-item>
+              <ion-item  href="">
+           
+             
+              <a href="" class="link" ng-click="toggleSomething()">             
+                 
+                  <i class="icon ion-medkit"></i>
+                <span style="margin-left: 05px; ">Health Savings Account</span>
+                <span  class="item-icon-right"> <i side="left"  class="icon" ng-class="isVisible ? 'ion-chevron-right' : 'ion-chevron-down'""></i> </span>
+                     
+                  
+             
+            </ion-item>
+               <div  ng-show="isVisible"  class="list"  style="margin-left: 50px; margin-top: 20px;">
+            <a href="#app/account"  menu-close class="link">  
+              <i class="icon ion-person"></i>
+            <span style="margin-left: 05px;" >Account information</span></a>
+            </div>
+			<div  ng-show="isVisible"  class="list"  style="margin-left: 50px; margin-top: 20px;">
+				<a href="#app/contribution"  menu-close class="link">  <img src="img/make.png" width="18"/>
+				<span style="margin-left: 05px;" >Make Contribution</span></a>
+            </div>
+			<div  ng-show="isVisible"  class="list"  style="margin-left: 50px; margin-top: 20px;">
+            <a href="#app/make"  menu-close class="link">  <img src="img/diicon2.png" width="18"/>
+            <span  style="margin-left: 05px;" >Make Disbursement</span></a>
+            </div>
+               <div  ng-show="isVisible"  class="list"  style="margin-left: 50px; margin-top: 20px;">
+            <a href="#app/activity"  menu-close class="link">  <img src="img/active.png" width="18"/>
+            <span style="margin-left: 05px;">Recent Account Activity</span></a>
+            </div>
+               <div  ng-show="isVisible"  class="list"  style="margin-left: 50px; margin-top: 20px;">
+            <a href="#app/health"  menu-close class="link">  
+              <i class="icon ion-clipboard"></i>
+            <span style="margin-left:08px;">Statements</span></a>
+            </div>
+              <ion-item class="item-icon-right" href="">
+                  <a href="" class="link" ng-click="toggleSomething1()">
+                    <img src="img/felx2.png" width="19" />
+                    <span style="margin-left: 05px; ">
+                     Flexible Spending Account
+                    </span>
+                      <span  class="item-icon-right">
+                  <i side="left"  class="icon" ng-class="isVisible1 ? 'ion-chevron-right' : 'ion-chevron-down'""></i>     
+                  </span>
+             
+            </ion-item>
+               <div  ng-show="isVisible1"  class="list"  style="margin-left: 54px; margin-top: 20px;">
+            <a href="#app/information"  menu-close class="link"> 
+              <i class="icon ion-information"></i>
+            <span style="margin-left:15px;">Account Information</span></a>
+            </div>
+                <div  ng-show="isVisible1"  class="list"  style="margin-left: 50px; margin-top: 20px;">
+            <a href="#app/availablebalance"  menu-close class="link">  <img src="img/balicon.png" width="18"/>
+            <span style="margin-left:05px;">Available Balance</span></a>
+            </div>
+                <div  ng-show="isVisible1"  class="list"  style="margin-left: 50px; margin-top: 20px;">
+            <a href="#app/recentcontribute"  menu-close class="link">  <img src="img/icon2.png" width="18"/>
+            <span style="margin-left:05px;">Recent Account Activity</span></a>
+            </div>
+                 <div  ng-show="isVisible1"  class="list"  style="margin-left: 50px; margin-top: 20px;">
+            <a href="#app/new"  menu-close class="link">
+             <i class="icon ion-compose"></i>
+            <span style="margin-left:05px;">New Claim Request</span></a>
+            </div> 
+               <ion-item menu-close href="#app/contact">
+                 <i class="icon ion-at"></i>
+                <span style="margin-left: 05px; ">
+             Contact Us
+                </span>
+                
+            </ion-item>
+                 <ion-item menu-close href="" ng-click="Logout()">
+                  <i class="icon ion-log-out"></i>
+                <span style="margin-left: 05px; ">
+             <a ng-click="Logout()">Logout</a> 
+               </sapn>
+            </ion-item>
+              
+           
+          
+             
+         </ion-list>
+      </ion-content>
+   </ion-side-menu>
+</ion-side-menus>
+

@@ -1,0 +1,130 @@
+<ion-view>
+    <head>
+  
+    <style>
+        .col11{
+			background:#aebcd7;
+			padding: 10px;
+			text-align: center;
+		}
+		.col12{
+			background:#fdf2e9;
+			padding: 10px;
+			text-align: center;
+			
+		}
+		.p{
+			color:#5dade2;
+		}
+    </style>
+    </head>
+    <ion-content>
+		<div class="home-head lineBreakHeader" ng-click="goback();" >
+			<p ><img src="img/back_icon.svg">&nbsp;&nbsp;<span> Scheduled Contributions</span></p>
+		</div>
+		
+		<div style="margin-left:20px; margin-top:10px">
+			<p class="lineBreak">Transaction Date: 07/29/2016</p>
+		</div>
+		<div style="margin-left:20px; margin-top:10px";>
+			<p class="lineHead">Transaction Id</p>
+			<p class="lineValueText">5807</p>
+			<p class="lineHead">Amount</p>
+			<p class="lineValueText">$179</p>
+			<p class="lineHead">Status</p>
+			<p class="lineValueText">success</p>
+		</div>
+		
+		<div style="margin-left:20px; margin-top:10px">
+			<p class="lineBreak">Transaction Date: 07/29/2016</p>
+		</div>
+		<div style="margin-left:20px; margin-top:10px";>
+			<p class="lineHead">Transaction Id</p>
+			<p class="lineValueText">5814</p>
+			<p class="lineHead">Amount</p>
+			<p class="lineValueText">$145</p>
+			<p class="lineHead">Status</p>
+			<p class="lineValueText">pending</p>
+		</div>
+		
+		<div style="margin-left:20px; margin-top:10px">
+			<p class="lineBreak">Transaction Date: 07/29/2016</p>
+		</div>
+		<div style="margin-left:20px; margin-top:10px";>
+			<p class="lineHead">Transaction Id</p>
+			<p class="lineValueText">5820</p>
+			<p class="lineHead">Amount</p>
+			<p class="lineValueText">$250</p>
+			<p class="lineHead">Status</p>
+			<p class="lineValueText">success</p>
+		</div>
+		
+		<!-- <h4 style="margin-left:5px;color:#496E9B">Transaction Date: 07/29/2016</h4>
+		<div class="card" >
+			<div style="margin-left:20px;"; >
+                <p class="content-head"><b>Transaction Id</b></p>
+				<p class="sub-head">5807</p>
+                <p class="content-head"><b>Amount</b></p>
+                <p class="sub-head">$179</p>
+				<p class="content-head"><b>Status</b></p>
+                <p  class="sub-head" style="color:red">pending</p>
+				
+			</div>		
+		</div>
+		<h4 style="margin-left:5px;color:#496E9B">Transaction Date: 07/29/2016</h4>
+		<div class="card" >
+			<div style="margin-left:20px;"; >
+                <p class="content-head"><b>Transaction Id</b></p>
+				<p class="sub-head">5812</p>
+                <p class="content-head"><b>Amount</b></p>
+                <p class="sub-head">$140</p>
+				<p class="content-head"><b>Status</b></p>
+                <p  class="sub-head" style="color:green">success</p>
+				
+			</div>		
+		</div>
+		<h4 style="margin-left:5px;color:#496E9B">Transaction Date: 07/29/2016</h4>
+		<div class="card" >
+			<div style="margin-left:20px;"; >
+                <p class="content-head"><b>Transaction Id</b></p>
+				<p class="sub-head">5820</p>
+                <p class="content-head"><b>Amount</b></p>
+                <p class="sub-head">$125</p>
+				<p class="content-head"><b>Status</b></p>
+                <p  class="sub-head" style="color:red">pending</p>
+				
+			</div>		
+		</div> -->
+		
+		
+		<div class="hide" ng-repeat="data in schedule_list">     
+			<h4 style="margin-left:5px;color:#496E9B">Transaction Date: {{data.TXN_DATE}}</h4>
+			<div class="card" >
+				<div style="margin-left:20px;"; >
+					<p class="content-head"><b>Transaction Id</b></p>
+					<p class="sub-head">{{data.TXN_ID}}</p>
+					<p class="content-head"><b>Amount</b></p>
+					<p class="sub-head">{{data.AMOUNT}}</p>
+					<p class="content-head"><b>Status</b></p>
+					<p  class="sub-head" style="color:red">{{data.STATUS}}</p>
+					
+				</div>		
+			</div>
+		</div>
+		
+		<div class="div1 hide" ng-repeat="data in schedule_list">     
+			<div class="row">
+				<p class="p">{{data.TXN_DATE}}</p>
+			</div>
+			<div class = "row">
+				<div class = "col col11 ">{{data.TXN_ID}}</div>
+				<div class="col col12">{{data.AMOUNT}}</div>
+				<div class = "col col11">{{data.STATUS}}</div>
+			</div>
+		</div>
+		
+		
+		<!--the below code used for Scrolling -->
+		<div style="height: 150px;"></div>
+    </ion-content>
+</ion-view>

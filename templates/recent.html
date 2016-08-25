@@ -1,0 +1,84 @@
+<ion-view>
+	<ion-content>
+		<div class="home-head lineBreakHeader" ng-click="goback();" >
+			<p ><img src="img/back_icon.svg">&nbsp;&nbsp;<span> Recent Contributions</span></p>
+		</div>
+		<div style="margin-left:20px; margin-top:10px">
+			<p class="lineBreak">Transaction Date: 07/29/2016</p>
+		</div>
+		<div style="margin-left:20px; margin-top:10px";>
+			<p class="lineHead">Transaction Id</p>
+			<p class="lineValueText">5807</p>
+			<p class="lineHead">Amount</p>
+			<p class="lineValueText">$179</p>
+			<p class="lineHead">Status</p>
+			<p class="lineValueText">success</p>
+		</div>
+		
+		<div style="margin-left:20px; margin-top:10px">
+			<p class="lineBreak">Transaction Date: 07/29/2016</p>
+		</div>
+		<div style="margin-left:20px; margin-top:10px";>
+			<p class="lineHead">Transaction Id</p>
+			<p class="lineValueText">5814</p>
+			<p class="lineHead">Amount</p>
+			<p class="lineValueText">$145</p>
+			<p class="lineHead">Status</p>
+			<p class="lineValueText">pending</p>
+		</div>
+		
+		<div style="margin-left:20px; margin-top:10px">
+			<p class="lineBreak">Transaction Date: 07/29/2016</p>
+		</div>
+		<div style="margin-left:20px; margin-top:10px";>
+			<p class="lineHead">Transaction Id</p>
+			<p class="lineValueText">5820</p>
+			<p class="lineHead">Amount</p>
+			<p class="lineValueText">$250</p>
+			<p class="lineHead">Status</p>
+			<p class="lineValueText">success</p>
+		</div>
+		
+		<!-- <h4 style="margin-left:5px;color:#496E9B">Fee Date: 07/29/2016</h4>
+		<div class="card" >
+			<div style="margin-left:20px;"; >
+                <p class="content-head"><b>Fee name</b></p>
+				<p class="sub-head">Regular Contribution</p>
+                <p class="content-head"><b>Amount</b></p>
+                <p class="sub-head">$179</p>				
+			</div>		
+		</div>
+		<h4 style="margin-left:5px;color:#496E9B">Fee Date: 07/29/2016</h4>
+		<div class="card" >
+			<div style="margin-left:20px;"; >
+                <p class="content-head"><b>Fee name</b></p>
+				<p class="sub-head">Regular Contribution</p>
+                <p class="content-head"><b>Amount</b></p>
+                <p class="sub-head">$179</p>				
+			</div>		
+		</div>
+		<h4 style="margin-left:5px;color:#496E9B">Fee Date: 07/29/2016</h4>
+		<div class="card" >
+			<div style="margin-left:20px;"; >
+                <p class="content-head"><b>Fee name</b></p>
+				<p class="sub-head">Regular Contribution</p>
+                <p class="content-head"><b>Amount</b></p>
+                <p class="sub-head">$179</p>				
+			</div>		
+		</div> -->
+		
+		<div class="div1" ng-repeat="data in transcation_list">
+			<div class="row">
+				<p class="sub-head">{{data.FEE_DATE}}</p>
+			</div>
+			<div class = "row div1">
+				<div class = "col col1 col-75">{{data.FEE_NAME}}</div>
+				<div class = "col col2">{{data.AMOUNT}}</div>
+			</div>
+		</div>
+		
+		
+		<!--the below code used for Scrolling -->
+		<div style="height: 150px;"></div>
+	</ion-content>
+</ion-view>

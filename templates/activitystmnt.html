@@ -1,4 +1,4 @@
-<ion-header-bar>
+<ion-header-bar class="headerborder" >
 	<div class="home-head "  >
 		  <img src="img/back_icon.svg" ng-click="goback();"><p style="margin-top:-22px;margin-left:35px">Activity Statement</p>
 	 </div>
@@ -13,7 +13,7 @@
 		}
 		</style>
 	   <div class="row responsive-sm">
-	  <div class="col col-75 center">
+	  <div class="col col-90 ">
        
      <div class="list card"> 
 	 
@@ -31,13 +31,12 @@
             <input type="text"  ng-click="getEndDate()" ng-model="activity.EndtDate" class="input-box input-boxfocus " placeholder="End Date(MM/DD/YYYY)*" style="margin-left:-1px">
         </label>
       </div>
-     <div class="row">
-        <div class="col col-50 col-offset-25">
-              <button class="button button-full"style="background-color: #547AAC;color:#fff;border-radius:10px" ng-click="pick()" >Run Statement</button>
-
-        
-     </div>
-      </div>
+    
+		<div class="row">
+			<div class="col col-20 text-center">
+				<button class="button button-small" type="submit"  style="background-color:#29B8E5;color:#fff;height:40px;font-size:15px;" ng-click="pick()">Run Statement</button>
+			</div> 
+		</div> 
     </div>
 	</div>
 	

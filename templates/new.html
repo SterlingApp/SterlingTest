@@ -1,4 +1,4 @@
- <ion-header-bar>
+ <ion-header-bar class="headerborder" >
 	 <div class="home-head "  >
 		  <img src="img/back_icon.svg" ng-click="goback();"><p style="margin-top:-22px;margin-left:35px">New Claim Request</p>
 	   </div>
@@ -11,7 +11,7 @@
    
      
     
-        <div class="list list-inset">
+       <!--  <div class="list list-inset">
         <label class="item item-input item-select item-stable" >
           <div class="input-label">
            Select Plan
@@ -25,6 +25,21 @@
           </select>
 
             </label>
+      </div> -->
+	  
+	  <div class="list">
+            <label class="item item-input item-select" style=" width:100%; border-bottom:#DEDEDE solid; margin-left:5px;border-top:none; border-left:none; border-right:none;" >
+              <div class="input-label ">
+            select
+			 </div>
+           <select ng-model="claim" ng-change="getClaim(claim)" placeholder="select your beverage">
+            <option value="" disabled selected>Select Plan</option>
+			<option value="Bicycle">Bicycle FSA</option>
+            <option value="Transit">Transit FSA</option>
+          
+          </select>
+
+		 </label>
       </div>
 
       

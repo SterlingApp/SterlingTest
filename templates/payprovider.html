@@ -1,4 +1,4 @@
-<ion-header-bar>
+<ion-header-bar class="headerborder" >
 	 <div class="home-head "  >
 		  <img src="img/back_icon.svg" ng-click="goback();"><p style="margin-top:-22px;margin-left:35px">Pay Provider</p>
 	   </div>
@@ -72,7 +72,7 @@ input[type=text]:focus {
 		</label> 
 		 </div>
 		 
-		 <div class="list">
+	<div class="list">
         <label class="item item-input "style="border:none;">
         <input type="text" ng-click="getTransDate()" ng-model="TransDate" class="input-box input-boxfocus " placeholder="Transaction Date" style="color:#444;padding-left:10px;">
 		</label>
@@ -89,130 +89,21 @@ input[type=text]:focus {
 		</label> 
 		 </div>
       
-    <div class="row responsive-sm">
-	   <div class="col col-10 center">
-	  <button class=" button-block" type="submit"  style="background-color: #AEBCD7;color:#444;height:35px;font-size:15px;border-radius:8px">Upload</button>
-     </div> 
-	 </div> 
+		<div class="row">
+			<div class="col col-10  text-center">
+				<button class="button button-small" type="submit "  style="background-color: #29B8E5;color:#fff;border-radius:8px">Upload</button>
+			</div> 
+		</div> 
+
+		<div class="row">
+			<div class="col col-20 text-center">
+				<button class="button button-small" type="submit"  style="background-color:#29B8E5;color:#fff;border-radius:8px;">SUBMIT</button>
+			</div> 
+		</div> 
    
-        <div class="row">
-	   <div class="col col-20 center">
-	  <button class="button button-full button-positive" type="submit"  style="color:#fff;height:40px;font-size:15px;">SUBMIT</button>
-     </div> 
-	 </div> 
-   
-  </div>
+</div>
 
 </div>
 
-
-
-		
-  
-
-
-
-
-   <!-- <div class="row">
-        <div class="col col-center">
-          <h3 class="h"><i class="ion ion-arrow-left-a" onclick="window.history.back();"></i> Pay Provider</h3> 
-    
-        </div>
-        
-	</div>
-	
-      <div class="card" >
-      <p style="color: red">You do not have a bank account on record.You must add a bank account by logging into the sterlinghsa.com to schedule disbursement.</p>
-      
-    </div>
-      
-       <div class="list list-inset">
-        <div class="item item-input" style="background-color: #aebcd7">
-         
-      <div class="row">
-        <div class="col col-60">
-         <h2 style="color: green;">Available Balance</h2> 
-        </div>
-         
-        <div class="col col-25">
-          <h2 style="color: green;">${{Availablebalance}}</h2>
-        
-      
-        </div>
-       
-      </div>
-      
-        </div>
-        
-      </div>
-       
-      
-     -->     
-          
-     <!--  <div class="list list-inset">
-        <label class="item item-input item-select" >
-          <div class="input-label">
-           select Bank
-           
-            </div> -->
-            <!-- <select>
-				<option selected> Select Payee</option>
-				<option value="115095">Town and Country Pediatrics Acct #:8291 3838 California Street, Suite 111 San Franciscoca,CA 94118</option>
-				<option value="120737">Quest Diagnostics Acct #:8388435482 PO Box 7400 Pasadena,CA 91109</option>
-				<option value="147441">California Pacific Medical Center File#742412 Acct #:10659166 PO Box 742412 Los Angeles,CA 90074</option>
-				<option value="147445">KidSmiles Pediatric Dentristry Acct #:17895 2674 Ocean Ave San Francisco,CA 94132</option>
-				<option value="147442">Children's Sports Medicine Foundation, Inc. Acct #:250332256 PO Box 3694 Boston,MA 02241</option>
-				<option value="147443">Pacific Gyn &amp; OB Medical Group Acct #:188826-85 PO Box 1290 Suisun City,CA 94585</option>
-				<option value="209392">dfdg Acct #:435646 dfgd gdfg,DC 94612</option>
-				<option value="209672">Sarah Napolio Acct #:ICA271600 15 Massasoit Street San Francisco,CA 94110</option>
-          </select> -->
-			<!-- <select>
-				<option selected> Select Payee</option>
-				<option ng-repeat="data in bank_details">{{data.DISPLAY_NAME}}</option>
-			</select>
-
-            </label>
-      </div> -->
-      
-    <!--  <div class="list list-inset">
-        <label class="item item-input">
-            
-       
-            <input type="text" placeholder="Enter Amount">
-              </label>
-        </div>
-    
-    
-    
-    <div class="list list-inset">
-        <label class="item item-input">
-            <input type="text" ng-click="getTransDate()" ng-model="TransDate" placeholder="Transaction Date">
-        </label>
-      </div>
-     <div class="list list-inset">
-        <label class="item item-input">
-            <input type="text" placeholder="Description">
-              </label>
-        </div>
-    
-	<div class="list list-inset">
-        <label class="item item-input">
-            <input type="text" placeholder="Patitent's Name">
-              </label>
-        </div>
-    <div class="row">
-        <div class="col center text-center">
-              <button class="button button-small button-stable" style="background-color: #aebcd7;">Upload Receipt</button>
-
-        </div> 
-     </div>
-     <br>
-    <div class="row">
-        <div class="col center text-center">
-              <button class="button button-stable" style="background-color: #bb680b;color: white">Submit Disbursement</button>
-
-        </div>
-      </div>-->
-    <div style="height: 200px;"></div>
    </ion-content>
 </ion-view>

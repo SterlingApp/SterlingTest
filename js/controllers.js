@@ -333,7 +333,7 @@ angular.module('starter.controllers', [])
 	 $ionicScrollDelegate.scrollBottom(true);
 	 $scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
+		//$rootScope.hidecontent=false;
 		window.history.back();
 		//$location.path("/hsa")
 	}
@@ -343,7 +343,7 @@ angular.module('starter.controllers', [])
 	 localStorage.setItem("backCount","3");
 	 $scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
+		//$rootScope.hidecontent=false;
 		window.history.back();
 		//$location.path("/hsa")
 	}

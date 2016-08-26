@@ -353,6 +353,29 @@ angular.module('starter.controllers', [])
 		window.history.back();
 		//$location.path("/hsa")
 	}
+	$scope.upload = function(){
+	         fileChooser.open(function(uri) {
+				 alert(uri);
+			     var options = {
+                     fileKey: "file",
+                      //fileName: "tesat.pdf",
+			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
+                     chunkedMode: false,
+                     mimeType: "text/plain"
+			};
+		 	  
+			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
+		
+		           //alert("SUCCESS: " + result.response);
+              }, function(err) {
+                  //alert("ERROR: " + JSON.stringify(err));
+              }, function (progress) {
+                 // constant progress updates
+            })
+			
+	  }); 	   
+	   
+   }
 })
 .controller('NewclaimbicycleCtrl', function($scope,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
 		$rootScope.hidecontent=true;
@@ -363,6 +386,29 @@ angular.module('starter.controllers', [])
 		window.history.back();
 		//$location.path("/hsa")
 	}
+	$scope.upload = function(){
+	         fileChooser.open(function(uri) {
+				 alert(uri);
+			     var options = {
+                     fileKey: "file",
+                      //fileName: "tesat.pdf",
+			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
+                     chunkedMode: false,
+                     mimeType: "text/plain"
+			};
+		 	  
+			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
+		
+		           //alert("SUCCESS: " + result.response);
+              }, function(err) {
+                  //alert("ERROR: " + JSON.stringify(err));
+              }, function (progress) {
+                 // constant progress updates
+            })
+			
+	  }); 	   
+	   
+   }
 })
 
 .controller('FlexibleactivityCtrl', function($scope,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,	$rootScope) {
@@ -571,7 +617,29 @@ angular.module('starter.controllers', [])
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
 	
-	
+	$scope.upload = function(){
+	         fileChooser.open(function(uri) {
+				 alert(uri);
+			     var options = {
+                     fileKey: "file",
+                      //fileName: "tesat.pdf",
+			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
+                     chunkedMode: false,
+                     mimeType: "text/plain"
+			};
+		 	  
+			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
+		
+		           //alert("SUCCESS: " + result.response);
+              }, function(err) {
+                  //alert("ERROR: " + JSON.stringify(err));
+              }, function (progress) {
+                 // constant progress updates
+            })
+			
+	  }); 	   
+	   
+   }
 	$scope.TransDate="";
 	
 	$scope.getTransDate=function(){
@@ -650,7 +718,29 @@ angular.module('starter.controllers', [])
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
 	$scope.TransDate="";
-	
+	$scope.upload = function(){
+	         fileChooser.open(function(uri) {
+				 alert(uri);
+			     var options = {
+                     fileKey: "file",
+                      //fileName: "tesat.pdf",
+			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
+                     chunkedMode: false,
+                     mimeType: "text/plain"
+			};
+		 	  
+			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
+		
+		           //alert("SUCCESS: " + result.response);
+              }, function(err) {
+                  //alert("ERROR: " + JSON.stringify(err));
+              }, function (progress) {
+                 // constant progress updates
+            })
+			
+	  }); 	   
+	   
+   }
 	$scope.getTransDate=function(){
 		
 		 var options = {

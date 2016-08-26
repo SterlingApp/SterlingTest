@@ -175,3 +175,57 @@ margin-left:50px;
     margin-right: auto;
     display: block;
 }
+.contactfont{
+	
+	font-family: Helvetica;
+	font-size: 15px;
+	
+}
+.accountcontent{
+	margin-left:20px; 
+	margin-top:32px;
+}
+.accountsubcontent{
+	margin-left:20px; 
+	margin-top:10px;
+}
+.subtitle{
+	margin-left:20px; 
+	margin-top:20px;
+}
+
+.headertitle{
+	margin-top:-22px;
+	margin-left:41px;
+}
+.runstatement-button{
+	background-color:#29B8E5;
+	color:#fff;
+	height:40px;
+	font-size:15px;
+}
+.menupadding{
+	margin-top:5px;
+}
+.formselect{
+	width:100%; 
+	border-bottom:#DEDEDE solid; 
+	margin-left:5px;
+	border-top:none; 
+	border-left:none; 
+	border-right:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

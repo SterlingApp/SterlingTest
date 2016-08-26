@@ -106,7 +106,7 @@ margin-left:50px;
 	font-size:20px;
 	font-family: Helvetica;
 	color: #454b4e;
-	padding-top: 10px;
+	padding-top: 13px;
 	border-bottom:2px;
 }
 .home-head1
@@ -133,7 +133,8 @@ margin-left:50px;
 
 .lineBreak{
 	border-bottom: thin solid #00aff0;
-	color:#00aff0;
+	/*color:#00aff0;*/
+	color:#077db4;
 	font-family: Helvetica;
 	font-size:18px;
 	width: 95%;
@@ -141,14 +142,16 @@ margin-left:50px;
 }
 
 .HeadLine{
-	color:#00aff0;
+	/*color:#00aff0;*/
+	color:#077db4;
 	font-family: Helvetica;
-	font-size:18px;
+	font-size:16px;
 	
 }
 
 .lineValueText{
-	color:#00aff0;
+	/*color:#00aff0;*/
+	color:#077db4;
 	font-family: Helvetica;
 	font-size: 17px;
 	padding-top: 0px;

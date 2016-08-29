@@ -215,6 +215,21 @@ margin-left:50px;
 	border-left:none; 
 	border-right:none;
 }
+.formcard{
+	margin-left:10px;
+}
+.formlabel{
+   border:none;
+}
+.forminput{
+	color:#444; 
+	padding-left:10px;
+}
+.formButton{
+	background-color: #29B8E5;
+	color:#fff;
+	border-radius:8px;
+}
 
 
 

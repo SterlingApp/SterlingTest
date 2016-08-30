@@ -1,325 +1,174 @@
-<ion-view>
-<ion-content style="background-color:#bad6f1">
-
-	<div class="home-head lineBreakHeader" ng-click="goback();" >
-		<p ><img src="img/back_icon.svg">&nbsp;&nbsp;<span>Health Savings Account Statement {{date.startDate}} to {{date.EndtDate}}</span></p>
+<ion-header-bar class="headerborder" >
+	<div class="home-head "  >
+		<img src="img/back_icon.svg" ng-click="goback();"><p class="headertitle">HSA Statement</p>
 	</div>
+</ion-header-bar>
+<ion-view>
+<ion-content >
+       <div class="accountcontent">
+			<p class="HeadLine"> {{date.startDate}} To  {{date.EndtDate}}</p>
+			<p class="lineBreak"></p>
+			
+		</div>
+		<div class="accountsubcontent">
+			<p><span class="lineHead">You are currently enrolled in single coverage </span></p>
+			<p><span class="lineHead">Based on this coverage you may be eligible to contribute an additional <span class="lineValueText">$2,285.04 </span>for the year <span class="lineValueText"> 2016 </span>tax year.</span></span></p>
+				
+		</div>
+		<div class="subtitle">
+			<p class="HeadLine">2016 IRS Annual Contribution Limits</p>
+			<p class="lineBreak"></p>
+		</div>
+		<div class="accountsubcontent">
+			<p><span class="lineHead">Single coverage</span><br><span class="lineValueText">5807</span></p>
+			<p><span class="lineHead">Family coverage</span><br><span class="lineValueText">$179</span></p>
+			<p><span class="lineHead">* catch-up contribution</span><br><span class="lineValueText">$3,350.00</span></p>
+		</div>
+		<!-- <div class=" item-divider item-text-wrap">
+                  <p>* If you are older, you can make an additional catch-up contribution</p>
+        </div>
+		 -->
+		<div class="subtitle">
+			<p class="HeadLine">Account Summary</p>
+			<p class="lineBreak"></p>
+		</div>
+		<div class="accountsubcontent">
+			<p><span class="lineHead">Beggining Account Balance</span><br><span class="lineValueText">5807</span></p>
+			<p><span class="lineHead">Ending  Account Balance</span><br><span class="lineValueText">$179</span></p>
+			<p><span class="lineHead">Available for Disbursement*</span><br><span class="lineValueText">$179</span></p>
+			<p><span class="lineHead">Interest earned</span><br><span class="lineValueText">$3,350.00</span></p>
+			<p><span class="lineHead">Qualified Disbursements</span><br><span class="lineValueText">$3,350.00</span></p>
+			<p><span class="lineHead">Non-Qualified  Disbursements</span><br><span class="lineValueText">$3,350.00</span></p>
+			<p><span class="lineHead">Outside Investment Balance</span><br><span class="lineValueText">$3,350.00</span></p>
+		</div>
+	   <!--<div class="item item-divider item-text-wrap">
+              *Excludes $20 required minimum balance	
+        </div> -->
+		
+		<div class="subtitle">
+			<p class="HeadLine"> 2016 Activity Summary</p>
+			<p class="lineBreak"></p>
+		</div>
+		<div class="accountsubcontent">
+			<p><span class="lineHead">Total Contributions</span><br><span class="lineValueText">$179</span></p>
+			<p><span class="lineHead">Employer Contribution</span><br><span class="lineValueText">$179</span></p>
+			<p><span class="lineHead">Employee Contribution</span><br><span class="lineValueText">$179</span></p>
+			<p><span class="lineHead">Total Disbursements</span><br><span class="lineValueText">$3,350.00</span></p>
+			<p><span class="lineHead">Non-Qualified Disbursements</span><br><span class="lineValueText">$3,350.00</span></p>
+			<p><span class="lineHead">Qualified Disbursements</span><br><span class="lineValueText">$3,350.00</span></p>
+			
+		</div>
+		<div class="subtitle">
+			<p class="HeadLine">  Activity </p>
+			<p class="lineBreak"></p>
+		</div>
+		<div class="accountsubcontent">
+			<p><span class="lineHead">Date</span><br><span class="lineValueText">30/08/2016</span></p>
+			<p><span class="lineHead">Code</span><br><span class="lineValueText">179</span></p>
+			<p><span class="lineHead">Beginning Balances</span><br><span class="lineValueText">$179</span></p>
+			<p><span class="lineHead">Ending Balances</span><br><span class="lineValueText">$3,350.00</span></p>
+			<p><span class="lineHead">Fee Balance</span><br><span class="lineValueText">$3,350.00</span></p>
+		
+		</div>
+	
+     
+<!-- <div class="card">
+           <div >
+               <div class=" item-divider item-text-wrap">
+                <h4> You are currently enrolled in single coverage</h4>
+                 <p>Based on this coverage you may be eligible to contribute</p>
+                  <p>an additional $2,285.04 for the year 2016 tax year</p>
+                </div>
 
-<div class="card" >
-  <div class="item item-text-wrap" style="background-color:#f0f0f0">
-  <h4> You are currently enrolled in single coverage</h4>
-  <p>Based on this coverage you may be eligible to contribute </p>
-  <p>an additional <dark>$2,285.04 </dark> for the 2016 tax year</P>
-  --------------------------------------
-  <p>2016 IRS Annual Contribution Limits</p>
-  <div class="row no-padding">
-  <div class="col col-50">
-  <p> single coverage</p>
-  </div>
+             <p><b>2016 IRS Annual Contribution Limits</b></p>
+             <p><b>Single coverage</b></p>
+             <p>$3,350.00</p>
+             <p><b>Family coverage</b></p>
+             <p>$3,350.00</p>
+             <p><b>* catch-up contribution</b></p>
+             <p>$3,350.00</p>
+            
+          
+		     <div class=" item-divider item-text-wrap">
+                  <p>* If you are older, you can make an additional catch-up contribution</p>
+             </div>
+           </div>
+       </div>
+  -->
   
-  <div class="col col-50">
-   <p>$3,350.00</p>
-  </div>
-  </div>
-  
-  <div class="row no-padding">
-  <div class="col col-50">
-   <p>Family coverage</p>
-  </div>
-  
-  <div class="col col-50">
-   <p>$5,350.00</p>
-  </div>
-  </div>
-  
-  <div class="row no-padding">
-  <div class="col col-50">
-   <p>* catch-up contribution</p>
-  </div>
-  
-  <div class="col col-50">
-  <p>$1,00.00</p>
-  </div>
-  </div>
-  <div class="row">
-  <p>*If you are older,you can make an additional catch-up contribution</p>
-  </div>
-  </div>
-</div>
+   
+       <!-- <div class="card">
+              <div class="item item-divider">
+               Account summary
+			   
+              </div>
+	       <div style="margin-left:20px; margin-top:10px";>
 
-<div class="card">
-<div class="item item-divider">
-<h4 class="image"> Account summary</h4>
-</div>
-
-<div class="row no-padding">
-<div class=" col col-75">
-
-
-Beggining Account Balance
-
-</div>
-<div class=" col col-25">
-
-$7,481.99
-
-</div>
-</div>
-
-<div class="row no-padding">
-<div class="col col-75">
-Ending Account Balance
-</div>
-<div class="col col-25">
-$7,481.99
-</div>
-</div>
-
-<div class="row no-padding">
-<div class="col col-75">
-Available for Disbursement*
-</div>
-<div class="col col-25">
-$7,481.99
-</div>
-</div>
-<div class="row no-padding">
-<div class="col col-75">
-Interest Earned
-</div>
-<div class="col col-25">
-$0.00
-</div>
-</div>
-<div class="row no-padding">
-<div class="col col-75">
-Qualified Disbursements
-</div>
-<div class="col col-25">
-$0.00
-</div>
-</div>
-<div class="row no-padding">
-<div class="col col-75">
-Non-Qualified Disbursements
-</div>
-<div class="col col-25">
-$0.00
-</div>
-</div>
-<div class="row no-padding">
-<div class="col col-75">
-Outside Investment Balance
-</div>
-<div class="col col-25">
-$0.00
-</div>
-</div>
-
-<div class="item item-divider">
-
-*Excludes $20 required minimum balance
-
-</div>
- </div>
-  
- </div>
- <h5 class="image">2016 Activity Summary</h5>
- 
- <div class="row no-padding responsive-sm">
- <div class="col col-50">
- <div class="list">
- <div class="item">
- <div class="row">
- <div class="col">
- Total Contributions:
- </div>
- <div class="col">
- $00
- </div>
- </div>
- 
-<div class="row no-padding responsive-sm">
-<div class="col col-50">
-<p class="image">Employer Contribution:</p>
-<p class="image">$0.00</p>
-</div>
-<div class="col col-50">
-<p class="image">Employee Contribution:</p>
-<p class="image">$0.00</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="col col-50">
- <div class="list">
- <div class="item">
- <div class="row">
- <div class="col col-50">
- Total Disbursements:
- </div>
- <div class="col col-50">
- $00
- </div>
- </div>
- 
-<div class="row no-padding responsive-sm">
-<div class="col col-50">
-<p class="image">Non-Qualified Disbursements:</p>
-<p class="image">$0.00</p>
-</div>
-<div class="col col-50">
-<p class="image">Qualified Disbursements:</p>
-<p class="image">$0.00</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-
-<div class="row">
-<h4>Activity</h4>
-</div>
-<div class="row no-padding responsive-sm">
-<div class="col col-10">
-<div class="list">
-<div class="item">
-
-<p class="image">Date</p>
-
-</div>
-</div>
-</div>
-
-<div class="col col-10">
-<div class="list ">
-<div class="item">
-
-<p class="image">Code</p>
-
-</div>
-</div>
-</div>
-
-<div class="col col-20">
-<div class="list">
-<div class="item">
-
-<p class="image">Description</p>
-
-</div>
-</div>
-</div>
-
-<div class="col col-15">
-<div class="list">
-<div class="item">
-
-<p class="image">Amount</p>
-
-</div>
-</div>
-</div>
-
-<div class="col col-20">
-<div class="list">
-<div class="item">
-
-<p class="image">Account Balance</p>
-
-</div>
-</div>
-</div>
-
-<div class="col col-20">
-<div class="list">
-<div class="item">
-
-<p class="image">Fee Balance</p>
-
-</div>
-</div>
-</div>
-
-
-</div>
-
-
-<div class="row no-padding responsive-sm">
-<div class="col col-65">
-<div class="list">
-<div class="item">
-
-<p class="image">Beginning Balances</p>
-
-</div>
-</div>
-</div>
-
-<div class="col col-20">
-<div class="list">
-<div class="item">
-
-<p>$7,481.99</p>
-
-</div>
-</div>
-</div>
-
-<div class="col col-20">
-<div class="list">
-<div class="item">
-
-<p>$0.00</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="row no-padding responsive-sm">
-<div class="col col-65">
-<div class="list">
-<div class="item">
-
-<p class="image">Ending Balances</p>
-
-</div>
- </div>
-</div> 
-
-<div class="col col-20">
- <div class="list">
-<div class="item "> 
-
-<p>$7,481.99</p>
-
-</div>
- </div>
-</div>
- 
-<div class="col col-20">
- <div class="list">
-<div class="item">
- 
-<p>$0.00</p>
-
-</div>
-  </div>
-</div>
- </div>
-
-<div class="row no-padding responsive-sm">
-<div class="list">
-<div class="item">
-(CY=Current Year Contribution;PY=Prior Contribution;Q=Qualified Expense;NQ=Non-Qualified Expense)
-</div>
-</div>
-</div>
+              <p><b>Beggining Account Balance</b></p>
+              <p>$7,481.99</p> 
+              <p><b>Ending  Account Balance</b></p>
+              <p>$7,481.99</p>
+              <p><b>Available for Disbursement*</b></p>
+              <p>$7,481.99</p>
+              <p><b>Interest earned</b></p>
+              <p>$00.99</p> 
+               <p><b>Qualified Disbursements</b></p>
+              <p>$00.99</p> 			  
+              <p><b>Non-Qualified  Disbursements</b></p>
+              <p>$00.99</p>
+              <p><b>Outside Investment Balance</b></p>
+              <p>$00.99</p>
+              <p><b>Non-Qualified  Disbursements</b></p>
+              <p>$00.99</p>			  
+           </div>
+		    <div class="item item-divider item-text-wrap">
+              *Excludes $20 required minimum balance	
+            </div>
+	    </div> -->
+        
+		<!-- <div class="card">
+		   <div class="item item-divider">
+                2016 Activity Summary
+            </div>
+			<div style="margin-left:20px; margin-top:10px";>
+			  <p><b>Total Contributions:</b></p>
+              <p> $00</p> 
+			  <p><b>Employer Contribution:</b></p>
+              <p> $0.00</p> 
+			  <p><b>Employer Contribution:</b></p>
+              <p> $0.00</p> 
+			  <p><b>Total Disbursements:</b></p>
+              <p> $00</p>
+              <p><b>Non-Qualified Disbursements:</b></p>
+              <p> $00.0</p>		
+              <p><b>Qualified Disbursements:</b></p>
+              <p> $00.0</p>					  
+			</div>
+			
+		</div>
+		 -->
+		<!-- <div class="card">
+		  <div class="item item-divider">
+                Activity
+           </div>
+		   <div style="margin-left:20px; margin-top:10px";>
+		     <p>Date</p>
+		     <p></p>
+		     <p>Code</p>
+		     <p></p>
+		     <p class="image">Beginning Balances</p>
+			 <p></p>
+			 <p class="image">Ending Balances</p>
+		     <p></p>
+			 <p class="image">Amount</p>
+			 <p class="image">Account Balance</p>
+			 <p class="image">Fee Balance</p>
+			 
+		   </div>
+		   <div class="item item-divider item-text-wrap">
+               <p>(CY=Current Year Contribution;PY=Prior Contribution;Q=Qualified Expense;NQ=Non-Qualified Expense)</p>
+            </div>
+		</div> -->
 
 </ion-content>
 </ion-view>

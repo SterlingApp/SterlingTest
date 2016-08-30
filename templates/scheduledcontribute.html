@@ -26,7 +26,7 @@
     </style>
     </head>
     <ion-content>
-		<div style="margin-left:20px; margin-top:33px">
+		<!-- <div style="margin-left:20px; margin-top:33px">
 			<p class="HeadLine">Transaction Date: 07/29/2016</p>
 			<p class="lineBreak"></p>
 		</div>
@@ -43,44 +43,19 @@
 			<p><span class="lineHead">Transaction Id</span><br><span class="lineValueText">5807</span></p>
 			<p><span class="lineHead">Amount</span><br><span class="lineValueText">$179</span></p>
 			<p><span class="lineHead">Status</span><br><span class="lineValueText">success</span></p>
-		</div>
-		
-		<!-- <h4 style="margin-left:5px;color:#496E9B">Transaction Date: 07/29/2016</h4>
-		<div class="card" >
-			<div style="margin-left:20px;"; >
-                <p class="content-head"><b>Transaction Id</b></p>
-				<p class="sub-head">5807</p>
-                <p class="content-head"><b>Amount</b></p>
-                <p class="sub-head">$179</p>
-				<p class="content-head"><b>Status</b></p>
-                <p  class="sub-head" style="color:red">pending</p>
-				
-			</div>		
-		</div>
-		<h4 style="margin-left:5px;color:#496E9B">Transaction Date: 07/29/2016</h4>
-		<div class="card" >
-			<div style="margin-left:20px;"; >
-                <p class="content-head"><b>Transaction Id</b></p>
-				<p class="sub-head">5812</p>
-                <p class="content-head"><b>Amount</b></p>
-                <p class="sub-head">$140</p>
-				<p class="content-head"><b>Status</b></p>
-                <p  class="sub-head" style="color:green">success</p>
-				
-			</div>		
-		</div>
-		<h4 style="margin-left:5px;color:#496E9B">Transaction Date: 07/29/2016</h4>
-		<div class="card" >
-			<div style="margin-left:20px;"; >
-                <p class="content-head"><b>Transaction Id</b></p>
-				<p class="sub-head">5820</p>
-                <p class="content-head"><b>Amount</b></p>
-                <p class="sub-head">$125</p>
-				<p class="content-head"><b>Status</b></p>
-                <p  class="sub-head" style="color:red">pending</p>
-				
-			</div>		
 		</div> -->
+		
+		<div ng-repeat="data in schedule_list">
+			<div style="margin-left:20px; margin-top:33px">
+				<p class="HeadLine">Transaction Date: {{data.TXN_DATE}}</p>
+				<p class="lineBreak"></p>
+			</div>
+			<div style="margin-left:20px; margin-top:10px">
+				<p><span class="lineHead">Transaction Id</span><br><span class="lineValueText">{{data.TXN_ID}}</span></p>
+				<p><span class="lineHead">Amount</span><br><span class="lineValueText">${{data.AMOUNT}}</span></p>
+				<p><span class="lineHead">Status</span><br><span class="lineValueText">{{data.STATUS}}</span></p>
+			</div>
+		</div>
 		
 		
 		<div class="hide" ng-repeat="data in schedule_list">     

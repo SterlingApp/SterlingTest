@@ -30,7 +30,7 @@ input[type=text]:focus {
            <!-- <p style="color: red;margin-left:25px">You do not have a bank account on record.You must add a bank account by logging into the sterlinghsa.com to schedule disbursement.</p>
          -->
 		  <h4 style="margin-left:10px">Available Balance</h4>
-		   <p style="margin-left:10px">$1,084.70</p>
+		   <p style="margin-left:10px">${{Availablebalance}}</p>
 		 </div>
 		
 		
@@ -53,14 +53,7 @@ input[type=text]:focus {
 			 </div>
            <select >
 				<option selected> Select Payee</option>
-				<option value="115095">Town and Country Pediatrics Acct #:8291 3838 California Street, Suite 111 San Franciscoca,CA 94118</option>
-				<option value="120737">Quest Diagnostics Acct #:8388435482 PO Box 7400 Pasadena,CA 91109</option>
-				<option value="147441">California Pacific Medical Center File#742412 Acct #:10659166 PO Box 742412 Los Angeles,CA 90074</option>
-				<option value="147445">KidSmiles Pediatric Dentristry Acct #:17895 2674 Ocean Ave San Francisco,CA 94132</option>
-				<option value="147442">Children's Sports Medicine Foundation, Inc. Acct #:250332256 PO Box 3694 Boston,MA 02241</option>
-				<option value="147443">Pacific Gyn &amp; OB Medical Group Acct #:188826-85 PO Box 1290 Suisun City,CA 94585</option>
-				<option value="209392">dfdg Acct #:435646 dfgd gdfg,DC 94612</option>
-				<option value="209672">Sarah Napolio Acct #:ICA271600 15 Massasoit Street San Francisco,CA 94110</option>
+				<option ng-repeat="data in bank_details">{{data.DISPLAY_NAME}}</option>
           </select>
 		 </label>
       </div>

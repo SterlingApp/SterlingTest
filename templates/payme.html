@@ -28,7 +28,7 @@ input[type=text]:focus {
 				   <!-- <p style="color: red;margin-left:25px">You do not have a bank account on record.You must add a bank account by logging into the sterlinghsa.com to schedule disbursement.</p>
 				 -->
 				 <h4 style="margin-left:10px">Available Balance</h4>
-				 <p style="margin-left:10px">$1,084.70</p>
+				 <p style="margin-left:10px">${{Availablebalance}}</p>
 				 </div>
 				
 					<!-- <div class="item item-avatar">
@@ -45,8 +45,7 @@ input[type=text]:focus {
 							 </div>
 							<select>
 							  <option selected > Select Bank Account</option>
-							  <option>Wells Fargo Bud</option>
-							  <option>Wells Fargo Sarah</option>
+							 <option ng-repeat="data in bank_details">{{data.DISPLAY_NAME}}</option>
 						  
 						  </select>
 						 </label>
@@ -70,8 +69,7 @@ input[type=text]:focus {
 								 </div>
 								  <select>
 								<option selected disabled>Category</option>
-								<option>Qualified</option>
-								<option>Non-Qualified</option>
+								<option ng-repeat="data in categories">{{data.DESCRIPTION}}</option>
 							  </select>
 							  </label>
 						</div>

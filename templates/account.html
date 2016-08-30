@@ -5,7 +5,25 @@
 </ion-header-bar>
 <ion-view>
     <ion-content>
+		
 		<div style="margin-left:20px; margin-top:32px">
+			<p><span class="lineHead">Account number</span><br><span class="lineValueText">{{account_information.ACC_NUM}}</span></p>
+			<p><span class="lineHead">Plan</span><br><span class="lineValueText">{{account_information.PLAN_NAME}}</span></p>
+			<p><span class="lineHead">HSA effective date</span><br><span class="lineValueText">{{account_information.EFFECTIVE_DATE}}</span></p>
+			<p><span class="lineHead">Account balance</span><br><span class="lineValueText">{{account_information.ACCT_BALANCE}}</span></p>
+		</div>
+		<div style="margin-left:20px; margin-top:20px">
+			<p class="HeadLine">Total Contributions</p>
+			<p class="lineBreak"></p>
+		</div>
+		<div style="margin-left:20px; margin-top:10px">
+			<p><span class="lineHead">Total contributions for 2016</span><br><span class="lineValueText">${{total_contributions.CONTRB_LIMIT}}</span></p>
+			<p><span class="lineHead">Allowable contributions remaining for 2016</span><br><span class="lineValueText">${{total_contributions.CURRENT_YR_CONTRB}}</span></p>
+			<p><span class="lineHead">HSA effective date</span><br><span class="lineValueText">{{total_contributions.EFFECTIVE_DATE}}</span></p>
+			<p><span class="lineHead">Total disbursement for 2016</span><br><span class="lineValueText">${{total_contributions.TOTAL_DISB_AMOUNT}}</span></p>
+		</div>
+		
+		<!-- <div style="margin-left:20px; margin-top:32px">
 			<p><span class="lineHead">Account number</span><br><span class="lineValueText">5847</span></p>
 			<p><span class="lineHead">Plan</span><br><span class="lineValueText">hsa</span></p>
 			<p><span class="lineHead">HSA effective date</span><br><span class="lineValueText">22.08.2016</span></p>
@@ -20,7 +38,7 @@
 			<p><span class="lineHead">Allowable contributions remaining for 2016</span><br><span class="lineValueText">$10</span></p>
 			<p><span class="lineHead">HSA effective date</span><br><span class="lineValueText">22.08.2016</span></p>
 			<p><span class="lineHead">Total disbursement for 2016</span><br><span class="lineValueText">$26.08</span></p>
-		</div>
+		</div> -->
 		
 		<!--
 			This bellow coding used for shwoing all the content 

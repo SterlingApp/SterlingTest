@@ -1,17 +1,58 @@
 angular.module('starter.controllers', [])
-.controller('loginCtrl', function($scope,$location,$ionicTabsDelegate) {
+.controller('loginCtrl', function($scope,$location,$ionicTabsDelegate,$http) {
 	$scope.goForward = function () {
         var selected = $ionicTabsDelegate.selectedIndex();
         if (selected != -1) {
             $ionicTabsDelegate.select(selected + 1);
         }
     }
+	
+	if(localStorage.getItem('access_token')==null){
+		//$location.path("/login");
+	}else{
+		window.location.href = 'index.html#/hsa';
+	}
  
     $scope.logIn = function (loginData) {
-		window.location.href = 'index.html#/hsa';
+		//$scope.username=loginData.username;
+		//$scope.password=loginData.password;
+		//alert(loginData.username+"=="+loginData.password);
+		if(loginData.username=="" || loginData.password==""){
+			alert("Please Enter your username and password");
+		}else if(loginData.username==undefined || loginData.password==undefined){
+			alert("Please Enter your username and password");
+		}
+		else{
+			$http.post(' http://app.sterlinghsa.com/api/v1/user/login',{username:loginData.username,password:loginData.password},{headers: {'Content-Type':'application/json; charset=utf-8'} })     
+			.success(function(data) {
+				//alert("Success-"+JSON.stringify(data));
+				 if(data.status == "SUCCESS"){
+					 
+					localStorage.setItem('access_token',data.access_token);
+					localStorage.setItem('username',loginData.username);
+					//alert(localStorage.getItem('access_token')+"--"+localStorage.getItem('username'));
+					
+					//$location.path("/app/portfolio");
+					window.location.href = 'index.html#/hsa';				
+				}else if(data.status=="FAILED"){
+					alert(data.error_message);
+				}
+				 
+			}).error(function(err){				
+				//alert("Error :="+JSON.stringify(err));
+			    /* if (data.status === 400 && !(loginData.username.$invalid || loginData.password.$invalid)) {
+                errorMessage = 'Incorrect Username or Password';
+				 alert("FAILED LOGIN" + errorMessage);
+            } else if (data.status === 500) {
+                errorMessage = 'Could not connect to server';
+            }  */
+			    
+        });
+		}
+		//window.location.href = 'index.html#/hsa';
     }
 })
-.controller('DashCtrl', function($scope,$location, $ionicTabsDelegate) {
+.controller('DashCtrl', function($scope,$location, $ionicTabsDelegate,$http) {
 	$scope.goForward = function () {
         var selected = $ionicTabsDelegate.selectedIndex();
         if (selected != -1) {
@@ -36,6 +77,25 @@ angular.module('starter.controllers', [])
 	//$rootScope.hidecontent=false;
 	localStorage.setItem("backCount","2");
 	
+	//REST API
+	$scope.username = localStorage.getItem('username');
+	$scope.access_token = localStorage.getItem('access_token');
+	
+	 $http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	.success(function(data){
+		//alert("Success-"+JSON.stringify(data));
+		localStorage.setItem('account_types',data.account_types.HSA);
+		localStorage.setItem('account_types',data.account_types.FSA);
+		
+		$scope.account_type=data.account_types.HSA;
+		$scope.account_types=data.account_types.FSA;
+		$rootScope.hsaaccno=data.account_types.HSA.ACCT_NUM;
+		$rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
+		$rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
+		$rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
+		}).error(function(err){
+		// alert(JSON.stringify(err));
+	});
 	
 	
 })
@@ -46,6 +106,25 @@ angular.module('starter.controllers', [])
 	//$rootScope.hidecontent=false;
 	
 	
+	//REST API
+	$scope.username = localStorage.getItem('username');
+	$scope.access_token = localStorage.getItem('access_token');
+	
+	 $http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	.success(function(data){
+		//alert("Success-"+JSON.stringify(data));
+		localStorage.setItem('account_types',data.account_types.HSA);
+		localStorage.setItem('account_types',data.account_types.FSA);
+		
+		$scope.account_type=data.account_types.HSA;
+		$scope.account_types=data.account_types.FSA;
+		$rootScope.hsaaccno=data.account_types.HSA.ACCT_NUM;
+		$rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
+		$rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
+		$rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
+		}).error(function(err){
+		// alert(JSON.stringify(err));
+	});
 	
 	
 	
@@ -106,10 +185,11 @@ angular.module('starter.controllers', [])
   {
 	   $cordovaDialogs.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
 		.then(function(buttonIndex) {
-		  if(buttonIndex=="1")
-		  {
-			   window.location='login.html#/login';
-		  }
+			if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
 		  
 		});
 	  
@@ -317,7 +397,7 @@ angular.module('starter.controllers', [])
 	//$ionicHistory.clearHistory();
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
-	 $scope.acc_num=$rootScope.hsaaccno;
+	$scope.acc_num=$rootScope.hsaaccno;
 
 	 $http.get(' http://app.sterlinghsa.com/api/v1/accounts/accountinfo',{params:{'type':'hsa','acc_num': $scope.acc_num},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
@@ -501,7 +581,7 @@ angular.module('starter.controllers', [])
 	  
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
+		//$rootScope.hidecontent=false;
 		window.history.back();
 		//$location.path("/hsa")
 	}
@@ -599,7 +679,7 @@ angular.module('starter.controllers', [])
 		if($scope.activity.EndtDate==""|| $scope.activity.startDate==""){
 			alert('Please select date');
 		}else{
-			//$location.path("hsastatement");
+			$location.path("hsastatement");
 		}
 		
 		

@@ -76,7 +76,7 @@ angular.module('starter.controllers', [])
 				 
 			}).error(function(err){		
 
-				$cordovaDialogs.alert('Unable to connect server', 'Sorry', 'button name')
+				$cordovaDialogs.alert('Unable to connect server', 'Sorry', 'OK')
 				.then(function() {
 				});
 				return false;

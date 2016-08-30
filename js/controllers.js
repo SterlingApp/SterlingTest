@@ -1,5 +1,7 @@
 angular.module('starter.controllers', [])
-.controller('loginCtrl', function($scope,$location,$ionicTabsDelegate,$http) {
+.controller('loginCtrl', function($scope,$cordovaDialogs,$location,$ionicLoading,$ionicPopup,$ionicTabsDelegate,$http) {
+	
+	$scope.loginData={username:'',password:''};
 	$scope.goForward = function () {
         var selected = $ionicTabsDelegate.selectedIndex();
         if (selected != -1) {
@@ -14,31 +16,70 @@ angular.module('starter.controllers', [])
 	}
  
     $scope.logIn = function (loginData) {
+		
+		$ionicLoading.show({
+		  template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
+		});
+		
+		
 		//$scope.username=loginData.username;
 		//$scope.password=loginData.password;
 		//alert(loginData.username+"=="+loginData.password);
-		if(loginData.username=="" || loginData.password==""){
-			alert("Please Enter your username and password");
-		}else if(loginData.username==undefined || loginData.password==undefined){
-			alert("Please Enter your username and password");
+		if($scope.loginData.username==""){
+			$ionicLoading.hide()
+			
+			
+			var alertPopup = $ionicPopup.alert({
+				title: 'Sorry',
+				template: '<center>Please Enter Username</center>'
+			});
+			   
+			   
+			 // $cordovaDialogs.alert('Please Entert Username', 'Sorry', 'button name')
+			// .then(function() {
+			// });
+			return false;
+			
+		}
+		else if($scope.loginData.password==""){
+			$ionicLoading.hide()
+			var alertPopup = $ionicPopup.alert({
+				title: 'Sorry',
+				template: '<center>Please Enter Password</center>'
+			});
+			// $cordovaDialogs.alert('Please Enter Password', 'Sorry', 'button name')
+			// .then(function() {
+			// });
+			return false;
 		}
 		else{
-			$http.post(' http://app.sterlinghsa.com/api/v1/user/login',{username:loginData.username,password:loginData.password},{headers: {'Content-Type':'application/json; charset=utf-8'} })     
+			$http.post(' http://app.sterlinghsa.com/api/v1/user/login',{username:$scope.loginData.username,password:$scope.loginData.password},{headers: {'Content-Type':'application/json; charset=utf-8'} })     
 			.success(function(data) {
+				
 				//alert("Success-"+JSON.stringify(data));
 				 if(data.status == "SUCCESS"){
+					 $ionicLoading.hide()
 					 
 					localStorage.setItem('access_token',data.access_token);
-					localStorage.setItem('username',loginData.username);
+					localStorage.setItem('username',$scope.loginData.username);
 					//alert(localStorage.getItem('access_token')+"--"+localStorage.getItem('username'));
 					
 					//$location.path("/app/portfolio");
 					window.location.href = 'index.html#/hsa';				
 				}else if(data.status=="FAILED"){
-					alert(data.error_message);
+					 $ionicLoading.hide()
+					 $cordovaDialogs.alert('Username or password is incorrect ', 'Sorry', 'button name')
+					.then(function() {
+					});
+					return false;
 				}
 				 
-			}).error(function(err){				
+			}).error(function(err){		
+
+				$cordovaDialogs.alert('Unable to connect server', 'Sorry', 'button name')
+				.then(function() {
+				});
+				return false;
 				//alert("Error :="+JSON.stringify(err));
 			    /* if (data.status === 400 && !(loginData.username.$invalid || loginData.password.$invalid)) {
                 errorMessage = 'Incorrect Username or Password';
@@ -398,9 +439,12 @@ angular.module('starter.controllers', [])
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.acc_num=$rootScope.hsaaccno;
-
+	$ionicLoading.show({
+	  template: '<ion-spinner icon="ios"></ion-spinner><br>Getting information...'
+	});
 	 $http.get(' http://app.sterlinghsa.com/api/v1/accounts/accountinfo',{params:{'type':'hsa','acc_num': $scope.acc_num},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
+		$ionicLoading.hide();
 		//alert(JSON.stringify(data));
 		localStorage.setItem('account_information',data.account_information);
 		localStorage.setItem('total_contributions',data.total_contributions);
@@ -408,8 +452,14 @@ angular.module('starter.controllers', [])
 		//$scope.total_contributions = localStorage.getItem('total_contributions');
 		$scope.total_contributions = data.total_contributions;
 		//alert(JSON.stringify(data.account_information));
-		}).error(function(err){
-		 
+		
+	}).error(function(err){
+		$ionicLoading.hide();
+		$cordovaDialogs.alert('Unable to connect server', 'Sorry', 'button name')
+		.then(function() {
+		});
+		return false;
+		
 	});
 	
 	

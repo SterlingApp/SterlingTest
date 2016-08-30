@@ -355,7 +355,7 @@ angular.module('starter.controllers', [])
 	}
 	$scope.upload = function(){
 	         fileChooser.open(function(uri) {
-				 alert(uri);
+				 //alert(uri);
 			     var options = {
                      fileKey: "file",
                       //fileName: "tesat.pdf",
@@ -388,7 +388,7 @@ angular.module('starter.controllers', [])
 	}
 	$scope.upload = function(){
 	         fileChooser.open(function(uri) {
-				 alert(uri);
+				 //alert(uri);
 			     var options = {
                      fileKey: "file",
                       //fileName: "tesat.pdf",
@@ -619,7 +619,7 @@ angular.module('starter.controllers', [])
 	
 	$scope.upload = function(){
 	         fileChooser.open(function(uri) {
-				 alert(uri);
+				 //alert(uri);
 			     var options = {
                      fileKey: "file",
                       //fileName: "tesat.pdf",
@@ -720,7 +720,7 @@ angular.module('starter.controllers', [])
 	$scope.TransDate="";
 	$scope.upload = function(){
 	         fileChooser.open(function(uri) {
-				 alert(uri);
+				 //alert(uri);
 			     var options = {
                      fileKey: "file",
                       //fileName: "tesat.pdf",

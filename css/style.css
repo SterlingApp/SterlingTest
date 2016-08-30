@@ -176,10 +176,8 @@ margin-left:50px;
     display: block;
 }
 .contactfont{
-	
 	font-family: Helvetica;
-	font-size: 15px;
-	
+	font-size: 16px;	
 }
 .accountcontent{
 	margin-left:20px; 
@@ -229,6 +227,10 @@ margin-left:50px;
 	background-color: #29B8E5;
 	color:#fff;
 	border-radius:8px;
+}
+
+.newTop{
+	margin-top:20px;
 }
 
 

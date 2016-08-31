@@ -25,8 +25,18 @@
 		</style>
     </head>
 	<ion-content>
-		
-		<div style="margin-left:20px; margin-top:32px">
+		 <div class="div1 " ng-repeat="data in schedule_list">   
+		  <div style="margin-left:20px; margin-top:33px">
+			<p class="HeadLine">Transaction Date: {{data.TXN_DATE}}</p>
+			<p class="lineBreak"></p>
+		</div>
+		<div style="margin-left:20px; margin-top:10px">
+			<p><span class="lineHead">Transaction Id</span><br><span class="lineValueText">{{data.TXN_ID}}</span></p>
+			<p><span class="lineHead">Amount</span><br><span class="lineValueText">{{data.AMOUNT}}</span></p>
+			<p><span class="lineHead">Status</span><br><span class="lineValueText">{{data.STATUS}}</span></p>
+		</div>
+		</div>
+		<!--  <div style="margin-left:20px; margin-top:32px">
 			<p class="HeadLine">Fee Date: 07/29/2016</p>
 			<p class="lineBreak"></p>
 		</div>
@@ -49,10 +59,10 @@
 		<div style="margin-left:20px; margin-top:10px">
 			<p><span class="lineHead">Fee name</span><br><span class="lineValueText">To Provider</span></p>
 			<p><span class="lineHead">Amount</span><br><span class="lineValueText">$10</span></p>
-		</div>
+		</div> 
 		
-		
-		<!-- <h4 style="margin-left:5px;color:#496E9B">Transaction Date: 07/29/2016</h4>
+		 -->
+		 <!-- <h4 style="margin-left:5px;color:#496E9B">Transaction Date: 07/29/2016</h4>
 		<div class="card" >
 			<div style="margin-left:20px;"; >
 				<p class="content-head"><b>Transaction Id</b></p>
@@ -87,9 +97,9 @@
 				<p class="sub-head" style="color:red">pending</p>
 				
 			</div>		
-		</div> -->
-		
-		<div class="div1 hide" ng-repeat="data in schedule_list">     
+		</div> 
+		 -->
+		 <!-- <div class="div1 hide" ng-repeat="data in schedule_list">     
 			<div class="row">
 				<p class="sub-head">{{data.TXN_DATE}}</p>
 			</div>
@@ -98,7 +108,8 @@
 				<div class="col col12">{{data.AMOUNT}}</div>
 				<div class = "col col11">{{data.STATUS}}</div>
 			</div>
-		</div>
+		</div>  -->
+		
 		<!-- <div style="height: 200px;"></div> -->
     </ion-content>
 </ion-view>

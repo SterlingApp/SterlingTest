@@ -7,17 +7,16 @@
 
 <ion-view>
 <ion-content>
-	
+	<div ng-repeat="data in available_balances"> 
 	<div style="margin-left:20px; margin-top:32px">
-			<p class="HeadLine">Bicycle FSA</p>
+			<p class="HeadLine">{{data.PLAN_DESC}}</p>
 			<p class="lineBreak"></p>
 		</div>
 		<div style="margin-left:20px; margin-top:10px">
-			<p><span class="lineHead">Annual Election</span><br><span class="lineValueText">$240.00</span></p>
-			<p><span class="lineHead">Available Balance</span><br><span class="lineValueText">$240</span></p>
-			<p><span class="lineHead">Status</span><br><span class="lineValueText">success</span></p>
-		</div>
-		<div style="margin-left:20px; margin-top:20px">
+			<p><span class="lineHead">Annual Election</span><br><span class="lineValueText">{{data.ANNUAL_ELECTION}}</span></p>
+			<p><span class="lineHead">Available Balance</span><br><span class="lineValueText">{{data.BALANCE}}</span></p>
+			</div>
+		<!-- <div style="margin-left:20px; margin-top:20px">
 			<p class="HeadLine">Transit FSA</p>
 			<p class="lineBreak"></p>
 		</div>
@@ -25,6 +24,7 @@
 			<p><span class="lineHead">Annual Election</span><br><span class="lineValueText">$600</span></p>
 			<p><span class="lineHead">Available Balance</span><br><span class="lineValueText">$600</span></p>
 			<p><span class="lineHead">Status</span><br><span class="lineValueText">success</span></p>
+		</div> -->
 		</div>
 </ion-content>
 </ion-view>

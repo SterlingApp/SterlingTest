@@ -130,11 +130,30 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
           templateUrl: 'templates/scheduledcontribute.html',
 		  controller: 'ScheduledcontributeCtrl'
     })
-	
+	.state('makecontribution', {
+      url: '/makecontribution',
+          templateUrl: 'templates/makecontribution.html',
+		  controller: 'makecontributeCtrl'
+    })
 	 .state('scheduleddisbursement', {
       url: '/scheduleddisbursement',
           templateUrl: 'templates/scheduleddisbursement.html',
 		  controller: 'ScheduledDisbursementCtrl'
+    })
+	 .state('lastdisbursement', {
+      url: '/lastdisbursement',
+          templateUrl: 'templates/lastdisbursement.html',
+		  controller: 'lastdisbursementCtrl'
+    })
+	 .state('lastcontribution', {
+      url: '/lastcontribution',
+          templateUrl: 'templates/lastcontribution.html',
+		  controller: 'lastcontributionCtrl'
+    })
+	 .state('fsacontribution', {
+      url: '/fsacontribution',
+          templateUrl: 'templates/fsacontribution.html',
+		  controller: 'fsacontributionCtrl'
     })
          
    .state('information', {

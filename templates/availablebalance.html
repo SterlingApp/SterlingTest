@@ -1,6 +1,6 @@
 <ion-header-bar class="headerborder" >
 	<div class="home-head "  >
-		  <img src="img/back_icon.svg" ng-click="goback();"><p style="margin-top:-22px;margin-left:41px"> Available Balance</p>
+		  <img src="img/back_icon.svg" ng-click="goback();"><p class="headertitle"> Available Balance</p>
 	   </div>
      
 </ion-header-bar>
@@ -8,19 +8,24 @@
 <ion-view>
 <ion-content>
 	<div ng-repeat="data in available_balances"> 
-	<div style="margin-left:20px; margin-top:32px">
+	<div class="accountcontent">
 			<p class="HeadLine">{{data.PLAN_DESC}}</p>
 			<p class="lineBreak"></p>
 		</div>
-		<div style="margin-left:20px; margin-top:10px">
-			<p><span class="lineHead">Annual Election</span><br><span class="lineValueText">{{data.ANNUAL_ELECTION}}</span></p>
+		<div class="accountsubcontent">
+<<<<<<< .mine			<p><span class="lineHead">Annual Election</span><br><span class="lineValueText">$240.00</span></p>
+			<p><span class="lineHead">Available Balance</span><br><span class="lineValueText">$240</span></p>
+			<p><span class="lineHead">Status</span><br><span class="lineValueText">success</span></p>
+		</div>
+		<div class="subtitle">
+=======			<p><span class="lineHead">Annual Election</span><br><span class="lineValueText">{{data.ANNUAL_ELECTION}}</span></p>
 			<p><span class="lineHead">Available Balance</span><br><span class="lineValueText">{{data.BALANCE}}</span></p>
 			</div>
 		<!-- <div style="margin-left:20px; margin-top:20px">
-			<p class="HeadLine">Transit FSA</p>
+>>>>>>> .theirs			<p class="HeadLine">Transit FSA</p>
 			<p class="lineBreak"></p>
 		</div>
-		<div style="margin-left:20px; margin-top:10px">
+		<div class="accountsubcontent">
 			<p><span class="lineHead">Annual Election</span><br><span class="lineValueText">$600</span></p>
 			<p><span class="lineHead">Available Balance</span><br><span class="lineValueText">$600</span></p>
 			<p><span class="lineHead">Status</span><br><span class="lineValueText">success</span></p>

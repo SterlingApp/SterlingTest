@@ -204,7 +204,7 @@ margin-left:50px;
 	font-size:15px;
 }
 .menupadding{
-	margin-top:5px;
+	margin-top:10px;
 }
 .formselect{
 	width:100%; 
@@ -233,6 +233,27 @@ margin-left:50px;
 .newTop{
 	margin-top:20px;
 }
+.footer{
+	background-color:#DEDEDE;
+	
+}
+.shadow {
+	 box-shadow: 0 10px 10px -6px #999999;
+	/* box-shadow: 0 0 20px  #909090; */
+ 
+}
+.footerborder
+{
+	border-top-width:2px;
+	border-top-color:#454b4e;
+	font-family: Helvetica;
+	font-size: 15px;
+	
+}
+.footertext{
+	margin-left:11px;
+}
+
 
 
 

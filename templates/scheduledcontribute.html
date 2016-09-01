@@ -1,8 +1,11 @@
 <ion-header-bar class="headerborder" >
-	  <div class="home-head "  >
-		   <img src="img/back_icon.svg" ng-click="goback();"><p class="headertitle">Scheduled Contributions</p>
-	    </div>
-        
+	  
+    <div class="home-head " ng-click="goback();">
+		<img src="img/back_icon.svg" >
+    </div>
+    <div class="home-head ">
+		<p style="margin-top:3px;margin-left:20px">Scheduled Contributions</p>
+	</div> 
 </ion-header-bar>
 
 <ion-view>
@@ -44,57 +47,6 @@
 			<p><span class="lineHead">Status</span><br><span class="lineValueText">{{data.STATUS}}</span></p>
 		  </div>
 		  </div>
-		<!-- <div style="margin-left:20px; margin-top:20px">
->>>>>>> .theirs			<p class="HeadLine">Transaction Date: 07/29/2016</p>
-			<p class="lineBreak"></p>
-		</div>
-		<div class="accountsubcontent">
-			<p><span class="lineHead">Transaction Id</span><br><span class="lineValueText">5807</span></p>
-			<p><span class="lineHead">Amount</span><br><span class="lineValueText">$179</span></p>
-			<p><span class="lineHead">Status</span><br><span class="lineValueText">success</span></p>
-		</div>  --> 
 		
-		<!-- <div ng-repeat="data in schedule_list">
-			<div style="margin-left:20px; margin-top:33px">
-				<p class="HeadLine">Transaction Date: {{data.TXN_DATE}}</p>
-				<p class="lineBreak"></p>
-			</div>
-			<div style="margin-left:20px; margin-top:10px">
-				<p><span class="lineHead">Transaction Id</span><br><span class="lineValueText">{{data.TXN_ID}}</span></p>
-				<p><span class="lineHead">Amount</span><br><span class="lineValueText">${{data.AMOUNT}}</span></p>
-				<p><span class="lineHead">Status</span><br><span class="lineValueText">{{data.STATUS}}</span></p>
-			</div>
-		</div>
-		
-		
-		<div class="hide" ng-repeat="data in schedule_list">     
-			<h4 style="margin-left:5px;color:#496E9B">Transaction Date: {{data.TXN_DATE}}</h4>
-			<div class="card" >
-				<div style="margin-left:20px;"; >
-					<p class="content-head"><b>Transaction Id</b></p>
-					<p class="sub-head">{{data.TXN_ID}}</p>
-					<p class="content-head"><b>Amount</b></p>
-					<p class="sub-head">{{data.AMOUNT}}</p>
-					<p class="content-head"><b>Status</b></p>
-					<p  class="sub-head" style="color:red">{{data.STATUS}}</p>
-					
-				</div>		
-			</div>
-		</div> -->
-		
-		<!-- <div class="div1 hide" ng-repeat="data in schedule_list">     
-			<div class="row">
-				<p class="p">{{data.TXN_DATE}}</p>
-			</div>
-			<div class = "row">
-				<div class = "col col11 ">{{data.TXN_ID}}</div>
-				<div class="col col12">{{data.AMOUNT}}</div>
-				<div class = "col col11">{{data.STATUS}}</div>
-			</div>
-		</div>
-		 -->
-		
-		<!--the below code used for Scrolling -->
-		<!-- <div style="height: 150px;"></div> -->
     </ion-content>
 </ion-view>

@@ -1,9 +1,12 @@
-<!-- <ion-view hide-nav-bar="false" > -->
 <ion-header-bar class="headerborder" >
 	
-	<div class="home-head "  >
-		  <img src="img/back_icon.svg" ng-click="goback();"><p class="headertitle">Disbursement Activity</p>
-	   </div>
+	
+	 <div class="home-head " ng-click="goback();">
+		<img src="img/back_icon.svg" >
+    </div>
+    <div class="home-head ">
+		<p style="margin-top:3px;margin-left:20px">Disbursement Activity</p>
+	</div>
 		
 </ion-header-bar>
 
@@ -17,20 +20,18 @@
   </style>
   <ion-content>
       
-   <!--  <div class="home-head lineBreakHeader" ng-click="goback();" >
-		<p ><img src="img/back_icon.svg">&nbsp;&nbsp;<span> Disbursement Activity</span></p>
-	</div> -->
-   <div class="div newTop"> 
+  
+     <div class="div newTop"> 
 		<a href="#/scheduleddisbursement">
 			<img src="img/home/Disbursements.svg" style="height: 100px; width: 100px;">
 			<p class="home-head">Scheduled Disbursement</p>
 		</a>
-    </div>
+     </div>
      <div class="div">
 		<a href="#/recentdisburse">
 			<img src="img/home/Last5contributions.svg" style="height: 100px; width: 100px;">
 			<p class="home-head">Last 5 Disbursement </p>
 		</a>
-    </div>
+     </div>
   </ion-content>
 </ion-view>

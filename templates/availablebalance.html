@@ -1,8 +1,11 @@
 <ion-header-bar class="headerborder" >
-	<div class="home-head "  >
-		  <img src="img/back_icon.svg" ng-click="goback();"><p class="headertitle"> Available Balance</p>
-	   </div>
-     
+	
+     <div class="home-head " ng-click="goback();">
+		<img src="img/back_icon.svg" >
+    </div>
+    <div class="home-head ">
+		<p style="margin-top:3px;margin-left:20px">Available Balance</p>
+	</div> 
 </ion-header-bar>
 
 <ion-view>
@@ -21,15 +24,7 @@
 =======			<p><span class="lineHead">Annual Election</span><br><span class="lineValueText">{{data.ANNUAL_ELECTION}}</span></p>
 			<p><span class="lineHead">Available Balance</span><br><span class="lineValueText">{{data.BALANCE}}</span></p>
 			</div>
-		<!-- <div style="margin-left:20px; margin-top:20px">
->>>>>>> .theirs			<p class="HeadLine">Transit FSA</p>
-			<p class="lineBreak"></p>
-		</div>
-		<div class="accountsubcontent">
-			<p><span class="lineHead">Annual Election</span><br><span class="lineValueText">$600</span></p>
-			<p><span class="lineHead">Available Balance</span><br><span class="lineValueText">$600</span></p>
-			<p><span class="lineHead">Status</span><br><span class="lineValueText">success</span></p>
-		</div> -->
+		
 		</div>
 </ion-content>
 </ion-view>

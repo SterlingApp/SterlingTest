@@ -1,10 +1,14 @@
 <ion-header-bar class="headerborder" >
-	<div class="home-head "  >
-		<img src="img/back_icon.svg" ng-click="goback();"><p class="headertitle">Account Information</p>
-	</div>
+	
+	<div class="home-head " ng-click="goback();">
+		<img src="img/back_icon.svg" >
+    </div>
+    <div class="home-head ">
+		<p style="margin-top:3px;margin-left:20px">Account Information</p>
+	</div> 
 </ion-header-bar>
 <ion-view>
-    <ion-content>
+    <ion-content >
 <<<<<<< .mine		<div class="accountcontent">
 =======		
 		<div style="margin-left:20px; margin-top:32px">
@@ -23,6 +27,7 @@
 			<p><span class="lineHead">HSA effective date</span><br><span class="lineValueText">{{total_contributions.EFFECTIVE_DATE}}</span></p>
 			<p><span class="lineHead">Total disbursement for 2016</span><br><span class="lineValueText">${{total_contributions.TOTAL_DISB_AMOUNT}}</span></p>
 		</div>
+		
 		
 		<!-- <div style="margin-left:20px; margin-top:32px">
 			<p><span class="lineHead">Account number</span><br><span class="lineValueText">5847</span></p>

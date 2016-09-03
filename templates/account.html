@@ -8,19 +8,20 @@
 	</div> 
 </ion-header-bar>
 <ion-view>
-     		
     <ion-content>
-		<div class="accountcontent">		
+		<div class="accountcontent">
+	
+		
 			<p><span class="lineHead">Account number</span><br><span class="lineValueText">{{account_information.ACC_NUM}}</span></p>
 			<p><span class="lineHead">Plan</span><br><span class="lineValueText">{{account_information.PLAN_NAME}}</span></p>
 			<p><span class="lineHead">HSA effective date</span><br><span class="lineValueText">{{account_information.EFFECTIVE_DATE}}</span></p>
 			<p><span class="lineHead">Account balance</span><br><span class="lineValueText">{{account_information.ACCT_BALANCE}}</span></p>
 		</div>
-		<div class="subtitle">
+		<div style="margin-left:20px; margin-top:20px">
 			<p class="HeadLine">Total Contributions</p>
 			<p class="lineBreak"></p>
 		</div>
-		<div class="accountsubcontent">
+		<div style="margin-left:20px; margin-top:10px">
 			<p><span class="lineHead">Total contributions for 2016</span><br><span class="lineValueText">${{total_contributions.CONTRB_LIMIT}}</span></p>
 			<p><span class="lineHead">Allowable contributions remaining for 2016</span><br><span class="lineValueText">${{total_contributions.CURRENT_YR_CONTRB}}</span></p>
 			<p><span class="lineHead">HSA effective date</span><br><span class="lineValueText">{{total_contributions.EFFECTIVE_DATE}}</span></p>
@@ -54,7 +55,7 @@
   </ion-content>
   <ion-footer-bar  class="footerborder" >
  
-        <p class=" footertext"> &copy Sterling Administration. All Rights Reserved.</p>
+        <p class="text-center">&copy; 2016 Sterling Administration. All Rights Reserved.</p>
   
  </ion-footer-bar>
   

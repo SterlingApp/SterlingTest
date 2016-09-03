@@ -1,7 +1,11 @@
 <ion-header-bar class="headerborder" >
-	 <div class="home-head "  >
-		  <img src="img/back_icon.svg" ng-click="goback();"><p class="headertitle">Pay Me</p>
-	   </div>
+	
+	 <div class="home-head " ng-click="goback();">
+		<img src="img/back_icon.svg" >
+    </div>
+    <div class="home-head ">
+		<p style="margin-top:3px;margin-left:20px">Pay Me</p>
+	</div>
 </ion-header-bar>
 
 <ion-view>
@@ -24,21 +28,15 @@ input[type=text]:focus {
 		<div class="row responsive-sm">
 			<div class="col col-75 center">
 		 
-				<div class="card cardshadow" >
+				<div class="card" >
 				   <!-- <p style="color: red;margin-left:25px">You do not have a bank account on record.You must add a bank account by logging into the sterlinghsa.com to schedule disbursement.</p>
 				 -->
 				 <h4 class="formcard">Available Balance</h4>
 				 <p class="formcard">$1,084.70</p>
 				 </div>
 				
-					<!-- <div class="item item-avatar">
-						<h2>Available Balance</h2>
-						<p>$1,084.70</p>
-					</div> -->
-
 					
-					  
-					   <div class="list ">
+				     <div class="list ">
 							<label class="item item-input item-select formselect" >
 							  <div class="input-label ">
 							select
@@ -49,7 +47,7 @@ input[type=text]:focus {
 						  
 						  </select>
 						 </label>
-						</div>
+				    </div>
 						<div class="list ">
 							<label class="item item-input formlabel" >
 							<input type="text"  class="input-box input-boxfocus" placeholder="Enter Amount" style="color:#444; padding-left:10px;">
@@ -76,7 +74,7 @@ input[type=text]:focus {
 								<div class="row">
 			<div class="col col-10  text-center">
 			
-			<button class="button button-small formButton" ng-click="upload();" type="submit " >Upload</button>
+			<button class="button button-small formButton" ng-click="upload();" type="submit "  >Upload</button>
 		</div> 
 		</div> 
 
@@ -85,6 +83,7 @@ input[type=text]:focus {
 				<button class="button button-small formButton" type="submit">SUBMIT</button>
 			</div> 
 		</div> 
+
 					   
 					  </div>
 				</div>
@@ -172,6 +171,6 @@ input[type=text]:focus {
 </ion-view>
 <ion-footer-bar  class="footerborder" >
  
-        <p class=" footertext">&copy 2016 Sterling Administration. All Rights Reserved.</p>
+        <p class="text-center">&copy; 2016 Sterling Administration. All Rights Reserved.</p>
   
  </ion-footer-bar>

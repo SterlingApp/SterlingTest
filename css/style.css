@@ -253,7 +253,9 @@ margin-left:50px;
 .footertext{
 	margin-left:11px;
 }
-
+.cardshadow{
+	box-shadow: 0px 0px 10px 1px rgba(144,144,144,0.73);
+}
 
 
 

@@ -209,7 +209,7 @@ margin-left:50px;
 	font-size:15px;
 }
 .menupadding{
-	margin-top:13px;
+	margin-top:10px;
 }
 .formselect{
 	width:100%; 
@@ -270,6 +270,12 @@ margin-left:50px;
 	text-align: center;
 	font-size:35px;
 	
+}
+.menu-height{
+	height:140px; 	
+}
+.menu-head{
+	 padding-top: 40px;
 }
 
 .cardContent{

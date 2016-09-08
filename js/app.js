@@ -7,14 +7,57 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.services'])
 
-.run(function($ionicPlatform,$rootScope,$location) {
+.run(function($ionicPlatform,$rootScope,$location,$state,$cordovaToast,$timeout,$interval) {
   $ionicPlatform.ready(function() {
 	  
-	  $ionicPlatform.registerBackButtonAction(function(event) 
-	{
-		if (true) {
-		}
-	}, 100);
+	  $ionicPlatform.registerBackButtonAction(function (event) {
+		   var promise;
+          if($state.current.name=="hsa"||$state.current.name=="login"){
+			  $cordovaToast
+             .show('Press again to exit', '300', 'bottom');
+			  $ionicPlatform.onHardwareBackButton(function(event) {
+				   
+                 navigator.app.exitApp();
+				
+				    promise =$interval(onHardwareBackButton, 5000);
+					$scope.stop();
+					
+                });
+				$scope.stop=function(){
+				   $interval.cancel(promise);
+				 
+			 }
+				
+				// $timeout(onHardwareBackButton,3000);  
+				
+             
+              
+            }
+			
+			   // $cordovaToast
+            // .show('Press again to exit', 'long', 'center')
+            // .then(function(success) {
+				
+               // navigator.app.exitApp();
+           // }, function (error) {
+     
+    // });   
+        else if($state.current.name=="account"||$state.current.name=="makecontribution"||$state.current.name=="make"||$state.current.name=="activity"||$state.current.name=="health"||$state.current.name=="information"||$state.current.name=="availablebalance"||$state.current.name=="new"||$state.current.name=="fsacontribution"||$state.current.name=="contact"){
+			
+		  $rootScope.hidecontent=false;
+           navigator.app.backHistory();
+         }
+		 else{
+			 
+			 navigator.app.backHistory(); 
+		 }
+        }, 100);
+	  
+	  // $ionicPlatform.registerBackButtonAction(function(event) 
+	// {
+		// if (true) {
+		// }
+	// }, 100);
 	
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)

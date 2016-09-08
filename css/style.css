@@ -10,17 +10,21 @@
  background-image: url('../img/hsa.jpg');
  background-size:cover; */
 }
-.tabs.tabs-custom {
-  border-color: #5D3A23;
-  background-color: #5D3A23;
-  background-image: linear-gradient(0deg, #0c60ee, #0c60ee 50%, transparent 50%);
-  color: #fff; }
-  .tabs-calm > .tabs{
-background-color: red !important;
+.tabs-color-dark>.tabs{
+	
+   color: #496E9B !important
 }
-.tabs-color-active-dark>.tabs{
-	 background-color: #5D3A23;
+.tabs-background-stable>.tabs{
+	margin-top:45px;
+	background-color: #496E9B !important;
+	
 }
+ .tabs-striped.tabs-custom .tab-item.tab-item-active  {
+    margin-top: -1px;
+    color: #fff;
+   
+    border-bottom-width: 3px ! important;
+    border-color: #fff; }
 /* .tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
     
     background: #6CA0DA;
@@ -205,7 +209,7 @@ margin-left:50px;
 	font-size:15px;
 }
 .menupadding{
-	margin-top:10px;
+	margin-top:13px;
 }
 .formselect{
 	width:100%; 
@@ -259,7 +263,7 @@ margin-left:50px;
 	margin-left:11px;
 }
 .cardshadow{
-	box-shadow: 0px 0px 10px 1px rgba(144,144,144,0.73);
+	box-shadow: 0px 0px 15px 1px rgba(144,144,144,0.73);
 }
 
 .text-center1{

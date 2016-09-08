@@ -1,17 +1,12 @@
 angular.module('starter.controllers', [])
-.controller('loginCtrl', function($scope,$cordovaDialogs,$location,$ionicLoading,$ionicPopup,$ionicTabsDelegate,$http) {
+.controller('loginCtrl', function($scope,$cordovaDialogs,$location,$ionicLoading,$ionicPopup,$ionicTabsDelegate,$http,$rootScope) {
 	
 	$scope.loginData={username:'',password:''};
-	$scope.goForward = function () {
-        var selected = $ionicTabsDelegate.selectedIndex();
-        if (selected != -1) {
-            $ionicTabsDelegate.select(selected + 1);
-        }
-    }
-	
 	if(localStorage.getItem('access_token')==null){
 		//$location.path("/login");
-	}else{
+	}
+	else
+	{
 		window.location.href = 'index.html#/hsa';
 	}
  
@@ -41,7 +36,8 @@ angular.module('starter.controllers', [])
 			return false;
 			
 		}
-		else if($scope.loginData.password==""){
+		else if($scope.loginData.password=="")
+		{
 			$ionicLoading.hide()
 			var alertPopup = $ionicPopup.alert({
 				title: 'Sorry',
@@ -52,7 +48,8 @@ angular.module('starter.controllers', [])
 			// });
 			return false;
 		}
-		else{
+		else
+		{
 			$http.post(' http://app.sterlinghsa.com/api/v1/user/login',{username:$scope.loginData.username,password:$scope.loginData.password},{headers: {'Content-Type':'application/json; charset=utf-8'} })     
 			.success(function(data) {
 				
@@ -76,10 +73,10 @@ angular.module('starter.controllers', [])
 				 
 			}).error(function(err){		
 
-				$cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'OK')
-				.then(function() {
-				});
-				return false;
+				// $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'OK')
+				// .then(function() {
+				// });
+				// return false;
 				//alert("Error :="+JSON.stringify(err));
 			    /* if (data.status === 400 && !(loginData.username.$invalid || loginData.password.$invalid)) {
                 errorMessage = 'Incorrect Username or Password';
@@ -94,9 +91,12 @@ angular.module('starter.controllers', [])
     }
 })
 .controller('DashCtrl', function($scope,$location, $ionicTabsDelegate,$http) {
-	$scope.goForward = function () {
+	
+	$scope.goForward = function () 
+	{
         var selected = $ionicTabsDelegate.selectedIndex();
-        if (selected != -1) {
+        if (selected != -1) 
+		{
             $ionicTabsDelegate.select(selected + 1);
         }
     }
@@ -105,32 +105,91 @@ angular.module('starter.controllers', [])
 	{
 		$location.path("hsa");
 	}
+    $scope.goBack = function () 
+	{
+        var selected = $ionicTabsDelegate.selectedIndex();
+        if (selected != -1 && selected != 0) 
+		{
+            $ionicTabsDelegate.select(selected - 1);
+        }
+    }
+})
+
+.controller('HsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicHistory,$ionicTabsDelegate) {
+
+	$scope.goForward = function () {
+        var selected = $ionicTabsDelegate.selectedIndex();
+        if (selected != -1) {
+            $ionicTabsDelegate.select(selected + 1);
+        }
+    }
+    
+	localStorage.setItem("backCount","2");
+	
+	$scope.username = localStorage.getItem('username');
+	$scope.access_token = localStorage.getItem('access_token');
+	// if($cordovaNetwork.isOffline())
+    // {
+      // $ionicLoading.hide();
+      // $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
+     // .then(function() {
+      // });
+      // return false;
+    // }
+	// else
+	// {
+		$http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	    .success(function(data){
+		
+		 localStorage.setItem('account_types',data.account_types.HSA);
+		 localStorage.setItem('account_types',data.account_types.FSA);
+		 $scope.account_type=data.account_types.HSA;
+         $scope.account_types=data.account_types.FSA;
+         $rootScope.hsaaccno=data.account_types.HSA.ACCT_NUM;
+         $rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
+         $rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
+         $rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
+		      }).error(function(err){
+         $ionicLoading.hide();
+         $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
+         .then(function() {
+        });
+          return false;
+   
+     });
+   // }
+	
+	
+})
+
+
+
+.controller('FsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicTabsDelegate) {
+	 
+	 
+
     $scope.goBack = function () {
         var selected = $ionicTabsDelegate.selectedIndex();
         if (selected != -1 && selected != 0) {
             $ionicTabsDelegate.select(selected - 1);
         }
     }
-})
-
-
-.controller('FsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
-	//$rootScope.hidecontent=false;
 	localStorage.setItem("backCount","2");
-	
 	//REST API
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
- }else{
-	 $http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
-	.success(function(data){
+    {
+     $ionicLoading.hide();
+     $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
+     .then(function() {
+      });
+      return false;
+    }
+	else
+	{
+	  $http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json;  charset=utf-8','Authorization':$scope.access_token} })
+	 .success(function(data){
 		//alert("Success-"+JSON.stringify(data));
 		localStorage.setItem('account_types',data.account_types.HSA);
 		localStorage.setItem('account_types',data.account_types.FSA);
@@ -141,57 +200,15 @@ angular.module('starter.controllers', [])
 		$rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
 		$rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
 		$rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
-		}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
+	}).error(function(err){
+      // $ionicLoading.hide();
+      // $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
+      // .then(function() {
+      // });
+      // return false;
    
   });
  }
-	
-})
-.controller('HsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicHistory) {
-	
-	localStorage.setItem("backCount","2");
-	//$ionicHistory.clearHistory();
-	//$rootScope.hidecontent=false;
-	
-	
-	//REST API
-	$scope.username = localStorage.getItem('username');
-	$scope.access_token = localStorage.getItem('access_token');
-	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
- }else{
-	 $http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
-	.success(function(data){
-		//alert("Success-"+JSON.stringify(data));
-		localStorage.setItem('account_types',data.account_types.HSA);
-		localStorage.setItem('account_types',data.account_types.FSA);
-		
-		$scope.account_type=data.account_types.HSA;
-		$scope.account_types=data.account_types.FSA;
-		$rootScope.hsaaccno=data.account_types.HSA.ACCT_NUM;
-		$rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
-		$rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
-		$rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
-		}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
-   
-  });
- }
-	
 	
 })
 
@@ -261,26 +278,22 @@ angular.module('starter.controllers', [])
   }
 
 })
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
-
-
 .controller('PortfolioCtrl', function($rootScope,$scope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
 	localStorage.setItem("backCount","1");
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
- }else{
-	 $http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
-	.success(function(data){
+    {
+      $ionicLoading.hide();
+       $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
+       . then(function() {
+                         });
+        return false;
+    }
+	else
+	{
+	  $http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	  .success(function(data){
 		
 		localStorage.setItem('account_types',data.account_types.HSA);
 		localStorage.setItem('account_types',data.account_types.FSA);
@@ -292,11 +305,10 @@ angular.module('starter.controllers', [])
 		$rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
 		$rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
 		}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
+   // $ionicLoading.hide();
+   // $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
+   // .then(function() {
+   // });
    
   });
  }
@@ -508,6 +520,11 @@ angular.module('starter.controllers', [])
 
 
 .controller('AccountCtrl', function($rootScope,$scope,$cordovaNetwork,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicHistory) {
+	$scope.Back=function()
+	{
+	    alert();
+		$location.path("fsa");
+	}
 	localStorage.setItem("backCount","3");
 	
 	$rootScope.hidecontent=true;
@@ -941,14 +958,6 @@ angular.module('starter.controllers', [])
 		// //alert("ERROR: " + JSON.stringify(err));
 		
 	// });
-	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
- }else{
 	
 	$http.get('  http://app.sterlinghsa.com/api/v1/accounts/categories',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
@@ -956,38 +965,21 @@ angular.module('starter.controllers', [])
 		
 		$scope.categories=data.categories;
 	}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
    
   });
- }
  
  
-	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
- }else{
+ 
+	
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
 		//alert( JSON.stringify(data));
 		
 		$scope.Availablebalance=data.balances.BALANCE;
 	}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
    
   });
- }
+ 
 	
 	
 	$scope.goback=function()
@@ -1088,51 +1080,28 @@ angular.module('starter.controllers', [])
   });
  }
 	
-	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
- }else{
+	
 	$http.get('  http://app.sterlinghsa.com/api/v1/accounts/categories',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
 		//alert(JSON.stringify(data));
 		
 		$scope.categories=data.categories;
 	}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
+  
    
   });
- }
+ 
 	
-	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
- }else{
+	
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
 		//alert( JSON.stringify(data));
 		//$ionicLoading.hide();
 		$scope.Availablebalance=data.balances.BALANCE;
 	}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
-   
+  
   });
- }
+ 
 	$scope.goback=function()
 	{
 		//$rootScope.hidecontent=false;
@@ -1518,50 +1487,28 @@ angular.module('starter.controllers', [])
    
   });
  }
-	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
- }else{
+	
 	$http.get('  http://app.sterlinghsa.com/api/v1/accounts/categories',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
 		//alert(JSON.stringify(data));
 		$ionicLoading.hide();
 		$scope.categories=data.categories;
 	}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
+  
    
   });
- }
-	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
- }else{
+ 
+	
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
 		//alert( JSON.stringify(data));
 		$ionicLoading.hide();
 		$scope.Availablebalance=data.balances.BALANCE;
 	}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
+   
    
   });
- }
+ 
 	
 	
 	$scope.goback=function()

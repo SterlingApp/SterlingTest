@@ -243,9 +243,9 @@ margin-left:50px;
 	
 }
 .shadow {
-	 box-shadow: 0 10px 10px -6px #999999;
-	/* box-shadow: 0 0 20px  #909090; */
-	border-bottom-color: #D55D09;
+	 box-shadow: 0 10px 10px -10px #999999;
+	/* box-shadow: 0 0 20px  #909090; border-bottom-color: #D55D09;*/
+	
  
 }
 .footerborder
@@ -290,7 +290,11 @@ margin-left:0px;
 	
 }
 
-
+.readMore
+{
+	float:right;
+	color:#077db4;
+}
 
 
 

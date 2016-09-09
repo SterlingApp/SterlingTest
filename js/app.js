@@ -105,8 +105,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 	controller: 'FsaCtrl'    
   })
   
- .state('account', {
-    url: '/account',
+ .state('accounts', {
+    url: '/accounts',
 	templateUrl: 'templates/account.html',
 	controller: 'AccountCtrl'
   })

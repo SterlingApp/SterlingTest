@@ -30,7 +30,7 @@
             select
 			 </div>
            <select name="selectPayee" ng-model="selectPayee" required >
-				<option selected> Select Payee</option>
+				<option value="">Select Payee</option>
 				<option value="115095">Town and Country Pediatrics Acct #:8291 3838 California Street, Suite 111 San Franciscoca,CA 94118</option>
 				<option value="120737">Quest Diagnostics Acct #:8388435482 PO Box 7400 Pasadena,CA 91109</option>
 				<option value="147441">California Pacific Medical Center File#742412 Acct #:10659166 PO Box 742412 Los Angeles,CA 90074</option>
@@ -51,7 +51,7 @@
 
        <div class="list ">
 	 <label class="item item-input formlabel ">
-        <input type="text"  class="input-box input-boxfocus" name="amount" ng-model="amount" placeholder="Enter Amount" style="color:#444; padding-left:10px;" required>
+        <input type="number"  class="input-box1 input-boxfocus1" id="forminput" name="amount" ng-model="amount" placeholder="Enter Amount"  required>
 		</label> 
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.amount.$dirty && myForm.amount.$invalid">
@@ -62,7 +62,7 @@
 		 
 		 <div class="list">
         <label class="item item-input formlabel">
-        <input type="text" ng-click="getTransDate()" name="transaction" ng-model="TransDate" class="input-box input-boxfocus " placeholder="Transaction Date" style="color:#444;padding-left:10px;" required>
+        <input type="text" ng-click="getTransDate()" name="transaction" ng-model="TransDate" class="input-box input-boxfocus " id="forminput" placeholder="Transaction Date"  required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
@@ -73,7 +73,7 @@
    
     <div class="list ">
 	 <label class="item item-input formlabel" >
-        <input type="text"  class="input-box input-boxfocus" name="description" ng-model="description" placeholder="Description" style="color:#444; padding-left:10px;" required>
+        <input type="text"  class="input-box input-boxfocus" id="forminput" name="description" ng-model="description" placeholder="Description"  required>
 		</label> 
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.description.$dirty && myForm.description.$invalid">
@@ -83,7 +83,7 @@
 		 </div>
 		  <div class="list ">
 	      <label class="item item-input formlabel" >
-        <input type="text"  class="input-box input-boxfocus" name="patient" ng-model="patient" placeholder="Patient's Name" style="color:#444; padding-left:10px;" required>
+        <input type="text"  class="input-box input-boxfocus" id="forminput" name="patient" ng-model="patient" placeholder="Patient's Name" required>
 		</label> 
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.patient.$dirty && myForm.patient.$invalid">

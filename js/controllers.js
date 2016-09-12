@@ -1,5 +1,5 @@
 angular.module('starter.controllers', [])
-.controller('loginCtrl', function($scope,$cordovaDialogs,$location,$ionicLoading,$ionicPopup,$ionicTabsDelegate,$http,$rootScope) {
+.controller('loginCtrl', function($scope,$timeout,$cordovaNetwork,$cordovaDialogs,$location,$ionicLoading,$ionicPopup,$ionicTabsDelegate,$http,$rootScope) {
 	
 	$scope.loginData={username:'',password:''};
 	if(localStorage.getItem('access_token')==null){
@@ -11,16 +11,25 @@ angular.module('starter.controllers', [])
 	}
  
     $scope.logIn = function (loginData) {
-		
 		$ionicLoading.show({
 		  template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
 		});
 		
+		if($cordovaNetwork.isOffline())
+			
+    {
+		
+      $ionicLoading.hide();
+       $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
+       . then(function() {
+                         });
+        return false;
+    }
 		
 		//$scope.username=loginData.username;
 		//$scope.password=loginData.password;
 		//alert(loginData.username+"=="+loginData.password);
-		if($scope.loginData.username==""){
+		else if($scope.loginData.username==""){
 			$ionicLoading.hide()
 			
 			
@@ -818,8 +827,11 @@ angular.module('starter.controllers', [])
 .controller('HsastatementCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
+	//alert("ygh");
+	 $scope.username = localStorage.getItem('username');
+	$scope.access_token = localStorage.getItem('access_token');
 	  $scope.date=$scope.activity;
-	  
+	 
 	$scope.goback=function()
 	{
 		//$rootScope.hidecontent=false;
@@ -845,7 +857,18 @@ angular.module('starter.controllers', [])
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
 	$rootScope.activity={startDate:'',EndtDate:''};
+	$scope.username = localStorage.getItem('username');
+	$scope.access_token = localStorage.getItem('access_token');
 	
+	$http.post('  http://app.sterlinghsa.com/api/v1/accounts/activitystatement',{'fromdate':'05/29/2016','todate':'08/12/2016', 'account':$rootScope.hsaaccno },{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	.success(function(data){
+		
+		alert(JSON.stringify(data));
+		
+		//$scope.categories=data.categories;
+	}).error(function(err){
+   alert(JSON.stringify(err));
+  });
 	$scope.getStartDate=function(){
 		
 		 var options = {
@@ -925,6 +948,10 @@ angular.module('starter.controllers', [])
 		
 		
 	};
+	
+	
+ 
+	
 	
 	$scope.goback=function()
 	{
@@ -1009,7 +1036,7 @@ angular.module('starter.controllers', [])
  }else{
    $http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hsa', 'acc_num':$scope.hsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		//alert( JSON.stringify(data));
+		alert( JSON.stringify(data));
 		
 		$scope.bank_details=data.bank_details;
    
@@ -1165,7 +1192,25 @@ angular.module('starter.controllers', [])
    
   });
  
-	
+ $http.get(' http://app.sterlinghsa.com/api/v1/accounts/description',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	.success(function(data){
+		alert(JSON.stringify(data));
+		
+		$scope.description=data.description ;
+		//alert(JSON.stringify($scope.description));
+	}).error(function(err){
+  
+   
+  });
+	 $http.get('http://app.sterlinghsa.com/api/v1/accounts/payeeslist',{params:{'acc_num':'ICA300298'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	.success(function(data){
+		alert(JSON.stringify(data));
+		
+		$scope.payee=data.payee ;
+		//alert(JSON.stringify($scope.payee));
+	}).error(function(err){
+  
+   });
 	
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
@@ -1562,11 +1607,22 @@ angular.module('starter.controllers', [])
   });
  }
 	
-	$http.get('  http://app.sterlinghsa.com/api/v1/accounts/categories',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	// $http.get('  http://app.sterlinghsa.com/api/v1/accounts/categories',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	// .success(function(data){
+		// //alert(JSON.stringify(data));
+		// $ionicLoading.hide();
+		// $scope.categories=data.categories;
+	// }).error(function(err){
+  
+   
+  // });
+  
+   $http.get(' http://app.sterlinghsa.com/api/v1/accounts/description',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
 		//alert(JSON.stringify(data));
-		$ionicLoading.hide();
-		$scope.categories=data.categories;
+		
+		$scope.description=data.description ;
+		//alert(JSON.stringify($scope.description));
 	}).error(function(err){
   
    

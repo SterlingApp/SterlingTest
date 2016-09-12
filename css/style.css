@@ -80,6 +80,21 @@ margin-left:50px;
    outline: none; 
   box-shadow: -5px 10px 0px -7px #547AAC, 5px 10px 0px -7px #547AAC; 
 }
+
+.input-box1[type=number] {
+   height:25px;
+   border: 0;
+   width: 100%; 
+   margin-left:-11px;  
+ 
+   box-shadow: -5px 10px 0px -7px #dedede, 5px 10px 0px -7px #dedede;
+  -webkit-transition: box-shadow 0.3s;
+   transition: box-shadow 0.3s; 
+}
+.input-boxfocus1[type=number]:focus {
+   outline: none; 
+   box-shadow: -5px 10px 0px -7px #547AAC, 5px 10px 0px -7px #547AAC; 
+}
 .center {
     margin-left: auto;
     margin-right: auto;
@@ -169,11 +184,14 @@ margin-left:50px;
 	padding-top: 6px;
 }
 
-.headerborder
-{
+#headerborder{
 	border-bottom-width:2px;
-	border-bottom-color:#454b4e;
+	border-bottom-color:#454b4e; 
+	
 }
+
+	
+
 
 .centerforhead {
     margin-left: auto;
@@ -213,20 +231,22 @@ margin-left:50px;
 .formselect{
 	width:100%; 
 	border-bottom:#DEDEDE solid; 
-	margin-left:5px;
+	margin-left:5px; 
 	border-top:none; 
 	border-left:none; 
 	border-right:none;
 }
+
 .formcard{
 	margin-left:10px;
 }
 .formlabel{
    border:none;
 }
-.forminput{
+#forminput{
 	color:#444; 
-	padding-left:10px;
+	 padding-left:13px; 
+	/* margin-left:40px; */
 }
 .formButton{
 	background-color: #29B8E5;
@@ -281,6 +301,8 @@ margin-left:50px;
 
 .cardContent{
 	margin-left:15px;
+	margin-top:30px;
+	
 }
 
 

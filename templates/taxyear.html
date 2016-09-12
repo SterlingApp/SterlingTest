@@ -1,4 +1,4 @@
-<ion-header-bar class="headerborder" >
+<ion-header-bar id="headerborder" >
 	<div class="home-head " ng-click="goback();">
 		<img src="img/back_icon.svg" >
     </div>
@@ -11,33 +11,40 @@
 	 <div ng-repeat="data in tax_statement_list">
 		<div style="margin-left:20px; margin-top:32px">
 			<p class="HeadLine">Contributions</p>
-			<p class="lineBreak"></p>
+			<!-- <p class="lineBreak"></p> -->
 		</div>
 		<div class="accountsubcontent">
-			<p><span class="lineHead">Contributions Made in 2015 for {{data.TAX_YEAR}}</span><br><span class="lineValueText">{{data.CY}}</span></p>
-			<p><span class="lineHead">Contributions Made in 2015 for {{data.PREV_TAX_YEAR}}</span><br><span class="lineValueText">{{data.PY}}</span></p>
+		<div class="card card_margin cardshadow">
+			<p><span class="lineHead cardContent">Contributions Made in 2015 for {{data.TAX_YEAR}}</span><br><span class="lineValueText cardContent">{{data.CY}}</span></p>
+			<p><span class="lineHead cardContent">Contributions Made in 2015 for {{data.PREV_TAX_YEAR}}</span><br><span class="lineValueText cardContent">{{data.PY}}</span></p>
+		</div>
 		</div>
 		<div class="subtitle">
 			<p class="HeadLine">Disbursements/Distributions</p>
-			<p class="lineBreak"></p>
+			<!-- <p class="lineBreak"></p> -->
 		</div>
 		<div class="accountsubcontent">
-			<p><span class="lineHead">Disbursements/Distributions</span><br><span class="lineValueText">{{data.DISB}}</span></p>
+		<div class="card card_margin cardshadow">
+			<p><span class="lineHead cardContent">Disbursements/Distributions</span><br><span class="lineValueText cardContent">{{data.DISB}}</span></p>
+		</div>
 		</div>
 		<div class="subtitle">
 			<p class="HeadLine">Interest Paid</p>
-			<p class="lineBreak"></p>
+			<!-- <p class="lineBreak"></p> -->
 		</div>
 		<div class="accountsubcontent">
-			<p><span class="lineHead">Disbursements/Distributions</span><br><span class="lineValueText">{{data.INT}}</span></p>
+		<div class="card card_margin cardshadow">
+			<p><span class="lineHead cardContent">Disbursements/Distributions</span><br><span class="lineValueText cardContent">{{data.INT}}</span></p>
+		</div>
 		</div>
 		<div class="subtitle">
 			<p class="HeadLine">Tax Statements</p>
-			<p class="lineBreak"></p>
+			<!-- <p class="lineBreak"></p> -->
 		</div>
 		<div class="accountsubcontent">
-			<p><span class="lineHead">1.Form 1099-SA</span><br><span class="lineValueText">Download</span></p>
-			<p><span class="lineHead">2.Form 5498-SA</span><br><span class="lineValueText">Download</span></p>
+		<div class="card card_margin cardshadow">
+			<p><span class="lineHead cardContent">1.Form 1099-SA</span><br><span class="lineValueText cardContent">Download</span></p>
+			<p><span class="lineHead cardContent">2.Form 5498-SA</span><br><span class="lineValueText cardContent">Download</span></p>
 		</div>
 		</div>
     </ion-content>

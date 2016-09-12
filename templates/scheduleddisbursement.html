@@ -1,4 +1,4 @@
-<ion-header-bar class="headerborder" >
+<ion-header-bar id="headerborder" >
 	 
 		
     <div class="home-head " ng-click="goback();">
@@ -10,7 +10,7 @@
         
 </ion-header-bar>
 
-<ion-view>
+<ion-view >
     <head>
 		<style>
 			.col11{
@@ -33,7 +33,7 @@
 		 <div class="div1 " ng-repeat="data in schedule_list">   
 		  <div style="margin-left:20px; margin-top:33px">
 			<p class="HeadLine">Transaction Date: {{data.TXN_DATE}}</p>
-			<p class="lineBreak"></p>
+			<!-- <p class="lineBreak"></p> -->
 		</div>
 		
 		<div style="margin-left:20px; margin-top:10px">

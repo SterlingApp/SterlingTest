@@ -1,14 +1,11 @@
 /* Empty. Add your own CSS if you like */
 .bg{
-	background-color: #1F98E3 !important;
-	color: white !important;
-	max-width: 1000px;
+	/* background-color: #1F98E3 !important; */
+	color: #e6e6ff !important;
+	/* max-width: 1000px; */
 	font-size: 15px!important;
-	/* background-repeat: no-repeat;
- background-position: 50%;
- height: 100%;
- background-image: url('../img/hsa.jpg');
- background-size:cover; */
+	eafafa
+	e6e6ff
 }
 .tabs-color-dark>.tabs{
 	
@@ -19,12 +16,14 @@
 	background-color: #496E9B !important;
 	
 }
+ 
  .tabs-striped.tabs-custom .tab-item.tab-item-active  {
     margin-top: -1px;
-    color: #fff;
-   
+    color: #fff ! important;   
     border-bottom-width: 3px ! important;
-    border-color: #fff; }
+    border-color: #fff; 
+	font-weight:bold;
+	}
 /* .tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
     
     background: #6CA0DA;
@@ -47,8 +46,7 @@ a{
 	    font-size: 20px;
 		
 		
-		/* text-align:justify; */
-		
+		/* text-align:justify; */	
   
 }
 .column1{
@@ -74,7 +72,6 @@ margin-left:50px;
    border: 0;
    width: 100%; 
    margin-left:-15px; 
- 
   box-shadow: -5px 10px 0px -7px #dedede, 5px 10px 0px -7px #dedede;
   -webkit-transition: box-shadow 0.3s;
   transition: box-shadow 0.3s; 
@@ -235,6 +232,7 @@ margin-left:50px;
 	background-color: #29B8E5;
 	color:#fff;
 	border-radius:8px;
+	text-align:center;
 }
 
 .newTop{

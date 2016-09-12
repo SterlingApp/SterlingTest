@@ -1,3 +1,9 @@
+<style>
+ .bar-header.has-tabs-top {
+    border-bottom-width: 2px;
+    background-image: none; }
+</style>
+<ion-view>
 <ion-header-bar class="headerborder" >
 	
 	<div class="home-head " ng-click="goback();">
@@ -7,12 +13,11 @@
 		<p style="margin-top:3px;margin-left:20px">Account Information</p>
 	</div> 
 </ion-header-bar>
-<ion-view>
      		
     <ion-content >
 		<div class="accountcontent">
 	
-		<div class="card card_margin">
+		<div class="card card_margin cardshadow">
 			<div  style="margin-left:20px; margin-top:10px" >
 				<p><span class="lineHead cardContent">Account number</span><br><span class="lineValueText cardContent">{{account_information.ACC_NUM}}</span></p>
 				<p><span class="lineHead cardContent">Plan</span><br><span class="lineValueText cardContent">{{account_information.PLAN_NAME}}</span></p>
@@ -27,7 +32,7 @@
 			<p class="lineBreak"></p>
 		</div>
 		<div class="accountsubcontent">
-		<div class="card card_margin">
+		<div class="card card_margin cardshadow">
 			<div  style="margin-left:20px; margin-top:10px" >
 				<p><span class="lineHead cardContent">Total contributions for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.CONTRB_LIMIT}}</span></p>
 				<p><span class="lineHead cardContent">Allowable contributions remaining for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.CURRENT_YR_CONTRB}}</span></p>

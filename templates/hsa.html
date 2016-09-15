@@ -6,49 +6,83 @@
 				<a class="item menu-height shadow item-avatar" href="#accounts" >
 					<img src="img/home/us.svg" style="margin-top:32px;">
 					<div class="home-head menu-head">Account Information</div>
-					<hr>
-					<span class="readMore" style=""> 
-						View Account <i class="ion-chevron-right"></i>
-					</span>					
+					<div class="row no-padding row-border">
+						<div class="col colvertical">
+							<div class="head-details">Balance</div>
+						</div>
+						<div class="col">
+							<span class="readMore" style=""> 
+								{{account_type.BALANCE | currency}}
+							</span>		
+						</div>
+					</div>
+					
+								
 				</a>
 				<a class="item menu-height shadow item-avatar menupadding"  href="#makecontribution">
 					<img src="img/home/Contributions2.svg" style="margin-top:32px;">
 					<div class="home-head menu-head"> Make Contribution</div>
-					<hr>
-					<span class="readMore" style=""> 
-						View Contribution <i class="ion-chevron-right"></i>
-					</span>
+					<div class="row no-padding row-border">
+						<div class="col colvertical">
+						<div class="head-details">Conttibution</div>
+						</div>
+						<div class="col">
+							<span class="readMore" style=""> 
+								$11225.00
+							</span>		
+						</div>
+					</div>
 				</a>
 				<a class="item  menu-height shadow item-avatar menupadding" href="#make">
 					<img src="img/home/Disbursements.svg" style="margin-top:32px;">
 					<div class="home-head menu-head" >Make Disbursement</div>
-					<hr>
-					<span class="readMore" style=""> 
-						View Disbursement <i class="ion-chevron-right"></i>
-					</span>					
+					
+					<div class="row no-padding row-border" >
+						<div class="col colvertical" style="border-left-color:#000">
+							<button class="button button-small button-top" type="submit"  style="background-color:#e67e22;color:#fff;border-radius:8px;">Pay Me</button>
+						</div>
+						<div class="col">
+							<button class="button button-small button-top" type="submit"  style="float:right;background-color:#e67e22;color:#fff;border-radius:8px;">Pay Provider</button>
+							
+						</div>
+						
+					</div>				
 				</a>
 				<a class="item menu-height shadow item-avatar menupadding" href="#activity">
 					<img src="img/home/Last5contributions.svg" style="margin-top:32px;">
 					<div class="home-head menu-head"> Recent Account Activity</div>
-					<hr>
-					<span class="readMore" style=""> 
-						View Activity <i class="ion-chevron-right"></i>
-					</span>
+					
+					<div class="row no-padding row-border" >
+						<div class="col colvertical" style="border-left-color:#000">
+							<button class="button button-small button-top" type="submit"  style="background-color:#e67e22;color:#fff;border-radius:8px;">Contribution</button>
+						</div>
+						<div class="col">
+							<button class="button button-small button-top " type="submit"  style="float:right;background-color:#e67e22;color:#fff;border-radius:8px;">Disbursements</button>
+							
+						</div>
+					</div>		
 				</a>
 				<a class="item menu-height shadow item-avatar menupadding" href="#health">
 					<img src="img/home/Activity_statements.svg" style="margin-top:32px;">
 					<div class="home-head menu-head"> Statements</div>
-					<hr>
-					<span class="readMore" style=""> 
-						View Statements <i class="ion-chevron-right"></i>
-					</span>
+					
+					<div class="row no-padding row-border " >
+						<div class="col colvertical" style="border-left-color:#000">
+							<button class="button button-small button-top" type="submit"  style="background-color:#e67e22;color:#fff;border-radius:8px;">Active Statement</button>
+						</div>
+						<div class="col">
+							<button class="button button-small button-top" type="submit"  style="float:right;background-color:#e67e22;color:#fff;border-radius:8px;">Tax Statement</button>
+							
+						</div>
+					</div>		
 				</a>
 			</div>
 			
-			
-			<div style="height: 200px;"></div>
+			<p class="text-center">&copy; 2016 Sterling Administration. All Rights Reserved.</p>
+			<div style="height: 120px;"></div>
 			
 		</div> 
       
 	</ion-content>
 </ion-view>
+

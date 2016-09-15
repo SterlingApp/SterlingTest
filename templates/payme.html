@@ -1,9 +1,9 @@
-<ion-header-bar id="headerborder" >
+<ion-header-bar class="headerborder" >
 	
-	 <div class="home-head " ng-click="goback();">
-		<img src="img/back_icon.svg" >
+	 <div class="home-head2 " ng-click="goback();">
+		<i ng-click="goback();" class="ion ion-arrow-left-c"></i>
     </div>
-    <div class="home-head ">
+    <div class="home-head2 ">
 		<p style="margin-top:3px;margin-left:20px">Pay Me</p>
 	</div>
 </ion-header-bar>
@@ -18,6 +18,15 @@ input[type=text]:focus {
 }
 	</style> -->
 	<ion-content>
+	    <div class=" headerborder">
+				  
+			<div style="margin-left:20px;padding-top:30px;" >
+		   
+				 <p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">$1,084.70</span></p>
+				 
+			</div>
+				
+		</div>
 	     
 		<form name="myForm">
 		<div class=" hide row">
@@ -28,13 +37,11 @@ input[type=text]:focus {
 		<div class="row responsive-sm">
 			<div class="col col-75 center">
 		 
-				<div class="card cardshadow" >
-				   <!-- <p style="color: red;margin-left:25px">You do not have a bank account on record.You must add a bank account by logging into the sterlinghsa.com to schedule disbursement.</p>
-				 -->
-				 <h4 class="formcard">Available Balance</h4>
-				 <p class="formcard">$1,084.70</p>
+				<!-- <div class="card cardshadow headerborder" >
+				   
+				<p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">$1,084.70</span></p>
 				 </div>
-				
+				 -->
 					
 				     <div class="list ">
 							<label class="item item-input item-select formselect" >

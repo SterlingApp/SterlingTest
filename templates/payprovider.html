@@ -1,9 +1,9 @@
-<ion-header-bar id="headerborder" >
+<ion-header-bar class="headerborder" >
 	 
-	 <div class="home-head " ng-click="goback();">
-		<img src="img/back_icon.svg" >
+	 <div class="home-head2 " ng-click="goback();">
+		<i ng-click="goback();" class="ion ion-arrow-left-c"></i>
     </div>
-    <div class="home-head ">
+    <div class="home-head2 ">
 		<p style="margin-top:3px;margin-left:20px">Pay Provider</p>
 	</div>
 	   
@@ -20,7 +20,15 @@ input[type=text]:focus {
 }
 	</style>
   <ion-content  >
-		
+		<div class=" headerborder">
+				  
+			<div style="margin-left:20px;padding-top:30px;" >
+		   
+				 <p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">$1,084.70</span></p>
+				 
+			</div>
+				
+		</div>
 		<form name="myForm">
 	<div class="row">
         <div class="col col-center">
@@ -31,34 +39,43 @@ input[type=text]:focus {
 	  <div class="row responsive-sm">
 	  <div class="col col-75 center">
      
-        <div class="card cardshadow" >
-           <!-- <p style="color: red;margin-left:25px">You do not have a bank account on record.You must add a bank account by logging into the sterlinghsa.com to schedule disbursement.</p>
-         -->
+        <!-- <div class="card cardshadow" >
+           <p style="color: red;margin-left:25px">You do not have a bank account on record.You must add a bank account by logging into the sterlinghsa.com to schedule disbursement.</p>
+         
 		  <h4 class="formcard">Available Balance</h4>
 		   <p class="formcard">$1,084.70</p>
-		 </div>
+		 </div> -->
 		
 	   <div class="list">
             <label class="item item-input item-select formselect" >
-              <div class="input-label ">
-                select
-	          </div>
-              <select name="selectPayee" ng-model="selectPayee" required>
-				<option value=""> Select Payee</option>
-				 <option ng-repeat="data in payee">{{data.VENDOR_NAME}}</option> 
-				 </select>
-		   </label>
-		   <div class="row">
-			 <span style="color:red" ng-show="myForm.selectPayee.$dirty && myForm.selectPayee.$invalid">
-                 <span ng-show="myForm.selectPayee.$error.required"> Amount is required.</span>
-             </span>
+				<div class="input-label ">
+				select
+				</div>
+				<select name="selectPayee" ng-model="payprovierValues.selectPayee" ng-options="pay.VENDOR_NAME for pay in payee" required>
+					<option selected disabled value=""> Select Payee</option>
+				</select>
+			</label>
+			<div class="row">
+				<span style="color:red" ng-show="myForm.selectPayee.$dirty && myForm.selectPayee.$invalid">
+					<span ng-show="myForm.selectPayee.$error.required"> Payee is required.</span>
+				</span>
 		 </div>				 
        </div>
  
-
+		<div class="list ">
+			<label class="item item-input formlabel" >
+				 <input type="text" name="patient_name" ng-model="payprovierValues.patient_name" id="forminput" class="input-box input-boxfocus" placeholder="Enter Patient Name"  required>
+			</label> 
+			<div class="row">
+			  <span style="color:red" ng-show="myForm.patient_name.$dirty && myForm.patient_name.$invalid">
+				  <span ng-show="myForm.patient_name.$error.required"> Patient Name is required.</span>
+			   </span>
+			</div>
+		</div>
+		
        <div class="list ">
 	 <label class="item item-input formlabel" >
-        <input type="number"  class="input-box1 input-boxfocus1" id="forminput" name="amount" ng-model="amount" placeholder="Enter Amount"  required>
+        <input type="number"  class="input-box1 input-boxfocus1" id="forminput" name="amount" ng-model="payprovierValues.amount" placeholder="Enter Amount"  required>
 		</label> 
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.amount.$dirty && myForm.amount.$invalid">
@@ -69,7 +86,7 @@ input[type=text]:focus {
 		 
 	  <div class="list">
         <label class="item item-input formlabel">
-          <input type="text" ng-click="getTransDate()" name="transaction" ng-model="TransDate" id="forminput" class="input-box input-boxfocus" placeholder="Transaction Date"  required>
+          <input type="text" ng-click="getTransDate()" name="transaction" ng-model="payprovierValues.TransDate" id="forminput" class="input-box input-boxfocus" placeholder="Transaction Date"  required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
@@ -79,13 +96,19 @@ input[type=text]:focus {
       </div> 
    
     <div class="list ">
-	 <label class="item item-input formlabel" >
-        <input type="text"  class="input-box input-boxfocus"  id="forminput" name="description" ng-model="description" placeholder="Description"  required>
+		<label class="item item-input item-select formselect" >
+              <div class="input-label ">
+                select
+	          </div>
+			<select ng-model="description" name="description"  required>
+				<option value=""> Select Description</option>
+				<option ng-repeat="desc in descriptions">{{desc.FEE_NAME}}</option> 
+			 </select>
 		</label> 
 		<div class="row">
-		  <span style="color:red" ng-show="myForm.description.$dirty && myForm.description.$invalid">
-              <span ng-show="myForm.description.$error.required"> Description is required.</span>
-          </span>
+			<span style="color:red" ng-show="myForm.description.$dirty && myForm.description.$invalid">
+				<span ng-show="myForm.description.$error.required"> Description is required.</span>
+			</span>
 		</div>
 	</div>
       
@@ -98,7 +121,7 @@ input[type=text]:focus {
 
 		<div class="row">
 			<div class="col text-center">
-				<button class="button button-small formButton" ng-disabled="myForm.$invalid" type="submit">SUBMIT</button>
+				<button class="button button-small formButton" ng-click="submitValue();"  ng-disabled="myForm.$invalid"  type="submit">SUBMIT</button>
 			</div> 
 		</div> 
    

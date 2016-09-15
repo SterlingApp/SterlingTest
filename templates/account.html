@@ -1,30 +1,24 @@
-<style>
- .bar-header.has-tabs-top {
-    border-bottom-width: 2px;
-    background-image: none; }
-</style>
-<ion-view>
 <ion-header-bar class="headerborder" >
 	
-	<div class="home-head " ng-click="goback();">
-		<img src="img/back_icon.svg" >
+	<div class="home-head2 ">
+		<i ng-click="goback();" class="ion ion-arrow-left-c"></i>
     </div>
-    <div class="home-head ">
-		<p style="margin-top:3px;margin-left:20px">Account Information</p>
+    <div class="home-head2">
+		<p ng-click="goback();" style="margin-top:3px;margin-left:20px">Account Information</p>
 	</div> 
 </ion-header-bar>
+<ion-view>
+
      		
     <ion-content scroll="false">
-		<div class="accountcontent">
-	
-		<div class="card card_margin cardshadow">
-			<div  style="margin-left:20px; margin-top:10px" >
-				<p><span class="lineHead cardContent">Account number</span><br><span class="lineValueText cardContent">{{account_information.ACC_NUM}}</span></p>
-				<p><span class="lineHead cardContent">Plan</span><br><span class="lineValueText cardContent">{{account_information.PLAN_NAME}}</span></p>
-				<p><span class="lineHead cardContent">HSA effective date</span><br><span class="lineValueText cardContent">{{account_information.EFFECTIVE_DATE}}</span></p>
-				<p><span class="lineHead cardContent">Account balance</span><br><span class="lineValueText cardContent">{{account_information.ACCT_BALANCE}}</span></p>
+
+		<div class=" headerborder">
+			<div  style="margin-left:20px; padding-top:32px">
+				<p><span class="lineHead1 cardContent">Account number</span><br><span class="lineValueText1 cardContent">{{account_information.ACC_NUM}}</span></p>
+				<p><span class="lineHead1 cardContent">Plan</span><br><span class="lineValueText1 cardContent">{{account_information.PLAN_NAME}}</span></p>
+				<p><span class="lineHead1 cardContent">HSA effective date</span><br><span class="lineValueText1 cardContent">{{account_information.EFFECTIVE_DATE}}</span></p>
+				<p><span class="lineHead1 cardContent">Account balance</span><br><span class="lineValueText1 cardContent">{{account_information.ACCT_BALANCE}}</span></p>
 			</div>
-		</div>
 		</div>
 		
 		<div class="subtitle">

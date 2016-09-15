@@ -112,15 +112,15 @@
 							  <div class="input-label ">
 							select
 							 </div>
-							<select name="description" ng-model="description" required>
+							<select name="selectdescription" ng-model="selectdescription" required>
 							  <option value="" > Select Description</option>
 							 <option ng-repeat="data in description">{{data.FEE_NAME}}</option>
 						  
 						  </select>
 						 </label>
 						 <div class="row">
-							  <span style="color:red" ng-show="myForm.description.$dirty && myForm.description.$invalid">
-                                <span ng-show="myForm.description.$error.required"> selectAccount is required.</span>
+							  <span style="color:red" ng-show="myForm.selectdescription.$dirty && myForm.selectdescription.$invalid">
+                                <span ng-show="myForm.selectdescription.$error.required"> selectAccount is required.</span>
                               </span>
 							</div>
 						</div>

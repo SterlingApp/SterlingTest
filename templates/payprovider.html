@@ -24,7 +24,7 @@ input[type=text]:focus {
 				  
 			<div style="margin-left:20px;padding-top:30px;" >
 		   
-				 <p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">$1,084.70</span></p>
+				 <p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">{{availablebalance}}</span></p>
 				 
 			</div>
 				
@@ -95,7 +95,7 @@ input[type=text]:focus {
 		</div>
       </div> 
    
-    <div class="list ">
+   <!--  <div class="list ">
 		<label class="item item-input item-select formselect" >
               <div class="input-label ">
                 select
@@ -110,7 +110,24 @@ input[type=text]:focus {
 				<span ng-show="myForm.description.$error.required"> Description is required.</span>
 			</span>
 		</div>
-	</div>
+	</div> -->
+	
+	 <div class="list">
+            <label class="item item-input item-select formselect" >
+              <div class="input-label ">
+                select
+	          </div>
+              <select name="selectdescription" ng-model="payprovierValues.selectdescription" required>
+				<option value=""> Select Description</option>
+				 <option ng-repeat="data in descriptions">{{data.FEE_NAME}}</option>
+				 </select>
+		   </label>
+		   <div class="row">
+			 <span style="color:red" ng-show="myForm.selectdescription.$dirty && myForm.selectdescription.$invalid">
+                 <span ng-show="myForm.selectdescription.$error.required"> Amount is required.</span>
+             </span>
+		 </div>				 
+       </div>
       
 		<div class="row">
 			<div class="col text-center">

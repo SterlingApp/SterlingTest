@@ -308,13 +308,21 @@ a{
 }
 
 .cardContent{
-	margin-left:15px;
-	margin-top:30px;
+	margin-left:10px;
+	/* margin-top:30px; */
 	
 }
+
+.cardContent1{
+	margin-left:10px;
+	 margin-top:50px; 
+	
+}
+
+
 .card_margin{
 width:95%;
-margin-left:0px;
+margin-left:20px;
 	
 }
 .readMore
@@ -322,6 +330,23 @@ margin-left:0px;
 	float:right;
 	color:#077db4;
 }
+.cardborder{
+	height:120px;
+	
+}
+
+
+.head-details
+{
+	font-size: 16px;
+	color: #E32626;
+}
+.head-details1
+{
+	font-size: 16px;
+	color: #e67e22;
+}
+
 .headerborder
 {
 	background-color:#E67E22;

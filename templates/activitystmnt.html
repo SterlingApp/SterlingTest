@@ -24,16 +24,27 @@
 	 <div class="item item-body">
      <div class="list" >
         <label class="item item-input item-floating-label">
-		<span class="input-label">Start Date(MM/DD/YYYY)*</span>
+		<span class="input-label"></span>
             <input type="text" ng-click="getStartDate()" ng-model="activity.startDate" class="input-box input-boxfocus " placeholder="Start Date(MM/DD/YYYY)*" style="margin-left:-1px">
         </label>
+									
+<!-- 		<div class="row">
+		 <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
+            <span ng-show="myForm.transaction.$error.required"> Transaction Date is required.</span>
+         </span>
+	   </div> -->
 		</div>
       
       <div class="list " >
         <label class="item item-input item-floating-label">
-		<span class="input-label">End Date(MM/DD/YYYY)*</span>
+		<span class="input-label"></span>
             <input type="text"  ng-click="getEndDate()" ng-model="activity.EndtDate" class="input-box input-boxfocus " placeholder="End Date(MM/DD/YYYY)*" style="margin-left:-1px">
         </label>
+		<!-- <div class="row">
+		 <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
+           <span ng-show="myForm.transaction.$error.required"> Transaction Date is required.</span>
+         </span>
+		 </div> -->
       </div>
     
 		<div class="row">

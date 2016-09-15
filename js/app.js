@@ -274,12 +274,19 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		  controller: 'NewCtrl'
     })
 	
-	.state('hsastatement', {
-      url: '/hsastatement',
+	 .state('hsastatement', {
+       url: '/hsastatement',
       
-          templateUrl: 'templates/hsastatement.html',
-		  controller: 'HsastatementCtrl'
+           templateUrl: 'templates/hsastatement.html',
+		   controller: 'HsastatementCtrl'
     })
+	
+	// .state('hsastate', {
+      // url: '/hsastate',
+      
+          // templateUrl: 'templates/hsastate.html',
+		  // controller: 'HsastateCtrl'
+    // })
 	.state('statement', {
       url: '/statement',
       

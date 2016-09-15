@@ -21,21 +21,37 @@
 			</div>
 		</div>
 		
+		
 		<div class="subtitle">
 			<p class="HeadLine">Total Contributions</p>
 			<!-- <p class="lineBreak"></p> -->
 		</div>
-		<div class="accountsubcontent">
+		
 		<div class="card card_margin cardshadow">
-			<div  style="margin-left:20px; margin-top:10px" >
+			<div class="accountsubcontent" >
 				<p><span class="lineHead cardContent">Total contributions for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.CONTRB_LIMIT}}</span></p>
 				<p><span class="lineHead cardContent">Allowable contributions remaining for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.CURRENT_YR_CONTRB}}</span></p>
 				<p><span class="lineHead cardContent">HSA effective date</span><br><span class="lineValueText cardContent">{{total_contributions.EFFECTIVE_DATE}}</span></p>
 				<p><span class="lineHead cardContent">Total disbursement for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.TOTAL_DISB_AMOUNT}}</span></p>
 			</div>
 		</div>
-		</div>
 		
+		<div class="subtitle">
+			<p class="HeadLine">Account Summary</p>
+			<p class="lineBreak"></p>
+		</div>
+		<div class="card card_margin cardshadow">
+		<div class="accountsubcontent">
+		
+			<p><span class="lineHead cardContent">Beggining Account Balance</span><br><span class="lineValueText cardContent">${{summary.BEGINNING_BALANCE}}</span></p>
+			<p><span class="lineHead cardContent">Ending  Account Balance</span><br><span class="lineValueText cardContent">${{summary.ENDING_BALANCE}}</span></p>
+			<p><span class="lineHead cardContent">Available for Disbursement*</span><br><span class="lineValueText cardContent">${{summary.DISBURSABLE_BALANCE}}</span></p>
+			<p><span class="lineHead cardContent">Interest earned</span><br><span class="lineValueText cardContent">${{summary.INTEREST}}</span></p>
+			<p><span class="lineHead cardContent">Qualified Disbursements</span><br><span class="lineValueText cardContent">${{summary.QUAL_DISB_AMOUNT}}</span></p>
+			<p><span class="lineHead cardContent">Non-Qualified  Disbursements</span><br><span class="lineValueText cardContent">${{summary.NQUAL_DISB_AMOUNT}}</span></p>
+			<p><span class="lineHead cardContent">Outside Investment Balance</span><br><span class="lineValueText cardContent">${{summary.OUTSIDE_INV_BAL}}</span></p>
+		</div>
+		</div>
 		
 		
 

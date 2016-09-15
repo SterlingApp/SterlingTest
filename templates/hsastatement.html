@@ -7,26 +7,30 @@
 		<p style="margin-top:3px;margin-left:20px">HSA Statement</p>
 	</div>
 </ion-header-bar>
-<ion-view>
-<ion-content >
+
+<ion-content>
        <div class="accountcontent">
 			<p class="HeadLine"> {{date.startDate}} To  {{date.EndtDate}}</p>
 			<p class="lineBreak"></p>
 			
 		</div>
+		<div class="card">
 		<div class="accountsubcontent">
-			<p><span class="lineHead">You are currently enrolled in single coverage </span></p>
-			<p><span class="lineHead">Based on this coverage you may be eligible to contribute an additional <span class="lineValueText">$2,285.04 </span>for the year <span class="lineValueText"> 2016 </span>tax year.</span></span></p>
+			<p><span class="lineHead ">You are currently enrolled in </span><span class="lineValueText ">{{summary.COVERAGE_LEVEL}}</span></p>
+			<p><span class="lineHead ">Based on this coverage you may be eligible to contribute an additional <span class="lineValueText">$2,285.04 </span>for the year <span class="lineValueText"> 2016 </span>tax year.</span></span></p>
 				
 		</div>
+		</div>
 		<div class="subtitle">
-			<p class="HeadLine">2016 IRS Annual Contribution Limits</p>
+			<p class="HeadLine">{{summary.A_YEAR}} IRS Annual Contribution Limits</p>
 			<p class="lineBreak"></p>
 		</div>
+		<div class="card">
 		<div class="accountsubcontent">
-			<p><span class="lineHead">Single coverage</span><br><span class="lineValueText">5807</span></p>
-			<p><span class="lineHead">Family coverage</span><br><span class="lineValueText">$179</span></p>
-			<p><span class="lineHead">* catch-up contribution</span><br><span class="lineValueText">$3,350.00</span></p>
+			<p><span class="lineHead ">Single coverage</span><br><span class="lineValueText ">${{summary.INDIVIDUAL_LIMIT}}</span></p>
+			<p><span class="lineHead ">Family coverage</span><br><span class="lineValueText ">${{summary.FAMILY_LIMIT}}</span></p>
+			<p><span class="lineHead ">* catch-up contribution</span><br><span class="lineValueText ">${{summary.CATCHUP_LIMIT}}</span></p>
+		</div>
 		</div>
 		<!-- <div class=" item-divider item-text-wrap">
                   <p>* If you are older, you can make an additional catch-up contribution</p>
@@ -36,14 +40,17 @@
 			<p class="HeadLine">Account Summary</p>
 			<p class="lineBreak"></p>
 		</div>
+		<div class="card">
 		<div class="accountsubcontent">
-			<p><span class="lineHead">Beggining Account Balance</span><br><span class="lineValueText">5807</span></p>
-			<p><span class="lineHead">Ending  Account Balance</span><br><span class="lineValueText">$179</span></p>
-			<p><span class="lineHead">Available for Disbursement*</span><br><span class="lineValueText">$179</span></p>
-			<p><span class="lineHead">Interest earned</span><br><span class="lineValueText">$3,350.00</span></p>
-			<p><span class="lineHead">Qualified Disbursements</span><br><span class="lineValueText">$3,350.00</span></p>
-			<p><span class="lineHead">Non-Qualified  Disbursements</span><br><span class="lineValueText">$3,350.00</span></p>
-			<p><span class="lineHead">Outside Investment Balance</span><br><span class="lineValueText">$3,350.00</span></p>
+		
+			<p><span class="lineHead ">Beggining Account Balance</span><br><span class="lineValueText ">${{summary.BEGINNING_BALANCE}}</span></p>
+			<p><span class="lineHead ">Ending  Account Balance</span><br><span class="lineValueText ">${{summary.ENDING_BALANCE}}</span></p>
+			<p><span class="lineHead ">Available for Disbursement*</span><br><span class="lineValueText ">${{summary.DISBURSABLE_BALANCE}}</span></p>
+			<p><span class="lineHead ">Interest earned</span><br><span class="lineValueText ">${{summary.INTEREST}}</span></p>
+			<p><span class="lineHead ">Qualified Disbursements</span><br><span class="lineValueText ">${{summary.QUAL_DISB_AMOUNT}}</span></p>
+			<p><span class="lineHead ">Non-Qualified  Disbursements</span><br><span class="lineValueText ">${{summary.NQUAL_DISB_AMOUNT}}</span></p>
+			<p><span class="lineHead ">Outside Investment Balance</span><br><span class="lineValueText ">${{summary.OUTSIDE_INV_BAL}}</span></p>
+		</div>
 		</div>
 	   <!--<div class="item item-divider item-text-wrap">
               *Excludes $20 required minimum balance	
@@ -53,32 +60,55 @@
 			<p class="HeadLine"> 2016 Activity Summary</p>
 			<p class="lineBreak"></p>
 		</div>
+		<div class="card">
 		<div class="accountsubcontent">
-			<p><span class="lineHead">Total Contributions</span><br><span class="lineValueText">$179</span></p>
-			<p><span class="lineHead">Employer Contribution</span><br><span class="lineValueText">$179</span></p>
-			<p><span class="lineHead">Employee Contribution</span><br><span class="lineValueText">$179</span></p>
-			<p><span class="lineHead">Total Disbursements</span><br><span class="lineValueText">$3,350.00</span></p>
-			<p><span class="lineHead">Non-Qualified Disbursements</span><br><span class="lineValueText">$3,350.00</span></p>
-			<p><span class="lineHead">Qualified Disbursements</span><br><span class="lineValueText">$3,350.00</span></p>
+			<p><span class="lineHead ">Total Contributions</span><br><span class="lineValueText ">${{summary.TOTAL_CONTRIBUTION}}</span></p>
+			<p><span class="lineHead ">Employer Contribution</span><br><span class="lineValueText ">$0.00</span></p>
+			<p><span class="lineHead ">Employee Contribution</span><br><span class="lineValueText ">$0.00</span></p>
+			<p><span class="lineHead ">Total Disbursements</span><br><span class="lineValueText ">${{summary.TOTAL_ER_AMOUNT}}</span></p>
+			<p><span class="lineHead ">Non-Qualified Disbursements</span><br><span class="lineValueText ">${{summary.NQUAL_DISB_AMOUNT}}</span></p>
+			<p><span class="lineHead ">Qualified Disbursements</span><br><span class="lineValueText ">${{summary.QUAL_DISB_AMOUNT}}</span></p>
 			
 		</div>
-		<div class="subtitle">
-			<p class="HeadLine">  Activity </p>
-			<p class="lineBreak"></p>
 		</div>
-		<div class="accountsubcontent">
-			<p><span class="lineHead">Date</span><br><span class="lineValueText">30/08/2016</span></p>
-			<p><span class="lineHead">Code</span><br><span class="lineValueText">179</span></p>
-			<p><span class="lineHead">Beginning Balances</span><br><span class="lineValueText">$179</span></p>
-			<p><span class="lineHead">Ending Balances</span><br><span class="lineValueText">$3,350.00</span></p>
-			<p><span class="lineHead">Fee Balance</span><br><span class="lineValueText">$3,350.00</span></p>
 		
+		<div ng-repeat="data in activity">
+		<div class="subtitle">
+			<p class="HeadLine">Activity List</p>
+			<p class="lineBreak"></p> 
 		</div>
-	
+		
+		<div class="card">
+		<div class="accountsubcontent">
+		
+			<p><span class="lineHead ">Date</span><br><span class="lineValueText ">{{data.TRANSACTION_DATE}}</span></p>
+			<p><span class="lineHead ">Code</span><br><span class="lineValueText ">{{data.EXPENSE_CODE}}</span></p>
+			<p><span class="lineHead ">Description</span><br><span class="lineValueText ">{{data.DESCRIPTION}}</span></p>
+			<p><span class="lineHead ">Total Receipt Amount</span><br><span class="lineValueText ">${{data.TOTAL_RECEIPT_AMOUNT}}</span></p>
+			<p><span class="lineHead ">Total Disbursement Amount</span><br><span class="lineValueText ">${{data.TOTAL_DISB_AMOUNT}}</span></p>
+		    <p><span class="lineHead ">Account Balance</span><br><span class="lineValueText ">${{data.ACC_BALANCE}}</span></p>
+		    <p><span class="lineHead ">Fee Balance</span><br><span class="lineValueText ">${{data.FEE_BALANCE}}</span></p>
+		</div>
+		</div>
+		</div>
+		<div class="subtitle">
+			<p class="HeadLine">Activity List</p>
+			<p class="lineBreak"></p> 
+		</div>
+		<div class="card">
+		<div class="accountsubcontent">
+			<p><span class="lineHead ">Current Year Contribution</span><br><span class="lineValueText ">${{summary.CURRENT_YR_CONTRIB}}</span></p>
+		    <p><span class="lineHead ">Previous Year Contribution</span><br><span class="lineValueText ">${{summary.PREVIOUS_YR_CONTRIB}}</span></p>
+		    <p><span class="lineHead ">Total Transaction Fees Paid</span><br><span class="lineValueText ">${{summary.TXN_FEE_PAID}}</span></p>
+		    <p><span class="lineHead ">Total Administration Fees Paid</span><br><span class="lineValueText ">${{summary.ADMIN_FEE_PAID}}</span></p>
+		
+		
+	   </div>
+	   </div>
      
+		
 
 </ion-content>
-</ion-view>
 <ion-footer-bar  class="footerborder" >
  
         <p class="text-center">&copy; 2016 Sterling Administration. All Rights Reserved.</p>

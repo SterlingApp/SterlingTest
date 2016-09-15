@@ -1,7 +1,7 @@
 /* Empty. Add your own CSS if you like */
 .bg{
 	/* background-color: #1F98E3 !important; */
-	color: #e6e6ff !important;
+	color: #000 !important;
 	/* max-width: 1000px; */
 	font-size: 15px!important;
 	eafafa
@@ -9,19 +9,19 @@
 }
 .tabs-color-dark>.tabs{
 	
-   color: #496E9B !important
+   color: #000 !important
 }
 .tabs-background-stable>.tabs{
 	margin-top:45px;
-	background-color: #496E9B !important;
+	background-color: #fff !important;
 	
 }
  
  .tabs-striped.tabs-custom .tab-item.tab-item-active  {
     margin-top: -1px;
-    color: #fff ! important;   
+    color: #000 ! important;   
     border-bottom-width: 3px ! important;
-    border-color: #fff; 
+    border-color: #000; 
 	font-weight:bold;
 	}
 /* .tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
@@ -124,8 +124,8 @@ margin-left:50px;
 	font-size:20px;
 	font-family: Helvetica;
 	/*color: #D55D09;*/
-	color:#5A5B5B;
-	 padding-top: 13px;
+	color:#000;
+	 padding-top: 3px;
 	border-bottom:2px; 
 }
 .home-head1
@@ -184,9 +184,10 @@ margin-left:50px;
 	padding-top: 6px;
 }
 
-#headerborder{
-	border-bottom-width:2px;
-	border-bottom-color:#454b4e; 
+
+.headerbotborder{
+	border-bottom-width:2px !important;
+	border-bottom-color:#454b4e !important; 
 	
 }
 
@@ -317,6 +318,80 @@ margin-left:0px;
 {
 	float:right;
 	color:#077db4;
+}
+
+
+.head-details
+{
+	font-size: 16px;
+	color: #E32626;
+}
+.head-details1
+{
+	font-size: 16px;
+	color: #e67e22;
+}
+
+.headerborder
+{
+	background-color:#E67E22;
+}
+
+
+.lineHead1{
+	color:#077db4;
+	font-family: Helvetica;
+	font-size: 16px;
+	padding-top: 6px;
+}
+
+.lineValueText1{
+	/*color:#00aff0;*/
+	color:#fff;
+	font-family: Helvetica;
+	font-size: 17px;
+	padding-top: 0px;
+}
+.home-head2 {
+	font-size:20px;
+	font-family: Helvetica;
+	/*color: #D55D09;*/
+	color:#fff;
+	 padding-top: 3px;
+	border-bottom:2px !important; 
+}
+.colvertical{
+	
+	border-right:1px solid;
+	border-right-color: #9A9A9A;
+	height:50px;
+}
+.row-border{
+	margin-top:10px;
+	border-top: 1px solid;
+	border-top-color: #9A9A9A;
+	
+}
+.button-top{
+	margin-top:07px;
+}
+.headercolor{
+	  background: -webkit-linear-gradient(left,
+	  #b74806,
+	  #d05207,
+	  #D65E09,
+#d8640a,
+#E3741B,
+#ef6e0b,
+#f57b1d,
+#f68833,
+#f7954a
+)!important ;/* Chrome 10-25, Safari 5.1-6 */
+	
+	  
+}
+.hsacard-height{
+	height:100px;
 }
 
 

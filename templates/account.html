@@ -7,10 +7,15 @@
 		<p ng-click="goback();" style="margin-top:3px;margin-left:20px">Account Information</p>
 	</div> 
 </ion-header-bar>
+<style>
+.bgnew{
+background-color:#DEDEDE !important;
+}
+</style>
 <ion-view>
 
      		
-    <ion-content scroll="false">
+    <ion-content scroll="false" class="bgnew">
 
 		<div class=" headerborder">
 			<div  style="margin-left:20px; padding-top:32px; padding-bottom:03px;">
@@ -23,19 +28,33 @@
 		</div>
 		
 		
-		<div class="subtitle">
+		<!-- <div class="subtitle">
 			<p class="HeadLine">Total Contributions</p>
-			<!-- <p class="lineBreak"></p> -->
-		</div>
+		</div> -->
 		
-		<div class="card card_margin cardshadow">
-			<div class="accountsubcontent" >
+		<div class="card">
+			<div class="item">
+				<span class="HeadLine">Total Contributions</span>
+			</div>
+			<div class="item item-body">
 				<p><span class="lineHead cardContent">Total contributions for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.CONTRB_LIMIT}}</span></p>
 				<p><span class="lineHead cardContent">Allowable contributions remaining for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.CURRENT_YR_CONTRB}}</span></p>
 				<p><span class="lineHead cardContent">HSA effective date</span><br><span class="lineValueText cardContent">{{total_contributions.EFFECTIVE_DATE}}</span></p>
 				<p><span class="lineHead cardContent">Total disbursement for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.TOTAL_DISB_AMOUNT}}</span></p>
 			</div>
 		</div>
+		
+		<!-- <div class="card card_margin cardshadow">
+			<div class="item">
+			  Total Contributions
+		   </div>
+			<div class="accountsubcontent item item-text-wrap" >
+				<p><span class="lineHead cardContent">Total contributions for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.CONTRB_LIMIT}}</span></p>
+				<p><span class="lineHead cardContent">Allowable contributions remaining for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.CURRENT_YR_CONTRB}}</span></p>
+				<p><span class="lineHead cardContent">HSA effective date</span><br><span class="lineValueText cardContent">{{total_contributions.EFFECTIVE_DATE}}</span></p>
+				<p><span class="lineHead cardContent">Total disbursement for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.TOTAL_DISB_AMOUNT}}</span></p>
+			</div>
+		</div> -->
 		
   </ion-content>
   </ion-view>

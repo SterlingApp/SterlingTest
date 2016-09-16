@@ -14,7 +14,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		   var promise;
           if($state.current.name=="hsa"||$state.current.name=="login"){
 			  $cordovaToast
-             .show('Press again to exit', '300', 'bottom');
+             .show('Press again to exit', '250', 'bottom');
 			  $ionicPlatform.onHardwareBackButton(function(event) {
 				   
                  navigator.app.exitApp();
@@ -23,10 +23,10 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 					$scope.stop();
 					
                 });
-				$scope.stop=function(){
-				   $interval.cancel(promise);
+				// $scope.stop=function(){
+				   // $interval.cancel(promise);
 				 
-			 }
+			 // }
 				
 				// $timeout(onHardwareBackButton,3000);  
 				

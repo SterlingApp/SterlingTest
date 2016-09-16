@@ -1,6 +1,6 @@
-<ion-header-bar class="headerborder" >
+<ion-header-bar id="headerborder" class="headerborder" >
 	
-	 <div class="home-head2 " ng-click="goback();">
+	<div class="home-head2 " ng-click="goback();">
 		<i ng-click="goback();" class="ion ion-arrow-left-c"></i>
     </div>
     <div class="home-head2 ">
@@ -9,24 +9,25 @@
 </ion-header-bar>
 
 <ion-view>
-	<!-- <style>
+	<style>
 	
 	
 input[type=text]:focus {
 	
   box-shadow: -8px 10px 0px -7px #5FBA7D, 8px 10px 0px -7px #5FBA7D;
 }
-	</style> -->
+	</style>
 	<ion-content>
-	    <div class=" headerborder">
+	    <!-- <div class=" headerborder">
 				  
-			<div style="margin-left:20px;padding-top:30px;" >
+			<div style="margin-left:20px;padding-top:30px;padding-bottom:03px;" >
 		   
 				 <p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">{{Availablebalance}}</span></p>
 				 
 			</div>
 				
-		</div>
+		</div> -->
+		
 	     
 		<form name="myForm">
 		<div class=" hide row">
@@ -37,11 +38,11 @@ input[type=text]:focus {
 		<div class="row responsive-sm">
 			<div class="col col-75 center">
 		 
-				<!-- <div class="card cardshadow headerborder" >
+				<div class="card cardshadow headerborder" >
 				   
-				<p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">$1,084.70</span></p>
+				<p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">{{Availablebalance}}</span></p>
 				 </div>
-				 -->
+				
 					
 				     <div class="list ">
 							<label class="item item-input item-select formselect" >

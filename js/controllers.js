@@ -125,7 +125,23 @@ angular.module('starter.controllers', [])
 })
 
 .controller('HsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicHistory,$ionicTabsDelegate) {
-
+    $scope.gomake=function(){
+		 // $route.reload();
+		 
+		$rootScope.hidecontent="true";
+		$location.path("make");
+		 // window.location.reload(true);
+	}
+	$scope.goactivity=function(){
+		$rootScope.hidecontent="true";
+		$location.path("activity");
+		
+	}
+	$scope.gohealth=function(){
+		$rootScope.hidecontent="true";
+		$location.path("health");
+		
+	}
 	$scope.goForward = function () {
         var selected = $ionicTabsDelegate.selectedIndex();
         if (selected != -1) {
@@ -446,8 +462,8 @@ angular.module('starter.controllers', [])
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		// window.history.back();
+		$location.path("/hsa");
 	}
 })
 
@@ -458,8 +474,8 @@ angular.module('starter.controllers', [])
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		// window.history.back();
+		$location.path("/hsa");
 	}
 	
 })
@@ -493,8 +509,8 @@ angular.module('starter.controllers', [])
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		// window.history.back();
+		$location.path("/hsa");
 	}
 	
 })
@@ -509,9 +525,9 @@ angular.module('starter.controllers', [])
 	 
 	$scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		$rootScope.hidecontent=true;
+		// window.history.back();
+		$location.path("activity");
 	}
 	
 })
@@ -522,8 +538,8 @@ angular.module('starter.controllers', [])
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		// window.history.back();
+		$location.path("/hsa");
 	}
 })
 
@@ -531,7 +547,6 @@ angular.module('starter.controllers', [])
 .controller('AccountCtrl', function($rootScope,$scope,$cordovaNetwork,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicHistory) {
 	$scope.Back=function()
 	{
-	    alert();
 		$location.path("fsa");
 	}
 	localStorage.setItem("backCount","3");
@@ -587,9 +602,9 @@ angular.module('starter.controllers', [])
 	 $ionicScrollDelegate.scrollBottom(true);
 	 $scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		$rootScope.hidecontent=true;
+		// window.history.back();
+		$location.path("new");
 	}
 	$scope.upload = function(){
 	         fileChooser.open(function(uri) {
@@ -657,9 +672,9 @@ angular.module('starter.controllers', [])
 	 localStorage.setItem("backCount","3");
 	 $scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		$rootScope.hidecontent=true;
+		// window.history.back();
+		$location.path("new");
 	}
 	$scope.upload = function(){
 	         fileChooser.open(function(uri) {
@@ -803,9 +818,9 @@ angular.module('starter.controllers', [])
   
 	$scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		$rootScope.hidecontent=true;
+		// window.history.back();
+		$location.path("/health");
 	}
 })
 
@@ -819,7 +834,7 @@ angular.module('starter.controllers', [])
 	 
 	$scope.summary= $rootScope.summary_list;
 	 $scope.activity=$rootScope.activity_list;
-	 alert(JSON.stringify( $scope.activity));
+	 //alert(JSON.stringify( $scope.activity));
 	
 	
 	$scope.goback=function()
@@ -892,7 +907,7 @@ angular.module('starter.controllers', [])
 		
 		
 	}).error(function(err){
-   alert(JSON.stringify(err));
+   //alert(JSON.stringify(err));
   });
 		}
 		
@@ -981,7 +996,7 @@ angular.module('starter.controllers', [])
 					$scope.activityStatement=data;
 					//$scope.categories=data.categories;
 				}).error(function(err){
-			   alert(JSON.stringify(err));
+			   //alert(JSON.stringify(err));
 			  });
 			  $location.path("hsastatement");
 			
@@ -997,9 +1012,9 @@ angular.module('starter.controllers', [])
 	
 	$scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		$rootScope.hidecontent=true;
+		// window.history.back();
+		$location.path("/health");
 	}
 })
  
@@ -1109,7 +1124,7 @@ angular.module('starter.controllers', [])
  }else{
    $http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hsa', 'acc_num':$scope.hsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		alert( JSON.stringify(data));
+		//alert( JSON.stringify(data));
 		
 		$scope.bank_details=data.bank_details;
    
@@ -1135,7 +1150,7 @@ angular.module('starter.controllers', [])
 	
 	$http.get('  http://app.sterlinghsa.com/api/v1/accounts/categories',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 		
 		$scope.categories=data.categories;
 		//alert(JSON.stringify($scope.categories));
@@ -1161,7 +1176,7 @@ angular.module('starter.controllers', [])
 		//alert();
 		$http.post("http://app.sterlinghsa.com/api/v1/accounts/payme",{'hsa_acct_id': $scope.hsaaccId,'bank_acct_id':$scope.paymeValues.selectAccount.BANK_ACC_ID,'amount':$scope.paymeValues.amount,'category':$scope.paymeValues.category.LOOKUP_CODE,'trans_date':$scope.paymeValues.TransDate},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		alert( JSON.stringify(data));
+		//alert( JSON.stringify(data));
 		if(data.status == "SUCCESS"){
 			$scope.transactionid = data.transaction_id;
 		}else if(data.status == "FAILED"){
@@ -1172,7 +1187,7 @@ angular.module('starter.controllers', [])
 		}
 		//$scope.Availablebalance=data.balances.BALANCE;
 	}).error(function(err){
-  alert( JSON.stringify(err));
+  //alert( JSON.stringify(err));
   });
 		
 		
@@ -1180,9 +1195,9 @@ angular.module('starter.controllers', [])
 	
 	$scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		$rootScope.hidecontent=true;
+		// window.history.back();
+		$location.path("/make");
 	}
 	
 	
@@ -1349,9 +1364,9 @@ angular.module('starter.controllers', [])
 	
 	$scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		$rootScope.hidecontent=true;
+		// window.history.back();
+		$location.path("/make");
 	}
 	
 })
@@ -1366,9 +1381,9 @@ angular.module('starter.controllers', [])
 	
 	$scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		$rootScope.hidecontent=true;
+		// window.history.back();
+		$location.path("activity");
 	}
 	
 	

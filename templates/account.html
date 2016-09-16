@@ -13,11 +13,12 @@
     <ion-content scroll="false">
 
 		<div class=" headerborder">
-			<div  style="margin-left:20px; padding-top:32px">
+			<div  style="margin-left:20px; padding-top:32px; padding-bottom:03px;">
 				<p><span class="lineHead1 cardContent">Account number</span><br><span class="lineValueText1 cardContent">{{account_information.ACC_NUM}}</span></p>
 				<p><span class="lineHead1 cardContent">Plan</span><br><span class="lineValueText1 cardContent">{{account_information.PLAN_NAME}}</span></p>
 				<p><span class="lineHead1 cardContent">HSA effective date</span><br><span class="lineValueText1 cardContent">{{account_information.EFFECTIVE_DATE}}</span></p>
 				<p><span class="lineHead1 cardContent">Account balance</span><br><span class="lineValueText1 cardContent">{{account_information.ACCT_BALANCE}}</span></p>
+				
 			</div>
 		</div>
 		
@@ -36,25 +37,6 @@
 			</div>
 		</div>
 		
-		<div class="subtitle">
-			<p class="HeadLine">Account Summary</p>
-			<p class="lineBreak"></p>
-		</div>
-		<div class="card card_margin cardshadow">
-		<div class="accountsubcontent">
-		
-			<p><span class="lineHead cardContent">Beggining Account Balance</span><br><span class="lineValueText cardContent">${{summary.BEGINNING_BALANCE}}</span></p>
-			<p><span class="lineHead cardContent">Ending  Account Balance</span><br><span class="lineValueText cardContent">${{summary.ENDING_BALANCE}}</span></p>
-			<p><span class="lineHead cardContent">Available for Disbursement*</span><br><span class="lineValueText cardContent">${{summary.DISBURSABLE_BALANCE}}</span></p>
-			<p><span class="lineHead cardContent">Interest earned</span><br><span class="lineValueText cardContent">${{summary.INTEREST}}</span></p>
-			<p><span class="lineHead cardContent">Qualified Disbursements</span><br><span class="lineValueText cardContent">${{summary.QUAL_DISB_AMOUNT}}</span></p>
-			<p><span class="lineHead cardContent">Non-Qualified  Disbursements</span><br><span class="lineValueText cardContent">${{summary.NQUAL_DISB_AMOUNT}}</span></p>
-			<p><span class="lineHead cardContent">Outside Investment Balance</span><br><span class="lineValueText cardContent">${{summary.OUTSIDE_INV_BAL}}</span></p>
-		</div>
-		</div>
-		
-		
-
   </ion-content>
   </ion-view>
   <ion-footer-bar  class="footerborder" >

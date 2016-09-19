@@ -12,7 +12,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 	  
 	  $ionicPlatform.registerBackButtonAction(function (event) {
 		   var promise;
-          if($state.current.name=="hsa"||$state.current.name=="login"){
+          if($state.current.name=="#/app/hsa"||$state.current.name=="login"){
 			  $cordovaToast
              .show('Press again to exit', '250', 'bottom');
 			  $ionicPlatform.onHardwareBackButton(function(event) {
@@ -80,6 +80,12 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+   .state('app', {
+    url: '/app',
+    abstract: true,
+    templateUrl: 'templates/menu.html',
+    controller: 'AppCtrl'
+  })
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
@@ -92,18 +98,45 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 	controller: 'DashCtrl'
     
   })
-  
-  .state('hsa', {
-    url: '/hsa',
-    templateUrl: 'templates/hsa.html',
-	controller: 'HsaCtrl'    
+   .state('app.portfolio', {
+      url: '/portfolio',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/portfolio.html',
+		  controller: 'PortfolioCtrl'
+        }
+      }
+    })
+	.state('app.hsa', {
+    url: "/hsa",
+    views: {
+      'tab-hsa': {
+        templateUrl: "templates/hsa.html",
+		 controller: 'HsaCtrl'
+      }
+    }
+  })
+   .state('app.fsa', {
+    url: "/fsa",
+    views: {
+      'tab-fsa': {
+        templateUrl: "templates/fsa.html",
+		 controller: 'FsaCtrl'
+      }
+    }
   })
   
-  .state('fsa', {
-    url: '/fsa',
-    templateUrl: 'templates/fsa.html',
-	controller: 'FsaCtrl'    
-  })
+  // .state('hsa', {
+    // url: '/hsa',
+    // templateUrl: 'templates/hsa.html',
+	// controller: 'HsaCtrl'    
+  // })
+  
+  // .state('fsa', {
+    // url: '/fsa',
+    // templateUrl: 'templates/fsa.html',
+	// controller: 'FsaCtrl'    
+  // })
   
  .state('accounts', {
     url: '/accounts',
@@ -301,7 +334,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		  controller: 'PayproviderCtrl'
     });
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/app/hsa');
   
 
 });

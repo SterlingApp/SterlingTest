@@ -68,7 +68,7 @@ angular.module('starter.controllers', [])
 					 
 					localStorage.setItem('access_token',data.access_token);
 					localStorage.setItem('username',$scope.loginData.username);
-					//alert(localStorage.getItem('access_token')+"--"+localStorage.getItem('username'));
+					// alert(localStorage.getItem('access_token')+"--"+localStorage.getItem('username'));
 					
 					//$location.path("/app/portfolio");
 					window.location.href = 'index.html#/hsa';				
@@ -125,24 +125,26 @@ angular.module('starter.controllers', [])
 })
 
 .controller('HsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicHistory,$ionicTabsDelegate) {
-    $scope.gomake=function(){
-		 // $route.reload();
-		 
-		$rootScope.hidecontent="true";
-		$location.path("make");
-		 // window.location.reload(true);
-	}
-	$scope.goactivity=function(){
-		$rootScope.hidecontent="true";
-		$location.path("activity");
+	
+    // $scope.gomake=function(){
 		
-	}
-	$scope.gohealth=function(){
-		$rootScope.hidecontent="true";
-		$location.path("health");
+		// $rootScope.hidecontent="true";
+		// $location.path("/make");
+		  // window.location.reload(true);
+	// }
+	// $scope.goactivity=function(){
 		
-	}
+		 // $rootScope.hidecontent="true";
+		// $location.path("/activity");
+		
+	// }
+	// $scope.gohealth=function(){
+		 // $rootScope.hidecontent="true";
+		// $location.path("health");
+		
+	// }
 	$scope.goForward = function () {
+		
         var selected = $ionicTabsDelegate.selectedIndex();
         if (selected != -1) {
             $ionicTabsDelegate.select(selected + 1);
@@ -165,6 +167,7 @@ angular.module('starter.controllers', [])
 	// {
 		$http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	    .success(function(data){
+			
 		
 		 localStorage.setItem('account_types',data.account_types.HSA);
 		 localStorage.setItem('account_types',data.account_types.FSA);
@@ -189,7 +192,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('FsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicTabsDelegate) {
+.controller('FsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicTabsDelegate,$ionicSideMenuDelegate) {
 	 
 	 
 
@@ -307,18 +310,22 @@ $scope.show1 = false;
 	  alert("are you want to logout")
   }
   
-  $scope.logOut=function()
-  {
-	   $cordovaDialogs.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
-		.then(function(buttonIndex) {
-			if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
+  // $scope.logOut=function()
+  // {
+	   // $cordovaDialogs.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
+		// .then(function(buttonIndex) {
+			// if(buttonIndex=="1")
+			// {
+				// localStorage.clear();
+				// window.location='login.html#/login';
+			// }
 		  
-		});
+		// });
 	  
+  // }
+  $scope.openMenu=function(){
+	  alert();
+	   $ionicSideMenuDelegate.toggleLeft();
   }
   
    // $scope.gesture = {
@@ -412,7 +419,7 @@ $scope.show1 = false;
  }
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
+		// $rootScope.hidecontent=false;
 		window.history.back();
 		//$location.path("/hsa")
 	}
@@ -447,8 +454,9 @@ $scope.show1 = false;
 	 
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
-		window.history.back();
+		// $rootScope.hidecontent=false;
+		// window.history.back();
+		$location.path("#/app/fsa");
 	}
 
 })
@@ -485,7 +493,7 @@ $scope.show1 = false;
 })
 
 .controller('NewCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
-	$rootScope.hidecontent=true;
+	// $rootScope.hidecontent=true;
 	localStorage.setItem("backCount","2");
 	$scope.getClaim = function(claim) {
 		
@@ -498,9 +506,9 @@ $scope.show1 = false;
 	}
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
-		// window.history.back();
-		$location.path("/hsa");
+		// $rootScope.hidecontent=false;
+		window.history.back();
+		// $location.path("/hsa");
 	}
 })
 
@@ -562,9 +570,9 @@ $scope.show1 = false;
 	 
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=true;
-		// window.history.back();
-		$location.path("activity");
+		// $rootScope.hidecontent=true;
+		 window.history.back();
+		// $location.path("activity");
 	}
 	
 })
@@ -581,31 +589,31 @@ $scope.show1 = false;
 })
 
 
-.controller('AccountCtrl', function($rootScope,$scope,$cordovaNetwork,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicHistory) {
+.controller('AccountCtrl', function($rootScope,$scope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicHistory) {
 	$scope.Back=function()
 	{
 		$location.path("fsa");
 	}
 	localStorage.setItem("backCount","3");
 	
-	$rootScope.hidecontent=true;
+	// $rootScope.hidecontent=true;
 	
 	//$ionicHistory.clearHistory();
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.acc_num=$rootScope.hsaaccno;
-	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
- }else{
+	// if($cordovaNetwork.isOffline())
+ // {
+   // $ionicLoading.hide();
+   // $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
+   // .then(function() {
+   // });
+   // return false;
+ // }else{
    $http.get(' http://app.sterlinghsa.com/api/v1/accounts/accountinfo',{params:{'type':'hsa','acc_num': $scope.acc_num},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
   .success(function(data){
    $ionicLoading.hide();
-   //alert(JSON.stringify(data));
+   // alert(JSON.stringify(data));
    localStorage.setItem('account_information',data.account_information);
    localStorage.setItem('total_contributions',data.total_contributions);
    $scope.account_information=data.account_information;
@@ -614,6 +622,7 @@ $scope.show1 = false;
    //alert(JSON.stringify(data.account_information));
    
   }).error(function(err){
+	  // alert(JSON.stringify(err));
    $ionicLoading.hide();
    $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
    .then(function() {
@@ -621,11 +630,11 @@ $scope.show1 = false;
    return false;
    
   });
- }
+ // }
 
 	 $scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
+		// $rootScope.hidecontent=false;
 		window.history.back();
 		//$location.path("/hsa")
 	}
@@ -639,9 +648,9 @@ $scope.show1 = false;
 	 $ionicScrollDelegate.scrollBottom(true);
 	 $scope.goback=function()
 	{
-		$rootScope.hidecontent=true;
-		// window.history.back();
-		$location.path("new");
+		// $rootScope.hidecontent=true;
+		 window.history.back();
+		// $location.path("new");
 	}
 	$scope.upload = function(){
 	         fileChooser.open(function(uri) {
@@ -709,9 +718,9 @@ $scope.show1 = false;
 	 localStorage.setItem("backCount","3");
 	 $scope.goback=function()
 	{
-		$rootScope.hidecontent=true;
-		// window.history.back();
-		$location.path("new");
+		// $rootScope.hidecontent=true;
+		 window.history.back();
+		// $location.path("new");
 	}
 	$scope.upload = function(){
 	         fileChooser.open(function(uri) {
@@ -855,9 +864,9 @@ $scope.show1 = false;
   
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=true;
-		// window.history.back();
-		$location.path("/health");
+		// $rootScope.hidecontent=true;
+		 window.history.back();
+		// $location.path("/health");
 	}
 })
 
@@ -1049,9 +1058,9 @@ $scope.show1 = false;
 	
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=true;
-		// window.history.back();
-		$location.path("/health");
+		// $rootScope.hidecontent=true;
+		window.history.back();
+		// $location.path("/health");
 	}
 })
  
@@ -1232,9 +1241,9 @@ $scope.show1 = false;
 	
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=true;
-		// window.history.back();
-		$location.path("/make");
+		// $rootScope.hidecontent=true;
+		 window.history.back();
+		// $location.path("/make");
 	}
 	
 	
@@ -1401,9 +1410,9 @@ $scope.show1 = false;
 	
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=true;
-		// window.history.back();
-		$location.path("/make");
+		// $rootScope.hidecontent=true;
+		 window.history.back();
+		// $location.path("/make");
 	}
 	
 })
@@ -1418,9 +1427,9 @@ $scope.show1 = false;
 	
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=true;
-		// window.history.back();
-		$location.path("activity");
+		// $rootScope.hidecontent=true;
+		 window.history.back();
+		// $location.path("activity");
 	}
 	
 	
@@ -1815,13 +1824,10 @@ $scope.show1 = false;
 	}).error(function(err){
    
    
-  });
- 
-	
-	
+  });	
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
+		// $rootScope.hidecontent=false;
 		window.history.back();
 		//$location.path("/hsa")
 	}
@@ -1829,7 +1835,7 @@ $scope.show1 = false;
 	
 })
 
-.controller('AppCtrl', function($scope,$ionicPopup, $timeout ,$ionicModal,$location) {
+.controller('AppCtrl', function($scope,$ionicPopup, $timeout ,$ionicModal,$location,$cordovaDialogs) {
  $scope.exiqt = function() {
      var confirmPopup = $ionicPopup.confirm({
        title: 'Do you want to close',
@@ -1860,23 +1866,30 @@ $scope.exit=function()
 }
   
 $scope.toggleSomething = function(){
+	// event.stopPropagation();
   $scope.isVisible = !$scope.isVisible;
   console.log('make sure toggleSomething() is firing*');
 }
+
 $scope.toggleSomething1 = function(){
   $scope.isVisible1 = !$scope.isVisible1;
   console.log('make sure toggleSomething() is firing*');
 }
 
-$scope.Logout = function() {
-		$cordovaDialogs.confirm('Are You Sure', 'Do you Want to Logout', ['Yes','No'])
+ $scope.logOut=function()
+  {
+	
+	   $cordovaDialogs.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
 		.then(function(buttonIndex) {
-			if (buttonIndex=='1') {
+			if(buttonIndex=="1")
+			{
 				localStorage.clear();
-				$location.path("/login");
+				window.location='login.html#/login';
 			}
+		  
 		});
-	}; 
+	  
+  }
 	
 	
 	$scope.goback=function()
@@ -1885,6 +1898,29 @@ $scope.Logout = function() {
 		window.history.back();
 		//$location.path("/hsa")
 	}
+	 // $scope.openNav=function()
+  // {
+	  // document.getElementById("mySidenav").style.width = "250px";
+  // }
+  
+  // $scope.closeNav=function(event) {
+		// document.getElementById("mySidenav").style.width = "0";
+		 // event.stopPropagation(mySidenav);  
+	// }
+$scope.show1 = false;
+  $scope.show2 = false;
+  $scope.click1 = function($event) { 
+    $event.stopPropagation();
+    $scope.show1 = !$scope.show1;
+    $scope.show2 = false;
+      $ionicListDelegate.closeOptionButtons(); 
+	}
+	
+ 
+  $scope.hideAll = function() { 
+    $scope.show2 = false;
+    $scope.show1 = false;
+    $ionicListDelegate.closeOptionButtons(); }
 
 })
 

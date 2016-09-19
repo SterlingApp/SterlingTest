@@ -1,6 +1,6 @@
 
-<ion-view class="bgnew">
-	<ion-content  on-swipe-left="goForward()">
+
+	<ion-content style="background-color:#DEDEDE;" on-swipe-left="goForward()">
       
 		<div class="padding" >
 			<div class="list">
@@ -13,7 +13,7 @@
 						</div>
 						<div class="col">
 							<span class="readMore" style=""> 
-								{{account_type.BALANCE | currency}}
+								{{account_types.BALANCE | currency}}
 							</span>		
 						</div>
 					</div>
@@ -36,7 +36,7 @@
 				</a>
 				<span class="item  menu-height shadow item-avatar menupadding" >
 					<img src="img/home/Disbursements.svg" style="margin-top:32px;">
-					<a  ng-click="gomake()"><div class="home-head menu-head" >Make Disbursement</div></a>
+					<a  href="#make"><div class="home-head menu-head" ng-click="gomake()">Make Disbursement</div></a>
 					
 					<div class="row no-padding row-border" >
 						<div class="col colvertical" style="border-left-color:#000">
@@ -51,7 +51,7 @@
 				</span>
 				<span class="item menu-height shadow item-avatar menupadding" >
 					<img src="img/home/Last5contributions.svg" style="margin-top:32px;">
-					<a ng-click="goactivity()"><div class="home-head menu-head"> Recent Account Activity</div></a>
+					<a href="#/activity"ng-click="goactivity()"><div class="home-head menu-head"> Recent Account Activity</div></a>
 					
 					<div class="row no-padding row-border" >
 						<div class="col colvertical" style="border-left-color:#000">
@@ -65,7 +65,7 @@
 				</span>
 				<span class="item menu-height shadow item-avatar menupadding" >
 					<img src="img/home/Activity_statements.svg" style="margin-top:32px;">
-					<a ng-click="gohealth()"><div class="home-head menu-head"> Statements</div></a>
+					<a href="#/health"ng-click="gohealth()"><div class="home-head menu-head"> Statements</div></a>
 					
 					<div class="row no-padding row-border " >
 						<div class="col colvertical" style="border-left-color:#000">
@@ -79,11 +79,15 @@
 				</span>
 			</div>
 			
-			<p class="text-center">&copy; 2016 Sterling Administration. All Rights Reserved.</p>
-			<div style="height: 120px;"></div>
-			
+			<div style="height: 150px;"></div>
 		</div> 
       
 	</ion-content>
-</ion-view>
+	
+	
+	<!-- <ion-footer-bar class="footerborder">
+ 			<p class="text-center">&copy; 2016 Sterling Administration. All Rights Reserved.</p>
+			
+			</ion-footer-bar> -->
+
 

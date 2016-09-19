@@ -1,15 +1,97 @@
+	<style>
+.sidenav {
+    
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
 
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
 
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+<body ng-click="hideAll()">
 <ion-side-menus enable-menu-with-back-views="true"  >
-   <ion-side-menu-content >
-      <ion-nav-bar class="bar-transparent"  ng-controller="HeaderCtrl">
+   <ion-side-menu-content ]>
+      <!-- <ion-nav-bar class="bar-transparent"  ng-controller="HeaderCtrl">
          <ion-nav-buttons  side="left">
             <button class="button icon ion-navicon"  menu-toggle="left"></button>
          </ion-nav-buttons>
          <ion-nav-title style="" >
             <img src="img/logo.png" style="width:170px;background-color:#000" class="center">
          </ion-nav-title>
-      </ion-nav-bar >
+      </ion-nav-bar > -->
+	 <!--   <div ng-cloak ng-if="true" ng-hide="hidecontent" ng-controller="heading">  -->
+	 <div style="background-size: 100%; border-bottom:1px solid;" >
+					 <div  style=" background-color:#2980b9 ; height:130px;">
+						  <div class="row">
+						   <button class=" button-icon ion-navicon " style="color: white;font-size:50px;" menu-toggle="left"></button>
+							<h2 class="centerforhead" style="color:#fff; margin-top:22px;" >Sterling</h2>
+						
+						    <!--
+							
+							<a ng-click='openDev();'><button class="ion ion-android-more-vertical" ng-click="openNav();" style="border-radius: 50%; margin-top: 10px; height:40px;width: 40px; background-color:#496E9B; float:right"></button></a> -->
+						  
+						  <img src="img/new/dots1.png" ng-click="click1($event)" style="height:30px;margin-top:22px;float:right;">
+						
+						<div class="menu" ng-show="show1">
+                      <br>
+					<a href="#contact" style="color:#444;margin-left:15px;padding-top:20px;">Contact Us</a><br><br>
+				
+					
+					<a ng-click="logOut()" style=" color:#444;margin-left:15px;padding-top:20px;" >Logout</a>
+				
+				
+				</div> 
+						 </div>
+						
+				
+				
+					 </div>
+				</div>
+				
+				<!--  </div>  -->
+	  <ion-tabs class=" tabs-striped tabs-top tabs-custom tabs-background-stable tabs-color-dark ">
+					
+					
+							<ion-tab  class="bg" title="HSA"    href="#/app/hsa">
+								<ion-nav-view name="tab-hsa"></ion-nav-view>
+							</ion-tab>
+						
+							<ion-tab  class="bg" title="FSA"  href="#/app/fsa">
+								<ion-nav-view name="tab-fsa"></ion-nav-view>
+							</ion-tab>
+							<ion-tab  class="bg" title="CORBA" >
+								<ion-nav-view name="tab-menu"></ion-nav-view>
+							</ion-tab>
+			   </ion-tabs>
       
      <!--  <ion-footer-bar class="bar-light" ng-controller="FooterCtrl">
        
@@ -19,7 +101,7 @@
          
       </ion-footer-bar> -->
    
-      <ion-nav-view name="menuContent"></ion-nav-view>
+     
    </ion-side-menu-content>
    <ion-side-menu  side="left" ng-controller="HeaderCtrl">
       
@@ -33,84 +115,85 @@
          <ion-list class="custom">
              <ion-item menu-close href="#/app/portfolio">
                 <i class="icon ion-home"></i>
-               <span style="margin-left: 05px;">
+               <span class="menufont" style="margin-left: 05px;">
                Home 
                </span>
             </ion-item>
-              <ion-item  href="">
+              <ion-item >
            
              
-              <a href="" class="link" ng-click="toggleSomething()">             
+              <a href="" class="link menufont" ng-click="toggleSomething()">             
                  
                   <i class="icon ion-medkit"></i>
-                <span style="margin-left: 05px; ">Health Savings Account</span>
-                <span  class="item-icon-right"> <i side="left"  class="icon" ng-class="isVisible ? 'ion-chevron-right' : 'ion-chevron-down'""></i> </span>
+                <span style="margin-left: 05px; ">HSA</span>
+                <span  class="item-icon-right"> <i side="left"  class="icon" ng-class="isVisible ? 'ion-chevron-right' : 'ion-chevron-down'"></i> </span>
                      
                   
              
             </ion-item>
                <div  ng-show="isVisible"  class="list"  style="margin-left: 50px; margin-top: 20px;">
-            <a href="#app/account"  menu-close class="link">  
-              <i class="icon ion-person"></i>
+            <a href="#/accounts"  menu-close class="link menufont">  
+              <img src="img/home/us.svg" width="23"/>
             <span style="margin-left: 05px;" >Account information</span></a>
             </div>
 			<div  ng-show="isVisible"  class="list"  style="margin-left: 50px; margin-top: 20px;">
-				<a href="#app/contribution"  menu-close class="link">  <img src="img/make.png" width="18"/>
+				<a href="#/makecontribution"  menu-close class="link menufont">  <img src="img/home/Contributions2.svg" width="23"/>
 				<span style="margin-left: 05px;" >Make Contribution</span></a>
             </div>
 			<div  ng-show="isVisible"  class="list"  style="margin-left: 50px; margin-top: 20px;">
-            <a href="#app/make"  menu-close class="link">  <img src="img/diicon2.png" width="18"/>
+            <a href="#/make"  menu-close class="link menufont">  <img src="img/home/Disbursements.svg" width="23"/>
             <span  style="margin-left: 05px;" >Make Disbursement</span></a>
             </div>
                <div  ng-show="isVisible"  class="list"  style="margin-left: 50px; margin-top: 20px;">
-            <a href="#app/activity"  menu-close class="link">  <img src="img/active.png" width="18"/>
+            <a href="#/activity"  menu-close class="link menufont">  <img src="img/home/Last5contributions.svg" width="23"/>
             <span style="margin-left: 05px;">Recent Account Activity</span></a>
             </div>
                <div  ng-show="isVisible"  class="list"  style="margin-left: 50px; margin-top: 20px;">
-            <a href="#app/health"  menu-close class="link">  
-              <i class="icon ion-clipboard"></i>
-            <span style="margin-left:08px;">Statements</span></a>
+            <a href="#/health"  menu-close class="link menufont">  
+             <img src="img/home/Activity_statements.svg" width="23"/>
+            <span style="margin-left:08px;margin-top: 20px;">Statements</span></a>
             </div>
               <ion-item class="item-icon-right" href="">
-                  <a href="" class="link" ng-click="toggleSomething1()">
+                  <a href="" class="link menufont" ng-click="toggleSomething1()">
                     <img src="img/felx2.png" width="19" />
                     <span style="margin-left: 05px; ">
-                     Flexible Spending Account
+                     FSA
                     </span>
                       <span  class="item-icon-right">
-                  <i side="left"  class="icon" ng-class="isVisible1 ? 'ion-chevron-right' : 'ion-chevron-down'""></i>     
+                  <i side="left"  class="icon" ng-class="isVisible1 ? 'ion-chevron-right' : 'ion-chevron-down'"></i>     
                   </span>
              
             </ion-item>
-               <div  ng-show="isVisible1"  class="list"  style="margin-left: 54px; margin-top: 20px;">
-            <a href="#app/information"  menu-close class="link"> 
-              <i class="icon ion-information"></i>
-            <span style="margin-left:15px;">Account Information</span></a>
+			
+               <div  ng-show="isVisible1"  class="list"  style="margin-left: 50px; margin-top: 20px;">
+            <a href="#/information"  menu-close class="link menufont"> 
+               <img src="img/home/us.svg" width="23"/>
+            <span style="margin-left:05px;">Account Information</span></a>
             </div>
                 <div  ng-show="isVisible1"  class="list"  style="margin-left: 50px; margin-top: 20px;">
-            <a href="#app/availablebalance"  menu-close class="link">  <img src="img/balicon.png" width="18"/>
+            <a href="#/availablebalance"  menu-close class="link menufont">  <img src="img/home/Availabile_Balance.svg" width="23"/>
             <span style="margin-left:05px;">Available Balance</span></a>
             </div>
                 <div  ng-show="isVisible1"  class="list"  style="margin-left: 50px; margin-top: 20px;">
-            <a href="#app/recentcontribute"  menu-close class="link">  <img src="img/icon2.png" width="18"/>
+            <a href="#fsacontribution"  menu-close class="link menufont">  <img src="img/new/Last5contributions1.png" width="23"/>
             <span style="margin-left:05px;">Recent Account Activity</span></a>
             </div>
                  <div  ng-show="isVisible1"  class="list"  style="margin-left: 50px; margin-top: 20px;">
-            <a href="#app/new"  menu-close class="link">
-             <i class="icon ion-compose"></i>
+            <a href="#new"  menu-close class="link menufont">
+             	<img src="img/home/ad-client.svg" width="23"/>
             <span style="margin-left:05px;">New Claim Request</span></a>
             </div> 
                <ion-item menu-close href="#app/contact">
                  <i class="icon ion-at"></i>
                 <span style="margin-left: 05px; ">
-             Contact Us
+            <a href="#/contact" class="link menufont"> Contact Us</a>
                 </span>
                 
             </ion-item>
                  <ion-item menu-close href="" ng-click="Logout()">
                   <i class="icon ion-log-out"></i>
                 <span style="margin-left: 05px; ">
-             <a ng-click="Logout()">Logout</a> 
+             <a ng-click="LogOut()" class="link menufont">Logout</a> 
                </sapn>
             </ion-item>
               
@@ -121,4 +204,9 @@
       </ion-content>
    </ion-side-menu>
 </ion-side-menus>
+	 <ion-footer-bar class="menufooter" >
+ 			<p class="text-center">&copy; 2016 Sterling Administration. All Rights Reserved.</p>
+			
+			</ion-footer-bar>
 
+</body>

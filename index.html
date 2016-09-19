@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="starter">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -67,21 +67,35 @@
 </style>
 	</head>
 	
-	<body ng-app="starter">
+	<body ng-controller="heading" ng-click="hideAll()">
 	
 		<ion-pane >
 		
-			<div ng-cloak ng-if="true" ng-hide="hidecontent" ng-controller="heading">
+			<div ng-cloak ng-if="true" ng-hide="hidecontent"  >
 				<div style="background-size: 100%; border-bottom:1px solid;" >
 					 <div  style=" background-color:#2980b9 ; height:130px;">
 						  <div class="row">
 							<h2 class="centerforhead" style="color:#fff; margin-top:22px;" >Sterling</h2>
-						  
+						
 						    <!--
 							
 							<a ng-click='openDev();'><button class="ion ion-android-more-vertical" ng-click="openNav();" style="border-radius: 50%; margin-top: 10px; height:40px;width: 40px; background-color:#496E9B; float:right"></button></a> -->
-						  <img src="img/new/dots1.png" ng-click='openNav();' style="height:30px;margin-top:22px;float:right;">
-						  </div>
+						  
+						  <img src="img/new/dots1.png" ng-click="click1($event)" style="height:30px;margin-top:22px;float:right;">
+						
+						<div class="menu" ng-show="show1">
+                      <br>
+					<a href="#contact" style="color:#444;margin-left:15px;padding-top:20px;">Contact Us</a><br><br>
+				
+					
+					<a ng-click="logOut()" style=" color:#444;margin-left:15px;padding-top:20px;" >Logout</a>
+				
+				
+				</div> 
+						 </div>
+						
+				
+				
 					 </div>
 				</div>
 				<ion-tabs class=" tabs-striped tabs-top tabs-custom tabs-background-stable tabs-color-dark ">
@@ -109,12 +123,16 @@
 						<img src="img/new/fsa.svg" class="centerforhead"  style="border-radius: 50%; height:60px;width: 60px;">
 					</div>
 				</div> -->
-				<div id="mySidenav" class="sidenav">
-					<a href="javascript:void(0)" class="closebtn" ng-click="closeNav();">&times;</a>
+				<!-- <div id="mySidenav" class="sidenav" >
+					<a href="javascript:void(0)"   class="closebtn" ng-click="closeNav();">&times;</a>
 					<a href="#contact" onclick='document.getElementById("mySidenav").style.width = "0";'>Contact Us</a>
 					<a ng-click="logOut()" style="margin-bottom:8px;" onclick='document.getElementById("mySidenav").style.width = "0";'>Logout</a>
-				</div>
 				
+				</div> -->
+				 
+				
+        </div>
+		
 			<ion-footer-bar align-title="right" class="footer hide" >
  
              <p class="footertext">© 2016 Sterling Administration. All Rights Reserved.</p>
@@ -129,6 +147,16 @@
 		
 		
 	</body>
+	<!-- <script>
+	var element = angular.element(document.querySelector('#content')); 
+   
+$ionicGesture.on('tap', function(e){
+  $scope.$apply(function() {
+    console.log('Tap');
+    $scope.gesture.used = 'Tap';
+  })    
+}, element);
+</script> -->
 	<!-- <script src="js/jquery/dist/jquery.min.js"></script> -->
 	<!-- <script>
 		$(document).ready(function(){

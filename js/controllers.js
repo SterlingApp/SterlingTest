@@ -237,7 +237,7 @@ angular.module('starter.controllers', [])
 	
 })
 
-.controller('heading', function($scope,$location,$rootScope,$stateParams, $cordovaDialogs, Chats) {
+.controller('heading', function($scope,$location,$rootScope,$stateParams, $cordovaDialogs, Chats, $ionicListDelegate) {
 	
   var i=0;
   $rootScope.hidecontent=false;
@@ -247,14 +247,33 @@ angular.module('starter.controllers', [])
   $scope.fsa="#6CA0DA";
   $scope.showingMenu=false;
   
-  $scope.openNav=function()
-  {
-	  document.getElementById("mySidenav").style.width = "250px";
-  }
-  
-  $scope.closeNav=function() {
-		document.getElementById("mySidenav").style.width = "0";
+ 
+$scope.show1 = false;
+  $scope.show2 = false;
+  $scope.click1 = function($event) { 
+    $event.stopPropagation();
+    $scope.show1 = !$scope.show1;
+    $scope.show2 = false;
+      $ionicListDelegate.closeOptionButtons(); 
 	}
+	
+ 
+  $scope.hideAll = function() { 
+    $scope.show2 = false;
+    $scope.show1 = false;
+    $ionicListDelegate.closeOptionButtons(); }
+
+
+
+ // $scope.openNav=function()
+  // {
+	  // document.getElementById("mySidenav").style.width = "250px";
+	  
+  // }
+  
+   // $scope.closeNav=function() {
+		  // document.getElementById("mySidenav").style.width = "0";
+	  // }
 
   $scope.changecolor1=function()
   {
@@ -301,6 +320,24 @@ angular.module('starter.controllers', [])
 		});
 	  
   }
+  
+   // $scope.gesture = {
+    // used: ''
+  // };  
+ 
+  // $scope.onGesture = function(gesture) {
+    // $scope.gesture.used = gesture;
+    // console.log(gesture);
+  // }
+ 
+  // var element = angular.element(document.querySelector('#content')); 
+   
+  // $ionicGesture.on('tap', function(e){
+    // $scope.$apply(function() {
+      // console.log('Tap');
+      // $scope.gesture.used = 'Tap';
+    // })    
+  // }, element);
 
 })
 .controller('PortfolioCtrl', function($rootScope,$scope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
@@ -834,7 +871,7 @@ angular.module('starter.controllers', [])
 	 
 	$scope.summary= $rootScope.summary_list;
 	 $scope.activity=$rootScope.activity_list;
-	 //alert(JSON.stringify( $scope.activity));
+	 alert(JSON.stringify( $scope.activity));
 	
 	
 	$scope.goback=function()
@@ -907,8 +944,8 @@ angular.module('starter.controllers', [])
 		
 		
 	}).error(function(err){
-   //alert(JSON.stringify(err));
-  });
+			alert(JSON.stringify(err));
+		});
 		}
 		
 		
@@ -983,27 +1020,27 @@ angular.module('starter.controllers', [])
 			})
 		
 	};
-	$scope.pick=function(){
-		// var data=$scope.activity;
-		if($scope.activity.EndtDate==""|| $scope.activity.startDate==""){
-			alert('Please select date');
-		}else{
+	// $scope.pick=function(){
+		// // var data=$scope.activity;
+		// if($scope.activity.EndtDate==""|| $scope.activity.startDate==""){
+			// alert('Please select date');
+		// }else{
 			
-				$http.post('  http://app.sterlinghsa.com/api/v1/accounts/activitystatement',{'fromdate':$scope.activity.startDate,'todate':$scope.activity.EndtDate, 'account':$rootScope.hsaaccno },{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
-				.success(function(data){
+				// $http.post('  http://app.sterlinghsa.com/api/v1/accounts/activitystatement',{'fromdate':$scope.activity.startDate,'todate':$scope.activity.EndtDate, 'account':$rootScope.hsaaccno },{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+				// .success(function(data){
 					
-					//alert(JSON.stringify(data));
-					$scope.activityStatement=data;
-					//$scope.categories=data.categories;
-				}).error(function(err){
-			   //alert(JSON.stringify(err));
-			  });
-			  $location.path("hsastatement");
+					// //alert(JSON.stringify(data));
+					// $scope.activityStatement=data;
+					// //$scope.categories=data.categories;
+				// }).error(function(err){
+			   // //alert(JSON.stringify(err));
+			  // });
+			  // $location.path("hsastatement");
 			
-		}
+		// }
 		
 		
-	};
+	// };
 
 	
 	

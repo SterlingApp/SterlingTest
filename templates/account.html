@@ -1,66 +1,65 @@
 <ion-header-bar class="headerborder" >
-	
 	<div class="home-head2 ">
 		<i ng-click="goback();" class="ion ion-arrow-left-c"></i>
     </div>
     <div class="home-head2">
 		<p ng-click="goback();" style="margin-top:3px;margin-left:20px">Account Information</p>
-	</div> 
+	</div>
 </ion-header-bar>
-<style>
-.bgnew{
-background-color:#DEDEDE !important;
-}
-</style>
 <ion-view>
-
-     		
-    <ion-content scroll="false" class="bgnew">
-
-		<div class=" headerborder">
-			<div  style="margin-left:20px; padding-top:32px; padding-bottom:03px;">
-				<p><span class="lineHead1 cardContent">Account number</span><br><span class="lineValueText1 cardContent">{{account_information.ACC_NUM}}</span></p>
-				<p><span class="lineHead1 cardContent">Plan</span><br><span class="lineValueText1 cardContent">{{account_information.PLAN_NAME}}</span></p>
-				<p><span class="lineHead1 cardContent">HSA effective date</span><br><span class="lineValueText1 cardContent">{{account_information.EFFECTIVE_DATE}}</span></p>
-				<p><span class="lineHead1 cardContent">Account balance</span><br><span class="lineValueText1 cardContent">{{account_information.ACCT_BALANCE}}</span></p>
-				
+    <ion-content class="bgnew">
+		<div class="card">
+			<div class="item item-avatar">
+				<img src="img/item/Account-number.png">
+				<div class="ItemlineHead cardContent">Account number</div>
+				<div class="ItemlineValueText cardContent">{{account_information.ACC_NUM}}</div>
+			</div>
+			<div class="item item-avatar">
+				<img src="img/item/plan.png">
+				<div class="ItemlineHead cardContent">Plan</div>
+				<div class="ItemlineValueText cardContent">{{account_information.PLAN_NAME}}</div>
+			</div>
+			<div class="item item-avatar">
+				<img src="img/item/dateicon.png">
+				<div class="ItemlineHead cardContent">HSA effective date</div>
+				<div class="ItemlineValueText cardContent">{{account_information.EFFECTIVE_DATE}}</div>
+			</div>
+			<div class="item item-avatar">
+				<img src="img/item/account_balance.png">
+				<div class="ItemlineHead cardContent">Account balance</div>
+				<div class="ItemlineValueText cardContent">{{account_information.ACCT_BALANCE | currency}}</div>
 			</div>
 		</div>
-		
-		
-		<!-- <div class="subtitle">
-			<p class="HeadLine">Total Contributions</p>
-		</div> -->
-		
 		<div class="card">
 			<div class="item">
-				<span class="HeadLine">Total Contributions</span>
+				<span class="ItemHeadLine">Total Contributions</span>
 			</div>
-			<div class="item item-body">
-				<p><span class="lineHead cardContent">Total contributions for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.CONTRB_LIMIT}}</span></p>
-				<p><span class="lineHead cardContent">Allowable contributions remaining for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.CURRENT_YR_CONTRB}}</span></p>
-				<p><span class="lineHead cardContent">HSA effective date</span><br><span class="lineValueText cardContent">{{total_contributions.EFFECTIVE_DATE}}</span></p>
-				<p><span class="lineHead cardContent">Total disbursement for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.TOTAL_DISB_AMOUNT}}</span></p>
+			<div class="item item-avatar ItemLinehr">
+				<img src="img/item/Total-contribution.png">
+				<div class="ItemlineHead cardContent">Total contributions for 2016</div>
+				<div class="ItemlineValueText cardContent">{{total_contributions.CONTRB_LIMIT | currency}}</div>
+			</div>
+			<div class="item item-avatar">
+				<img src="img/item/Allowable-contributions.png">
+				<div class="ItemlineHead cardContent">Allowable contributions remaining for 2016</div>
+				<div class="ItemlineValueText cardContent">{{total_contributions.CURRENT_YR_CONTRB | currency}}</div>
+			</div>
+			<div class="item item-avatar">
+				<img src="img/item/dateicon.png">
+				<div class="ItemlineHead cardContent">HSA effective date</div>
+				<div class="ItemlineValueText cardContent">{{total_contributions.EFFECTIVE_DATE}}</div>
+			</div>
+			<div class="item item-avatar">
+				<img src="img/item/Total-disburesment.png">
+				<div class="ItemlineHead cardContent">Total disbursement for 2016</div>
+				<div class="ItemlineValueText cardContent">{{total_contributions.TOTAL_DISB_AMOUNT | currency}}</div>
 			</div>
 		</div>
-		
-		<!-- <div class="card card_margin cardshadow">
-			<div class="item">
-			  Total Contributions
-		   </div>
-			<div class="accountsubcontent item item-text-wrap" >
-				<p><span class="lineHead cardContent">Total contributions for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.CONTRB_LIMIT}}</span></p>
-				<p><span class="lineHead cardContent">Allowable contributions remaining for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.CURRENT_YR_CONTRB}}</span></p>
-				<p><span class="lineHead cardContent">HSA effective date</span><br><span class="lineValueText cardContent">{{total_contributions.EFFECTIVE_DATE}}</span></p>
-				<p><span class="lineHead cardContent">Total disbursement for 2016</span><br><span class="lineValueText cardContent">${{total_contributions.TOTAL_DISB_AMOUNT}}</span></p>
-			</div>
-		</div> -->
-		
   </ion-content>
   </ion-view>
   <ion-footer-bar  class="footerborder" >
  
-        <p class=" footertext"> &copy Sterling Administration.All Rights Reserved.</p>
+        <p class=" footertext item-center"> &copy Sterling Administration.All Rights Reserved.</p>
   
  </ion-footer-bar>
   

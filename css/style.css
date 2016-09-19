@@ -49,7 +49,7 @@ margin-left:50px;
 }
 .content-head{
 	font-size:18px;
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 	color: #8f8f8f;
 }
 .coli{
@@ -63,7 +63,7 @@ margin-left:50px;
     display: block;
 }
 .contactfont{
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 	font-size: 16px;	
 }
 .cardshadow{
@@ -97,20 +97,19 @@ margin-left:50px;
 }
 .footerborder
 {
-	border-top-width:2px;
-	border-top-color:#454b4e;
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 	font-size: 15px;
+	background-color:#E67E22;
 	
 }
 .footerborder .title {
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 }
 .footertext{
 	margin-left:11px;
 }
 .footer{
-	background-color:#DEDEDE;
+	background-color:#F4851F;
 	
 }
 a{
@@ -119,7 +118,7 @@ a{
 
 .home-head {
 	font-size:20px;
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 	/*color: #D55D09;*/
 	color:#000;
 	 padding-top: 3px;
@@ -129,14 +128,14 @@ a{
 {
 	
 	font-size:14px;
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 	color: #454b4e;
 }
 .HeadLine{
 	/*color:#00aff0;*/
 	/*color:#077db4;*/
 	color:#000;
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 	font-size:18px;
 	
 }
@@ -229,7 +228,7 @@ a{
 	border-bottom: thin solid #00aff0;
 	/*color:#00aff0;*/
 	color:#077db4;
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 	font-size:18px;
 	width: 95%;
 	margin-top: -10px;
@@ -241,7 +240,7 @@ a{
 	/*color:#00aff0;*/
 	/*color:#077db4;*/
 	color:#868686;
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 	font-size: 16px;
 	padding-top: 0px;
 }
@@ -249,7 +248,7 @@ a{
 .lineHead{
 	/*color:#D55D09;*/
 	color:#000;
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 	font-size: 20px;
 	padding-top: 4px;
 }
@@ -285,7 +284,7 @@ a{
 
 .sub-head {
 	font-size:20px;
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 	color: #00aff0;
 }
 .shadow {
@@ -356,7 +355,7 @@ margin-left:20px;
 }
 .lineHead1{
 	color:#fff;
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 	font-size: 18px;
 	padding-top: 6px;
 }
@@ -364,13 +363,13 @@ margin-left:20px;
 .lineValueText1{
 	/*color:#00aff0;*/
 	color:#fff;
-	/*font-family: 'Helvetica Neue';*/
+	/*font-family: 'SEGOEUIL';*/
 	font-size: 16px;
 	padding-top: 3px;
 }
 .home-head2 {
 	font-size:20px;
-	font-family: 'Helvetica Neue';
+	font-family: 'SEGOEUIL';
 	/*color: #D55D09;*/
 	color:#fff;
 	 padding-top: 3px;
@@ -431,6 +430,46 @@ margin-left:20px;
 	z-index: 1;
 	font-size:20px;
 	
+}
+.linehr{
+	border-bottom: thin solid #e0e0e0;
+	width: 100%;
+	margin-top: -10px;
+}
+.ItemHeadLine{
+	color:#F4851F;
+	font-family: 'Avenir Next LT Pro';
+	font-weight: normal;
+	font-style: normal;
+	font-size:27px;
+	
+}
+.ItemLinehr{
+	border-color:#F4851F;
+}
+
+.ItemlineHead{
+	color:#C0BDBD;
+	font-family: 'Avenir Next LT Pro';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 18px;
+	padding-top: 0px;
+}
+
+.ItemlineValueText{
+	color:#566571;
+	font-family: 'Avenir Next LT Pro';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 22px;
+	padding-top: 4px;
+}
+.bgnew{
+	background-color:#F7F7F7 !important;
+}
+.item-avatar > img:first-child{
+    border-radius: 0% !important;
 }
 
 

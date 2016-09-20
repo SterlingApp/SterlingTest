@@ -1,10 +1,13 @@
 <ion-header-bar class="headerborder" >
-	<div class="home-head2 ">
-		<i ng-click="goback();" class="ion ion-arrow-left-c"></i>
+	
+	<div class=" home-head2 " ng-click="goback();">
+		<i class="ion ion-arrow-left-c"></i>
     </div>
     <div class="home-head2">
-		<p ng-click="goback();" style="margin-top:3px;margin-left:20px">Account Information</p>
+		<p  style="margin-top:3px;margin-left:20px">Account Information</p>
 	</div>
+	
+	
 </ion-header-bar>
 <ion-view>
     <ion-content class="bgnew">
@@ -37,18 +40,18 @@
 			<div class="item item-avatar ItemLinehr">
 				<img src="img/item/Total-contribution.png">
 				<div class="ItemlineHead cardContent">Total contributions for 2016</div>
-				<div class="ItemlineValueText cardContent">{{total_contributions.CONTRB_LIMIT | currency}}</div>
+				<div class="ItemlineValueText cardContent">{{total_contributions.CURRENT_YR_CONTRB| currency}}</div>
 			</div>
 			<div class="item item-avatar">
 				<img src="img/item/Allowable-contributions.png">
 				<div class="ItemlineHead cardContent">Allowable contributions remaining for 2016</div>
-				<div class="ItemlineValueText cardContent">{{total_contributions.CURRENT_YR_CONTRB | currency}}</div>
+				<div class="ItemlineValueText cardContent">{{total_contributions.CONTRB_LIMIT  | currency}}</div>
 			</div>
-			<div class="item item-avatar">
+			<!-- <div class="item item-avatar">
 				<img src="img/item/dateicon.png">
 				<div class="ItemlineHead cardContent">HSA effective date</div>
 				<div class="ItemlineValueText cardContent">{{total_contributions.EFFECTIVE_DATE}}</div>
-			</div>
+			</div> -->
 			<div class="item item-avatar">
 				<img src="img/item/Total-disburesment.png">
 				<div class="ItemlineHead cardContent">Total disbursement for 2016</div>
@@ -59,7 +62,7 @@
   </ion-view>
   <ion-footer-bar  class="footerborder" >
  
-        <p class=" footertext item-center"> &copy Sterling Administration.All Rights Reserved.</p>
+        <p class=" footertext "> &copy Sterling Administration.All Rights Reserved.</p>
   
  </ion-footer-bar>
   

@@ -115,7 +115,11 @@ margin-left:50px;
 	font-family: 'SEGOEUIL';
 }
 .footertext{
-	margin-left:11px;
+	/* margin-left:11px; */
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	color:#fff;
 }
 .footer{
 	background-color:#F4851F;
@@ -473,6 +477,8 @@ margin-left:20px;
 	font-style: normal;
 	font-size: 18px;
 	padding-top: 5px;
+	line-height:4px;
+	
 }
 
 .ItemlineValueText{
@@ -481,7 +487,8 @@ margin-left:20px;
 	font-weight: normal;
 	font-style: normal;
 	font-size: 22px;
-	padding-top: 4px;
+	padding-top: 20px;
+	
 }
 .bgnew{
 	background-color:#F7F7F7 !important;

@@ -10,11 +10,28 @@
 </ion-header-bar>
 <ion-view >
 	<ion-content>
+	<div class="card" ng-repeat="data in transcation_list">
+			<div class="item">
+				<span class="ItemHeadLine">Fee Date: {{data.FEE_DATE}}</span>
+			</div>
+			<div class="item item-avatar ItemLinehr">
+				<img src="img/item/Total-contribution.png">
+				<div class="ItemlineHead cardContent">Fee name</div>
+				<div class="ItemlineValueText cardContent">{{data.FEE_NAME}}</div>
+			</div>
+			
+			<div class="item item-avatar">
+				<img src="img/item/account_balance.png">
+				<div class="ItemlineHead cardContent">Amount</div>
+				<div class="ItemlineValueText cardContent">{{data.AMOUNT}}</div>
+			</div>
+			
+  </div>
 	
-	     <div class="div1" ng-repeat="data in transcation_list">
+	     <!-- <div class="div1" ng-repeat="data in transcation_list">
 		 <div style="margin-left:20px; margin-top:32px">
 			<p class="HeadLine">Fee Date: {{data.FEE_DATE}}</p>
-			<!-- <p class="lineBreak"></p> -->
+			
 		</div>
 		
 		<div class="card card_margin cardshadow">
@@ -23,7 +40,7 @@
 			<p><span class="lineHead cardContent">Amount</span><br><span class="lineValueText cardContent">{{data.AMOUNT}}</span></p>
 		</div>
 		</div>
-		</div>
+		</div> -->
 		<div style="height: 10px;"></div>
 	
 		

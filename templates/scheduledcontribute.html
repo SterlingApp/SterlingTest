@@ -30,24 +30,47 @@
     </style>
     </head>
     <ion-content>
-	      <div class="div1 " ng-repeat="data in schedule_list">   
+	<div class="card" ng-repeat="data in schedule_list">
+			<div class="item">
+				<span class="ItemHeadLine">Transaction Date: {{data.TXN_DATE}}</span>
+			</div>
+			<div class="item item-avatar ItemLinehr">
+				<img src="img/item/Total-contribution.png">
+				<div class="ItemlineHead cardContent">Transaction Id</div>
+				<div class="ItemlineValueText cardContent">{{data.TXN_ID}}</div>
+			</div>
+			
+			<div class="item item-avatar">
+				<img src="img/item/account_balance.png">
+				<div class="ItemlineHead cardContent">Amount</div>
+				<div class="ItemlineValueText cardContent">{{data.AMOUNT}}</div>
+			</div>
+			<div class="item item-avatar">
+				<img src="img/item/Total-disburesment.png">
+				<div class="ItemlineHead cardContent">Status</div>
+				<div class="ItemlineValueText cardContent">{{data.STATUS}}</div>
+			</div>
+  </div>
+	     <!--  <div class="div1 " ng-repeat="data in schedule_list">   
 		  <div class="accountcontent">
 			<p class="HeadLine">Transaction Date: {{data.TXN_DATE}}</p>
-			<!-- <p class="lineBreak"></p> -->
+		
 	    </div>
 		
 		
-		<div class="subtitle">
-	  </div>
+		
 		  
 		  <div class="card card_margin cardshadow">
 		  <div class="accountsubcontent">
+		  <div class="item">
+				<span class="ItemHeadLine">Total Contributions</span>
+			</div>
 			<p><span class="lineHead cardContent">Transaction Id</span><br><span class="lineValueText cardContent">{{data.TXN_ID}}</span></p>
 			<p><span class="lineHead cardContent">Amount</span><br><span class="lineValueText cardContent">{{data.AMOUNT}}</span></p>
 			<p><span class="lineHead cardContent">Status</span><br><span class="lineValueText cardContent">{{data.STATUS}}</span></p>
 		  </div>
 		  </div>
-		  </div>
+		  </div> -->
 		<div style="height: 10px;"></div>
     </ion-content>
 </ion-view>

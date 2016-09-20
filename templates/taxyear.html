@@ -10,11 +10,69 @@
 	</div>
 </ion-header-bar>
 <ion-view >
-	<ion-content scroll="false">
-	 <div ng-repeat="data in tax_statement_list">
+	<ion-content >
+	<div class="card" ng-repeat="data in tax_statement_list">
+			<div class="item">
+				<span class="ItemHeadLine">Contributions</span>
+			</div>
+			<div class="item item-avatar ItemLinehr">
+				<img src="img/item/Total-contribution.png">
+				<div class="ItemlineHead cardContent">Contributions Made in 2015 for </div>
+				<div class="ItemlineValueText cardContent">{{data.TAX_YEAR}}</div>
+			</div>
+			
+			<div class="item item-avatar">
+				<img src="img/item/Total-disburesment.png">
+				<div class="ItemlineHead cardContent">Contributions Made in 2015 for </div>
+				<div class="ItemlineValueText cardContent">{{data.PREV_TAX_YEAR}}</div>
+			</div>
+			
+  </div>
+  <div class="card" ng-repeat="data in tax_statement_list">
+			<div class="item">
+				<span class="ItemHeadLine">Disbursements/Distributions</span>
+			</div>
+			<div class="item item-avatar ItemLinehr">
+				<img src="img/item/Total-contribution.png">
+				<div class="ItemlineHead cardContent">Disbursements/Distributions </div>
+				<div class="ItemlineValueText cardContent">{{data.DISB}}</div>
+			</div>
+			
+			
+  </div>
+  <div class="card" ng-repeat="data in tax_statement_list">
+			<div class="item">
+				<span class="ItemHeadLine">Interest Paid</span>
+			</div>
+			<div class="item item-avatar ItemLinehr">
+				<img src="img/item/Total-contribution.png">
+				<div class="ItemlineHead cardContent">Disbursements/Distributions </div>
+				<div class="ItemlineValueText cardContent">{{data.INT}}</div>
+			</div>
+			
+			
+  </div>
+   <div class="card" >
+			<div class="item">
+				<span class="ItemHeadLine">Tax Statements</span>
+			</div>
+			<div class="item item-avatar ItemLinehr">
+				<img src="img/item/Total-contribution.png">
+				<div class="ItemlineHead cardContent">1.Form 1099-SA</div>
+				<div class="ItemlineValueText cardContent">Download</div>
+			</div>
+			<div class="item item-avatar ">
+				<img src="img/item/Total-contribution.png">
+				<div class="ItemlineHead cardContent">2.Form 5498-SA</div>
+				<div class="ItemlineValueText cardContent">Download</div>
+			</div>
+			
+			
+  </div>
+	 <!-- <div ng-repeat="data in tax_statement_list">
 		<div style="margin-left:20px; margin-top:32px">
 			<p class="HeadLine">Contributions</p>
-			<!-- <p class="lineBreak"></p> -->
+			
 		</div>
 		
 		<div class="card card_margin cardshadow">
@@ -25,7 +83,7 @@
 		</div>
 		<div class="subtitle">
 			<p class="HeadLine">Disbursements/Distributions</p>
-			<!-- <p class="lineBreak"></p> -->
+			
 		</div>
 		
 		<div class="card card_margin cardshadow">
@@ -35,7 +93,7 @@
 		</div>
 		<div class="subtitle">
 			<p class="HeadLine">Interest Paid</p>
-			<!-- <p class="lineBreak"></p> -->
+		
 		</div>
 		
 		<div class="card card_margin cardshadow ">
@@ -45,7 +103,7 @@
 		</div>
 		<div class="subtitle">
 			<p class="HeadLine">Tax Statements</p>
-			<!-- <p class="lineBreak"></p> -->
+			
 		</div>
 		
 		<div class="card card_margin cardshadow">
@@ -54,6 +112,7 @@
 			<p><span class="lineHead cardContent">2.Form 5498-SA</span><br><span class="lineValueText cardContent">Download</span></p>
 		</div>
 		</div>
+		</div> -->
 		
 		
     </ion-content>

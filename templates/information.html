@@ -10,11 +10,28 @@
 </ion-header-bar>
 
 <ion-view>
+
     <ion-content scroll="false">
+	<div class="card" >
+			<!-- <div class="item">
+				<span class="ItemHeadLine">Fee Date: {{data.FEE_DATE}}</span>
+			</div> -->
+			<div class="item item-avatar ">
+				<img src="img/item/dateicon.png">
+				<div class="ItemlineHead cardContent">FAS Effective Date</div>
+				<div class="ItemlineValueText cardContent">{{accnumber.EFFECTIVE_DATE}}</div>
+			</div>
+			
+			<div class="item item-avatar">
+				<img src="img/item/Account-number.png">
+				<div class="ItemlineHead cardContent">Account Number</div>
+				<div class="ItemlineValueText cardContent">{{accnumber.ACC_NUM}}</div>
+			</div>
+			
+  </div>
 	
-	<div class="accountcontent">
-		<!-- <p class="HeadLine">Contributions</p>
-		<p class="lineBreak"></p> -->
+	<!-- <div class="accountcontent">
+		
 	</div>
 	
 	<div class="card card_margin cardshadow">
@@ -22,7 +39,7 @@
 		<p><span class="lineHead cardContent">FAS Effective Date</span><br><span class="lineValueText cardContent">{{accnumber.EFFECTIVE_DATE}}</span></p>
 		<p><span class="lineHead cardContent">Account Number</span><br><span class="lineValueText cardContent">{{accnumber.ACC_NUM}}</span></p>
 	</div>
-	</div>
+	</div> -->
     
   </ion-content>
 </ion-view>

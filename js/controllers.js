@@ -179,8 +179,13 @@ angular.module('starter.controllers', [])
          $rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
 		      }).error(function(err){
          $ionicLoading.hide();
-         $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-         .then(function() {
+        $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
         });
           return false;
    
@@ -229,18 +234,23 @@ angular.module('starter.controllers', [])
 		$rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
 		$rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
 	}).error(function(err){
-      // $ionicLoading.hide();
-      // $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-      // .then(function() {
-      // });
-      // return false;
+       $ionicLoading.hide();
+     $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
+      });
+      return false;
    
   });
  }
 	
 })
 
-.controller('heading', function($scope,$location,$rootScope,$stateParams, $cordovaDialogs, Chats, $ionicListDelegate) {
+.controller('heading', function($scope,$location,$rootScope,$stateParams, $cordovaDialogs, Chats) {
 	
   var i=0;
   $rootScope.hidecontent=false;
@@ -252,17 +262,17 @@ angular.module('starter.controllers', [])
   
  
 $scope.show1 = false;
-  $scope.show2 = false;
+  // $scope.show2 = false;
   $scope.click1 = function($event) { 
     $event.stopPropagation();
     $scope.show1 = !$scope.show1;
-    $scope.show2 = false;
-      $ionicListDelegate.closeOptionButtons(); 
+    // $scope.show2 = false;
+      // $ionicListDelegate.closeOptionButtons(); 
 	}
 	
  
   $scope.hideAll = function() { 
-    $scope.show2 = false;
+    // $scope.show2 = false;
     $scope.show1 = false;
     $ionicListDelegate.closeOptionButtons(); }
 
@@ -410,8 +420,13 @@ $scope.show1 = false;
 			$scope.available_balances = data.available_balances;
 	 }).error(function(err){
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
+   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
    
@@ -444,8 +459,13 @@ $scope.show1 = false;
 				$scope.accnumber=data.account_information;
 	 }).error(function(err){
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
+   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
    
@@ -534,8 +554,13 @@ $scope.show1 = false;
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
+   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
  }else{
@@ -618,14 +643,19 @@ $scope.show1 = false;
    localStorage.setItem('total_contributions',data.total_contributions);
    $scope.account_information=data.account_information;
    //$scope.total_contributions = localStorage.getItem('total_contributions');
-   $scope.total_contributions = data.total_contributions;
+   $rootScope.total_contributions = data.total_contributions;
    //alert(JSON.stringify(data.account_information));
    
   }).error(function(err){
 	  // alert(JSON.stringify(err));
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
    
@@ -839,8 +869,13 @@ $scope.show1 = false;
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
  }else{
@@ -1177,8 +1212,13 @@ $scope.show1 = false;
    
   }).error(function(err){
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
    
@@ -1320,8 +1360,13 @@ $scope.show1 = false;
 	if($cordovaNetwork.isOffline())
 	{
 	   $ionicLoading.hide();
-	   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-	   .then(function() {
+	   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
 	   });
 	   return false;
 	}else{
@@ -1332,8 +1377,13 @@ $scope.show1 = false;
 			$scope.bank_details=data.bank_details;
 		}).error(function(err){
 	   $ionicLoading.hide();
-	   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-	   .then(function() {
+	  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
 	   });
 	   return false;
 	   
@@ -1446,8 +1496,13 @@ $scope.show1 = false;
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
  }else{
@@ -1484,8 +1539,13 @@ $scope.show1 = false;
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
  }else{
@@ -1497,8 +1557,13 @@ $scope.show1 = false;
 		//alert(JSON.stringify($scope.schedule_list));
 	}).error(function(err){
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
    
@@ -1523,8 +1588,13 @@ $scope.show1 = false;
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
  }else{
@@ -1536,8 +1606,13 @@ $scope.show1 = false;
 		//alert(JSON.stringify($scope.transcation_list));
 	}).error(function(err){
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
+   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
    
@@ -1563,8 +1638,13 @@ $scope.show1 = false;
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
+   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
  }else{
@@ -1576,8 +1656,13 @@ $scope.show1 = false;
 		//alert(JSON.stringify($scope.transcation_list));
 	}).error(function(err){
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
    
@@ -1602,8 +1687,13 @@ $scope.show1 = false;
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
  }else{
@@ -1615,8 +1705,13 @@ $scope.show1 = false;
 		//alert(JSON.stringify($scope.transcation_list));
 	}).error(function(err){
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
+   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
    
@@ -1658,8 +1753,13 @@ $scope.show1 = false;
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
  }else{
@@ -1671,8 +1771,13 @@ $scope.show1 = false;
 		//alert(JSON.stringify($scope.transcation_list));
 	}).error(function(err){
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
+   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
    
@@ -1699,8 +1804,13 @@ $scope.show1 = false;
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
+   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
  }else{
@@ -1712,8 +1822,13 @@ $scope.show1 = false;
 		//alert(JSON.stringify($scope.transcation_list));
 	}).error(function(err){
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
+   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
    
@@ -1773,8 +1888,13 @@ $scope.show1 = false;
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
+   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
  }else{
@@ -1786,8 +1906,13 @@ $scope.show1 = false;
 		$scope.bank_details=data.bank_details;
 	}).error(function(err){
    $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
+   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
    

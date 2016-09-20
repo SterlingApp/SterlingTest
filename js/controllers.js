@@ -455,8 +455,8 @@ $scope.show1 = false;
 	$scope.goback=function()
 	{
 		// $rootScope.hidecontent=false;
-		// window.history.back();
-		$location.path("#/app/fsa");
+		 window.history.back();
+		// $location.path("#/app/fsa");
 	}
 
 })

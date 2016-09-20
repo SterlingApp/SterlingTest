@@ -8,7 +8,7 @@
 	</div>
 </ion-header-bar>
 <ion-view>
-  <ion-content >
+  <ion-content class="bgnew">
   
   <ion-scroll >
      <!--  <div class=" headerborder">
@@ -25,19 +25,26 @@
 	<div class="col col-75 center">
 		 
      
-      <div class="card cardshadow headerborder">
+     <!--  <div class="card cardshadow headerborder">
         <p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">$1,084.70</span></p>
 	  </div>
+       -->
+     <div class="card">
       
-     
+	          <div class="item item-avatar">
+				<img src="img/item/account_balance.png">
+				<div class="ItemlineHead cardContent">Account balance</div>
+				<div class="ItemlineValueText cardContent">{{availablebalance | currency}}</div>
+		        </div>
+	 </div>
         
           
             <div class="list">
-            <label class="item item-input item-select formselect">
+            <label class="item item-input item-floating-label item-select formselect bgnew">
               <div class="input-label ">
             select
 			 </div>
-           <select name="selectPayee" ng-model="selectPayee" required>
+           <select class="bgnew" name="selectPayee" ng-model="selectPayee" required>
 				<option value="">Select Payee</option>
 				<option value="115095">Town and Country Pediatrics Acct #:8291 3838 California Street, Suite 111 San Franciscoca,CA 94118</option>
 				<option value="120737">Quest Diagnostics Acct #:8388435482 PO Box 7400 Pasadena,CA 91109</option>
@@ -58,7 +65,9 @@
  
 
     <div class="list ">
-	    <label class="item item-input formlabel">
+	    <label class="item item-input item-floating-label formlabel">
+		<span class="input-label">Enter Amount</span>
+							
            <input type="number"  class="input-box1 input-boxfocus1 " id="forminput" name="amount" ng-model="amount" placeholder="Enter Amount"  required>
 		</label> 
 		<div class="row">
@@ -69,7 +78,8 @@
 	</div>
 		 
 		 <div class="list">
-        <label class="item item-input formlabel">
+        <label class="item item-input item-floating-label formlabel">
+		<span class="input-label">Enter Transaction</span>
         <input type="text" ng-click="getTransDate()" name="transaction" ng-model="TransDate" class="input-box input-boxfocus " id="forminput" placeholder="Transaction Date"  required>
 		</label>
 		<div class="row">
@@ -80,7 +90,8 @@
       </div> 
    
     <div class="list ">
-	 <label class="item item-input formlabel" >
+	 <label class="item item-input item-floating-label formlabel" >
+	 <span class="input-label">Enter Description</span>
         <input type="text"  class="input-box input-boxfocus" id="forminput" name="description" ng-model="description" placeholder="Description"  required>
 		</label> 
 		<div class="row">
@@ -91,7 +102,8 @@
 		 </div>
 		 
 		  <div class="list ">
-	 <label class="item item-input formlabel" >
+	 <label class="item item-input item-floating-label formlabel" >
+	 <span class="input-label">Enter Patient's Name</span>
         <input type="text"  class="input-box input-boxfocus" id="forminput" name="patient" ng-model="patient" placeholder="Patient's Name"  required>
 		</label> 
 		<div class="row">

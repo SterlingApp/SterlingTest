@@ -8,7 +8,7 @@
 	</div>
 </ion-header-bar>
 
-<ion-view>
+<ion-view class="bgnew">
 	<style>
 	
 	
@@ -38,18 +38,24 @@ input[type=text]:focus {
 		<div class="row responsive-sm">
 			<div class="col col-75 center">
 		 
-				<div class="card cardshadow headerborder" >
+				<!-- div class="card cardshadow headerborder" >
 				   
 				<p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">{{Availablebalance}}</span></p>
 				 </div>
-				
-					
+				 -->
+			<div class="card" >
+         		<div class="item item-avatar">
+				<img src="img/item/account_balance.png">
+				<div class="ItemlineHead cardContent">Available Balance</div>
+				<div class="ItemlineValueText cardContent">{{availablebalance | currency}}</div>
+		        </div>
+			</div>
 				     <div class="list ">
-							<label class="item item-input item-select formselect" >
+							<label class="item item-input  item-floating-label item-select formselect bgnew" >
 							  <div class="input-label ">
 							select
 							 </div>
-							<select name="selectAccount" ng-model="paymeValues.selectAccount" ng-options="pay.DISPLAY_NAME for pay in bank_details" required>
+							<select class="bgnew" name="selectAccount" ng-model="paymeValues.selectAccount" ng-options="pay.DISPLAY_NAME for pay in bank_details" required>
 							  <option selected disabled value=""> Select Bank Account</option>
 							 <!-- <option ng-repeat="data in bank_details" >{{data.DISPLAY_NAME}}</option> -->
 						  
@@ -63,7 +69,8 @@ input[type=text]:focus {
 				    </div>
 					
 						<div class="list ">
-							<label class="item item-input formlabel" >
+							<label class="item item-input  item-floating-label formlabel bgnew" >
+							<span class="input-label">Enter Amount</span>
 							<input type="number"  class="input-box1 input-boxfocus1" id="forminput" name="amount" ng-model="paymeValues.amount" placeholder="Enter Amount"  required>
 							</label> 
 							<div class="row">
@@ -85,7 +92,8 @@ input[type=text]:focus {
 						</div>  -->
 						
 							  <div class="list">
-                               <label class="item item-input formlabel">
+                               <label class="item item-input  item-floating-label formlabel bgnew">
+							   <span class="input-label">Enter Transaction</span>
                                 <input type="text" ng-click="getTransDate()" name="transaction" ng-model="paymeValues.TransDate" id="forminput" class="input-box input-boxfocus" placeholder="Transaction Date"  required>
 		                      </label>
 		                     <div class="row">
@@ -96,11 +104,11 @@ input[type=text]:focus {
                             </div> 
 					   
 						<div class="list" >
-							 <label class="item item-input item-select formselect" >
+							 <label class="item item-input item-floating-label item-select formselect" >
 								 <div class="input-label ">
 								Category
 								 </div>
-								  <select name="category" ng-model="paymeValues.category" ng-options="pay.DESCRIPTION for pay in categories" required>
+								  <select class="bgnew" name="category" ng-model="paymeValues.category" ng-options="pay.DESCRIPTION for pay in categories" required>
 								<option selected disabled value="">Category</option>
 								<!-- <option ng-repeat="data in categories">{{data.LOOKUP_CODE}}</option> -->
 							  </select>

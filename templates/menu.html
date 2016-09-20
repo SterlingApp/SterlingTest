@@ -39,7 +39,7 @@
 </style>
 <body ng-click="hideAll()">
 <ion-side-menus enable-menu-with-back-views="true"  >
-   <ion-side-menu-content ]>
+   <ion-side-menu-content drag-content="false"  ng-click="hideAll()">
       <!-- <ion-nav-bar class="bar-transparent"  ng-controller="HeaderCtrl">
          <ion-nav-buttons  side="left">
             <button class="button icon ion-navicon"  menu-toggle="left"></button>
@@ -61,7 +61,7 @@
 						  
 						  <img src="img/new/dots1.png" ng-click="click1($event)" style="height:30px;margin-top:22px;float:right;">
 						
-						<div class="menu" ng-show="show1">
+						<div class="togglemenu" ng-show="show1">
                       <br>
 					<a href="#contact" style="color:#444;margin-left:15px;padding-top:20px;">Contact Us</a><br><br>
 				

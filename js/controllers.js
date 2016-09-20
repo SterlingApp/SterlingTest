@@ -1884,7 +1884,7 @@ $scope.show1 = false;
 	};
 	
 	$scope.access_token = localStorage.getItem('access_token');
-	$scope.hsaaccno=$rootScope.hsaaccno
+	$scope.hsaaccno=$rootScope.hsaaccno;
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();

@@ -51,7 +51,7 @@ input[type=text]:focus {
 		        </div>
 			</div>
 				     <div class="list ">
-							<label class="item item-input  item-floating-label item-select formselect bgnew" >
+							<label class="item item-input item-select formselect bgnew" ng-class="{ 'has-errors' :myForm.selectAccount.$dirty && myForm.selectAccount.$invalid,'no-errors' :myForm.selectAccount.$valid }">
 							  <div class="input-label ">
 							select
 							 </div>
@@ -69,7 +69,7 @@ input[type=text]:focus {
 				    </div>
 					
 						<div class="list ">
-							<label class="item item-input  item-floating-label formlabel bgnew" >
+							<label class="item item-input  item-floating-label formlabel bgnew" ng-class="{ 'has-errors' :myForm.amount.$dirty && myForm.amount.$invalid ,'no-errors' :myForm.amount.$valid   }">
 							<span class="input-label">Enter Amount</span>
 							<input type="number"  class="input-box1 input-boxfocus1" id="forminput" name="amount" ng-model="paymeValues.amount" placeholder="Enter Amount"  required>
 							</label> 
@@ -92,19 +92,20 @@ input[type=text]:focus {
 						</div>  -->
 						
 							  <div class="list">
-                               <label class="item item-input  item-floating-label formlabel bgnew">
-							   <span class="input-label">Enter Transaction</span>
-                                <input type="text" ng-click="getTransDate()" name="transaction" ng-model="paymeValues.TransDate" id="forminput" class="input-box input-boxfocus" placeholder="Transaction Date"  required>
-		                      </label>
-		                     <div class="row">
-		                       <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
-                               <span ng-show="myForm.transaction.$error.required"> Tansaction Date is required.</span>
-                              </span>
-		                    </div>
-                            </div> 
+        <label class="item item-input  item-floating-label formlabel" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid    }">
+		<span class="input-label">Enter Transaction</span>
+							
+        <input type="number" ng-click="getTransDate()" name="transaction" ng-model="TransDate" class="input-box input-boxfocus " id="forminput" placeholder="Transaction Date"  required>
+		</label>
+		<div class="row">
+		  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
+              <span ng-show="myForm.transaction.$error.required"> Tansaction Date is required.</span>
+           </span>
+		</div>
+      </div> 
 					   
 						<div class="list" >
-							 <label class="item item-input item-floating-label item-select formselect" >
+							 <label class="item item-input item-select formselect" ng-class="{ 'has-errors' :myForm.category.$dirty && myForm.category.$invalid ,'no-errors' :myForm.category.$valid   }">
 								 <div class="input-label ">
 								Category
 								 </div>

@@ -229,35 +229,36 @@ a{
   -webkit-transition: box-shadow 0.3s;
   transition: box-shadow 0.3s; 
 }
-.input-boxfocus[type=text]:focus {
+/* .input-boxfocus[type=text]:focus {
    outline: none; 
   box-shadow: -5px 10px 0px -7px #547AAC, 5px 10px 0px -7px #547AAC; 
-}
+} */
 
 .input-box1[type=number] {
-   height:25px;
+   /* height:25px;
    border: 0;
    width: 100%; 
    margin-left:-11px;  
  
    box-shadow: -5px 10px 0px -7px #dedede, 5px 10px 0px -7px #dedede;
   -webkit-transition: box-shadow 0.3s;
-   transition: box-shadow 0.3s; 
+   transition: box-shadow 0.3s;  */
+   border-bottom: 2px solid #dedede;
 }
-.input-boxfocus1[type=number]:focus {
+/* .input-boxfocus1[type=number]:focus {
    outline: none; 
    box-shadow: -5px 10px 0px -7px #547AAC, 5px 10px 0px -7px #547AAC; 
-}
-/* label.item.has-error {  
-  border-bottom: 2px solid #dedede;
 } */
+ /* label.item.has-error {  
+  border-bottom: 2px solid #dedede;
+}  */
  .has-errors {
   border-bottom: 2px solid #B83E2C;
-}
+} 
  
-/* .no-errors {
+.no-errors {
   border-bottom: 2px solid #547AAC;
-} */
+}
 
 
 .item-select select

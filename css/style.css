@@ -90,7 +90,7 @@ margin-left:50px;
 }
 #forminput{
 	color:#444; 
-	 padding-left:13px; 
+	 padding-left:0px; 
 	/* margin-left:40px; */
 }
 .formButton{
@@ -221,13 +221,14 @@ a{
   
 }
 .input-box[type=text] {
-   height:25px;
+   /* height:25px;
    border: 0;
    width: 100%; 
    margin-left:-15px; 
   box-shadow: -5px 10px 0px -7px #dedede, 5px 10px 0px -7px #dedede;
   -webkit-transition: box-shadow 0.3s;
-  transition: box-shadow 0.3s; 
+  transition: box-shadow 0.3s;  */
+   /* border-bottom: 2px solid #dedede; */
 }
 /* .input-boxfocus[type=text]:focus {
    outline: none; 
@@ -243,13 +244,13 @@ a{
    box-shadow: -5px 10px 0px -7px #dedede, 5px 10px 0px -7px #dedede;
   -webkit-transition: box-shadow 0.3s;
    transition: box-shadow 0.3s;  */
-   border-bottom: 2px solid #dedede;
+   /* border-bottom: 2px solid #dedede; */
 }
 /* .input-boxfocus1[type=number]:focus {
    outline: none; 
    box-shadow: -5px 10px 0px -7px #547AAC, 5px 10px 0px -7px #547AAC; 
 } */
- /* label.item.has-error {  
+/*  label.item.has-error {  
   border-bottom: 2px solid #dedede;
 }  */
  .has-errors {
@@ -257,7 +258,7 @@ a{
 } 
  
 .no-errors {
-  border-bottom: 2px solid #547AAC;
+  border-bottom: 2px solid green;
 }
 
 
@@ -439,6 +440,7 @@ margin-left:20px;
 	/*color: #D55D09;*/
 	color:#fff;
 	 padding-top: 3px;
+	 margin-left:10px;
 /* 	border-bottom:2px !important;  */
 }
 .colvertical{
@@ -548,11 +550,22 @@ margin-left:20px;
 	padding-top: 20px;
 	
 }
+input{
+	color:#566571 !important;
+	font-family: 'Avenir Next LT Pro' !important;
+	font-size: 22px !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+}
 .bgnew{
 	background-color:#F7F7F7 !important;
 }
 .item-avatar > img:first-child{
     border-radius: 0% !important;
+}
+.back-icon{
+margin-left:10px;
+font-size:30px;	
 }
 .itemleft{
 	left:30px;

@@ -12,15 +12,15 @@
 	<ion-content class="bgnew">
 	 <div class="div1" ng-repeat="data in transcation_list">
 	<div class="card">
-			<div class="item">
-				<span class="ItemHeadLine">Fee Date: {{data.FEE_DATE}}</span>
+			<div class="item ItemLinehr">
+				<span class="ItemHeadLine ">Fee Date: {{data.FEE_DATE}}</span>
 			</div>
-			<div class="item item-avatar ItemLinehr">
+			<div class="item item-avatar itemleft ItemLinehr">
 				<img src="img/item/Total-contribution.png">
 				<div class="ItemlineHead cardContent">Fee name</div>
 				<div class="ItemlineValueText cardContent">{{data.FEE_NAME}}</div>
 			</div>
-			<div class="item item-avatar">
+			<div class="item item-avatar itemleft">
 				<img src="img/item/account_balance.png">
 				<div class="ItemlineHead cardContent">Amount</div>
 				<div class="ItemlineValueText cardContent">{{data.AMOUNT  | currency}}</div>

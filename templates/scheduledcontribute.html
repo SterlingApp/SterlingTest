@@ -31,21 +31,21 @@
     </head>
     <ion-content class="bgnew">
 	<div class="card" ng-repeat="data in schedule_list">
-			<div class="item">
+			<div class="item ItemLinehr">
 				<span class="ItemHeadLine">Transaction Date: {{data.TXN_DATE}}</span>
 			</div>
-			<div class="item item-avatar ItemLinehr">
+			<div class="item item-avatar itemleft ItemLinehr">
 				<img src="img/item/Total-contribution.png">
 				<div class="ItemlineHead cardContent">Transaction Id</div>
 				<div class="ItemlineValueText cardContent">{{data.TXN_ID}}</div>
 			</div>
 			
-			<div class="item item-avatar">
+			<div class="item item-avatar itemleft">
 				<img src="img/item/account_balance.png">
 				<div class="ItemlineHead cardContent">Amount</div>
 				<div class="ItemlineValueText cardContent">{{data.AMOUNT}}</div>
 			</div>
-			<div class="item item-avatar">
+			<div class="item item-avatar itemleft">
 				<img src="img/item/Total-disburesment.png">
 				<div class="ItemlineHead cardContent">Status</div>
 				<div class="ItemlineValueText cardContent">{{data.STATUS}}</div>

@@ -12,16 +12,16 @@
 <ion-view >
 	<ion-content class="bgnew">
 	<div class="card" ng-repeat="data in tax_statement_list">
-			<div class="item">
+			<div class="item ItemLinehr">
 				<span class="ItemHeadLine">Contributions</span>
 			</div>
-			<div class="item item-avatar ItemLinehr">
+			<div class="item item-avatar itemleft ItemLinehr">
 				<img src="img/item/Total-contribution.png">
 				<div class="ItemlineHead cardContent">Contributions Made in 2015 for </div>
 				<div class="ItemlineValueText cardContent">{{data.TAX_YEAR}}</div>
 			</div>
 			
-			<div class="item item-avatar">
+			<div class="item item-avatar itemleft">
 				<img src="img/item/Total-disburesment.png">
 				<div class="ItemlineHead cardContent">Contributions Made in 2015 for </div>
 				<div class="ItemlineValueText cardContent">{{data.PREV_TAX_YEAR}}</div>
@@ -29,10 +29,10 @@
 			
   </div>
   <div class="card" ng-repeat="data in tax_statement_list">
-			<div class="item">
+			<div class="item ItemLinehr">
 				<span class="ItemHeadLine">Disbursements/Distributions</span>
 			</div>
-			<div class="item item-avatar ItemLinehr">
+			<div class="item item-avatar itemleft ItemLinehr">
 				<img src="img/item/Total-contribution.png">
 				<div class="ItemlineHead cardContent">Disbursements/Distributions </div>
 				<div class="ItemlineValueText cardContent">{{data.DISB}}</div>
@@ -41,10 +41,10 @@
 			
   </div>
   <div class="card" ng-repeat="data in tax_statement_list">
-			<div class="item">
+			<div class="item  ItemLinehr">
 				<span class="ItemHeadLine">Interest Paid</span>
 			</div>
-			<div class="item item-avatar ItemLinehr">
+			<div class="item item-avatar itemleft ItemLinehr">
 				<img src="img/item/Total-contribution.png">
 				<div class="ItemlineHead cardContent">Disbursements/Distributions </div>
 				<div class="ItemlineValueText cardContent">{{data.INT}}</div>
@@ -53,15 +53,15 @@
 			
   </div>
    <div class="card" >
-			<div class="item">
+			<div class="item ItemLinehr">
 				<span class="ItemHeadLine">Tax Statements</span>
 			</div>
-			<div class="item item-avatar ItemLinehr">
+			<div class="item item-avatar itemleft ItemLinehr">
 				<img src="img/item/Total-contribution.png">
 				<div class="ItemlineHead cardContent">1.Form 1099-SA</div>
 				<div class="ItemlineValueText cardContent">Download</div>
 			</div>
-			<div class="item item-avatar ">
+			<div class="item item-avatar itemleft ">
 				<img src="img/item/Total-contribution.png">
 				<div class="ItemlineHead cardContent">2.Form 5498-SA</div>
 				<div class="ItemlineValueText cardContent">Download</div>

@@ -522,7 +522,10 @@ margin-left:20px;
 	
 }
 .ItemLinehr{
-	border-color:#F4851F;
+	border-color:#F4851F !important;
+	
+	
+	
 }
 
 .ItemlineHead{
@@ -551,5 +554,10 @@ margin-left:20px;
 .item-avatar > img:first-child{
     border-radius: 0% !important;
 }
+.itemleft{
+	left:30px;
+
+}
+
 
 

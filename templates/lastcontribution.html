@@ -2,7 +2,7 @@
 	
      <div class="home-head2 " ng-click="goback();">
 		<!-- <img src="img/back_icon.svg" > -->
-		<i ng-click="goback();" class="ion ion-arrow-left-c"></i>
+		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
     </div>
     <div class="home-head2 ">
 		<p style="margin-top:3px;margin-left:20px">Last 5 Contributions</p>
@@ -23,7 +23,7 @@
 			<div class="item item-avatar itemleft">
 				<img src="img/item/account_balance.png">
 				<div class="ItemlineHead cardContent">Amount</div>
-				<div class="ItemlineValueText cardContent">{{data.AMOUNT}}</div>
+				<div class="ItemlineValueText cardContent">{{data.AMOUNT | currency}}</div>
 			</div>
 			
   </div>

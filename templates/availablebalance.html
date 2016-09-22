@@ -2,7 +2,7 @@
 	
      <div class="home-head2 " ng-click="goback();">
 		<!-- <img src="img/back_icon.svg" > -->
-		<i ng-click="goback();" class="ion ion-arrow-left-c"></i>
+		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
     </div>
     <div class="home-head2 ">
 		<p style="margin-top:3px;margin-left:20px">Available Balance</p>
@@ -18,13 +18,13 @@
 			<div class="item item-avatar itemleft ItemLinehr">
 				<img src="img/item/Total-contribution.png">
 				<div class="ItemlineHead cardContent">Annual Election</div>
-				<div class="ItemlineValueText cardContent">{{data.ANNUAL_ELECTION}}</div>
+				<div class="ItemlineValueText cardContent">{{data.ANNUAL_ELECTION | currency}}</div>
 			</div>
 			
 			<div class="item item-avatar itemleft">
 				<img src="img/item/account_balance.png">
 				<div class="ItemlineHead cardContent">Available Balance</div>
-				<div class="ItemlineValueText cardContent">{{data.BALANCE}}</div>
+				<div class="ItemlineValueText cardContent">{{data.BALANCE | currency}}</div>
 			</div>
 			
   </div>

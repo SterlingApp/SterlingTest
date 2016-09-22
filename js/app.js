@@ -17,7 +17,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
              .show('Press again to exit', '250', 'bottom');
 			  $ionicPlatform.onHardwareBackButton(function(event) {
 				   
-                 navigator.app.exitApp();
+                 // navigator.app.exitApp();
 				
 				    promise =$interval(onHardwareBackButton, 5000);
 					$scope.stop();
@@ -45,11 +45,11 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
         else if($state.current.name=="account"||$state.current.name=="makecontribution"||$state.current.name=="make"||$state.current.name=="activity"||$state.current.name=="health"||$state.current.name=="information"||$state.current.name=="availablebalance"||$state.current.name=="new"||$state.current.name=="fsacontribution"||$state.current.name=="contact"){
 			
 		  $rootScope.hidecontent=false;
-           navigator.app.backHistory();
+           // navigator.app.backHistory();
          }
 		 else{
 			 
-			 navigator.app.backHistory(); 
+			 // navigator.app.backHistory(); 
 		 }
         }, 100);
 	  

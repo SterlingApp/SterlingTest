@@ -676,6 +676,11 @@ $scope.show1 = false;
 .controller('NewclaimbicycleCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
 		$rootScope.hidecontent=true;
 	 localStorage.setItem("backCount","3");
+	 
+	 $scope.access_token = localStorage.getItem('access_token');
+    $scope.hsaaccId=$rootScope.hsaaccId;
+    $scope.hsaaccno=$rootScope.hsaaccno;
+	
 	 $scope.goback=function()
 	{
 		// $rootScope.hidecontent=true;
@@ -705,6 +710,15 @@ $scope.show1 = false;
 	  }); 	   
 	   
    }
+   
+   $http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	.success(function(data){
+		//alert( JSON.stringify(data));
+		
+		$scope.Availablebalance=data.balances.BALANCE;
+	}).error(function(err){
+   
+  });
    
    $scope.TransDate="";
 	
@@ -1061,6 +1075,11 @@ $scope.show1 = false;
 .controller('newclaimCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicScrollDelegate,$rootScope) {
 		$rootScope.hidecontent=true;
 	 localStorage.setItem("backCount","3");
+	 $scope.access_token = localStorage.getItem('access_token');
+    $scope.hsaaccId=$rootScope.hsaaccId;
+    $scope.hsaaccno=$rootScope.hsaaccno;
+	 
+	 
 	 $ionicScrollDelegate.scrollBottom(true);
 	 $scope.goback=function()
 	{
@@ -1091,6 +1110,16 @@ $scope.show1 = false;
 	  }); 	   
 	   
    }
+   
+   $http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	.success(function(data){
+		//alert( JSON.stringify(data));
+		
+		$scope.Availablebalance=data.balances.BALANCE;
+	}).error(function(err){
+   
+  });
+  
    
    $scope.TransDate="";
 	
@@ -1266,6 +1295,7 @@ $scope.show1 = false;
 		//alert( JSON.stringify(data));
 		if(data.status == "SUCCESS"){
 			$scope.transactionid = data.transaction_id;
+			alert(JSON.stringify($scope.transactionid));
 		}else if(data.status == "FAILED"){
 			$cordovaDialogs.alert('You do not have sufficient balance to schedule this disbursement ', 'Sorry', 'OK')
 			.then(function() {
@@ -1886,6 +1916,7 @@ $scope.show1 = false;
 	
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.hsaaccno=$rootScope.hsaaccno;
+	
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();
@@ -1919,6 +1950,35 @@ $scope.show1 = false;
    
   });
  }
+	$scope.username = localStorage.getItem('username');
+	$scope.access_token = localStorage.getItem('access_token');
+	$scope.acc_num=$rootScope.hsaaccno;
+	$http.get(' http://app.sterlinghsa.com/api/v1/accounts/accountinfo',{params:{'type':'hsa','acc_num': $scope.acc_num},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+  .success(function(data){
+   $ionicLoading.hide();
+   //alert(JSON.stringify(data));
+   //localStorage.setItem('account_information',data.account_information);
+   //localStorage.setItem('total_contributions',data.total_contributions);
+   //$scope.account_information=data.account_information;
+   //$scope.total_contributions = localStorage.getItem('total_contributions');
+   $scope.total_contribution = data.total_contributions;
+   //alert(JSON.stringify(data.account_information));
+   
+  }).error(function(err){
+	  // alert(JSON.stringify(err));
+   $ionicLoading.hide();
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
+   });
+   return false;
+   
+  });
+ 
 	
 	// $http.get('  http://app.sterlinghsa.com/api/v1/accounts/categories',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	// .success(function(data){
@@ -1930,16 +1990,16 @@ $scope.show1 = false;
    
   // });
   
-   $http.get(' http://app.sterlinghsa.com/api/v1/accounts/description',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
-	.success(function(data){
-		//alert(JSON.stringify(data));
+   // $http.get(' http://app.sterlinghsa.com/api/v1/accounts/description',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	// .success(function(data){
+		// //alert(JSON.stringify(data));
 		
-		$scope.description=data.description ;
-		//alert(JSON.stringify($scope.description));
-	}).error(function(err){
+		// $scope.description=data.description ;
+		// //alert(JSON.stringify($scope.description));
+	// }).error(function(err){
   
    
-  });
+  // });
  
 	
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )

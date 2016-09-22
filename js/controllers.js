@@ -672,77 +672,7 @@ $scope.show1 = false;
 
 
 
-.controller('newclaimCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicScrollDelegate,$rootScope) {
-		$rootScope.hidecontent=true;
-	 localStorage.setItem("backCount","3");
-	 $ionicScrollDelegate.scrollBottom(true);
-	 $scope.goback=function()
-	{
-		// $rootScope.hidecontent=true;
-		 window.history.back();
-		// $location.path("new");
-	}
-	$scope.upload = function(){
-	         fileChooser.open(function(uri) {
-				 //alert(uri);
-			     var options = {
-                     fileKey: "file",
-                      //fileName: "tesat.pdf",
-			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
-                     chunkedMode: false,
-                     mimeType: "text/plain"
-			};
-		 	  
-			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
-		
-		           //alert("SUCCESS: " + result.response);
-              }, function(err) {
-                  //alert("ERROR: " + JSON.stringify(err));
-              }, function (progress) {
-                 // constant progress updates
-            })
-			
-	  }); 	   
-	   
-   }
-   
-   $scope.TransDate="";
-	
-	$scope.getTransDate=function(){
-		 var options = {
-				date: new Date(),
-				mode: 'date', // or 'time'
-				minDate: new Date(),
-				
-			}
-		   
-			$ionicPlatform.ready(function(){
-				$cordovaDatePicker.show(options).then(function(date){
-					
-					var date1=date.toString();
-					var dataas=date1.split(" ");
-					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-					//var mon = Month.indexOf(dataas[1]); 
-					var mon=""; 
-					if(Month.indexOf(dataas[1]).toString().length==1)
-					{
-						mon="0"+Month.indexOf(dataas[1]);
 
-					}
-					else
-					{
-						mon = Month.indexOf(dataas[1]);
-					}
-					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
-				
-					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-					$scope.TransDate=selectedDate;
-				});
-			})
-		
-	};
-	
-})
 .controller('NewclaimbicycleCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
 		$rootScope.hidecontent=true;
 	 localStorage.setItem("backCount","3");
@@ -1127,6 +1057,77 @@ $scope.show1 = false;
 		window.history.back();
 		//$location.path("/hsa")
 	}
+})
+.controller('newclaimCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicScrollDelegate,$rootScope) {
+		$rootScope.hidecontent=true;
+	 localStorage.setItem("backCount","3");
+	 $ionicScrollDelegate.scrollBottom(true);
+	 $scope.goback=function()
+	{
+		// $rootScope.hidecontent=true;
+		 window.history.back();
+		// $location.path("new");
+	}
+	$scope.upload = function(){
+	         fileChooser.open(function(uri) {
+				 //alert(uri);
+			     var options = {
+                     fileKey: "file",
+                      //fileName: "tesat.pdf",
+			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
+                     chunkedMode: false,
+                     mimeType: "text/plain"
+			};
+		 	  
+			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
+		
+		           //alert("SUCCESS: " + result.response);
+              }, function(err) {
+                  //alert("ERROR: " + JSON.stringify(err));
+              }, function (progress) {
+                 // constant progress updates
+            })
+			
+	  }); 	   
+	   
+   }
+   
+   $scope.TransDate="";
+	
+	$scope.getTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					$scope.TransDate=selectedDate;
+				});
+			})
+		
+	};
+	
 })
 .controller('PaymeCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
 	$rootScope.hidecontent=true;
@@ -1998,6 +1999,7 @@ $scope.toggleSomething = function(){
 
 $scope.toggleSomething1 = function(){
   $scope.isVisible1 = !$scope.isVisible1;
+   $scope.isVisible=false;
   console.log('make sure toggleSomething() is firing*');
 }
 
@@ -2097,6 +2099,14 @@ $scope.show1 = false;
 	$scope.homePage = function() {
 		$location.path("/app/portfolio");
 	};
+})
+.controller('FsapaymeCtrl', function($scope,$ionicPopup, $timeout ,$ionicModal,$location, $ionicHistory,$ionicSideMenuDelegate, $cordovaDialogs) {
+	$scope.goback=function()
+	{
+		
+		window.history.back();
+		//$location.path("/hsa")
+	}
 })
 
 .controller('contactCtrl', function($scope,$location,$rootScope, $stateParams, $http) {

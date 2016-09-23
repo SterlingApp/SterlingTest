@@ -2051,9 +2051,10 @@ $scope.exit=function()
 	$location.path("/login");	
 }
   
-$scope.toggleSomething = function(){
-	// event.stopPropagation();
+$scope.toggleSomething = function($event){
+	$event.stopPropagation();
   $scope.isVisible = !$scope.isVisible;
+   $scope.isVisible1=false;
   console.log('make sure toggleSomething() is firing*');
 }
 
@@ -2107,6 +2108,8 @@ $scope.show1 = false;
   $scope.hideAll = function() { 
     $scope.show2 = false;
     $scope.show1 = false;
+	$scope.isVisible=false;
+	 $scope.isVisible1=false;
     $ionicListDelegate.closeOptionButtons(); }
 
 })

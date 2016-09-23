@@ -924,8 +924,8 @@ $scope.show1 = false;
 	  $scope.date=$scope.activity;
 	 
 	$scope.summary= $rootScope.summary_list;
-	 $scope.activity=$rootScope.activity_list;
-	 //alert(JSON.stringify( $scope.activity));
+	 $scope.activity_list=$rootScope.activity_list;
+	 // alert(JSON.stringify( $scope.activity_list));
 	
 	
 	$scope.goback=function()
@@ -2060,6 +2060,7 @@ $scope.exit=function()
 $scope.toggleSomething = function(){
 	// event.stopPropagation();
   $scope.isVisible = !$scope.isVisible;
+  $scope.isVisible1=false;
   console.log('make sure toggleSomething() is firing*');
 }
 
@@ -2113,6 +2114,8 @@ $scope.show1 = false;
   $scope.hideAll = function() { 
     $scope.show2 = false;
     $scope.show1 = false;
+	 $scope.isVisible1=false;
+	  $scope.isVisible=false;
     $ionicListDelegate.closeOptionButtons(); }
 
 })

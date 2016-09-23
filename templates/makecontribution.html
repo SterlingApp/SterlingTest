@@ -63,10 +63,10 @@
 					  
 					   <div class="list ">
 							<label class="item item-input item-select formselect" ng-class="{ 'has-errors' :myForm.selectAccount.$dirty && myForm.selectAccount.$invalid ,'no-errors' :myForm.selectAccount.$valid   }" >
-							  <div class="input-label ">
+							  <div class="input-label ItemlineHead1">
 							select
 							 </div>
-							<select class="bgnew" name="selectAccount" ng-model="selectAccount" required>
+							<select class="bgnew" name="selectAccount" ng-model="makecontribute.selectAccount" required>
 							  <option value="" > Select Bank Account</option>
 							 <option ng-repeat="data in bank_details">{{data.DISPLAY_NAME}}</option>
 						  
@@ -79,10 +79,10 @@
 							</div>
 						
 							<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.amount.$dirty && myForm.amount.$invalid ,'no-errors' :myForm.amount.$valid   }" >
-							<span class="input-label ">
+							<span class="input-label ItemlineHead1">
 							Enter Amount
 							 </span>
-							<input type="number"  class="input-box1 input-boxfocus1" name="amount" ng-model="amount" id="forminput" placeholder="Enter Amount" required>
+							<input type="number"  class="input-box1 input-boxfocus1" name="amount" ng-model="makecontribute.amount" id="forminput" placeholder="Enter Amount" required>
 							</label> 
 							<div class="row">
 							  <span style="color:red" ng-show="myForm.amount.$dirty && myForm.amount.$invalid">
@@ -91,11 +91,11 @@
 							</div>
 						
 							<label class="item item-input item-floating-label formselect" >
-							<span class="input-label ">
+							<span class="input-label ItemlineHead1">
 							Enter FeeAmount
 							 </span>
 							
-							<input type="number"  class="input-box1 input-boxfocus1" name="feeamount" ng-model="feeamount" id="forminput" placeholder="Optional Monthly Service Fee Amount($)">
+							<input type="number"   name="feeamount" ng-model="makecontribute.feeamount" id="forminput" placeholder="Optional Monthly Service Fee Amount($)">
 							</label> 
 							<!-- <div class="row">
 							  <span style="color:red" ng-show="myForm.feeamount.$dirty && myForm.feeamount.$invalid">
@@ -103,12 +103,13 @@
                               </span>
 							</div> -->
 						 
-							<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors' :myForm.transaction.$valid   }">
-							 <span class="input-label ">
-							Enter Transaction
-							 </span>
-							<input type="text" ng-click="getTransDate()" name="transaction" ng-model="TransDate" class="input-box input-boxfocus " id="forminput" placeholder="Transaction Date" required>
-							</label>
+							 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors':myForm.transaction.$valid }">
+                             <span class="input-label ItemlineHead1 ">
+                               Enter Transaction
+	                           </span>
+                             <input type="text"  ng-click="getTransDate()" name="transaction" ng-model="TransDate"  id="forminput " placeholder="Transaction Date"  required>
+		
+		                          </label>
 							<div class="row">
 							  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
                                 <span ng-show="myForm.transaction.$error.required"> Transaction Date is required.</span>
@@ -133,19 +134,22 @@
 							</div>
 						</div> -->
 						
-						 <label class="item item-input item-select formselect" ng-class="{ 'has-errors' :myForm.selectAccount.$dirty && myForm.selectAccount.$invalid ,'no-errors' :myForm.selectAccount.$valid   }" >
-							  <div class="input-label ">
+						 <label class="item item-input item-select formselect" ng-class="{ 'has-errors' :myForm.selectdescription.$dirty && myForm.selectdescription.$invalid ,'no-errors' :myForm.selectdescription.$valid   }" >
+							  <span class="input-label ">
 							Description
-							 </div>
-							<select class="bgnew" name="selectdescription" ng-model="selectdescription" required>
+							 </span>
+							<select class="bgnew" name="selectdescription" ng-model="makecontribute.selectdescription" required>
 							  <option value="" > Select Description</option>
 							 <option ng-repeat="data in description">{{data.FEE_NAME}}</option>
 						  
 						  </select>
+						  <!-- <input type="text"  name="description" ng-model="makecontribute.description" class="input-box input-boxfocus " id="forminput" placeholder="Description" required> -->
+							
 						 </label>
+						 </div>
 					  
 							<!-- <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.description.$dirty && myForm.description.$invalid ,'no-errors' :myForm.description.$valid   }">
-							  <span class="input-label ">
+							  <span class="input-label ItemlineHead1">
 							Description
 							 </span>
 							<select name="selectdescription" ng-model="selectdescription" required>
@@ -166,7 +170,7 @@
 
 		<div class="row">
 			<div class="col  text-center">
-				<button class="button button-small" type="submit"  ng-disabled="myForm.$invalid" style="background-color:#29B8E5;color:#fff;border-radius:8px;">SUBMIT</button>
+				<button class="button button-small" type="submit" ng-click="submitvalues()" ng-disabled="myForm.$invalid" style="background-color:#29B8E5;color:#fff;border-radius:8px;">SUBMIT</button>
 			</div> 
 		</div> 
 

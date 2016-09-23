@@ -67,8 +67,8 @@ input[type=text]:focus {
                               </span>
 							</div>
 				  
-							<label class="item item-input  item-floating-label formselect bgnew" ng-class="{ 'has-errors' :myForm.amount.$dirty && myForm.amount.$invalid ,'no-errors' :myForm.amount.$valid   }">
-							<span class="input-label ItemlineHead">Enter Amount</span>
+							<label class="item item-input  item-floating-label formselect " ng-class="{ 'has-errors' :myForm.amount.$dirty && myForm.amount.$invalid ,'no-errors' :myForm.amount.$valid   }">
+							<span class="input-label ItemlineHead1">Enter Amount</span>
 							<input type="number"  class="input-box1 input-boxfocus1 formselect" id="forminput" name="amount" ng-model="paymeValues.amount" placeholder="Enter Amount"  required>
 							</label> 
 							<div class="row">
@@ -103,7 +103,7 @@ input[type=text]:focus {
 	  
 	             
         <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid  ,'no-errors' :myForm.transaction.$valid  }">
-		<span class="input-label ItemlineHead">Enter Transaction</span>
+		<span class="input-label ItemlineHead1">Enter Transaction</span>
 							
         <input type="text" ng-click="getTransDate()" name="transaction" ng-model="paymeValues.TransDate" id="forminput" placeholder="Transaction Date"  required>
 		</label>

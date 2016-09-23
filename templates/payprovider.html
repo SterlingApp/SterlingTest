@@ -52,14 +52,14 @@ input[type=text]:focus {
 			</div>
 
 		</div>
-		
+		<div class="card" style="backgorund:#fff;">
 	   <div class="list bgnew">
             <label class="item item-input item-select formselect bgnew "  ng-class="{ 'has-errors' :myForm.selectPayee.$dirty && myForm.selectPayee.$invalid,'no-errors' :myForm.selectPayee.$valid }">
 				<span class="input-label bgnew">
 				select
 				</span>
 				<select class="bgnew" name="selectPayee" ng-model="payprovierValues.selectPayee" ng-options="pay.VENDOR_NAME for pay in payee" required>
-					<option selected disabled value=""> Select Payee</option>
+					<option selected disabled value="" class="ItemlineHead1"> Select Payee</option>
 				</select>
 			</label>
 			<div class="row">
@@ -70,8 +70,8 @@ input[type=text]:focus {
       
 			
 		
-	 <label class="item item-input item-floating-label formselect bgnew"  ng-class="{ 'has-errors' :myForm.amount.$dirty && myForm.amount.$invalid ,'no-errors' :myForm.amount.$valid   }">
-	  <span class="input-label ItemlineHead">Enter Amount</span>
+	 <label class="item item-input item-floating-label formselect "  ng-class="{ 'has-errors' :myForm.amount.$dirty && myForm.amount.$invalid ,'no-errors' :myForm.amount.$valid   }">
+	  <span class="input-label ItemlineHead1">Enter Amount</span>
         <input type="number"   id="forminput " name="amount" ng-model="payprovierValues.amount" placeholder="Enter Amount"  required>
 		</label> 
 		<div class="row">
@@ -81,7 +81,7 @@ input[type=text]:focus {
 		</div>
 		
 		 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors':myForm.transaction.$valid }">
-              <span class="input-label ItemlineHead bgnew">
+              <span class="input-label ItemlineHead1 ">
                 Enter Transaction
 	          </span>
               <input type="text"  ng-click="getTransDate()" name="transaction" ng-model="payprovierValues.TransDate"  id="forminput " placeholder="Transaction Date"  required>
@@ -89,14 +89,14 @@ input[type=text]:focus {
 		   </label>
 		   <div class="row">
 			 <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
-                 <span ng-show="myForm.transaction.$error.required"> Amount is required.</span>
+                 <span ng-show="myForm.transaction.$error.required"> Transaction is required.</span>
              </span>
 		 </div>			
 	 
-		<label class="item item-input item-floating-label formselect bgnew"  ng-class="{ 'has-errors' :myForm.patient.$dirty && myForm.patient.$invalid ,'no-errors' :myForm.patient.$valid }" >
-			 <span class="input-label ItemlineHead">Enter Patient Name</span>
+		<label class="item item-input item-floating-label formselect "  ng-class="{ 'has-errors' :myForm.patient.$dirty && myForm.patient.$invalid ,'no-errors' :myForm.patient.$valid }" >
+			 <span class="input-label ItemlineHead1">Enter Patient Name</span>
 			
-				 <input type="text"  name="patient" ng-model="payprovierValues.patient" id="forminput ItemlineValueText"  placeholder="Enter Patient Name"  required>
+				 <input type="text"  name="patient" ng-model="payprovierValues.patient" id="forminput"  placeholder="Enter Patient Name"  required>
 			
 			</label> 
 			<div class="row">
@@ -107,13 +107,13 @@ input[type=text]:focus {
 	  
 	   
         <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.description.$dirty && myForm.description.$invalid  ,'no-errors' :myForm.description.$valid  }">
-		<span class="input-label ItemlineHead">Enter Description</span>
+		<span class="input-label ItemlineHead1">Enter Description</span>
 							
-        <input type="text"   name="description" ng-model="payprovierValues.description"  id="forminput ItemlineValueText" placeholder="Description"  required>
+        <input type="text"   name="description" ng-model="payprovierValues.description"  id="forminput" placeholder="Description"  required>
 		</label>
 		<div class="row">
-		  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
-              <span ng-show="myForm.transaction.$error.required"> Tansaction Date is required.</span>
+		  <span style="color:red" ng-show="myForm.description.$dirty && myForm.description.$invalid">
+              <span ng-show="myForm.description.$error.required"> Tansaction Date is required.</span>
            </span>
 		</div>
      
@@ -135,7 +135,7 @@ input[type=text]:focus {
 				<button class="button button-small formButton" ng-click="submitValue();"  ng-disabled="myForm.$invalid"  type="submit">SUBMIT</button>
 			</div> 
 		</div> 
-   
+   </div>
 </div>
 
 </div>

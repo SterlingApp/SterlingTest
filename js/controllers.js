@@ -383,6 +383,8 @@ $scope.show1 = false;
 		$rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
 		$rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
 		$rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
+		$rootScope.hsaacctype=data.account_types.HSA.ACCOUNT_TYPE;
+		
 		}).error(function(err){
    // $ionicLoading.hide();
    // $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
@@ -1276,7 +1278,10 @@ $scope.show1 = false;
 		//alert( JSON.stringify(data));
 		if(data.status == "SUCCESS"){
 			$scope.transactionid = data.transaction_id;
-			alert(JSON.stringify($scope.transactionid));
+			$cordovaDialogs.alert('Your Tansaction ID '+ "--->" + $scope.transactionid , 'Submitted successsfully', 'OK')
+			.then(function() {
+		});
+		return false;
 		}else if(data.status == "FAILED"){
 			$cordovaDialogs.alert('You do not have sufficient balance to schedule this disbursement ', 'Sorry', 'OK')
 			.then(function() {
@@ -1456,7 +1461,10 @@ $scope.show1 = false;
 			if(data.status == "SUCCESS")
 			{
 			$scope.transactionid = data.transaction_id;	
-			
+			$cordovaDialogs.alert('Your Tansaction ID '+ "--->" + $scope.transactionid , 'Submitted successsfully', 'OK')
+			.then(function() {
+		});
+		return false;
 		}else if(data.status == "FAILED"){
 			$cordovaDialogs.alert('You do not have sufficient balance to schedule this disbursement ', 'Sorry', 'OK')
 			.then(function() {
@@ -1897,7 +1905,7 @@ $scope.show1 = false;
 	
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.hsaaccno=$rootScope.hsaaccno;
-	
+	$scope.hsaacctype=$rootScope.hsaacctype;
 	if($cordovaNetwork.isOffline())
  {
    $ionicLoading.hide();
@@ -1932,8 +1940,11 @@ $scope.show1 = false;
   });
  }
 	$scope.username = localStorage.getItem('username');
-	$scope.access_token = localStorage.getItem('access_token');
 	$scope.acc_num=$rootScope.hsaaccno;
+	
+	$scope.makecontribute={selectAccount:'',amount:'',TransDate:'',feeamount:'',description:''};
+	$scope.hsaaccId=$rootScope.hsaaccId;
+    
 	$http.get(' http://app.sterlinghsa.com/api/v1/accounts/accountinfo',{params:{'type':'hsa','acc_num': $scope.acc_num},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
   .success(function(data){
    $ionicLoading.hide();
@@ -1990,20 +2001,22 @@ $scope.show1 = false;
 		$scope.Availablebalance=data.balances.BALANCE;
 	}).error(function(err){
    
-   $scope.submitValue=function()
+  
+  });	
+  
+   $scope.submitvalues=function()
 	{
-		//$scope.payprovierValues={selectPayee:'',patient_name:'',amount:'',TransDate:'',description:''};
-		// alert(JSON.stringify($scope.payprovierValues.selectPayee.VENDOR_ID))
-		// alert(JSON.stringify($scope.payprovierValues.patient_name))
-		// alert(JSON.stringify($scope.payprovierValues.amount))
-		// alert(JSON.stringify($scope.payprovierValues.TransDate))
-		$http.post("http://app.sterlinghsa.com/api/v1/accounts/payprovider",{'hsa_acct_id':$scope.hsaaccId,'vendor_id':$scope.payprovierValues.selectPayee.VENDOR_ID,'amount':$scope.payprovierValues.amount,'patient_name':$scope.payprovierValues.patient_name,'trans_date':$scope.payprovierValues.TransDate},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+		
+		$http.post(" http://app.sterlinghsa.com/api/v1/accounts/makecontribution",{'acct_id':$scope.hsaaccId,'acct_type':$scope.hsaacctype,'bank_acct_id':$scope.makecontribute.selectAccount.BANK_ACC_ID,'amount':$scope.makecontribute.amount,'fee_amount':$scope.makecontribute.feeamount,'reason_code':$scope.makecontribute.selectdescription.FEE_CODE,'trans_date':$scope.makecontribute.TransDate},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 		.success(function(data){
 			//alert(JSON.stringify(data));
 			if(data.status == "SUCCESS")
 			{
 			$scope.transactionid = data.transaction_id;	
-			
+			$cordovaDialogs.alert('Your Tansaction ID '+ "--->" + $scope.transactionid , 'Submitted successsfully', 'OK')
+			.then(function() {
+		});
+		return false;
 		}else if(data.status == "FAILED"){
 			$cordovaDialogs.alert('You do not have sufficient balance to schedule this disbursement ', 'Sorry', 'OK')
 			.then(function() {
@@ -2016,7 +2029,6 @@ $scope.show1 = false;
 		});
 	}
    
-  });	
 	$scope.goback=function()
 	{
 		// $rootScope.hidecontent=false;

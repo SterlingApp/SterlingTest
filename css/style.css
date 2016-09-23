@@ -91,8 +91,8 @@ margin-left:50px;
 #forminput{
 	color:#444; 
 	 padding-left:0px; 
-	/* margin-left:40px; */
-}
+	/* margin-left:40px;*/
+} 
 .formButton{
 	background-color: #29B8E5;
 	color:#fff;
@@ -540,7 +540,16 @@ margin-left:20px;
 	line-height:4px;
 	
 }
-
+.ItemlineHead1{
+	color:#C0BDBD;
+	font-family: 'Avenir Next LT Pro';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 18px;
+	/* padding-top: 5px; */
+	
+	
+}
 .ItemlineValueText{
 	color:#566571;
 	font-family: 'Avenir Next LT Pro';

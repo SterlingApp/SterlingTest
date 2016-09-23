@@ -537,7 +537,7 @@ margin-left:20px;
 	font-style: normal;
 	font-size: 18px;
 	padding-top: 5px;
-	line-height:4px;
+	line-height:21px;
 	
 }
 .ItemlineHead1{
@@ -557,6 +557,7 @@ margin-left:20px;
 	font-style: normal;
 	font-size: 22px;
 	padding-top: 20px;
+	line-height:24px;
 	
 }
 input,select{
@@ -583,6 +584,7 @@ font-size:30px;
 	left:10px;
 
 }
+
 
 
 

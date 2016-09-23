@@ -90,12 +90,12 @@
                               </span>
 							</div>
 						
-							<label class="item item-input item-floating-label formselect" ng-class="{ 'no-errors' :myForm.feeamount.$valid   }" >
+							<label class="item item-input item-floating-label formselect" >
 							<span class="input-label ">
 							Enter FeeAmount
 							 </span>
 							
-							<input type="number"  class="input-box1 input-boxfocus1" name="feeamount" ng-model="feeamount" id="forminput" placeholder="Optional Monthly Service Fee Amount($)" required>
+							<input type="number"  class="input-box1 input-boxfocus1" name="feeamount" ng-model="feeamount" id="forminput" placeholder="Optional Monthly Service Fee Amount($)">
 							</label> 
 							<!-- <div class="row">
 							  <span style="color:red" ng-show="myForm.feeamount.$dirty && myForm.feeamount.$invalid">
@@ -133,17 +133,26 @@
 							</div>
 						</div> -->
 						
-						 
-					  
-							<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.description.$dirty && myForm.description.$invalid ,'no-errors' :myForm.description.$valid   }">
-							  <span class="input-label ">
+						 <label class="item item-input item-select formselect" ng-class="{ 'has-errors' :myForm.selectAccount.$dirty && myForm.selectAccount.$invalid ,'no-errors' :myForm.selectAccount.$valid   }" >
+							  <div class="input-label ">
 							Description
-							 </span>
-							<!-- <select name="selectdescription" ng-model="selectdescription" required>
+							 </div>
+							<select class="bgnew" name="selectdescription" ng-model="selectdescription" required>
 							  <option value="" > Select Description</option>
 							 <option ng-repeat="data in description">{{data.FEE_NAME}}</option>
 						  
-						  </select> -->
+						  </select>
+						 </label>
+					  
+							<!-- <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.description.$dirty && myForm.description.$invalid ,'no-errors' :myForm.description.$valid   }">
+							  <span class="input-label ">
+							Description
+							 </span>
+							<select name="selectdescription" ng-model="selectdescription" required>
+							  <option value="" > Select Description</option>
+							 <option ng-repeat="data in description">{{data.FEE_NAME}}</option>
+						  
+						  </select>
 						  <input type="text"  name="description" ng-model="description" class="input-box input-boxfocus " id="forminput" placeholder="Description" required>
 							
 						 </label>
@@ -152,7 +161,7 @@
                                 <span ng-show="myForm.description.$error.required"> Description is required.</span>
                               </span>
 							</div>
-						</div>
+						</div> -->
 							
 
 		<div class="row">

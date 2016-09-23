@@ -520,7 +520,7 @@ margin-left:20px;
 	font-family: 'Avenir Next LT Pro';
 	font-weight: normal;
 	font-style: normal;
-	font-size:27px;
+	font-size:22px;
 	
 }
 .ItemLinehr{
@@ -550,13 +550,16 @@ margin-left:20px;
 	padding-top: 20px;
 	
 }
-input{
+input,select{
 	color:#566571 !important;
 	font-family: 'Avenir Next LT Pro' !important;
-	font-size: 22px !important;
+	font-size: 16px !important;
 	font-weight: normal !important;
 	font-style: normal !important;
 }
+
+
+
 .bgnew{
 	background-color:#F7F7F7 !important;
 }

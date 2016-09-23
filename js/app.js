@@ -328,8 +328,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
     })
 	.state('fsapayme', {
       url: '/fsapayme',
-      
-          templateUrl: 'templates/fsapayme.html',
+          templateUrl: 'templates/fsa/fsapayme.html',
 		  controller: 'FsapaymeCtrl'
     })
     

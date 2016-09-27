@@ -188,8 +188,8 @@ a{
 	
 }
 .headertitle{
-	margin-top:-22px;
-	margin-left:41px;
+	margin-top:5px;
+	margin-left:20px;
 }
 .head-details
 {
@@ -537,8 +537,15 @@ margin-left:20px;
 	font-style: normal;
 	font-size: 18px;
 	padding-top: 5px;
-	line-height:21px;
+	line-height:4px !important;
 	
+}
+@media  (max-width: 500px) {
+    .ItemlineHead {
+       line-height:16px !important;
+       
+      
+    }
 }
 .ItemlineHead1{
 	color:#C0BDBD;
@@ -582,8 +589,33 @@ font-size:30px;
 }
 .itemleft{
 	left:10px;
-
 }
+.contact-content{
+	margin-left:15px;
+	margin-top:4px;
+}
+.Home-Button{
+	background-color:#e67e22;
+	color:#fff;
+	border-radius:8px;
+}
+.Home-ButtonRight{
+	float:right;
+	background-color:#e67e22;
+	color:#fff;
+	border-radius:8px;
+}
+.MenuToggle-btn{
+	color: white;
+	font-size:45px;
+}
+.Main-Heading{
+	color:#fff; 
+	margin-top:22px;
+	
+}
+
+
 
 
 

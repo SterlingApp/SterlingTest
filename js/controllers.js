@@ -1141,7 +1141,7 @@ $scope.show1 = false;
 	}
 })
 
-.controller('PaymeCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
+.controller('PaymeCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$invalid,$dirty,$error) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
 	$scope.paymeValues={selectAccount:'',amount:'',TransDate:'',category:''};
@@ -1285,6 +1285,30 @@ $scope.show1 = false;
 		}else if(data.status == "FAILED"){
 			$cordovaDialogs.alert('You do not have sufficient balance to schedule this disbursement ', 'Sorry', 'OK')
 			.then(function() {
+				
+				   $scope.paymeValues={};
+				   $scope.myForm.$invalid=false;		  
+				    // $scope.myForm.category.$dirty=false;
+					// $scope.myForm.category.$invalid=false;
+					// $scope.myForm.category.$error.required=false;
+				   // $scope.myForm.$error = {};
+				   $scope.myForm.$dirty = false;
+				   $scope.myForm.$error=false;
+				    myForm.$setUntouched();
+				 
+				   
+				  
+				   // $scope.myForm.category.$dirty={};
+				   
+				   // $scope.myForm.category.$invalid={};
+				   
+				   // var original = $scope.paymeValues;
+				// $scope.user= angular.copy(original);
+                 // $scope.myForm.$setPristine();
+				
+				$scope.myForm.$setValidity(); 
+				 
+		       // $scope.myForm.amount.$error.required=false;
 		});
 		return false;
 		}
@@ -1293,7 +1317,7 @@ $scope.show1 = false;
   //alert( JSON.stringify(err));
   });
 		
-		
+		   
 	}
 	
 	$scope.goback=function()
@@ -1530,7 +1554,24 @@ $scope.show1 = false;
 	.success(function(data){ 
 	     $ionicLoading.hide();
 		//alert("Data: " + JSON.stringify(data));
-		$scope.schedule_list=data.schedule_list;
+		if(data.schedule_list!=null){
+			$scope.schedule_list=data.schedule_list;
+			
+		}else{
+			 $cordovaDialogs.confirm('No Scheduledcontribution', 'Sorry', 'ok')
+			  .then(function(buttonIndex) {
+				   if(buttonIndex=="1")
+			{
+	            
+				$location.path("/activityContribution");
+			}
+			 	
+             });
+			
+		
+		}
+		
+		
 		//alert(JSON.stringify($scope.schedule_list));
 	}).error(function(err){
    $ionicLoading.hide();
@@ -1572,9 +1613,22 @@ $scope.show1 = false;
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/schedule",{params:{'acct_id':$scope.hsaaccId,'trans_type':'d'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){ 
 	      $ionicLoading.hide();
-		//alert("Data: " + JSON.stringify(data));
-		$scope.schedule_list=data.schedule_list;
+		  if(data.schedule_list==null){
+			 $cordovaDialogs.confirm('No ScheduledDisbursement', 'Sorry', 'ok')
+               .then(function(buttonIndex) {
+	          if(buttonIndex=="1")
+			  {
+				
+				$location.path('/disbursement');
+			  }
+   }); 
+		  }
+		  else{
+			  $scope.schedule_list=data.schedule_list;
 		//alert(JSON.stringify($scope.schedule_list));
+		  }
+		//alert("Data: " + JSON.stringify(data));
+		
 	}).error(function(err){
    $ionicLoading.hide();
   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
@@ -1622,8 +1676,21 @@ $scope.show1 = false;
 	.success(function(data){
 		 $ionicLoading.hide();
 		//alert("Data: " + JSON.stringify(data));
-		$scope.transcation_list=data.transcation_list;
-		//alert(JSON.stringify($scope.transcation_list));
+		if(data.transcation_list==null){
+			 $cordovaDialogs.confirm('No RecentContribution', 'Sorry', 'ok')
+               .then(function(buttonIndex) {
+	          if(buttonIndex=="1")
+			  {
+				
+				$location.path('/activityContribution');
+			  }
+            }); 
+		  }
+		  else{
+			  $scope.transcation_list=data.transcation_list;
+		      //alert(JSON.stringify($scope.transcation_list));
+		  }
+		
 	}).error(function(err){
    $ionicLoading.hide();
    $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
@@ -1721,8 +1788,21 @@ $scope.show1 = false;
 	.success(function(data){
 		 $ionicLoading.hide();
 		//alert("Data: " + JSON.stringify(data));
-		$scope.transcation_list=data.transcation_list;
-		//alert(JSON.stringify($scope.transcation_list));
+		if(data.transcation_list==null){
+			 $cordovaDialogs.confirm('No RecentContribution', 'Sorry', 'ok')
+               .then(function(buttonIndex) {
+	          if(buttonIndex=="1")
+			  {
+				
+				$location.path('/fsacontribution');
+			  }
+   }); 
+		  }
+		  else{
+			 $scope.transcation_list=data.transcation_list;
+		     //alert(JSON.stringify($scope.transcation_list));
+		  }
+		
 	}).error(function(err){
    $ionicLoading.hide();
    $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
@@ -1787,8 +1867,21 @@ $scope.show1 = false;
 	.success(function(data){
 		$ionicLoading.hide();
 		//alert("Data: " + JSON.stringify(data));
-		$scope.transcation_list=data.transcation_list;
-		//alert(JSON.stringify($scope.transcation_list));
+		if(data.transcation_list==null){
+			 $cordovaDialogs.confirm('No RecentDisbursement', 'Sorry', 'ok')
+               .then(function(buttonIndex) {
+	          if(buttonIndex=="1")
+			  {
+				
+				$location.path('/fsacontribution');
+			  }
+   }); 
+		  }
+		  else{
+			 $scope.transcation_list=data.transcation_list;
+		     //alert(JSON.stringify($scope.transcation_list));
+		  }
+		
 	}).error(function(err){
    $ionicLoading.hide();
    $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
@@ -1838,8 +1931,22 @@ $scope.show1 = false;
 	.success(function(data){
 		$ionicLoading.hide();
 		//alert("Data: " + JSON.stringify(data));
-		$scope.transcation_list=data.transcation_list;
-		//alert(JSON.stringify($scope.transcation_list));
+		 if(data.transcation_list==null){
+			 $cordovaDialogs.confirm('No RecentDisbursement', 'Sorry', 'ok')
+               .then(function(buttonIndex) {
+	          if(buttonIndex=="1")
+			  {
+				
+				$location.path('/disbursement');
+			  }
+   }); 
+		  }
+		  else{
+			 $scope.transcation_list=data.transcation_list;
+		     //alert(JSON.stringify($scope.transcation_list));
+		  }
+		
+		
 	}).error(function(err){
    $ionicLoading.hide();
    $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')

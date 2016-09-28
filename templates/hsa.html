@@ -1,12 +1,3 @@
-
-<style>
-@media screen and (max-width: 340px) {
-			div.wrap{
-				word-wrap: break-word;
-				width:90%;
-			}
-		}
-		</style>
 	<ion-content class="bgnew" on-swipe-left="goForward()">
       
 		<div class="padding" >
@@ -36,7 +27,7 @@
 						</div>
 						<div class="col">
 							<div class="readMore" style=""> 
-								$11225.00
+								{{total_contributions | currency}}
 							</div>		
 						</div>
 					</div>
@@ -76,10 +67,10 @@
 					
 					<div class="row no-padding row-border  " >
 						<div class="col colvertical responsive-sm" style="border-left-color:#000">
-							<a href="#activitystmnt"><div class="head_detail"style="overflow-wrap: break-word;" >Active Statement</div></a>
+							<a href="#activitystmnt"><div class="head_detail">Active</div></a>
 						</div>
 						<div class="col responsive-sm">
-							<a href="#taxyear"><div class="head_detail"style="overflow-wrap: break-word;" >Tax Statement</div></a>
+							<a href="#taxyear"><div class="head_detail">Tax </div></a>
 							
 						</div>
 					</div>		

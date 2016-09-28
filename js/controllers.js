@@ -177,6 +177,13 @@ angular.module('starter.controllers', [])
          $rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
          $rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
          $rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
+		 
+		 $http.get(' http://app.sterlinghsa.com/api/v1/accounts/accountinfo',{params:{'type':'hsa','acc_num': data.account_types.HSA.ACCT_NUM},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+		  .success(function(data){
+			  //alert(JSON.stringify(data.total_contributions));
+			  $scope.total_contributions=data.total_contributions.CURRENT_YR_CONTRB;
+		  })
+		 
 		      }).error(function(err){
          $ionicLoading.hide();
         $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
@@ -1139,7 +1146,7 @@ $scope.show1 = false;
 .controller('AccountCtrl', function($rootScope,$scope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicHistory) {
 	$scope.Back=function()
 	{
-		$location.path("hsa");
+		$location.path("app/hsa");
 	}
 	localStorage.setItem("backCount","3");
 	
@@ -1280,7 +1287,7 @@ $scope.show1 = false;
 	{
 		$rootScope.hidecontent=true;
 		 //window.history.back();
-		$location.path("/health");
+		$location.path("app/hsa");
 	}
 })
 
@@ -1474,7 +1481,7 @@ $scope.show1 = false;
 	{
 		$rootScope.hidecontent=true;
 		//window.history.back();
-		$location.path("/health");
+		$location.path("app/hsa");
 	}
 })
  
@@ -1653,7 +1660,7 @@ $scope.show1 = false;
 		});
 		return false;
 		}else if(data.status == "FAILED"){
-			$cordovaDialogs.alert('You do not have sufficient balance to schedule this disbursement ', 'Sorry', 'OK')
+			$cordovaDialogs.alert(data.error_message, 'Sorry', 'OK')
 			.then(function() {
 				     	// $scope.myForm.$setPristine();
                      // $scope.ds=false;						
@@ -1680,7 +1687,7 @@ $scope.show1 = false;
 	{
 		$rootScope.hidecontent=true;
 		 //window.history.back();
-		$location.path("/make");
+		$location.path("app/hsa");
 	}
 	
 	
@@ -1847,7 +1854,7 @@ $scope.show1 = false;
 		});
 		return false;
 		}else if(data.status == "FAILED"){
-			$cordovaDialogs.alert('You do not have sufficient balance to schedule this disbursement ', 'Sorry', 'OK')
+			$cordovaDialogs.alert(data.error_message, 'Sorry', 'OK')
 			.then(function() {
 				$scope.payprovierValues={};
 		});
@@ -1864,7 +1871,7 @@ $scope.show1 = false;
 	{
 		$rootScope.hidecontent=true;
 		 //window.history.back();
-		$location.path("/make");
+		$location.path("app/hsa");
 	}
 	
 })
@@ -2607,16 +2614,17 @@ $scope.show1 = false;
 })
 
 .controller('HeaderCtrl', function($scope,$ionicPopup, $timeout ,$ionicModal,$location, $ionicHistory, $cordovaDialogs) {
-	$scope.Logout = function() {
-		$cordovaDialogs.confirm('Are You Sure', 'Do you Want to Logout', ['Yes','No'])
+	$scope.Logout=function()
+	{
+	   $cordovaDialogs.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
 		.then(function(buttonIndex) {
-			if (buttonIndex=='1') {
+			if(buttonIndex=="1")
+			{
 				localStorage.clear();
-				$location.path("/login");
-			}
+				window.location='login.html#/login';
+			}	  
 		});
-	};
-	
+	}
 	$scope.goBack = function() {
 		//alert(localStorage.getItem("backCount"));
 		if (localStorage.getItem("backCount")==1) {

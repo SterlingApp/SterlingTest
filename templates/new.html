@@ -18,24 +18,41 @@
 	}
    </style>
      
-    
-      
+    <div class="list">
+      <label class="item item-input item-select formselect " >
+				<span class="input-label ">
+				select
+				</span>
+				<!-- <select  name="selectplantype" ng-change="redirectTo(claim)" ng-model="claim" ng-options="plan.MEANING for plan in plan_types" required>
+					<option selected disabled value="" class="ItemlineHead1"> Select Plan</option>
+				</select> -->
+				
+				<select  name="selectplantype" ng-change="redirectTo(plan_type)" ng-model="plan_type" ng-options="plan.MEANING for plan in plan_types" required>
+					<option selected disabled value="" class="ItemlineHead1"> Select Plan</option>
+				</select>
+			</label>
+			</div>
+			<!-- <div class="row">
+				<span style="color:red" ng-show="myForm.selectplantype.$dirty && myForm.selectplantype.$invalid">
+					<span ng-show="myForm.selectplantype.$error.required"> Payee is required.</span>
+				</span>
+		 </div>				 
+       -->
 	  
-	  <div class="list">
+	  <!-- <div class="list">
             <label class="item item-input item-select formselect" >
               <div class="input-label ">
             select
 			 </div>
            <select ng-model="claim" ng-change="getClaim(claim)" placeholder="select your beverage">
-            <option value="" disabled selected>Select Plan</option>
-			<option value="Bicycle">Bicycle FSA</option>
-            <option value="Transit">Transit FSA</option>
-          
+            <option   value="" disabled selected>Select Plan</option>
+			 <option  ng-repeat="data in plan_types" value="{{data.LOOKUP_CODE}}">{{data.MEANING}}</option> 
+           
           </select>
 
 		 </label>
       </div>
-
+ -->
       
     </ion-content>
 </ion-view>

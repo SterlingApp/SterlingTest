@@ -300,7 +300,17 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
           templateUrl: 'templates/newclaimbicycle.html',
 		  controller: 'NewclaimbicycleCtrl'
     })
- 
+	
+	.state('transit', {
+      url: '/transit',
+          templateUrl: 'templates/transit.html',
+		  controller: 'transitCtrl'
+    })
+ .state('parking', {
+      url: '/parking',
+          templateUrl: 'templates/parking.html',
+		  controller: 'parkingCtrl'
+    })
  .state('new', {
       url: '/new',
           templateUrl: 'templates/new.html',
@@ -339,7 +349,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		  controller: 'PayproviderCtrl'
     });
 
-  $urlRouterProvider.otherwise('/app/hsa');
+  $urlRouterProvider.otherwise('/login');
   
 
 });

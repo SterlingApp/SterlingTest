@@ -41,17 +41,17 @@
         
           
             <div class="list">
-            <label class="item item-input item-select formselect bgnew "  ng-class="{ 'has-errors' :myForm.selectPayee.$dirty && myForm.selectPayee.$invalid,'no-errors' :myForm.selectPayee.$valid }">
+            <label class="item item-input item-select formselect bgnew "  ng-class="{ 'has-errors' :myForm.Bankaccount.$dirty && myForm.Bankaccount.$invalid,'no-errors' :myForm.Bankaccount.$valid }">
 				<span class="input-label bgnew">
 				select
 				</span>
-				<select class="bgnew" name="selectPayee" ng-model="newclaimvalues.selectPayee" ng-options="pay.VENDOR_NAME for pay in payee" required>
-					<option selected disabled value="" class="ItemlineHead1"> Select Payee</option>
+				<select class="bgnew" name="Bankaccount" ng-model="newclaimvalues.Bankaccount" ng-options="pay.VENDOR_NAME for pay in payee" required>
+					<option selected disabled value="" class="ItemlineHead1"> Select Bankaccount</option>
 				</select>
 			</label>
 			<div class="row">
-				<span style="color:red" ng-show="myForm.selectPayee.$dirty && myForm.selectPayee.$invalid">
-					<span ng-show="myForm.selectPayee.$error.required"> Payee is required.</span>
+				<span style="color:red" ng-show="myForm.Bankaccount.$dirty && myForm.Bankaccount.$invalid">
+					<span ng-show="myForm.Bankaccount.$error.required"> Bankaccount is required.</span>
 				</span>
 		 </div>				 
       
@@ -84,17 +84,17 @@
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.startTransDate.$touched && myForm.startTransDate.$invalid">
-              <span ng-show="myForm.startTransDate.$error.required"> Tansaction Date is required.</span>
+              <span ng-show="myForm.startTransDate.$error.required"> Start Transaction Date is required.</span>
            </span>
 		</div>
 		
 		<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endTransDate.$dirty && myForm.endTransDate.$invalid || myForm.endTransDate.$touched,'no-errors' :myForm.endTransDate.$valid   }">
 		<span class="input-label ItemlineHead1">Enter Transaction</span>
-        <input type="text" ng-click="EndgetTransDate()" name="endTransDate" ng-model="endTransDate" class="input-box input-boxfocus formselect" id="forminput" placeholder=" End Transaction Date"  required>
+        <input type="text" ng-click="EndgetTransDate()" name="endTransDate" ng-model="newclaimvalues.endTransDate" class="input-box input-boxfocus formselect" id="forminput" placeholder=" End Transaction Date"  required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.endTransDate.$touched && myForm.endTransDate.$invalid">
-              <span ng-show="myForm.endTransDate.$error.required"> Tansaction Date is required.</span>
+              <span ng-show="myForm.endTransDate.$error.required">End  Transaction Date is required.</span>
            </span>
 		</div>
      
@@ -165,7 +165,7 @@
 
           
      	<!--the below code used for Scrolling -->
-	  <div ></div>
+	  <div style="height:100px;"></div>
 	  </form>
     </ion-content>
 </ion-scroll>

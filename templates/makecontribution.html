@@ -103,15 +103,15 @@
                               </span>
 							</div> -->
 						 
-							 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors':myForm.transaction.$valid }">
+							 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid || myForm.transaction.$touched,'no-errors':myForm.transaction.$valid }">
                              <span class="input-label ItemlineHead1 ">
                                Enter Transaction
 	                           </span>
-                             <input type="text"  ng-click="getTransDate()" name="transaction" ng-model="TransDate"  id="forminput " placeholder="Transaction Date"  required>
+                             <input type="text"  ng-click="getTransDate()" name="transaction" ng-model="makecontribute.TransDate"  id="forminput " placeholder="Transaction Date"  required>
 		
 		                          </label>
 							<div class="row">
-							  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
+							  <span style="color:red" ng-show="myForm.transaction.$touched && myForm.transaction.$invalid">
                                 <span ng-show="myForm.transaction.$error.required"> Transaction Date is required.</span>
                               </span>
 							</div>
@@ -144,8 +144,12 @@
 						  
 						  </select>
 						  <!-- <input type="text"  name="description" ng-model="makecontribute.description" class="input-box input-boxfocus " id="forminput" placeholder="Description" required> -->
-							
 						 </label>
+						 <div class="row">
+							  <span style="color:red" ng-show="myForm.selectdescription.$dirty && myForm.selectdescription.$invalid">
+                                <span ng-show="myForm.selectdescription.$error.required"> selectDescription is required.</span>
+                              </span>
+							</div>
 						 </div>
 					  
 							<!-- <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.description.$dirty && myForm.description.$invalid ,'no-errors' :myForm.description.$valid   }">

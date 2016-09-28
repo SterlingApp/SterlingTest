@@ -4,7 +4,7 @@
 		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
     </div>
     <div class="home-head2 ">
-		<p class="headertitle">Pay Me</p>
+		<p style="margin-top:3px;margin-left:20px">Pay Me</p>
 	</div>
 </ion-header-bar>
 
@@ -30,27 +30,27 @@ input[type=text]:focus {
 		
 	     
 		<form name="myForm">
-		    <div class=" hide row">
-			 <div class="col col-center">
-			   <h3 class="ion ion-arrow-left-a" onclick="window.history.back();"> Pay Me</h3> 
-			 </div>
-		   </div> 
-		   <div class="row responsive-sm">
-			    <div class="col col-75 center">
+		<div class=" hide row">
+			<div class="col col-center">
+			  <h3 class="ion ion-arrow-left-a" onclick="window.history.back();"> Pay Me</h3> 
+			</div>
+		</div> 
+		<div class="row responsive-sm">
+			<div class="col col-75 center">
 		 
 				<!-- div class="card cardshadow headerborder" >
 				   
 				<p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">{{Availablebalance}}</span></p>
 				 </div>
 				 -->
-			       <div class="card" >
-         		      <div class="item item-avatar">
-				         <img src="img/item/account_balance.png">
-				          <div class="ItemlineHead cardContent">Available Balance</div>
-				          <div class="ItemlineValueText cardContent">{{Availablebalance | currency}}</div>
-		              </div>
-			       </div>
-				    <div class="list ">
+			<div class="card" >
+         		<div class="item item-avatar">
+				<img src="img/item/account_balance.png">
+				<div class="ItemlineHead cardContent">Available Balance</div>
+				<div class="ItemlineValueText cardContent">{{Availablebalance | currency}}</div>
+		        </div>
+			</div>
+				     <div class="list ">
 							<label class="item item-input item-select formselect bgnew" ng-class="{ 'has-errors' :myForm.selectAccount.$dirty && myForm.selectAccount.$invalid,'no-errors' :myForm.selectAccount.$valid }">
 							  <div class="input-label ">
 							select
@@ -71,24 +71,24 @@ input[type=text]:focus {
 							<span class="input-label ItemlineHead1">Enter Amount</span>
 							<input type="number"  class="input-box1 input-boxfocus1 formselect" id="forminput" name="amount" ng-model="paymeValues.amount" placeholder="Enter Amount"  required>
 							</label> 
-							<div class="row" ng-show="hide">
-							  <span style="color:red" ng-show="myForm.amount.$dirty && myForm.amount.$invalid">
-                                <span ng-show="myForm.amount.$error.required"> Amount is required.</span>
+							<div class="row" >
+							  <span style="color:red" ng-if="myForm.amount.$dirty && myForm.amount.$invalid">
+                                <span> Amount is required.</span>
                               </span>
 							</div>
 						
 						
 	             
-                              <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid  ,'no-errors' :myForm.transaction.$valid  }">
-		                       <span class="input-label ItemlineHead1">Enter Transaction</span>
+        <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid || myForm.transaction.$touched ,'no-errors' :myForm.transaction.$valid  }">
+		<span class="input-label ItemlineHead1">Enter Transaction</span>
 							
-                               <input type="text" ng-click="getTransDate()" name="transaction" ng-model="paymeValues.TransDate" id="forminput" placeholder="Transaction Date"  required>
-		                    </label>
-		                    <div class="row">
-		                        <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
-                                  <span ng-show="myForm.transaction.$error.required"> Tansaction Date is required.</span>
-                                </span>
-		                   </div>
+        <input type="text" ng-click="getTransDate()"  name="transaction" ng-model="paymeValues.TransDate" id="forminput" placeholder="Transaction Date"  required>
+		</label>
+		<div class="row">
+		  <span style="color:red" ng-show="myForm.transaction.$touched && myForm.transaction.$invalid ">
+              <span > Tansaction Date is required.</span>
+           </span>
+		</div>
     
 							 <label class="item item-input item-select formselect" ng-class="{ 'has-errors' :myForm.category.$dirty && myForm.category.$invalid ,'no-errors' :myForm.category.$valid   }">
 								 <span class="input-label">
@@ -157,8 +157,8 @@ input[type=text]:focus {
 	  
 	</ion-content>
 </ion-view>
-<ion-footer-bar  class="footerborder" >
+<!-- <ion-footer-bar  class="footerborder" >
  
         <p class="footertext">&copy; 2016 Sterling Administration. All Rights Reserved.</p>
   
- </ion-footer-bar>
+ </ion-footer-bar> -->

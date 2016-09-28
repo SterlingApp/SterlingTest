@@ -30,7 +30,7 @@ input[type=text]:focus {
 				
 		</div> -->
 		<form name="myForm" >
-	<div class="row">
+	<div class="hide row">
         <div class="col col-center">
           <h3 class="h"></h3> 
         </div>
@@ -52,9 +52,9 @@ input[type=text]:focus {
 			</div>
 
 		</div>
-		
-	   <div class="list bgnew">
-            <label class="item item-input item-select formselect bgnew "  ng-class="{ 'has-errors' :myForm.selectPayee.$dirty && myForm.selectPayee.$invalid,'no-errors' :myForm.selectPayee.$valid }">
+	
+	   <div class="list ">
+            <label class="item item-input item-select formselect  "  ng-class="{ 'has-errors' :myForm.selectPayee.$dirty && myForm.selectPayee.$invalid,'no-errors' :myForm.selectPayee.$valid }">
 				<span class="input-label bgnew">
 				select
 				</span>
@@ -80,7 +80,7 @@ input[type=text]:focus {
            </span>
 		</div>
 		
-		 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors':myForm.transaction.$valid }">
+		 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid || myForm.transaction.$touched,'no-errors':myForm.transaction.$valid }">
               <span class="input-label ItemlineHead1 ">
                 Enter Transaction
 	          </span>
@@ -88,7 +88,7 @@ input[type=text]:focus {
 		
 		   </label>
 		   <div class="row">
-			 <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
+			 <span style="color:red" ng-show="myForm.transaction.$touched && myForm.transaction.$invalid">
                  <span ng-show="myForm.transaction.$error.required"> Transaction is required.</span>
              </span>
 		 </div>			
@@ -135,7 +135,7 @@ input[type=text]:focus {
 				<button class="button button-small formButton" ng-click="submitValue();"  ng-disabled="myForm.$invalid"  type="submit">SUBMIT</button>
 			</div> 
 		</div> 
-  
+   
 </div>
 
 </div>
@@ -154,8 +154,8 @@ input[type=text]:focus {
  -->
    </ion-content>
 </ion-view>
-<ion-footer-bar  class="footerborder" >
+<!-- <ion-footer-bar  class="footerborder" >
  
         <p class="footertext">&copy; 2016 Sterling Administration. All Rights Reserved.</p>
   
- </ion-footer-bar>
+ </ion-footer-bar> -->

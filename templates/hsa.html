@@ -1,5 +1,12 @@
 
-
+<style>
+@media screen and (max-width: 340px) {
+			div.wrap{
+				word-wrap: break-word;
+				width:90%;
+			}
+		}
+		</style>
 	<ion-content class="bgnew" on-swipe-left="goForward()">
       
 		<div class="padding" >
@@ -67,12 +74,12 @@
 					<img src="img/home/Activity_statements.svg" style="margin-top:32px;">
 					<a href="#/health"ng-click="gohealth()"><div class="home-head menu-head"> Statements</div></a>
 					
-					<div class="row no-padding row-border " >
-						<div class="col colvertical" style="border-left-color:#000">
-							<a href="#activitystmnt"><div class="head_detail">Active Statement</div></a>
+					<div class="row no-padding row-border  " >
+						<div class="col colvertical responsive-sm" style="border-left-color:#000">
+							<a href="#activitystmnt"><div class="head_detail"style="overflow-wrap: break-word;" >Active Statement</div></a>
 						</div>
-						<div class="col">
-							<a href="#taxyear"><div class="head_detail" type="submit">Tax Statement</div></a>
+						<div class="col responsive-sm">
+							<a href="#taxyear"><div class="head_detail"style="overflow-wrap: break-word;" >Tax Statement</div></a>
 							
 						</div>
 					</div>		

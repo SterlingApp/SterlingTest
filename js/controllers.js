@@ -2471,12 +2471,17 @@ $scope.show1 = false;
   
    $scope.submitvalues=function()
 	{
+		$ionicLoading.show({
+		  template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
+		});
 		
 		$http.post(" http://app.sterlinghsa.com/api/v1/accounts/makecontribution",{'acct_id':$scope.hsaaccId,'acct_type':$scope.hsaacctype,'bank_acct_id':$scope.makecontribute.selectAccount.BANK_ACC_ID,'amount':$scope.makecontribute.amount,'fee_amount':$scope.makecontribute.feeamount,'reason_code':$scope.makecontribute.selectdescription.FEE_CODE,'trans_date':$scope.makecontribute.TransDate},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 		.success(function(data){
 			//alert(JSON.stringify(data));
 			if(data.status == "SUCCESS")
 			{
+				$ionicLoading.hide();
+			
 			$scope.transactionid = data.transaction_id;	
 			$cordovaDialogs.alert('Your Tansaction ID '+ "--->" + $scope.transactionid , 'Submitted successsfully', 'OK')
 			.then(function() {

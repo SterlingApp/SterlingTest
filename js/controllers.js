@@ -299,7 +299,7 @@ $scope.show1 = false;
   {
 		$scope.hsa=$scope.selectColor;
 		$scope.fsa=$scope.deselectColor;
-		$location.path("/hsa");
+		$location.path("app/hsa");
   }
   $scope.changecolor2=function()
   {
@@ -601,6 +601,7 @@ $scope.show1 = false;
     $scope.hsaaccno=$rootScope.hsaaccno;
 	 $scope.fsaaccno=$rootScope.fsaaccno;
 	$scope.newclaim_balance=$rootScope.newclaim_balance;
+    $scope.newclaimvalues={taxid:'',amount:'',dependent:'',patient:'',Bankaccount:'',startTransDate:'',endTransDate:''};
 	 $ionicScrollDelegate.scrollBottom(true);
 	 $scope.goback=function()
 	{
@@ -661,7 +662,8 @@ $scope.show1 = false;
    // //alert( JSON.stringify(err)); 
   // });
   
-   $scope.TransDate="";
+   $scope.startTransDate="";
+   $scope.endTransDate="";
 	
 	$scope.getTransDate=function(){
 		 var options = {
@@ -691,11 +693,51 @@ $scope.show1 = false;
 					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
 				
 					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-					$scope.TransDate=selectedDate;
+				
+					$scope.newclaimvalues.startTransDate=selectedDate;
+					
 				});
 			})
 		
 	};
+	$scope.EndgetTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					$scope.newclaimvalues.endTransDate=selectedDate;
+				});
+			})
+		
+	};
+	$scope.newclaimsubmit=function(){
+		
+		$scope.newclaimvalues={};
+		$scope.taxid={};
+	}
 	
 })
 .controller('NewclaimbicycleCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
@@ -1020,7 +1062,7 @@ $scope.show1 = false;
 	{
 		$rootScope.hidecontent=false;
 		// window.history.back();
-		$location.path("/hsa");
+		$location.path("/app/hsa");
 	}
 	
 })
@@ -1060,7 +1102,7 @@ $scope.show1 = false;
 	{
 		$rootScope.hidecontent=false;
 		// window.history.back();
-		$location.path("/hsa");
+		$location.path("app/hsa");
 	}
 	
 })
@@ -1089,7 +1131,7 @@ $scope.show1 = false;
 	{
 		$rootScope.hidecontent=false;
 		// window.history.back();
-		$location.path("/hsa");
+		$location.path("app/hsa");
 	}
 })
 
@@ -1466,13 +1508,15 @@ $scope.show1 = false;
 	}
 })
 
-.controller('PaymeCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$invalid,$dirty,$error) {
+.controller('PaymeCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
 	$scope.paymeValues={selectAccount:'',amount:'',TransDate:'',category:''};
 	$scope.access_token = localStorage.getItem('access_token');
     $scope.hsaaccId=$rootScope.hsaaccId;
     $scope.hsaaccno=$rootScope.hsaaccno;
+	
+	 // $scope.ds=true;
 	$scope.upload = function(){
 	         fileChooser.open(function(uri) {
 				 //alert(uri);
@@ -1605,35 +1649,22 @@ $scope.show1 = false;
 			$scope.transactionid = data.transaction_id;
 			$cordovaDialogs.alert('Your Tansaction ID '+ "--->" + $scope.transactionid , 'Submitted successsfully', 'OK')
 			.then(function() {
+				 $scope.paymeValues={};
 		});
 		return false;
 		}else if(data.status == "FAILED"){
 			$cordovaDialogs.alert('You do not have sufficient balance to schedule this disbursement ', 'Sorry', 'OK')
 			.then(function() {
-				
-				   $scope.paymeValues={};
-				   $scope.myForm.$invalid=false;		  
-				    // $scope.myForm.category.$dirty=false;
-					// $scope.myForm.category.$invalid=false;
-					// $scope.myForm.category.$error.required=false;
-				   // $scope.myForm.$error = {};
-				   $scope.myForm.$dirty = false;
-				   $scope.myForm.$error=false;
-				    myForm.$setUntouched();
-				 
-				   
-				  
-				   // $scope.myForm.category.$dirty={};
-				   
-				   // $scope.myForm.category.$invalid={};
-				   
-				   // var original = $scope.paymeValues;
-				// $scope.user= angular.copy(original);
-                 // $scope.myForm.$setPristine();
-				
-				$scope.myForm.$setValidity(); 
-				 
-		       // $scope.myForm.amount.$error.required=false;
+				     	// $scope.myForm.$setPristine();
+                     // $scope.ds=false;						
+				     $scope.paymeValues={};
+					 
+					 $scope.myForm.amount.$dirty=false;
+					 $scope.myForm.amount.$invalid=false;
+					  $scope.myForm.$invalid=false;	
+                       $scope.myForm.$dirty = false;	
+				     
+				    
 		});
 		return false;
 		}
@@ -1812,11 +1843,13 @@ $scope.show1 = false;
 			$scope.transactionid = data.transaction_id;	
 			$cordovaDialogs.alert('Your Tansaction ID '+ "--->" + $scope.transactionid , 'Submitted successsfully', 'OK')
 			.then(function() {
+				$scope.payprovierValues={};
 		});
 		return false;
 		}else if(data.status == "FAILED"){
 			$cordovaDialogs.alert('You do not have sufficient balance to schedule this disbursement ', 'Sorry', 'OK')
 			.then(function() {
+				$scope.payprovierValues={};
 		});
 		return false;
 		}
@@ -2329,7 +2362,7 @@ $scope.show1 = false;
 					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
 				
 					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-					$scope.TransDate=selectedDate;
+					$scope.makecontribute.TransDate=selectedDate;
 				});
 			})
 		
@@ -2374,7 +2407,7 @@ $scope.show1 = false;
 	$scope.username = localStorage.getItem('username');
 	$scope.acc_num=$rootScope.hsaaccno;
 	
-	$scope.makecontribute={selectAccount:'',amount:'',TransDate:'',feeamount:'',description:''};
+	$scope.makecontribute={selectAccount:'',amount:'',TransDate:'',feeamount:'',selectdescription:''};
 	$scope.hsaaccId=$rootScope.hsaaccId;
     
 	$http.get(' http://app.sterlinghsa.com/api/v1/accounts/accountinfo',{params:{'type':'hsa','acc_num': $scope.acc_num},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
@@ -2447,11 +2480,15 @@ $scope.show1 = false;
 			$scope.transactionid = data.transaction_id;	
 			$cordovaDialogs.alert('Your Tansaction ID '+ "--->" + $scope.transactionid , 'Submitted successsfully', 'OK')
 			.then(function() {
+				$scope.makecontribute={};
+				
 		});
 		return false;
 		}else if(data.status == "FAILED"){
 			$cordovaDialogs.alert('You do not have sufficient balance to schedule this disbursement ', 'Sorry', 'OK')
 			.then(function() {
+				$scope.makecontribute={};
+				
 		});
 		return false;
 		}
@@ -2627,7 +2664,7 @@ $scope.show1 = false;
 	
 	$scope.backcontrol=function()
 	{
-		$location.path("/hsa")
+		$location.path("app/hsa")
 	}
 	$scope.goback=function()
 	{

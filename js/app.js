@@ -125,6 +125,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
       }
     }
   })
+  .state('app.hra', {
+    url: "/hra",
+    views: {
+      'tab-hra': {
+        templateUrl: "templates/hra/hra.html",
+		 controller: 'HraCtrl'
+      }
+    }
+  })
   
   // .state('hsa', {
     // url: '/hsa',
@@ -336,18 +345,64 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
           templateUrl: 'templates/statement.html',
 		  controller: 'StatementCtrl'
     })
+	.state('payprovider', {
+      url: '/payprovider',
+          templateUrl: 'templates/payprovider.html',
+		  controller: 'PayproviderCtrl'
+    })
 	.state('fsapayme', {
       url: '/fsapayme',
           templateUrl: 'templates/fsa/fsapayme.html',
 		  controller: 'FsapaymeCtrl'
     })
-    
-    
- .state('payprovider', {
-      url: '/payprovider',
-          templateUrl: 'templates/payprovider.html',
-		  controller: 'PayproviderCtrl'
+	
+	
+// HRA PAGES
+    .state('hraacct', {
+      url: '/hraacct',
+          templateUrl: 'templates/hra/hraacct.html',
+		  controller: 'HraacctCtrl'
+    })
+	.state('hracontribution', {
+      url: '/hracontribution',
+          templateUrl: 'templates/hra/hracontribution.html',
+		  controller: 'HracontributionCtrl'
+    })
+	.state('hradisburse', {
+      url: '/hradisburse',
+          templateUrl: 'templates/hra/hradisburse.html',
+		  controller: 'HradisburseCtrl'
+    })
+	.state('hranewclaim', {
+      url: '/hranewclaim',
+          templateUrl: 'templates/hra/hranewclaim.html',
+		  controller: 'HranewclaimCtrl'
+    })
+	.state('hrarecent', {
+      url: '/hrarecent',
+          templateUrl: 'templates/hra/hrarecent.html',
+		  controller: 'HrarecentCtrl'
+    })
+	.state('hrapayme', {
+      url: '/hrapayme',
+          templateUrl: 'templates/hra/hrapayme.html',
+		  controller: 'HrapaymeCtrl'
+    })
+	.state('hrapayprovider', {
+      url: '/hrapayprovider',
+          templateUrl: 'templates/hra/hrapayprovider.html',
+		  controller: 'HrapayproviderCtrl'
+    })
+	.state('hrabal', {
+      url: '/hrabal',
+          templateUrl: 'templates/hra/hrabal.html',
+		  controller: 'HrabalCtrl'
     });
+
+	
+    
+    
+ 
 
   $urlRouterProvider.otherwise('/login');
   

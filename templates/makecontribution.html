@@ -103,7 +103,7 @@
                               </span>
 							</div> -->
 						 
-							 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid || myForm.transaction.$touched,'no-errors':myForm.transaction.$valid }">
+							 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors':myForm.transaction.$valid }">
                              <span class="input-label ItemlineHead1 ">
                                Enter Transaction
 	                           </span>
@@ -111,7 +111,7 @@
 		
 		                          </label>
 							<div class="row">
-							  <span style="color:red" ng-show="myForm.transaction.$touched && myForm.transaction.$invalid">
+							  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
                                 <span ng-show="myForm.transaction.$error.required"> Transaction Date is required.</span>
                               </span>
 							</div>
@@ -174,7 +174,7 @@
 
 		<div class="row">
 			<div class="col  text-center">
-				<button class="button button-small" type="submit" ng-click="submitvalues()" ng-disabled="myForm.$invalid" style="background-color:#29B8E5;color:#fff;border-radius:8px;">SUBMIT</button>
+				<button class="button button-small" type="submit" ng-click="submitvalues();myForm.$setPristine()" ng-disabled="myForm.$invalid" style="background-color:#29B8E5;color:#fff;border-radius:8px;">SUBMIT</button>
 			</div> 
 		</div> 
 

@@ -79,14 +79,14 @@ input[type=text]:focus {
 						
 						
 	             
-        <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid || myForm.transaction.$touched ,'no-errors' :myForm.transaction.$valid  }">
+        <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid  ,'no-errors' :myForm.transaction.$valid  }">
 		<span class="input-label ItemlineHead1">Enter Transaction</span>
 							
         <input type="text" ng-click="getTransDate()"  name="transaction" ng-model="paymeValues.TransDate" id="forminput" placeholder="Transaction Date"  required>
 		</label>
-		<div class="row">
-		  <span style="color:red" ng-show="myForm.transaction.$touched && myForm.transaction.$invalid ">
-              <span > Tansaction Date is required.</span>
+		<div class="row" >
+		  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid ">
+              <span > Transaction Date is required.</span>
            </span>
 		</div>
     
@@ -99,7 +99,7 @@ input[type=text]:focus {
 								<!-- <option ng-repeat="data in categories">{{data.LOOKUP_CODE}}</option> -->
 							  </select>
 							  </label>
-							  <div class="row">
+							  <div class="row" ng-show="msghide">
 							  <span style="color:red" ng-show="myForm.category.$dirty && myForm.category.$invalid">
                                 <span ng-show="myForm.category.$error.required"> Category is required.</span>
                               </span>
@@ -117,7 +117,7 @@ input[type=text]:focus {
 				
 			    <div class="row">
 				    <div class="col text-center">
-				        <button class="button button-small text-center formButton" ng-disabled="myForm.$invalid" type="submit" ng-click="payme()">SUBMIT</button>
+				        <button class="button button-small text-center formButton" ng-disabled="myForm.$invalid" type="submit" ng-click="payme(); myForm.$setPristine()">SUBMIT</button>
 				    </div>
 			    </div>
 			
@@ -130,7 +130,17 @@ input[type=text]:focus {
 			
 		
 		</form>
-  
+		<!--  <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid || myForm.transaction.$touched ,'no-errors' :myForm.transaction.$valid  }">
+		<span class="input-label ItemlineHead1">Enter Transaction</span>
+							
+        <input type="text" ng-click="getTransDate()"  name="transaction" ng-model="paymeValues.TransDate" id="forminput" placeholder="Transaction Date"  required>
+		</label>
+		<div class="row" >
+		  <span style="color:red" ng-show="myForm.transaction.$touched && myForm.transaction.$invalid ">
+              <span > Transaction Date is required.</span>
+           </span>
+		</div>
+   -->
 	<!-- <div class="list">
 							<label class="item item-input formlabel">
 							<input type="text" ng-click="getTransDate()" name="transaction" ng-model="paymeValues.TransDate" class="input-box input-boxfocus" id="forminput" placeholder="Transaction Date"  required>

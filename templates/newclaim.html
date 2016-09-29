@@ -78,22 +78,22 @@
 		</div> -->
 		
 	
-        <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.startTransDate.$dirty && myForm.startTransDate.$invalid || myForm.startTransDate.$touched ,'no-errors' :myForm.startTransDate.$valid   }">
+        <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.startTransDate.$dirty && myForm.startTransDate.$invalid ,'no-errors' :myForm.startTransDate.$valid   }">
 		<span class="input-label ItemlineHead1">Enter Transaction</span>
         <input type="text" ng-click="getTransDate()" name="startTransDate" ng-model="newclaimvalues.startTransDate" class="input-box input-boxfocus formselect" id="forminput" placeholder=" start Transaction Date"  required>
 		</label>
 		<div class="row">
-		  <span style="color:red" ng-show="myForm.startTransDate.$touched && myForm.startTransDate.$invalid">
+		  <span style="color:red" ng-show="myForm.endTransDate.$dirty && myForm.startTransDate.$invalid">
               <span ng-show="myForm.startTransDate.$error.required"> Start Transaction Date is required.</span>
            </span>
 		</div>
 		
-		<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endTransDate.$dirty && myForm.endTransDate.$invalid || myForm.endTransDate.$touched,'no-errors' :myForm.endTransDate.$valid   }">
+		<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endTransDate.$dirty && myForm.endTransDate.$invalid ,'no-errors' :myForm.endTransDate.$valid   }">
 		<span class="input-label ItemlineHead1">Enter Transaction</span>
         <input type="text" ng-click="EndgetTransDate()" name="endTransDate" ng-model="newclaimvalues.endTransDate" class="input-box input-boxfocus formselect" id="forminput" placeholder=" End Transaction Date"  required>
 		</label>
 		<div class="row">
-		  <span style="color:red" ng-show="myForm.endTransDate.$touched && myForm.endTransDate.$invalid">
+		  <span style="color:red" ng-show="myForm.endTransDate.$dirty && myForm.endTransDate.$invalid">
               <span ng-show="myForm.endTransDate.$error.required">End  Transaction Date is required.</span>
            </span>
 		</div>
@@ -155,7 +155,7 @@
 	   
 		<div class="row">
 			<div class="col text-center">
-				<button class="button button-small formButton" ng-disabled="myForm.$invalid" type="submit" ng-click="newclaimsubmit()">SUBMIT</button>
+				<button class="button button-small formButton" ng-disabled="myForm.$invalid" type="submit" ng-click="newclaimsubmit();myForm.$setPristine()">SUBMIT</button>
 			</div> 
 		</div>    
   

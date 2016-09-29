@@ -80,7 +80,7 @@ input[type=text]:focus {
            </span>
 		</div>
 		
-		 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid || myForm.transaction.$touched,'no-errors':myForm.transaction.$valid }">
+		 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors':myForm.transaction.$valid }">
               <span class="input-label ItemlineHead1 ">
                 Enter Transaction
 	          </span>
@@ -88,7 +88,7 @@ input[type=text]:focus {
 		
 		   </label>
 		   <div class="row">
-			 <span style="color:red" ng-show="myForm.transaction.$touched && myForm.transaction.$invalid">
+			 <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
                  <span ng-show="myForm.transaction.$error.required"> Transaction is required.</span>
              </span>
 		 </div>			
@@ -132,7 +132,7 @@ input[type=text]:focus {
 
 		<div class="row">
 			<div class="col text-center">
-				<button class="button button-small formButton" ng-click="submitValue();"  ng-disabled="myForm.$invalid"  type="submit">SUBMIT</button>
+				<button class="button button-small formButton" ng-click="submitValue();myForm.$setPristine()"  ng-disabled="myForm.$invalid"  type="submit">SUBMIT</button>
 			</div> 
 		</div> 
    

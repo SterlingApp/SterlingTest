@@ -69,7 +69,7 @@ margin-left:50px;
 	font-family: 'Avenir Next LT Pro';
 	font-weight: normal;
 	font-style: normal;
-	font-size: 16px;	
+	font-size: 20px;	
 }
 .cardshadow{
 	box-shadow: 0px 0px 15px 1px rgba(144,144,144,0.73);
@@ -645,6 +645,11 @@ font-size:30px;
 	font-weight: normal;
 	font-style: normal;
 	font-size:22px;
+}
+.chevronicon{
+	font-size:16px ! important;
+	/* margin-left:70px;
+	margin-top:50px; */
 }
 
 

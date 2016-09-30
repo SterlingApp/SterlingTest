@@ -41,7 +41,7 @@
 				<span class="input-label bgnew">
 				select
 				</span>
-				<select class="bgnew" name="selectPayee" ng-model="selectPayee" ng-options="pay.VENDOR_NAME for pay in payee" required>
+				<select class="bgnew" name="selectPayee" ng-model="selectPayee" ng-options="pay.DISPLAY_NAME for pay in bank_details" required>
 					<option selected disabled value="" class="ItemlineHead1"> Select Bank Account</option>
 				</select>
 			</label>
@@ -111,7 +111,7 @@
 
 		<div class="row">
 			<div class="col text-center">
-				<button class="button button-small formButton" ng-disabled="myForm.$invalid" type="submit">SUBMIT</button>
+				<button class="button button-small formButton" ng-disabled="myForm.$invalid" ng-click="submitValues(); myForm.$setPristine()" type="submit">SUBMIT</button>
 			</div> 
 		</div> 
 

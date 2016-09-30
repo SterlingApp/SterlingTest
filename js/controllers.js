@@ -600,6 +600,88 @@ $scope.show1 = false;
 		 $location.path("app/fsa");
 	}
 })
+
+.controller('fsapayproviderCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+	// $rootScope.hidecontent=true;
+	//alert();
+	localStorage.setItem("backCount","2");
+		$scope.username = localStorage.getItem('username');
+	$scope.access_token = localStorage.getItem('access_token');
+	 $scope.fsaaccId=$rootScope.fsaaccId;
+	 $scope.fsaccno=$rootScope.fsaaccno;
+	$http.get("http://app.sterlinghsa.com/api/v1/accounts/availablebalances",{params:{ 'acct_num':$scope.fsaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	 .success(function(data){
+		  //alert( JSON.stringify(data)); 
+			$scope.available_balances = data.available_balances;
+	 })
+	
+		 $http.get(" http://app.sterlinghsa.com/api/v1/accounts/plan-type",{params:{'acct_id':$scope.fsaaccId},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	.success(function(data){
+		//alert( JSON.stringify(data));
+		$scope.plan_types=data.plan_types;
+		
+	  
+	}).error(function(err){
+  // alert( JSON.stringify(err));
+  });
+  
+  $scope.redirectTo=function(claim){
+ 	//alert(JSON.stringify(claim.MEANING));
+	  for(var i=0;i<$scope.available_balances.length;i++){
+		  
+		  if($scope.available_balances[i].PLAN_TYPE==claim.LOOKUP_CODE){
+			$rootScope.newclaim_balance =$scope.available_balances[i].BALANCE;
+			//alert(JSON.stringify($rootScope.newclaim_balance));
+		  }
+	  }
+	if(claim.MEANING === 'Dependent Care FSA'){
+		// alert('hello')
+		
+		$location.path("/fsadependent");
+	
+	}else if(claim.MEANING === 'Transit FSA'){
+		
+		$location.path("/fsatransit");
+		
+	}else if(claim.MEANING === 'Limited Purpose Healthcare FSA'){
+		
+		$location.path("/fsahealthcare");
+	}else if(claim.MEANING === 'Parking FSA'){
+		
+		$location.path("/fsaparking");
+	}
+  }
+
+  
+  
+  // $scope.redirectTo=function(claim){
+	  
+	// if(claim == 'Dependent Care FSA'){
+		// $location.path("/newclaim");
+	// }
+		
+	  
+  // }
+  
+  
+		// // if(claim =='Bicycle'){
+			
+			// $location.path("newclaim");
+		// }else if(claim =='Transit'){
+			// $location.path("newclaimbicycle");
+		// }   
+	
+	$scope.goback=function()
+	{
+		 $rootScope.hidecontent=false;
+		//window.history.back();
+		 $location.path("app/fsa");
+	}
+})
+
+
+
+
 .controller('newclaimCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicScrollDelegate,$rootScope) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","3");
@@ -748,6 +830,156 @@ $scope.show1 = false;
 	}
 	
 })
+
+.controller('fsadependentCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicScrollDelegate,$rootScope) {
+	$rootScope.hidecontent=true;
+	localStorage.setItem("backCount","3");
+	 $scope.access_token = localStorage.getItem('access_token');
+    $scope.hsaaccId=$rootScope.hsaaccId;
+    $scope.hsaaccno=$rootScope.hsaaccno;
+	 $scope.fsaaccno=$rootScope.fsaaccno;
+	$scope.newclaim_balance=$rootScope.newclaim_balance;
+    $scope.newclaimvalues={taxid:'',amount:'',dependent:'',patient:'',Bankaccount:'',startTransDate:'',endTransDate:''};
+	 $ionicScrollDelegate.scrollBottom(true);
+	 $scope.goback=function()
+	{
+		// $rootScope.hidecontent=true;
+		 //window.history.back();
+		 $location.path("fsapayprovider");
+	}
+	$scope.upload = function(){
+	         fileChooser.open(function(uri) {
+				 //alert(uri);
+			     var options = {
+                     fileKey: "file",
+                      //fileName: "tesat.pdf",
+			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
+                     chunkedMode: false,
+                     mimeType: "text/plain"
+			};
+		 	  
+			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
+		
+		           //alert("SUCCESS: " + result.response);
+              }, function(err) {
+                  //alert("ERROR: " + JSON.stringify(err));
+              }, function (progress) {
+                 // constant progress updates
+            })
+			
+	  }); 	   
+	   
+   }
+   
+   $http.get('http://app.sterlinghsa.com/api/v1/accounts/payeeslist',{params:{'acc_num': $scope.fsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	.success(function(data){
+		//alert(JSON.stringify(data));
+		//alert("1111");
+		$scope.payee=data.payee ;
+		//alert(JSON.stringify($scope.payee));
+	}).error(function(err){
+  
+   });
+   
+   // $http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	// .success(function(data){
+		// //alert( JSON.stringify(data));
+		
+		// $scope.Availablebalance=data.balances.BALANCE;
+	// }).error(function(err){
+   
+  // });
+  
+   // $http.get("http://app.sterlinghsa.com/api/v1/accounts/availablebalances",{params:{ 'acct_num': $scope.fsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	 // .success(function(data){
+		 // // alert( JSON.stringify(data)); 
+			// $rootScope.available_balances = data.available_balances.BALANCE;
+			// //alert(JSON.stringify($rootScope.available_balances));
+	 // }).error(function(err){
+   
+   // //alert( JSON.stringify(err)); 
+  // });
+  
+   $scope.startTransDate="";
+   $scope.endTransDate="";
+	
+	$scope.getTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+				
+					$scope.newclaimvalues.startTransDate=selectedDate;
+					
+				});
+			})
+		
+	};
+	$scope.EndgetTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					$scope.newclaimvalues.endTransDate=selectedDate;
+				});
+			})
+		
+	};
+	$scope.newclaimsubmit=function(){
+		
+		$scope.newclaimvalues={};
+		$scope.taxid={};
+	}
+	
+})
+
+
 .controller('NewclaimbicycleCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
 		$rootScope.hidecontent=true;
 	 localStorage.setItem("backCount","3");
@@ -763,6 +995,110 @@ $scope.show1 = false;
 		 $rootScope.hidecontent=true;
 		 //window.history.back();
 		 $location.path("new");
+	}
+	$scope.upload = function(){
+	         fileChooser.open(function(uri) {
+				 //alert(uri);
+			     var options = {
+                     fileKey: "file",
+                      //fileName: "tesat.pdf",
+			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
+                     chunkedMode: false,
+                     mimeType: "text/plain"
+			};
+		 	  
+			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
+		
+		           //alert("SUCCESS: " + result.response);
+              }, function(err) {
+                  //alert("ERROR: " + JSON.stringify(err));
+              }, function (progress) {
+                 // constant progress updates
+            })
+			
+	  }); 	   
+	   
+   }
+    $http.get('http://app.sterlinghsa.com/api/v1/accounts/payeeslist',{params:{'acc_num': $scope.fsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	.success(function(data){
+		//alert(JSON.stringify(data));
+		//alert("1111");
+		$scope.payee=data.payee ;
+		//alert(JSON.stringify($scope.payee));
+	}).error(function(err){
+  
+   });
+   
+   // $http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	// .success(function(data){
+		// //alert( JSON.stringify(data));
+		
+		// $scope.Availablebalance=data.balances.BALANCE;
+	// }).error(function(err){
+   
+  // });
+  
+   // $http.get("http://app.sterlinghsa.com/api/v1/accounts/availablebalances",{params:{ 'acct_num':$scope.fsaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	 // .success(function(data){
+		  // alert( JSON.stringify(data)); 
+			// $scope.available_balances = data.available_balances;
+	 // }).error(function(err){
+   
+   
+  // });
+   
+   $scope.TransDate="";
+	
+	$scope.getTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					$scope.TransDate=selectedDate;
+				});
+			})
+		
+	};
+	
+})
+.controller('fsahealthcareCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+		$rootScope.hidecontent=true;
+	 localStorage.setItem("backCount","3");
+	 
+	 $scope.access_token = localStorage.getItem('access_token');
+    $scope.hsaaccId=$rootScope.hsaaccId;
+    $scope.hsaaccno=$rootScope.hsaaccno;
+	$scope.fsaaccno=$rootScope.fsaaccno;
+	
+	
+	 $scope.goback=function()
+	{
+		 $rootScope.hidecontent=true;
+		 //window.history.back();
+		 $location.path("fsapayprovider");
 	}
 	$scope.upload = function(){
 	         fileChooser.open(function(uri) {
@@ -957,6 +1293,111 @@ $scope.show1 = false;
 	
 })
 
+.controller('fsatransitCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+		$rootScope.hidecontent=true;
+	 localStorage.setItem("backCount","3");
+	 
+	 $scope.access_token = localStorage.getItem('access_token');
+    $scope.hsaaccId=$rootScope.hsaaccId;
+    $scope.hsaaccno=$rootScope.hsaaccno;
+	$scope.fsaaccno=$rootScope.fsaaccno;
+	$scope.newclaim_balance=$rootScope.newclaim_balance;
+	 $scope.goback=function()
+	{
+		 $rootScope.hidecontent=true;
+		 //window.history.back();
+		 $location.path("fsapayprovider");
+	}
+	$scope.upload = function(){
+	         fileChooser.open(function(uri) {
+				 //alert(uri);
+			     var options = {
+                     fileKey: "file",
+                      //fileName: "tesat.pdf",
+			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
+                     chunkedMode: false,
+                     mimeType: "text/plain"
+			};
+		 	  
+			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
+		
+		           //alert("SUCCESS: " + result.response);
+              }, function(err) {
+                  //alert("ERROR: " + JSON.stringify(err));
+              }, function (progress) {
+                 // constant progress updates
+            })
+			
+	  }); 	   
+	   
+   }
+    $http.get('http://app.sterlinghsa.com/api/v1/accounts/payeeslist',{params:{'acc_num': $scope.fsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	.success(function(data){
+		//alert(JSON.stringify(data));
+		//alert("1111");
+		$scope.payee=data.payee ;
+		//alert(JSON.stringify($scope.payee));
+	}).error(function(err){
+  
+   });
+   
+   // $http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'fsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	// .success(function(data){
+		// //alert( JSON.stringify(data));
+		
+		// $scope.Availablebalance=data.balances.BALANCE;
+	// }).error(function(err){
+   
+  // });
+  
+   // $http.get("http://app.sterlinghsa.com/api/v1/accounts/availablebalances",{params:{ 'acct_num':$scope.fsaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	 // .success(function(data){
+		  // alert( JSON.stringify(data)); 
+			// $scope.available_balances = data.available_balances;
+	 // }).error(function(err){
+   
+   
+  // });
+   
+   $scope.TransDate="";
+	
+	$scope.getTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					$scope.TransDate=selectedDate;
+				});
+			})
+		
+	};
+	
+})
+
+
 .controller('parkingCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
 		$rootScope.hidecontent=true;
 	 localStorage.setItem("backCount","3");
@@ -971,6 +1412,109 @@ $scope.show1 = false;
 		 $rootScope.hidecontent=true;
 		 //window.history.back();
 		 $location.path("new");
+	}
+	$scope.upload = function(){
+	         fileChooser.open(function(uri) {
+				 //alert(uri);
+			     var options = {
+                     fileKey: "file",
+                      //fileName: "tesat.pdf",
+			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
+                     chunkedMode: false,
+                     mimeType: "text/plain"
+			};
+		 	  
+			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
+		
+		           //alert("SUCCESS: " + result.response);
+              }, function(err) {
+                  //alert("ERROR: " + JSON.stringify(err));
+              }, function (progress) {
+                 // constant progress updates
+            })
+			
+	  }); 	   
+	   
+   }
+    $http.get('http://app.sterlinghsa.com/api/v1/accounts/payeeslist',{params:{'acc_num': $scope.fsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	.success(function(data){
+		//alert(JSON.stringify(data));
+		//alert("1111");
+		$scope.payee=data.payee ;
+		//alert(JSON.stringify($scope.payee));
+	}).error(function(err){
+  
+   });
+   
+   // $http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	// .success(function(data){
+		// //alert( JSON.stringify(data));
+		
+		// $scope.Availablebalance=data.balances.BALANCE;
+	// }).error(function(err){
+   
+  // });
+  
+   // $http.get("http://app.sterlinghsa.com/api/v1/accounts/availablebalances",{params:{ 'acct_num':$scope.fsaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	 // .success(function(data){
+		  // alert( JSON.stringify(data)); 
+			// $rootScope.available_balances = data.available_balances.BALANCE;
+	 // }).error(function(err){
+   
+   
+  // });
+   
+   $scope.TransDate="";
+	
+	$scope.getTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					$scope.TransDate=selectedDate;
+				});
+			})
+		
+	};
+	
+})
+.controller('fsaparkingCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+		$rootScope.hidecontent=true;
+	 localStorage.setItem("backCount","3");
+	 
+	 $scope.access_token = localStorage.getItem('access_token');
+    $scope.hsaaccId=$rootScope.hsaaccId;
+    $scope.hsaaccno=$rootScope.hsaaccno;
+	$scope.fsaaccno=$rootScope.fsaaccno;
+	$scope.newclaim_balance=$rootScope.newclaim_balance;
+	 $scope.goback=function()
+	{
+		 $rootScope.hidecontent=true;
+		 //window.history.back();
+		 $location.path("fsapayprovider");
 	}
 	$scope.upload = function(){
 	         fileChooser.open(function(uri) {
@@ -1647,9 +2191,13 @@ $scope.show1 = false;
    
   });
   
- 
-	
-	$scope.payme=function(){
+ $scope.reset=function(){
+	  $scope.paymeValues={};
+	  $scope.$setPristine();
+ }
+	//$scope.paymeValues={};
+				 
+	$scope.payme=function(myForm){
 		//alert();
 		$ionicLoading.show({
 		  template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
@@ -1657,6 +2205,7 @@ $scope.show1 = false;
 		$http.post("http://app.sterlinghsa.com/api/v1/accounts/payme",{'hsa_acct_id': $scope.hsaaccId,'bank_acct_id':$scope.paymeValues.selectAccount.BANK_ACC_ID,'amount':$scope.paymeValues.amount,'category':$scope.paymeValues.category.LOOKUP_CODE,'trans_date':$scope.paymeValues.TransDate},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
 		//alert( JSON.stringify(data));
+		
 		if(data.status == "SUCCESS"){
 			$ionicLoading.hide();
 			$scope.transactionid = data.transaction_id;
@@ -1674,16 +2223,22 @@ $scope.show1 = false;
 			.then(function($setUntouched,$setPristine) {
 				
 				     	// $scope.myForm.$setPristine();
-                     // $scope.ds=false;
+<<<<<<< .mine                     // $scope.ds=false;						
+				  $scope.paymeValues={};
+				  $scope.myForm.$setPristine();
+				 
+=======                     // $scope.ds=false;
                      	  
 				      $scope.paymeValues={};
 					  $scope.myForm.$setPristine();		
 					 		 
-					 
-				     
-				    
+>>>>>>> .theirs					 
+<<<<<<< .mine					
+=======				     
+>>>>>>> .theirs				    
 		});
 		return false;
+		
 		}
 		//$scope.Availablebalance=data.balances.BALANCE;
 	}).error(function(err){

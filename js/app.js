@@ -401,6 +401,31 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 
 	
     
+    .state('fsapayprovider', {
+      url: '/fsapayprovider',
+          templateUrl: 'templates/fsa/fsapayprovider.html',
+		  controller: 'fsapayproviderCtrl'
+    })
+    .state('fsatransit', {
+      url: '/fsatransit',
+          templateUrl: 'templates/fsa/fsatransit.html',
+		  controller: 'fsatransitCtrl'
+    })
+    .state('fsadependent', {
+      url: '/fsadependent',
+          templateUrl: 'templates/fsa/fsadependent.html',
+		  controller: 'fsadependentCtrl'
+    })
+    .state('fsaparking', {
+      url: '/fsaparking',
+          templateUrl: 'templates/fsa/fsaparking.html',
+		  controller: 'fsaparkingCtrl'
+    })
+    .state('fsahealthcare', {
+      url: '/fsahealthcare',
+          templateUrl: 'templates/fsa/fsahealthcare.html',
+		  controller: 'fsahealthcareCtrl'
+    })
     
  
 

@@ -397,7 +397,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
       url: '/hrabal',
           templateUrl: 'templates/hra/hrabal.html',
 		  controller: 'HrabalCtrl'
-    });
+    })
 
 	
     
@@ -425,7 +425,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
       url: '/fsahealthcare',
           templateUrl: 'templates/fsa/fsahealthcare.html',
 		  controller: 'fsahealthcareCtrl'
-    })
+    });
     
  
 

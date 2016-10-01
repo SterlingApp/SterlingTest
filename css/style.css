@@ -657,6 +657,16 @@ font-size:30px;
 	/* margin-left:70px;
 	margin-top:50px; */
 }
+.custom {
+  background-color: pink; /* This sets the background color*/
+ }
+ 
+
+.custom .item {
+  background-color: transparent; 
+  border-bottom:0px;   
+  border-color: transparent;    
+}
 
 
 

@@ -312,12 +312,12 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 	
 	.state('transit', {
       url: '/transit',
-          templateUrl: 'templates/transit.html',
+          templateUrl: 'templates/fsa/transit.html',
 		  controller: 'transitCtrl'
     })
  .state('parking', {
       url: '/parking',
-          templateUrl: 'templates/parking.html',
+          templateUrl: 'templates/fsa/parking.html',
 		  controller: 'parkingCtrl'
     })
  .state('new', {
@@ -398,6 +398,16 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
           templateUrl: 'templates/hra/hrabal.html',
 		  controller: 'HrabalCtrl'
     })
+	.state('paymeacoinde', {
+      url: '/paymeacoinde',
+          templateUrl: 'templates/hra/paymeacoinde.html',
+		  controller: 'PaymeacoindeCtrl'
+    })
+	.state('payprovideracoinde', {
+      url: '/payprovideracoinde',
+          templateUrl: 'templates/hra/payprovideracoinde.html',
+		  controller: 'PayprovideracoindeCtrl'
+    })
 
 	
     
@@ -425,9 +435,17 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
       url: '/fsahealthcare',
           templateUrl: 'templates/fsa/fsahealthcare.html',
 		  controller: 'fsahealthcareCtrl'
-    });
-    
- 
+    })
+ // cobra
+.state('app.cobra', {
+    url: "/cobra",
+    views: {
+      'tab-cobra': {
+        templateUrl: "templates/cobra/cobra.html",
+		 controller: 'CobraCtrl'
+      }
+    }
+  });
 
   $urlRouterProvider.otherwise('/login');
   

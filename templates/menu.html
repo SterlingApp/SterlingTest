@@ -80,19 +80,20 @@
 				
 				
 				</div> 
-							<ion-tab  class="bg" title="HSA"    href="#/app/hsa">
+							<ion-tab  class="bg" title="HSA"    href="#/app/hsa" ng-hide="hidetab">
 								<ion-nav-view name="tab-hsa"></ion-nav-view>
 							</ion-tab>
 						
-							<ion-tab  class="bg" title="FSA"  href="#/app/fsa">
+							<ion-tab  class="bg" title="FSA"  href="#/app/fsa" >
 								<ion-nav-view name="tab-fsa"></ion-nav-view>
 							</ion-tab>
-							<ion-tab  class="bg" title="HRA"  href="#/app/hra">
+							<ion-tab  class="bg" title="HRA"  href="#/app/hra" >
 								<ion-nav-view name="tab-hra"></ion-nav-view>
 							</ion-tab>
-							<ion-tab  class="bg" title="COBRA" >
-								<ion-nav-view name="tab-menu"></ion-nav-view>
+							<ion-tab  class="bg" title="COBRA" href="#/app/cobra" >
+								<ion-nav-view name="tab-cobra"></ion-nav-view>
 							</ion-tab>
+							
 			   </ion-tabs>
       
      <!--  <ion-footer-bar class="bar-light" ng-controller="FooterCtrl">
@@ -114,7 +115,7 @@
                <h2 style="color: #ACADAF;font-family: 'Avenir Next LT Pro';font-weight: normal;font-style: normal;">Sterling Administration</h2>
             </span>
          </div>
-         <ion-list class="custom">
+         <ion-list class="custom ">
              <ion-item menu-close href="#/app/portfolio">
                 <i class="icon ion-home"></i>
                <span class="menufont" style="margin-left: 05px;">

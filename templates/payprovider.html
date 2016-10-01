@@ -126,14 +126,21 @@ input[type=text]:focus {
 		<div class="row">
 			<div class="col text-center">
 			
-			<button class="button button-small formButton" type="submit " ng-click="upload();" >Upload</button>
+			<button class="button button-calm button-small icon-left ion-android-upload formButton" type="submit " ng-click="upload();" >Upload</button>
 		</div> 
 		</div> 
+		
+		<div class="row">
+       <div class="col text-center">
+      <img ng-src="{{imgSrc}}" id="receipt"/>
+      <input type="hidden" name="imgValue" ng-value="imgSrc" ng-model="paymeValues.imgValue">
+       </div>
+       </div>
 
 		<div class="row">
 			<div class="col text-center">
-				<button class="button button-small formButton" ng-click="submitValue();myForm.$setPristine()"  ng-disabled="myForm.$invalid"  type="submit">SUBMIT</button>
-			</div> 
+				<button class="button button-calm button-small formButton1" ng-click="submitValue();"  ng-disabled="myForm.$invalid"  type="submit">SUBMIT</button>
+				</div> 
 		</div> 
    
 </div>

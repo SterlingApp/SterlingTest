@@ -98,10 +98,15 @@ margin-left:50px;
 	/* margin-left:40px;*/
 } 
 .formButton{
-	background-color: #29B8E5;
-	color:#fff;
-	border-radius:8px;
-	text-align:center;
+	border-radius:4px;
+	font-size:18px;
+	width:90px;
+}
+
+.formButton1{
+	border-radius:4px;
+	font-size:18px;
+	width:125px;
 }
 .footerborder
 {

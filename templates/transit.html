@@ -41,8 +41,8 @@
 				<span class="input-label bgnew">
 				select
 				</span>
-				<select class="bgnew" name="selectPayee" ng-model="selectPayee" ng-options="pay.DISPLAY_NAME for pay in bank_details" required>
-					<option selected disabled value="" class="ItemlineHead1"> Select Bank Account</option>
+				<select class="bgnew" name="Bankaccount" ng-model="newclaimvalues.Bankaccount" ng-options="pay.DISPLAY_NAME for pay in bank_details" required>
+					<option selected disabled value="" class="ItemlineHead1"> Select Bankaccount</option>
 				</select>
 			</label>
 			<div class="row">
@@ -105,13 +105,20 @@
       
     		<div class="row">
 			<div class="col  text-center">
-				<button class="button button-small formButton" type="submit " >Upload</button>
+				<button class="button button-calm button-small icon-left ion-android-upload formButton" type="submit " >Upload</button>
 			</div> 
 		</div> 
+		
+		<div class="row">
+       <div class="col text-center">
+      <img ng-src="{{imgSrc}}" id="receipt"/>
+      <input type="hidden" name="imgValue" ng-value="imgSrc" ng-model="paymeValues.imgValue">
+       </div>
+       </div>
 
 		<div class="row">
 			<div class="col text-center">
-				<button class="button button-small formButton" ng-disabled="myForm.$invalid" ng-click="submitValues(); myForm.$setPristine()" type="submit">SUBMIT</button>
+				<button class="button button-calm button-small  formButton1" ng-disabled="myForm.$invalid" ng-click="submitValues(); myForm.$setPristine()" type="submit">SUBMIT</button>
 			</div> 
 		</div> 
 

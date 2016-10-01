@@ -672,9 +672,15 @@ font-size:30px;
   border-bottom:0px;   
   border-color: transparent;    
 }
-
-
-
+ion-item.div:hover a {
+  background-color: #dedede ! important;
+  /* box-shadow: inset 0px 0px 0px 1px red; */
+}
+/* .item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated {
+border-color: #ccc;
+background-color: #ff0000; 
+}
+ */
 
 
 

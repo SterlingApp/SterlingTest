@@ -107,6 +107,12 @@ margin-left:50px;
 	border-radius:4px;
 	font-size:18px;
 	width:125px;
+	background-color:#F4851F !Important;
+	font-family: 'Avenir Next LT Pro' !Important;
+	font-weight: normal !Important;
+	font-style: normal !Important;
+	color:#fff !important;
+	padding-top: 2px !important;
 }
 .footerborder
 {
@@ -563,13 +569,11 @@ margin-left:20px;
 }
 .ItemLinehr{
 	border-color:#F4851F !important;
-	
-	
-	
 }
 
 .ItemlineHead{
-	color:#C0BDBD;
+	/*color:#C0BDBD;*/
+	color:#5985AF;
 	font-family: 'Avenir Next LT Pro';
 	font-weight: normal;
 	font-style: normal;
@@ -616,7 +620,8 @@ input,select{
 
 
 .bgnew{
-	background-color:#F7F7F7 !important;
+	/*background-color:#F7F7F7 !important;*/
+	background-color:#EDECEC !important;
 }
 .item-avatar > img:first-child{
     border-radius: 0% !important;

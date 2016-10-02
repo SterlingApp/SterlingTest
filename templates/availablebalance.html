@@ -11,7 +11,7 @@
 
 <ion-view>
 <ion-content class="bgnew">
-<div class="card" ng-repeat="data in available_balances">
+<div class="card" ng-repeat="data in available_balances" ng-if="data.PLAN_TYPE != null">
 			<div class="item ItemLinehr">
 				<span class="ItemHeadLine">{{data.PLAN_DESC}}</span>
 			</div>

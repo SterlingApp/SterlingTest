@@ -123,22 +123,18 @@
 			</div>
         
          <ion-list class="custom ">
-             <ion-item menu-close href="#/app/portfolio">
+             <ion-item menu-close class="" href="#/app/portfolio">
                 <i class="icon ion-home"></i>
                <span class="menufont" style="margin-left: 20px;">
                Home 
                </span>
-            </ion-item>
-              <ion-item >
+             </ion-item>
+             <ion-item  href="" ng-click="toggleSomething($event)">
            
-             
-              <a href="" class="link menufont" ng-click="toggleSomething($event)">             
-                 
+         
                   <i class="icon ion-medkit"></i>
-                <span style="margin-left: 17px; ">HSA</span>
+                <span style="margin-left: 17px; " class="menufont">HSA</span>
                 <span  class="item-icon-right chevronicon"> <i side="left"  class="icon chevronicon" ng-class="isVisible ? 'ion-chevron-right' : 'ion-chevron-down'"></i> </span>
-                     
-                  </a>
              
             </ion-item>
 			<!-- <a class="item menu-height shadow item-avatar" href="#information">
@@ -173,10 +169,10 @@
             </div>
 			
 			 
-              <ion-item class="item-icon-right" href="">
-                  <a href="" class="link menufont" ng-click="toggleSomething1()">
+              <ion-item class="item-icon-right" href="" ng-click="toggleSomething1()">
+                 
                     <img src="img/felx2.png" width="19" />
-                    <span style="margin-left: 15px; ">
+                    <span style="margin-left: 15px; " class="menufont">
                      FSA   
                     </span>
                       <span  class="item-icon-right chevronicon">
@@ -206,21 +202,17 @@
 			
                <ion-item menu-close href="#contact">
                  <i class="icon ion-at"></i>
-                <span style="margin-left: 17px; ">
-            <a href="#/contact" class="link menufont"> Contact Us</a>
+                <span style="margin-left: 17px;" class="menufont">
+            Contact Us
                 </span>
                 
             </ion-item>
                  <ion-item menu-close href="" ng-click="Logout()">
                   <i class="icon ion-log-out"></i>
-                <span style="margin-left: 17px; ">
-             <a ng-click="LogOut()" class="link menufont">Logout</a> 
+                <span style="margin-left: 17px;" class="menufont">
+           Logout
                </sapn>
-            </ion-item>
-              
-           
-          
-             
+            </ion-item>         
          </ion-list>
       </ion-content>
    </ion-side-menu>

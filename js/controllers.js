@@ -554,7 +554,7 @@ $scope.show1 = false;
 	}).error(function(err){
   // alert( JSON.stringify(err));
   });
-  
+  $scope.plan_type={};
   $scope.redirectTo=function(claim){
  	//alert(JSON.stringify(claim.MEANING));
 	  for(var i=0;i<$scope.available_balances.length;i++){
@@ -568,17 +568,20 @@ $scope.show1 = false;
 		// alert('hello')
 		
 		$location.path("/newclaim");
+		
 	
 	}else if(claim.MEANING === 'Transit FSA'){
 		
 		$location.path("/transit");
 		
+		
 	}else if(claim.MEANING === 'Limited Purpose Healthcare FSA'){
 		
 		$location.path("/newclaimbicycle");
 	}else if(claim.MEANING === 'Parking FSA'){
-		
+	
 		$location.path("/parking");
+		
 	}
   }
 
@@ -600,12 +603,18 @@ $scope.show1 = false;
 		// }else if(claim =='Transit'){
 			// $location.path("newclaimbicycle");
 		// }   
+		
+		// $scope.someinit=function(){
+		// alert();
+		// return 'select plan';
+	// }
 	
 	$scope.goback=function()
 	{
 		// $rootScope.hidecontent=false;
 		//window.history.back();
 		 $location.path("app/fsa");
+		 //$scope.someinit();
 	}
 })
 
@@ -1205,6 +1214,8 @@ $scope.show1 = false;
     $scope.hsaaccId=$rootScope.hsaaccId;
     $scope.hsaaccno=$rootScope.hsaaccno;
 	$scope.fsaaccno=$rootScope.fsaaccno;
+	 $scope.transit={Bankaccount:'',amount:'',description:'',startTransDate:'',endTransDate:''};
+	
 	$scope.newclaim_balance=$rootScope.newclaim_balance;
 	 $scope.goback=function()
 	{
@@ -1245,6 +1256,36 @@ $scope.show1 = false;
   
    });
    
+   if($cordovaNetwork.isOffline())
+ {
+   $ionicLoading.hide();
+   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
+   .then(function() {
+   });
+   return false;
+ }else{
+   $http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hsa', 'acc_num':$scope.hsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	.success(function(data){
+		//alert( JSON.stringify(data));
+		
+		$scope.bank_details=data.bank_details;
+   
+   
+  }).error(function(err){
+   $ionicLoading.hide();
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
+   });
+   return false;
+   
+  });
+ }
+   
    // $http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'fsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	// .success(function(data){
 		// //alert( JSON.stringify(data));
@@ -1263,7 +1304,8 @@ $scope.show1 = false;
    
   // });
    
-   $scope.TransDate="";
+   $scope.startTransDate="";
+   $scope.endTransDate="";
 	
 	$scope.getTransDate=function(){
 		 var options = {
@@ -1293,11 +1335,47 @@ $scope.show1 = false;
 					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
 				
 					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-					$scope.TransDate=selectedDate;
+				
+					$scope.transit.startTransDate=selectedDate;
+					
 				});
 			})
 		
 	};
+	$scope.EndgetTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					$scope.transit.endTransDate=selectedDate;
+				});
+			})
+		
+	};
+
 	
 })
 
@@ -1309,6 +1387,8 @@ $scope.show1 = false;
     $scope.hsaaccId=$rootScope.hsaaccId;
     $scope.hsaaccno=$rootScope.hsaaccno;
 	$scope.fsaaccno=$rootScope.fsaaccno;
+	$scope.transit={Bankaccount:'',amount:'',description:'',startTransDate:'',endTransDate:''};
+	
 	$scope.newclaim_balance=$rootScope.newclaim_balance;
 	 $scope.goback=function()
 	{
@@ -1367,7 +1447,8 @@ $scope.show1 = false;
    
   // });
    
-   $scope.TransDate="";
+    $scope.startTransDate="";
+   $scope.endTransDate="";
 	
 	$scope.getTransDate=function(){
 		 var options = {
@@ -1397,11 +1478,47 @@ $scope.show1 = false;
 					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
 				
 					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-					$scope.TransDate=selectedDate;
+				
+					$scope.transit.startTransDate=selectedDate;
+					
 				});
 			})
 		
 	};
+	$scope.EndgetTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					$scope.transit.endTransDate=selectedDate;
+				});
+			})
+		
+	};
+
 	
 })
 
@@ -1414,6 +1531,8 @@ $scope.show1 = false;
     $scope.hsaaccId=$rootScope.hsaaccId;
     $scope.hsaaccno=$rootScope.hsaaccno;
 	$scope.fsaaccno=$rootScope.fsaaccno;
+	$scope.parking={Bankaccount:'',amount:'',description:'',startTransDate:'',endTransDate:''};
+	
 	$scope.newclaim_balance=$rootScope.newclaim_balance;
 	 $scope.goback=function()
 	{
@@ -1444,6 +1563,36 @@ $scope.show1 = false;
 	  }); 	   
 	   
    }
+   
+   if($cordovaNetwork.isOffline())
+ {
+   $ionicLoading.hide();
+   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
+   .then(function() {
+   });
+   return false;
+ }else{
+   $http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hsa', 'acc_num':$scope.hsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	.success(function(data){
+		//alert( JSON.stringify(data));
+		
+		$scope.bank_details=data.bank_details;
+   
+   
+  }).error(function(err){
+   $ionicLoading.hide();
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
+   });
+   return false;
+   
+  });
+ }
     $http.get('http://app.sterlinghsa.com/api/v1/accounts/payeeslist',{params:{'acc_num': $scope.fsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
 		//alert(JSON.stringify(data));
@@ -1472,7 +1621,8 @@ $scope.show1 = false;
    
   // });
    
-   $scope.TransDate="";
+    $scope.startTransDate="";
+   $scope.endTransDate="";
 	
 	$scope.getTransDate=function(){
 		 var options = {
@@ -1502,11 +1652,47 @@ $scope.show1 = false;
 					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
 				
 					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-					$scope.TransDate=selectedDate;
+				
+					$scope.parking.startTransDate=selectedDate;
+					
 				});
 			})
 		
 	};
+	$scope.EndgetTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					$scope.parking.endTransDate=selectedDate;
+				});
+			})
+		
+	};
+
 	
 })
 .controller('fsaparkingCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
@@ -1517,6 +1703,8 @@ $scope.show1 = false;
     $scope.hsaaccId=$rootScope.hsaaccId;
     $scope.hsaaccno=$rootScope.hsaaccno;
 	$scope.fsaaccno=$rootScope.fsaaccno;
+	$scope.parking={selectpayee:'',amount:'',description:'',startTransDate:'',endTransDate:''};
+	
 	$scope.newclaim_balance=$rootScope.newclaim_balance;
 	 $scope.goback=function()
 	{
@@ -1575,7 +1763,8 @@ $scope.show1 = false;
    
   // });
    
-   $scope.TransDate="";
+   $scope.startTransDate="";
+   $scope.endTransDate="";
 	
 	$scope.getTransDate=function(){
 		 var options = {
@@ -1605,11 +1794,47 @@ $scope.show1 = false;
 					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
 				
 					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-					$scope.TransDate=selectedDate;
+				
+					$scope.parking.startTransDate=selectedDate;
+					
 				});
 			})
 		
 	};
+	$scope.EndgetTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					$scope.parking.endTransDate=selectedDate;
+				});
+			})
+		
+	};
+
 	
 })
 
@@ -3601,6 +3826,8 @@ $scope.show1 = false;
 	}).error(function(err){
   // alert( JSON.stringify(err));
   });
+  
+  $scope.plan_type="";
   $scope.redirectTo=function(claim){
  	 // alert(JSON.stringify(claim.MEANING));
 	  for(var i=0;i<$scope.available_balances.length;i++){
@@ -3611,17 +3838,19 @@ $scope.show1 = false;
 		  }
 	  }
 	if(claim.MEANING === 'ACOINDE'){
-		  // alert('hello')
+		   
 		
 		$location.path("/payprovideracoinde");
 	
 	}
   }
 	
+	
 	$scope.goback=function()
 	{
 		
 		$location.path("/hranewclaim");
+		
 	}
 	
 	
@@ -3669,19 +3898,128 @@ $scope.show1 = false;
 	
 	
 })
-.controller('PaymeacoindeCtrl', function($scope,$location,$rootScope, $stateParams, $http,$cordovaNetwork) {
+.controller('PaymeacoindeCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.newclaim_balance=$rootScope.newclaim_balance;
 	$scope.hraacc= $rootScope.hraaccno;
-	if($cordovaNetwork.isOffline())
-   {
-  
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
+	 $scope.hsaaccno=$rootScope.hsaaccno;
+	$scope.acoinde = {selectAccount:'',amount:'',description:'',startTransDate:'',endTransDate:''};
+	
+	
+   $http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hsa', 'acc_num':$scope.hsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	.success(function(data){
+		//alert( JSON.stringify(data));
+		
+		$scope.bank_details=data.bank_details;
+   
+   
+  }).error(function(err){
+   $ionicLoading.hide();
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
    });
    return false;
- }else{
+   
+  });
+ 
+ 
+  $scope.startTransDate="";
+   $scope.endTransDate="";
+	
+	$scope.getTransDate=function(){
+		
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+				
+					$scope.acoinde.startTransDate=selectedDate;
+					
+				});
+			})
+		
+	};
+	$scope.EndgetTransDate=function(){
+		
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					$scope.acoinde.endTransDate=selectedDate;
+				});
+			})
+		
+	};
+ 
+	$scope.goback=function()
+	{
+		
+		$location.path("/hrapayme");
+	}
+	
+	
+	
+})
+.controller('PayprovideracoindeCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+	$scope.username = localStorage.getItem('username');
+	$scope.access_token = localStorage.getItem('access_token');
+	$scope.newclaim_balance=$rootScope.newclaim_balance;
+	$scope.hraacc= $rootScope.hraaccno;
+	$scope.provideracoinde={selectpayee:'',amount:'',description:'',startTransDate:'',endTransDate:''};
+	
+	
 	  $http.get('http://app.sterlinghsa.com/api/v1/accounts/payeeslist',{params:{'acc_num': $scope.hraacc},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
 		//alert(JSON.stringify(data));
@@ -3701,24 +4039,80 @@ $scope.show1 = false;
   
    });
   
- }
+ 
+ 
+  $scope.startTransDate="";
+   $scope.endTransDate="";
 	
-	$scope.goback=function()
-	{
+	$scope.getTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+				
+					$scope.provideracoinde.startTransDate=selectedDate;
+					
+				});
+			})
 		
-		$location.path("/hrapayme");
-	}
-	
-	
-	
-})
-.controller('PayprovideracoindeCtrl', function($scope,$location,$rootScope, $stateParams, $http) {
-	$scope.username = localStorage.getItem('username');
-	$scope.access_token = localStorage.getItem('access_token');
-	$scope.newclaim_balance=$rootScope.newclaim_balance;
-	$scope.hraacc= $rootScope.hraaccno;
-	
-	
+	};
+	$scope.EndgetTransDate=function(){
+		 var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date(),
+				
+			}
+		   
+			$ionicPlatform.ready(function(){
+				$cordovaDatePicker.show(options).then(function(date){
+					
+					var date1=date.toString();
+					var dataas=date1.split(" ");
+					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+					var mon=""; 
+					if(Month.indexOf(dataas[1]).toString().length==1)
+					{
+						mon="0"+Month.indexOf(dataas[1]);
+
+					}
+					else
+					{
+						mon = Month.indexOf(dataas[1]);
+					}
+					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+				
+					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					$scope.provideracoinde.endTransDate=selectedDate;
+				});
+			})
+		
+	};
+
 	$scope.goback=function()
 	{
 		

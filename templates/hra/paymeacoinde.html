@@ -41,7 +41,7 @@
 				<span class="input-label bgnew">
 				select
 				</span>
-				<select class="bgnew" name="selectPayee" ng-model="selectPayee" ng-options="pay.DISPLAY_NAME for pay in bank_details" required>
+				<select class="bgnew" name="selectPayee"  ng-model="acoinde.selectAccount" ng-options="pay.DISPLAY_NAME for pay in bank_details" required>
 					<option selected disabled value="" class="ItemlineHead1"> Select Bankaccount</option>
 				</select>
 			</label>
@@ -54,7 +54,7 @@
 	 <label class="item item-input item-floating-label formselect " ng-class="{ 'has-errors' :myForm.amount.$dirty && myForm.amount.$invalid ,'no-errors' :myForm.amount.$valid   }">
 	 <span class="input-label ItemlineHead1">Enter Amount</span>
 							
-        <input type="number"   id="forminput" name="amount" ng-model="amount" placeholder="Enter Amount"  required>
+        <input type="number"   id="forminput" name="amount" ng-model="acoinde.amount" placeholder="Enter Amount"  required>
 		</label> 
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.amount.$dirty && myForm.amount.$invalid">
@@ -65,7 +65,7 @@
         <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.starttransaction.$dirty && myForm.starttransaction.$invalid  ,'no-errors' :myForm.starttransaction.$valid  }">
 		<span class="input-label ItemlineHead1">Enter Start Date</span>
 							
-        <input type="text" ng-click="getTransDate()" name="starttransaction" ng-model="TransDate"  id="forminput" placeholder="start Transaction Date"  required>
+        <input type="text" ng-click="getTransDate()" name="starttransaction" ng-model="acoinde.startTransDate"  id="forminput" placeholder="start Transaction Date"  required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.starttransaction.$dirty && myForm.starttransaction.$invalid">
@@ -73,10 +73,10 @@
            </span>
 		</div>
 		
-		<label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endtransaction.$dirty && myForm.endtransaction.$invalid  ,'no-errors' :myForm.transaction.$valid  }">
+		<label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endtransaction.$dirty && myForm.endtransaction.$invalid  ,'no-errors' :myForm.endtransaction.$valid  }">
 		<span class="input-label ItemlineHead1">Enter End Date</span>
 							
-        <input type="text" ng-click="getTransDate()" name="endtransaction" ng-model="TransDate"  id="forminput" placeholder="End Transaction Date"  required>
+        <input type="text" ng-click="EndgetTransDate()" name="endtransaction" ng-model="acoinde.endTransDate"  id="forminput" placeholder="End Transaction Date"  required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.endtransaction.$dirty && myForm.endtransaction.$invalid">
@@ -87,7 +87,7 @@
 	 <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.description.$dirty && myForm.description.$invalid  ,'no-errors' :myForm.description.$valid  }">
 	 <span class="input-label ItemlineHead1">Enter Description</span>
 							
-        <input type="text"   id="forminput" name="description" ng-model="description" placeholder="Description"  required>
+        <input type="text"   id="forminput" name="description" ng-model="acoinde.description" placeholder="Description"  required>
 		</label> 
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.description.$dirty && myForm.description.$invalid">
@@ -133,8 +133,9 @@
 		
        </ion-content>
 </ion-view>
-<ion-footer-bar  class="footerborder" >
+<!-- <ion-footer-bar  class="footerborder" >
  
         <p class="footertext">&copy; 2016 Sterling Administration. All Rights Reserved.</p>
   
  </ion-footer-bar>
+ -->

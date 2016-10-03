@@ -27,7 +27,7 @@
 					<option selected disabled value="" class="ItemlineHead1"> Select Plan</option>
 				</select> -->
 				
-				<select  name="selectplantype" ng-change="redirectTo(plan_type)" ng-model="plan_type" ng-options="plan.MEANING for plan in plan_types" required>
+				<select  name="selectplantype"  ng-change="redirectTo(plan_type);plan_type='null'" ng-model="plan_type" ng-options="plan.MEANING for plan in plan_types" required>
 					<option selected disabled value="" class="ItemlineHead1"> Select Plan</option>
 				</select>
 			</label>

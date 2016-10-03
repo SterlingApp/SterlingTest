@@ -3378,9 +3378,9 @@ $scope.show1 = false;
  }
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		//$rootScope.hidecontent=false;
+		//window.history.back();
+		$location.path("app/hra")
 	}
 	
 	
@@ -3441,9 +3441,9 @@ $scope.show1 = false;
 	
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		//$rootScope.hidecontent=false;
+		//window.history.back();
+		$location.path("app/hra")
 	}
 	
 	
@@ -3506,9 +3506,9 @@ $scope.show1 = false;
 	
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		//$rootScope.hidecontent=false;
+		//window.history.back();
+		$location.path("app/hra")
 	}
 	
 	
@@ -3527,9 +3527,9 @@ $scope.show1 = false;
 	
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		//$rootScope.hidecontent=false;
+		//window.history.back();
+		$location.path("app/hra")
 	}
 	
 	
@@ -3662,9 +3662,9 @@ $scope.show1 = false;
  }
 	$scope.goback=function()
 	{
-		$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		//$rootScope.hidecontent=false;
+		//window.history.back();
+		$location.path("app/hra")
 	}
 	
 	

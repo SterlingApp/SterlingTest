@@ -4676,7 +4676,7 @@ $scope.show1 = false;
 	
 	
 })
-.controller('PaymeacoindeCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+.controller('PaymeacoindeCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera) {
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.newclaim_balance=$rootScope.newclaim_balance;
@@ -4684,6 +4684,44 @@ $scope.show1 = false;
 	 $scope.hsaaccno=$rootScope.hsaaccno;
 	$scope.acoinde = {selectAccount:'',amount:'',description:'',startTransDate:'',endTransDate:''};
 	
+	
+	$scope.upload = function(){
+		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
+		.then(function(options) {
+			if(options==1){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}else if(options==2){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}
+		});
+		return false;
+	}
 	
    $http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hra', 'acc_num':$scope.hraacc},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
@@ -4859,12 +4897,51 @@ $scope.show1 = false;
 	
 	
 })
-.controller('PayprovideracoindeCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+.controller('PayprovideracoindeCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera) {
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.newclaim_balance=$rootScope.newclaim_balance;
 	$scope.hraacc= $rootScope.hraaccno;
 	$scope.provideracoinde={selectpayee:'',amount:'',description:'',startTransDate:'',endTransDate:''};
+	
+	
+	$scope.upload = function(){
+		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
+		.then(function(options) {
+			if(options==1){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}else if(options==2){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}
+		});
+		return false;
+	}
 	
 	  $scope.submitValues=function(){
 		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num': $scope.hraacc,

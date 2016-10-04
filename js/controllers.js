@@ -693,7 +693,7 @@ $scope.show1 = false;
 
 
 
-.controller('newclaimCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicScrollDelegate,$rootScope) {
+.controller('newclaimCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicScrollDelegate,$rootScope,$cordovaCamera) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","3");
 	 $scope.access_token = localStorage.getItem('access_token');
@@ -872,7 +872,6 @@ $scope.show1 = false;
 		
 	};
 	$scope.newclaimsubmit=function(){
-alert();
 		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num':  $scope.fsaaccno,
 		'acct_id':$scope.fsaaccId,
     'bank_acct_id':$scope.newclaimvalues.Bankaccount.BANK_ACC_ID,
@@ -891,12 +890,12 @@ alert();
    'memo':'',
 		"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		alert( JSON.stringify(data));
 		
 		if(data.status == "SUCCESS"){
+			
 			$ionicLoading.hide();
-			$scope.transactionid = data.transaction_id;
-			$cordovaDialogs.alert('Please reference this claim number'+ " " + $scope.transactionid +" "+'for further communication.', 'Claim Submitted Successfully', 'OK')
+			$scope.claim_id = data.claim_id;
+			$cordovaDialogs.alert('Claim number is'+ " " + $scope.claim_id, 'Claim Submitted Successfully', 'OK')
 			.then(function() {
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
@@ -946,7 +945,7 @@ alert();
 	
 })
 
-.controller('fsadependentCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicScrollDelegate,$rootScope) {
+.controller('fsadependentCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicScrollDelegate,$rootScope,$cordovaCamera) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","3");
 	 $scope.access_token = localStorage.getItem('access_token');
@@ -966,32 +965,45 @@ alert();
 		 $location.path("fsapayprovider");
 	}
 	$scope.upload = function(){
-	         fileChooser.open(function(uri) {
-				 //alert(uri);
-			     var options = {
-                     fileKey: "file",
-                      //fileName: "tesat.pdf",
-			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
-                     chunkedMode: false,
-                     mimeType: "text/plain"
-			};
-		 	  
-			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
-		
-		           //alert("SUCCESS: " + result.response);
-              }, function(err) {
-                  //alert("ERROR: " + JSON.stringify(err));
-              }, function (progress) {
-                 // constant progress updates
-            })
-			
-	  }); 	   
-	   
-   }
+		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
+		.then(function(options) {
+			if(options==1){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}else if(options==2){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}
+		});
+		return false;
+	}
    
-   $scope.newclaimsubmit=function(){
-alert();
-		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num':  $scope.fsaaccno,
+   $scope.newclaimFsa=function(){
+	   $http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num':  $scope.fsaaccno,
 		'acct_id':$scope.fsaaccId,
       'bank_acct_id':'',
    'amount':$scope.newclaimvalues.amount,
@@ -1009,19 +1021,16 @@ alert();
    'memo':'',
 		"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		alert( JSON.stringify(data));
-		
 		if(data.status == "SUCCESS"){
 			$ionicLoading.hide();
-			$scope.transactionid = data.transaction_id;
-			$cordovaDialogs.alert('Please reference this claim number'+ " " + $scope.transactionid +" "+'for further communication.', 'Claim Submitted Successfully', 'OK')
+			$scope.claim_id = data.claim_id;
+			$cordovaDialogs.alert('Claim number is'+ " " + $scope.claim_id, 'Claim Submitted Successfully', 'OK')
 			.then(function() {
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
-				
-				 $scope.paymeValues={};
-				$scope.paymeValues={};
+				 $scope.newclaimvalues={};
+				$scope.newclaimvalues={};
 				  $scope.myForm.$setPristine();
 				  $scope.myForm.$error={};
 				  $scope.myForm.$setPristine();		
@@ -1038,16 +1047,12 @@ alert();
                      	$scope.imgSrc= '';
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
-				      $scope.paymeValues={};
+				      $scope.newclaimvalues={};
 					  $scope.myForm.$setPristine();		
 					 		 
                      // $scope.ds=false;						
-				  $scope.paymeValues={};
+				  $scope.newclaimvalues={};
 				  $scope.myForm.$setPristine();
-				 
-					 
-				      
-					
 				    
 		});
 		return false;
@@ -1055,10 +1060,9 @@ alert();
 		}
 		//$scope.Availablebalance=data.balances.BALANCE;
 	}).error(function(err){
-  alert( JSON.stringify(err));
-  });
+		//alert( JSON.stringify(err));
+	})
    }
-	
    
    $http.get('http://app.sterlinghsa.com/api/v1/accounts/payeeslist',{params:{'acc_num': $scope.fsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
@@ -1169,7 +1173,7 @@ alert();
 })
 
 
-.controller('NewclaimbicycleCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+.controller('NewclaimbicycleCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera) {
 		$rootScope.hidecontent=true;
 	 localStorage.setItem("backCount","3");
 	 
@@ -1187,32 +1191,45 @@ alert();
 		 $location.path("new");
 	}
 	$scope.upload = function(){
-	         fileChooser.open(function(uri) {
-				 //alert(uri);
-			     var options = {
-                     fileKey: "file",
-                      //fileName: "tesat.pdf",
-			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
-                     chunkedMode: false,
-                     mimeType: "text/plain"
-			};
-		 	  
-			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
-		
-		           //alert("SUCCESS: " + result.response);
-              }, function(err) {
-                  //alert("ERROR: " + JSON.stringify(err));
-              }, function (progress) {
-                 // constant progress updates
-            })
-			
-	  }); 	   
-	   
-   }
+		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
+		.then(function(options) {
+			if(options==1){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}else if(options==2){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}
+		});
+		return false;
+	}
    
    
    $scope.newclaimsubmit=function(){
-alert();
 		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num':  $scope.fsaaccno,
 		'acct_id':$scope.fsaaccId,
     'bank_acct_id':$scope.newclaimvalues.Bankaccount.BANK_ACC_ID,
@@ -1231,12 +1248,10 @@ alert();
    'memo':'',
 		"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		alert( JSON.stringify(data));
-		
 		if(data.status == "SUCCESS"){
 			$ionicLoading.hide();
-			$scope.transactionid = data.transaction_id;
-			$cordovaDialogs.alert('Please reference this claim number'+ " " + $scope.transactionid +" "+'for further communication.', 'Claim Submitted Successfully', 'OK')
+			$scope.claim_id = data.claim_id;
+			$cordovaDialogs.alert('Claim number is'+ " " + $scope.claim_id, 'Claim Submitted Successfully', 'OK')
 			.then(function() {
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
@@ -1346,7 +1361,7 @@ alert();
 	};
 	
 })
-.controller('fsahealthcareCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+.controller('fsahealthcareCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera) {
 		$rootScope.hidecontent=true;
 	 localStorage.setItem("backCount","3");
 	 
@@ -1365,31 +1380,44 @@ alert();
 		 $location.path("fsapayprovider");
 	}
 	$scope.upload = function(){
-	         fileChooser.open(function(uri) {
-				 //alert(uri);
-			     var options = {
-                     fileKey: "file",
-                      //fileName: "tesat.pdf",
-			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
-                     chunkedMode: false,
-                     mimeType: "text/plain"
-			};
-		 	  
-			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
-		
-		           //alert("SUCCESS: " + result.response);
-              }, function(err) {
-                  //alert("ERROR: " + JSON.stringify(err));
-              }, function (progress) {
-                 // constant progress updates
-            })
-			
-	  }); 	   
-	   
-   }
+		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
+		.then(function(options) {
+			if(options==1){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}else if(options==2){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}
+		});
+		return false;
+	}
    
    $scope.newclaimsubmit=function(){
-alert();
 		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num':  $scope.fsaaccno,
 		'acct_id':$scope.fsaaccId,
     'bank_acct_id':$scope.newclaimvalues.Bankaccount.BANK_ACC_ID,
@@ -1408,12 +1436,11 @@ alert();
    'memo':'',
 		"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		alert( JSON.stringify(data));
 		
 		if(data.status == "SUCCESS"){
 			$ionicLoading.hide();
-			$scope.transactionid = data.transaction_id;
-			$cordovaDialogs.alert('Please reference this claim number'+ " " + $scope.transactionid +" "+'for further communication.', 'Claim Submitted Successfully', 'OK')
+			$scope.claim_id = data.claim_id;
+			$cordovaDialogs.alert('Claim number is'+ " " + $scope.claim_id, 'Claim Submitted Successfully', 'OK')
 			.then(function() {
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
@@ -1524,7 +1551,7 @@ alert();
 	
 })
 
-.controller('transitCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+.controller('transitCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera) {
 		$rootScope.hidecontent=true;
 	 localStorage.setItem("backCount","3");
 	 
@@ -1544,31 +1571,44 @@ alert();
 		 $location.path("new");
 	}
 	$scope.upload = function(){
-	         fileChooser.open(function(uri) {
-				 //alert(uri);
-			     var options = {
-                     fileKey: "file",
-                      //fileName: "tesat.pdf",
-			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
-                     chunkedMode: false,
-                     mimeType: "text/plain"
-			};
-		 	  
-			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
-		
-		           //alert("SUCCESS: " + result.response);
-              }, function(err) {
-                  //alert("ERROR: " + JSON.stringify(err));
-              }, function (progress) {
-                 // constant progress updates
-            })
-			
-	  }); 	   
-	   
-   }
+		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
+		.then(function(options) {
+			if(options==1){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}else if(options==2){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}
+		});
+		return false;
+	}
    
    $scope.newclaimsubmit=function(){
-alert();
 		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num':  $scope.fsaaccno,
 		'acct_id':$scope.fsaaccId,
     'bank_acct_id':$scope.transit.Bankaccount.BANK_ACC_ID,
@@ -1587,12 +1627,11 @@ alert();
    'memo':'',
 		"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		alert( JSON.stringify(data));
 		
 		if(data.status == "SUCCESS"){
 			$ionicLoading.hide();
-			$scope.transactionid = data.transaction_id;
-			$cordovaDialogs.alert('Please reference this claim number'+ " " + $scope.transactionid +" "+'for further communication.', 'Claim Submitted Successfully', 'OK')
+			$scope.claim_id = data.claim_id;
+			$cordovaDialogs.alert('Claim number is'+ " " + $scope.claim_id , 'Claim Submitted Successfully', 'OK')
 			.then(function() {
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
@@ -1770,7 +1809,7 @@ alert();
 	
 })
 
-.controller('fsatransitCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+.controller('fsatransitCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera) {
 		$rootScope.hidecontent=true;
 	 localStorage.setItem("backCount","3");
 	 
@@ -1790,31 +1829,44 @@ alert();
 		 $location.path("fsapayprovider");
 	}
 	$scope.upload = function(){
-	         fileChooser.open(function(uri) {
-				 //alert(uri);
-			     var options = {
-                     fileKey: "file",
-                      //fileName: "tesat.pdf",
-			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
-                     chunkedMode: false,
-                     mimeType: "text/plain"
-			};
-		 	  
-			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
-		
-		           //alert("SUCCESS: " + result.response);
-              }, function(err) {
-                  //alert("ERROR: " + JSON.stringify(err));
-              }, function (progress) {
-                 // constant progress updates
-            })
-			
-	  }); 	   
-	   
-   }
+		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
+		.then(function(options) {
+			if(options==1){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}else if(options==2){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}
+		});
+		return false;
+	}
    
    $scope.newclaimsubmit=function(){
-alert();
 		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num':  $scope.fsaaccno,
 		'acct_id':$scope.fsaaccId,
     'bank_acct_id':'',
@@ -1833,12 +1885,11 @@ alert();
    'memo':'',
 		"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		alert( JSON.stringify(data));
 		
 		if(data.status == "SUCCESS"){
 			$ionicLoading.hide();
-			$scope.transactionid = data.transaction_id;
-			$cordovaDialogs.alert('Please reference this claim number'+ " " + $scope.transactionid +" "+'for further communication.', 'Claim Submitted Successfully', 'OK')
+			$scope.claim_id = data.claim_id;
+			$cordovaDialogs.alert('Claim number is'+ " " + $scope.claim_id, 'Claim Submitted Successfully', 'OK')
 			.then(function() {
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
@@ -1987,7 +2038,7 @@ alert();
 })
 
 
-.controller('parkingCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+.controller('parkingCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera) {
 		$rootScope.hidecontent=true;
 	 localStorage.setItem("backCount","3");
 	 
@@ -2007,28 +2058,42 @@ alert();
 		 $location.path("new");
 	}
 	$scope.upload = function(){
-	         fileChooser.open(function(uri) {
-				 //alert(uri);
-			     var options = {
-                     fileKey: "file",
-                      //fileName: "tesat.pdf",
-			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
-                     chunkedMode: false,
-                     mimeType: "text/plain"
-			};
-		 	  
-			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
-		
-		           //alert("SUCCESS: " + result.response);
-              }, function(err) {
-                  //alert("ERROR: " + JSON.stringify(err));
-              }, function (progress) {
-                 // constant progress updates
-            })
-			
-	  }); 	   
-	   
-   }
+		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
+		.then(function(options) {
+			if(options==1){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}else if(options==2){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}
+		});
+		return false;
+	}
    
    if($cordovaNetwork.isOffline())
  {
@@ -2070,7 +2135,6 @@ alert();
    });
    
    $scope.newclaimsubmit=function(){
-alert();
 		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num':  $scope.fsaaccno,
 		'acct_id':$scope.fsaaccId,
     'bank_acct_id':$scope.parking.Bankaccount.BANK_ACC_ID,
@@ -2089,12 +2153,11 @@ alert();
    'memo':'',
 		"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		alert( JSON.stringify(data));
 		
 		if(data.status == "SUCCESS"){
 			$ionicLoading.hide();
-			$scope.transactionid = data.transaction_id;
-			$cordovaDialogs.alert('Please reference this claim number'+ " " + $scope.transactionid +" "+'for further communication.', 'Claim Submitted Successfully', 'OK')
+			$scope.claim_id = data.claim_id;
+			$cordovaDialogs.alert('Claim number is'+ " " + $scope.claim_id, 'Claim Submitted Successfully', 'OK')
 			.then(function() {
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
@@ -2232,7 +2295,7 @@ alert();
 
 	
 })
-.controller('fsaparkingCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+.controller('fsaparkingCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera) {
 		$rootScope.hidecontent=true;
 	 localStorage.setItem("backCount","3");
 	 
@@ -2252,28 +2315,42 @@ alert();
 		 $location.path("fsapayprovider");
 	}
 	$scope.upload = function(){
-	         fileChooser.open(function(uri) {
-				 //alert(uri);
-			     var options = {
-                     fileKey: "file",
-                      //fileName: "tesat.pdf",
-			         fileName: uri.substr(uri.lastIndexOf('/') + 1),
-                     chunkedMode: false,
-                     mimeType: "text/plain"
-			};
-		 	  
-			  $cordovaFileTransfer.upload( "http://applogic.in/Android/FileUpload/index.php",uri,options).then(function(result) {
-		
-		           //alert("SUCCESS: " + result.response);
-              }, function(err) {
-                  //alert("ERROR: " + JSON.stringify(err));
-              }, function (progress) {
-                 // constant progress updates
-            })
-			
-	  }); 	   
-	   
-   }
+		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
+		.then(function(options) {
+			if(options==1){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}else if(options==2){
+				var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+			}
+		});
+		return false;
+	}
     $http.get('http://app.sterlinghsa.com/api/v1/accounts/payeeslist',{params:{'acc_num': $scope.fsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
 		//alert(JSON.stringify(data));
@@ -2285,7 +2362,6 @@ alert();
    });
    
    $scope.newclaimsubmit=function(){
-alert();
 		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num':  $scope.fsaaccno,
 		'acct_id':$scope.fsaaccId,
     'bank_acct_id':'',
@@ -2304,12 +2380,11 @@ alert();
    'memo':'',
 		"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		alert( JSON.stringify(data));
 		
 		if(data.status == "SUCCESS"){
 			$ionicLoading.hide();
-			$scope.transactionid = data.transaction_id;
-			$cordovaDialogs.alert('Please reference this claim number'+ " " + $scope.transactionid +" "+'for further communication.', 'Claim Submitted Successfully', 'OK')
+			$scope.claim_id = data.claim_id;
+			$cordovaDialogs.alert('Claim number is'+ " " + $scope.claim_id, 'Claim Submitted Successfully', 'OK')
 			.then(function() {
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
@@ -4723,7 +4798,6 @@ $scope.show1 = false;
 	$scope.provideracoinde={selectpayee:'',amount:'',description:'',startTransDate:'',endTransDate:''};
 	
 	  $scope.newclaimsubmit=function(){
-alert();
 		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num': $scope.hraacc,
 		'acct_id':$scope.fsaaccId,
       'bank_acct_id':'',
@@ -4742,12 +4816,10 @@ alert();
    'memo':'',
 		"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		alert( JSON.stringify(data));
-		
 		if(data.status == "SUCCESS"){
 			$ionicLoading.hide();
-			$scope.transactionid = data.transaction_id;
-			$cordovaDialogs.alert('Please reference this claim number'+ " " + $scope.transactionid +" "+'for further communication.', 'Claim Submitted Successfully', 'OK')
+			$scope.claim_id = data.claim_id;
+			$cordovaDialogs.alert('Claim number is'+ " " + $scope.claim_id, 'Claim Submitted Successfully', 'OK')
 			.then(function() {
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );

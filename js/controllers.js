@@ -2,54 +2,43 @@ angular.module('starter.controllers', [])
 .controller('loginCtrl', function($scope,$timeout,$cordovaNetwork,$cordovaDialogs,$location,$ionicLoading,$ionicPopup,$ionicTabsDelegate,$http,$rootScope) {
 	// alert();
 	$scope.loginData={username:'',password:''};
+	$scope.hidetabb=$rootScope.hidetab;
+	
 	if(localStorage.getItem('access_token')==null){
 		//$location.path("/login");
 		
 	}
 	else
 	{
-		$http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':localStorage.getItem('access_token')} })
-	                 .success(function(data){
+		// $http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':localStorage.getItem('access_token')} })
+	                 // .success(function(data){
 			            // alert(JSON.stringify(data.account_types));
 						
-		                  $rootScope.acctype=data.account_types;
-			              // alert(JSON.stringify($rootScope.acctype));
-						  if($scope.acctype.HSA==null)
-						  {
-							  $location.path('/app/hra');
-						  }
-						  else if($scope.acctype.FSA==null){
-							  $scope.showhsa=false;
-							  $scope.showfsa=false;
-							  $scope.showcobra=false;
-							  $scope.showhra1=true;
-							 
-							  $location.path('/app/hra');
+		                  // $rootScope.acctype=data.account_types;
+			               // alert(JSON.stringify($rootScope.acctype));
+						  // if($scope.acctype.HSA==null)
+						  // {
+							  // $scope.hidetabb=false;
+							  // $location.path('/app/hra');
+						  // }
+						  // else if($scope.acctype.FSA==null){
 							  
-						  }
-						   else if($scope.acctype.HRA==null){
-							
-							   $location.path('/app/hsa');
+							  // $scope.hidetabb=false;
+							  // $location.path('/app/hra');
 							  
-						  }
+						  // }
+						   // else if($scope.acctype.HRA==null){
+							 // $scope.hidetabb=true;
+							   // $location.path('/app/hsa');
+							  
+						  // }
 		 
-							 // $scope.account_type=data.account_types.HSA;
-							 // $scope.account_types=data.account_types.FSA;
-							 // $scope.account_types=data.account_types.HRA;
-							
-							 // $rootScope.hsaaccno=data.account_types.HSA.ACCT_NUM;
-							 // $rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
-							
-							 // $rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
-							 // $rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
-							 // $rootScope.hraaccno=data.account_types.HRA.ACCT_NUM; 
-							 // $rootScope.hraaccId=data.account_types.HRA.ACCT_ID;
 
-		      }).error(function(err){
-					//alert(JSON.stringify(err));
+		      // }).error(function(err){
+					// alert(JSON.stringify(err));
          
    
-     });
+     // });
 		window.location.href = 'index.html#app/hsa';
 	}
  
@@ -3374,10 +3363,62 @@ $scope.show1 = false;
 	
 })
 
-.controller('AppCtrl', function($scope,$ionicPopup, $timeout ,$ionicModal,$location,$cordovaDialogs) {
+.controller('AppCtrl', function($scope,$ionicPopup, $timeout ,$ionicModal,$location,$cordovaDialogs, $rootScope,$http) {
+	$scope.username = localStorage.getItem('username');
+	$scope.access_token = localStorage.getItem('access_token');
 	
-	$scope.hidetab=true;
-		
+	$http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':localStorage.getItem('access_token')} })
+	                 .success(function(data){
+			              // alert(JSON.stringify(data.account_types));
+						
+		                  $rootScope.acctype=data.account_types;
+			              // alert(JSON.stringify($rootScope.acctype));
+						  if($scope.acctype.HSA==null)
+						  {
+							   $scope.hidehsa=false;
+							   $scope.hidefsa=false;
+							   $scope.hidecobra=false;
+							   $scope.hidehra=true;
+							  $location.path('/app/hra');
+						  }
+						  else if($scope.acctype.FSA==null){
+							  
+							  $scope.hidehsa=false;
+							  $scope.hidefsa=false;
+							  $scope.hidecobra=false;
+							  $scope.hidehra=true;
+							  $location.path('/app/hra');
+							  
+						  }
+						   else if($scope.acctype.COBRA==null){
+							   $scope.hidehsa=true;
+							 $scope.hidefsa=true;
+							 $scope.hidecobra=false;
+							 $scope.hidehra=false;
+							 
+							   $location.path('/app/hsa');  
+						  }
+						  else if($scope.acctype.HRA==null){
+							 $scope.hidehsa=true;
+							 $scope.hidefsa=true;
+							 $scope.hidecobra=true;
+							 $scope.hidehra=false;
+							 $location.path('/app/hsa');  
+						  }
+						  
+		 
+						
+
+		      }).error(function(err){
+					alert(JSON.stringify(err));
+         
+   
+     });
+ 
+  // $scope.hidefsa=false;
+  // $scope.hidehsa=false;
+  // $scope.hidecobra=false;
+  // $scope.hidehra=true;
  $scope.exiqt = function() {
 	 
      var confirmPopup = $ionicPopup.confirm({

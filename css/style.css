@@ -209,7 +209,11 @@ a{
 .head-details
 {
 	font-size: 16px;
-	color: #E32626;
+	/*color: #E32626;*/
+	color:#5985AF !important;
+	font-family: 'Avenir Next LT Pro';
+	font-weight: normal;
+	font-style: normal;
 }
 .head-details1
 {
@@ -346,10 +350,15 @@ a{
 
 
 .runstatement-button{
-	background-color:#29B8E5;
-	color:#fff;
 	height:40px;
-	font-size:15px;
+	border-radius:4px;
+	font-size:18px;
+	background-color:#F4851F !Important;
+	font-family: 'Avenir Next LT Pro' !Important;
+	font-weight: normal !Important;
+	font-style: normal !Important;
+	color:#fff !important;
+	padding-top: 2px !important;
 }
 
 .subtitle{
@@ -419,7 +428,10 @@ margin-left:20px;
 .readMore1
 {
 	float:right;
-	color:#566571;
+	color:#f4851f;
+	font-family: 'Avenir Next LT Pro';
+	font-weight: normal;
+	font-style: normal;
 	
 }
 .cardborder{
@@ -496,7 +508,10 @@ margin-left:20px;
 	border-top-color: #e0e0e0;
 	
 }
-
+hr{
+	color: #e0e0e0 !important;
+	
+}
 .headercolor{
 	  background: -webkit-linear-gradient(left,
 	  #b74806,

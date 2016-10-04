@@ -174,26 +174,31 @@ angular.module('starter.controllers', [])
 		$http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	    .success(function(data){
 			 // alert(JSON.stringify(data.account_types.HRA));
-		     
-		
-		 localStorage.setItem('account_types',data.account_types.HSA);
-		 localStorage.setItem('account_types',data.account_types.FSA);
-		 localStorage.setItem('account_types',data.account_types.HRA);
-		 $scope.account_type=data.account_types.HSA;
-         $scope.account_types=data.account_types.FSA;
-		 $scope.account_types=data.account_types.HRA;
-		 $rootScope.acctype=data.account_types;
-         $rootScope.hsaaccno=data.account_types.HSA.ACCT_NUM;
-         $rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
-		
-         $rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
-         $rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
-		 $rootScope.hraaccno=data.account_types.HRA.ACCT_NUM; 
-	     $rootScope.hraaccId=data.account_types.HRA.ACCT_ID;
-			 
-		
-		  
-		
+		    $rootScope.acctype=data.account_types;
+		    if(data.account_types.HSA!=undefined){
+				localStorage.setItem('account_types',data.account_types.HSA);
+				$scope.account_type=data.account_types.HSA;
+				$rootScope.hsaaccno=data.account_types.HSA.ACCT_NUM;
+				$rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
+			}else if(data.account_types.FSA!=undefined){
+				localStorage.setItem('account_types',data.account_types.FSA);
+				$scope.account_types=data.account_types.FSA;
+				$rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
+				$rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
+			}else if(data.account_types.HRA!=undefined){
+				localStorage.setItem('account_types',data.account_types.HRA);
+				$scope.account_types=data.account_types.HRA;
+				$rootScope.hraaccno=data.account_types.HRA.ACCT_NUM; 
+				$rootScope.hraaccId=data.account_types.HRA.ACCT_ID;
+			}
+		 
+				$http.get(' http://app.sterlinghsa.com/api/v1/accounts/accountinfo',{params:{'type':'hsa','acc_num': data.account_types.HSA.ACCT_NUM},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+				.success(function(data){
+					//alert(JSON.stringify(data));
+					$scope.contributions=data.total_contributions.CURRENT_YR_CONTRB;
+				}).error(function(err){
+					//alert(JSON.stringify(err));
+				});
 		 
 		      }).error(function(err){
 				   // alert(JSON.stringify(err));

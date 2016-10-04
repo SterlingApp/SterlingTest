@@ -3369,56 +3369,40 @@ $scope.show1 = false;
 	
 	$http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':localStorage.getItem('access_token')} })
 	                 .success(function(data){
-			              // alert(JSON.stringify(data.account_types));
+			               // alert(JSON.stringify(data.account_types));
 						
 		                  $rootScope.acctype=data.account_types;
 			              // alert(JSON.stringify($rootScope.acctype));
-						  if($scope.acctype.HSA==null)
+						  if($scope.acctype.HSA!=null)
 						  {
-							   $scope.hidehsa=false;
-							   $scope.hidefsa=false;
-							   $scope.hidecobra=false;
-							   $scope.hidehra=true;
-							  $location.path('/app/hra');
+							 $scope.hidehsa=true; 
+							 $location.path('/app/hra');
 						  }
-						  else if($scope.acctype.FSA==null){
-							  
-							  $scope.hidehsa=false;
-							  $scope.hidefsa=false;
-							  $scope.hidecobra=false;
-							  $scope.hidehra=true;
-							  $location.path('/app/hra');
+						   if($scope.acctype.FSA!=null){
+						    $scope.hidefsa=true;							 
+							 $location.path('/app/hra');
 							  
 						  }
-						   else if($scope.acctype.COBRA==null){
-							   $scope.hidehsa=true;
-							 $scope.hidefsa=true;
-							 $scope.hidecobra=false;
-							 $scope.hidehra=false;
-							 
+						    if($scope.acctype.COBRA!=null){
+							   
+							 $scope.hidecobra=true;							 
 							   $location.path('/app/hsa');  
 						  }
-						  else if($scope.acctype.HRA==null){
-							 $scope.hidehsa=true;
-							 $scope.hidefsa=true;
-							 $scope.hidecobra=true;
-							 $scope.hidehra=false;
-							 $location.path('/app/hsa');  
+						  if($scope.acctype.HRA!=null){
+							 $scope.hidehra=true;
+							 $location.path('/app/hra');  
 						  }
 						  
-		 
-						
-
 		      }).error(function(err){
-					alert(JSON.stringify(err));
+					// alert(JSON.stringify(err));
          
    
      });
  
-  // $scope.hidefsa=false;
-  // $scope.hidehsa=false;
-  // $scope.hidecobra=false;
-  // $scope.hidehra=true;
+  $scope.hidefsa=false;
+  $scope.hidehsa=false;
+  $scope.hidecobra=false;
+  $scope.hidehra=false;
  $scope.exiqt = function() {
 	 
      var confirmPopup = $ionicPopup.confirm({

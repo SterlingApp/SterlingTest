@@ -80,17 +80,18 @@
 				
 				
 				</div> 
-							<ion-tab  class="bg" title="HSA"    href="#/app/hsa" ng-hide="hidetab">
+				
+							<ion-tab  class="bg" title="HSA"    href="#/app/hsa" ng-if="hidehsa">
 								<ion-nav-view name="tab-hsa"></ion-nav-view>
 							</ion-tab>
 						
-							<ion-tab  class="bg" title="FSA"  href="#/app/fsa" >
+							<ion-tab  class="bg" title="FSA"  href="#/app/fsa" ng-if="hidefsa">
 								<ion-nav-view name="tab-fsa"></ion-nav-view>
 							</ion-tab>
-							<ion-tab  class="bg" title="HRA"  href="#/app/hra" >
+							<ion-tab  class="bg" title="HRA"  href="#/app/hra" ng-if="hidehra">
 								<ion-nav-view name="tab-hra"></ion-nav-view>
 							</ion-tab>
-							<ion-tab  class="bg" title="COBRA" href="#/app/cobra" >
+							<ion-tab  class="bg" title="COBRA" href="#/app/cobra" ng-if="hidecobra">
 								<ion-nav-view name="tab-cobra"></ion-nav-view>
 							</ion-tab>
 							

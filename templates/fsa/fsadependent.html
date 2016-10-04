@@ -45,7 +45,7 @@
 				<span class="input-label bgnew">
 				select
 				</span>
-				<select class="bgnew" name="Bankaccount" ng-model="newclaimvalues.Bankaccount" ng-options="pay.VENDOR_NAME for pay in payee" required>
+				<select class="bgnew" name="Bankaccount" ng-model="newclaimvalues.selectpayee" ng-options="pay.VENDOR_NAME for pay in payee" required>
 					<option selected disabled value="" class="ItemlineHead1"> Select payee</option>
 				</select>
 			</label>
@@ -78,7 +78,7 @@
 		</div> -->
 		
 	
-        <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.startTransDate.$dirty && myForm.startTransDate.$invalid || myForm.startTransDate.$touched ,'no-errors' :myForm.startTransDate.$valid   }">
+        <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.startTransDate.$dirty && myForm.startTransDate.$invalid  ,'no-errors' :myForm.startTransDate.$valid   }">
 		<span class="input-label ItemlineHead1">Enter Transaction</span>
         <input type="text" ng-click="getTransDate()" name="startTransDate" ng-model="newclaimvalues.startTransDate" class="input-box input-boxfocus formselect" id="forminput" placeholder=" start Transaction Date"  required>
 		</label>
@@ -88,7 +88,7 @@
            </span>
 		</div>
 		
-		<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endTransDate.$dirty && myForm.endTransDate.$invalid || myForm.endTransDate.$touched,'no-errors' :myForm.endTransDate.$valid   }">
+		<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endTransDate.$dirty && myForm.endTransDate.$invalid ,'no-errors' :myForm.endTransDate.$valid   }">
 		<span class="input-label ItemlineHead1">Enter Transaction</span>
         <input type="text" ng-click="EndgetTransDate()" name="endTransDate" ng-model="newclaimvalues.endTransDate" class="input-box input-boxfocus formselect" id="forminput" placeholder=" End Transaction Date"  required>
 		</label>

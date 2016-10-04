@@ -1637,8 +1637,8 @@ $scope.show1 = false;
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
 				
-				 $scope.paymeValues={};
-				$scope.paymeValues={};
+				 $scope.transit={};
+				$scope.transit={};
 				  $scope.myForm.$setPristine();
 				  $scope.myForm.$error={};
 				  $scope.myForm.$setPristine();		
@@ -1655,11 +1655,11 @@ $scope.show1 = false;
                      	$scope.imgSrc= '';
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
-				      $scope.paymeValues={};
+				      $scope.transit={};
 					  $scope.myForm.$setPristine();		
 					 		 
                      // $scope.ds=false;						
-				  $scope.paymeValues={};
+				  $scope.transit={};
 				  $scope.myForm.$setPristine();
 				 
 					 
@@ -2163,8 +2163,8 @@ $scope.show1 = false;
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
 				
-				 $scope.paymeValues={};
-				$scope.paymeValues={};
+				 $scope.parking={};
+				$scope.parking={};
 				  $scope.myForm.$setPristine();
 				  $scope.myForm.$error={};
 				  $scope.myForm.$setPristine();		
@@ -2181,11 +2181,11 @@ $scope.show1 = false;
                      	$scope.imgSrc= '';
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
-				      $scope.paymeValues={};
+				      $scope.parking={};
 					  $scope.myForm.$setPristine();		
 					 		 
                      // $scope.ds=false;						
-				  $scope.paymeValues={};
+				  $scope.parking={};
 				  $scope.myForm.$setPristine();
 				 
 					 
@@ -4685,10 +4685,17 @@ $scope.show1 = false;
 	$scope.acoinde = {selectAccount:'',amount:'',description:'',startTransDate:'',endTransDate:''};
 	
 	
-   $http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hsa', 'acc_num':$scope.hsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+   $http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hra', 'acc_num':$scope.hraacc},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
 		//alert( JSON.stringify(data));
-		
+		if(data.status=="FAILED"){
+			$scope.msg=data.error_message;
+			$cordovaDialogs.alert($scope.msg, 'Sorry', 'ok')
+		   .then(function() {
+			   
+		   });
+		   return false;
+		}
 		$scope.bank_details=data.bank_details;
    
    
@@ -4781,37 +4788,20 @@ $scope.show1 = false;
 		
 	};
  
-	$scope.goback=function()
-	{
-		
-		$location.path("/hrapayme");
-	}
-	
-	
-	
-})
-.controller('PayprovideracoindeCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
-	$scope.username = localStorage.getItem('username');
-	$scope.access_token = localStorage.getItem('access_token');
-	$scope.newclaim_balance=$rootScope.newclaim_balance;
-	$scope.hraacc= $rootScope.hraaccno;
-	$scope.provideracoinde={selectpayee:'',amount:'',description:'',startTransDate:'',endTransDate:''};
-	
-	  $scope.newclaimsubmit=function(){
-		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num': $scope.hraacc,
+   $scope.submitValues=function(){
+		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num':  $scope.fsaaccno,
 		'acct_id':$scope.fsaaccId,
-      'bank_acct_id':'',
-   'amount':$scope.provideracoinde.amount,
-   
-   'service_start_date':$scope.provideracoinde.startTransDate,
-   'service_end_date':$scope.provideracoinde.endTransDate,
-   'patient_name':$scope.provideracoinde.patient,
+    'bank_acct_id':$scope.acoinde.Bankaccount.BANK_ACC_ID,
+   'amount':$scope.acoinde.amount,
+   'service_start_date':$scope.acoinde.startTransDate,
+   'service_end_date':$scope.acoinde.endTransDate,
+   'patient_name':'',
    'plan_type':$scope.plan_types,
    'claim_method':'SUBSCRIBER_ONLINE_ACH',
-   'vendor_id':$scope.provideracoinde.selectpayee.VENDOR_ID,
+   'vendor_id':'',
    'vendor_acc_num':'',
    'insurance_category':'',
-   'description':$scope.provideracoinde.description,
+   'description':$scope.acoinde.description,
    'note':'Dependent Care Claim from Mobile Website',
    'memo':'',
 		"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
@@ -4825,8 +4815,8 @@ $scope.show1 = false;
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
 				
-				 $scope.paymeValues={};
-				$scope.paymeValues={};
+				 $scope.acoinde={};
+				$scope.acoinde={};
 				  $scope.myForm.$setPristine();
 				  $scope.myForm.$error={};
 				  $scope.myForm.$setPristine();		
@@ -4843,11 +4833,89 @@ $scope.show1 = false;
                      	$scope.imgSrc= '';
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
-				      $scope.paymeValues={};
+				      $scope.acoinde={};
 					  $scope.myForm.$setPristine();		
 					 		 
                      // $scope.ds=false;						
-				  $scope.paymeValues={};
+				  $scope.acoinde={};
+				  $scope.myForm.$setPristine();
+				
+		});
+		return false;
+		
+		}
+		//$scope.Availablebalance=data.balances.BALANCE;
+	}).error(function(err){
+  //alert( JSON.stringify(err));
+  });
+   }
+ 
+	$scope.goback=function()
+	{
+		
+		$location.path("/hrapayme");
+	}
+	
+	
+	
+})
+.controller('PayprovideracoindeCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+	$scope.username = localStorage.getItem('username');
+	$scope.access_token = localStorage.getItem('access_token');
+	$scope.newclaim_balance=$rootScope.newclaim_balance;
+	$scope.hraacc= $rootScope.hraaccno;
+	$scope.provideracoinde={selectpayee:'',amount:'',description:'',startTransDate:'',endTransDate:''};
+	
+	  $scope.submitValues=function(){
+		$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num': $scope.hraacc,
+		'acct_id':$scope.fsaaccId,
+      'bank_acct_id':'',
+   'amount':$scope.provideracoinde.amount,
+   'service_start_date':$scope.provideracoinde.startTransDate,
+   'service_end_date':$scope.provideracoinde.endTransDate,
+   'patient_name':$scope.provideracoinde.patient,
+   'plan_type':$scope.plan_types,
+   'claim_method':'SUBSCRIBER_ONLINE_ACH',
+   'vendor_id':$scope.provideracoinde.selectpayee.VENDOR_ID,
+   'vendor_acc_num':'',
+   'insurance_category':'',
+   'description':$scope.provideracoinde.description,
+   'note':'Dependent Care Claim from Mobile App',
+   'memo':'',
+		"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	.success(function(data){
+		if(data.status == "SUCCESS"){
+			$ionicLoading.hide();
+			$scope.claim_id = data.claim_id;
+			$cordovaDialogs.alert('Claim number is'+ " " + $scope.claim_id, 'Claim Submitted Successfully', 'OK')
+			.then(function() {
+				$scope.imgSrc= '';
+				var myEl = angular.element( document.querySelector( '#receipt' ) );
+				myEl.removeAttr('src');
+				
+				 $scope.provideracoinde={};
+				$scope.provideracoinde={};
+				  $scope.myForm.$setPristine();
+				  $scope.myForm.$error={};
+				  $scope.myForm.$setPristine();		
+		});
+		return false;
+		}else if(data.status == "FAILED"){
+			 $ionicLoading.hide();
+			
+			$cordovaDialogs.alert(data.error_message, 'Sorry', 'OK')
+			.then(function($setUntouched,$setPristine) {
+				
+				     	// $scope.myForm.$setPristine();
+                     // $scope.ds=false;
+                     	$scope.imgSrc= '';
+						var myEl = angular.element( document.querySelector( '#receipt' ) );
+						myEl.removeAttr('src');
+				      $scope.provideracoinde={};
+					  $scope.myForm.$setPristine();		
+					 		 
+                     // $scope.ds=false;						
+				  $scope.provideracoinde={};
 				  $scope.myForm.$setPristine();
 				 
 					 

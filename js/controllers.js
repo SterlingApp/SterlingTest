@@ -220,9 +220,7 @@ angular.module('starter.controllers', [])
             $ionicTabsDelegate.select(selected - 1);
         }
     }
-	$scope.goforward=function(){
-		$location.path("app/hra");
-	}
+	
 	localStorage.setItem("backCount","2");
 	//REST API
 	$scope.username = localStorage.getItem('username');
@@ -242,7 +240,7 @@ angular.module('starter.controllers', [])
 		//alert("Success-"+JSON.stringify(data));
 		localStorage.setItem('account_types',data.account_types.HSA);
 		localStorage.setItem('account_types',data.account_types.FSA);
-		
+		$rootScope.acctype=data.account_types;
 		$scope.account_type=data.account_types.HSA;
 		$scope.account_types=data.account_types.FSA;
 		$rootScope.hsaaccno=data.account_types.HSA.ACCT_NUM;
@@ -263,6 +261,20 @@ angular.module('starter.controllers', [])
    
   });
  }
+ $scope.goforward=function(){
+	 
+        if($scope.acctype.HRA==null)
+		{	   							 
+	       $location.path('/app/cobra');				  
+		}
+		else
+		{
+	      $location.path('/app/hra');  
+		}
+						 
+
+		// $location.path("app/hra");
+	}
 	
 })
 
@@ -2703,18 +2715,18 @@ $scope.show1 = false;
 	}
 })
 
-.controller('TaxyearCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,	$rootScope,$sce) {
+.controller('TaxyearCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,	$rootScope,$sce,$cordovaFileOpener2,$cordovaFileTransfer) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
 	
 	 $scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
+    {
+     $ionicLoading.hide();
+     $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+     .then(function(buttonIndex) {
+	 if(buttonIndex=="1")
 			{
 				localStorage.clear();
 				window.location='login.html#/login';
@@ -2796,11 +2808,23 @@ $scope.show1 = false;
    prompt("",url);
    $scope.content = $sce.trustAsResourceUrl(url);
    //trick to download store a file having its URL
-   var url = url;
-   var filename ='test.pdf';
-   var targetPath = cordova.file.externalRootDirectory+ filename;
-   var trustHosts = true
+   var url = "http://www.pdf995.com/samples/pdf.pdf";
+   var filename = url.split("/").pop();
+   alert(filename);
+   var targetPath = cordova.file.externalRootDirectory+filename;
+   var trustHosts = true;
    var options = {};
+     alert(cordova.file.externalRootDirectory);
+	  $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
+      .then(function(result) {
+        // Success!
+        alert('success'+JSON.stringify(result));
+      }, function(error) {
+        // Error
+        alert('error'+JSON.stringify(error));
+      });
+ 
+	 
    // var fileURL = URL.createObjectURL(file);
    // var a         = document.createElement('a');
    // a.href        = fileURL; 
@@ -2814,6 +2838,28 @@ $scope.show1 = false;
   });
   
  }
+ // $scope.openPDF = function() {
+	 // alert();
+    // $cordovaFileOpener2.open(
+        // 'url',
+        // 'application/pdf'
+    // ).then(function() {
+		// alet('success');
+        // console.log('Success');
+    // }, function(err) {
+		// alet(JSON.stringify(err));
+        // console.log('An error occurred: ' + JSON.stringify(err));
+    // });
+// };
+$scope.openPDF = function() {
+	 alert();
+     var url = url;
+   var filename ='test.pdf';
+   var targetPath = cordova.file.externalRootDirectory+ filename;
+   var trustHosts = true
+   var options = {};
+     alert(JSON.stringify(url));
+};
   
 	$scope.goback=function()
 	{
@@ -5131,8 +5177,15 @@ $scope.show1 = false;
 	
 	$scope.goBack=function()
 	{
+		if($scope.acctype.HRA==null)
+		{	   							 
+	       $location.path('/app/fsa');				  
+		}
+		else
+		{
+			$location.path("app/hra");
+		}
 		
-		$location.path("app/hra");
 	}
 	
 	

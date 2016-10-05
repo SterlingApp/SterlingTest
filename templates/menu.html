@@ -78,7 +78,7 @@
                  <span class="menufont" style="margin-left: 20px;">Home</span>
              </ion-item>
 			 
-             <ion-item  href="" ng-click="toggleSomething($event)">      
+             <ion-item  href="" ng-click="toggleSomething($event)" ng-show="showHsamenu">      
                   <i class="icon ion-medkit"></i>
                   <span style="margin-left: 17px; " class="menufont">HSA</span>
                   <span  class="item-icon-right chevronicon"> <i side="left"  class="icon chevronicon" ng-class="isVisible ? 'ion-chevron-right' : 'ion-chevron-down'"></i> </span>
@@ -117,7 +117,7 @@
              </div>
 			
 			 
-            <ion-item class="item-icon-right" href="" ng-click="toggleSomething1()">
+            <ion-item class="item-icon-right" href="" ng-click="toggleSomething1()" ng-show="showFsamenu">
                  
                <img src="img/felx2.png" width="19"/>
                <span style="margin-left: 15px; " class="menufont">FSA</span>
@@ -150,7 +150,7 @@
                <img src="img/home/ad-client.svg" width="23"/>
                <div class="submenu-text">New Claim Request</div></a>
             </div> 
-			<ion-item class="item-icon-right" href="" ng-click="toggleHra()">
+			<ion-item class="item-icon-right" href="" ng-click="toggleHra()" ng-show="showHramenu">
                  
                <img src="img/felx2.png" width="19"/>
                <span style="margin-left: 15px; " class="menufont">HRA</span>
@@ -183,7 +183,7 @@
                <div class="submenu-text">New Claim Request</div></a>
             </div> 
 			
-			<ion-item class="item-icon-right" href="" ng-click="toggleCobra()">
+			<ion-item class="item-icon-right" href="" ng-click="toggleCobra()" ng-show="showCobramenu">
                  
                <img src="img/felx2.png" width="19"/>
                <span style="margin-left: 15px; " class="menufont">COBRA</span>

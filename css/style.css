@@ -397,7 +397,7 @@ a{
 }
 
 .cardContent{
-	margin-left:10px;
+	margin-left:05px ! important;
 	/* margin-top:30px; */
 	
 }
@@ -619,7 +619,7 @@ hr{
 	font-family: 'Avenir Next LT Pro';
 	font-weight: normal;
 	font-style: normal;
-	font-size: 22px;
+	font-size: 20px;
 	padding-top: 20px;
 	line-height:24px;
 	
@@ -646,7 +646,7 @@ margin-left:10px;
 font-size:30px;	
 }
 .itemleft{
-	left:10px;
+	left:08px;
 }
 .contact-content{
 	margin-left:15px;
@@ -722,6 +722,7 @@ ion-item.item:hover a {
     -moz-transition: background-color 2000ms ease-out;
      transition: background-color 2000ms ease-out;	 
 }
+
 
 
  

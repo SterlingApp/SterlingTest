@@ -4243,12 +4243,30 @@ $scope.toggleSomething = function(){
 	// event.stopPropagation();
   $scope.isVisible = !$scope.isVisible;
   $scope.isVisible1=false;
+  $scope.isHra=false;
+   $scope.isCobra=false;
   console.log('make sure toggleSomething() is firing*');
 }
 
 $scope.toggleSomething1 = function(){
   $scope.isVisible1 = !$scope.isVisible1;
    $scope.isVisible=false;
+   $scope.isHra=false;
+    $scope.isCobra=false;
+  console.log('make sure toggleSomething() is firing*');
+}
+$scope.toggleHra = function(){
+  $scope.isHra = !$scope.isHra;
+   $scope.isVisible=false;
+   $scope.isVisible1=false;
+   $scope.isCobra=false;
+  console.log('make sure toggleSomething() is firing*');
+}
+$scope.toggleCobra = function(){
+  $scope.isCobra = !$scope.isCobra;
+   $scope.isVisible=false;
+   $scope.isVisible1=false;
+   $scope.isHra=false;
   console.log('make sure toggleSomething() is firing*');
 }
 
@@ -4293,12 +4311,16 @@ $scope.show1 = false;
 	}
 	
  
-  $scope.hideAll = function() { 
+  $scope.hideAll = function() 
+  { 
     $scope.show2 = false;
     $scope.show1 = false;
-	 $scope.isVisible1=false;
-	  $scope.isVisible=false;
-    $ionicListDelegate.closeOptionButtons(); }
+	$scope.isVisible1=false;
+	$scope.isVisible=false;
+	$scope.isHra=false;
+	$scope.isCobra=false;
+    $ionicListDelegate.closeOptionButtons(); 
+	}
 
 })
 

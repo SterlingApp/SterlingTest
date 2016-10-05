@@ -3,10 +3,9 @@ angular.module('starter.controllers', [])
 	// alert();
 	$scope.loginData={username:'',password:''};
 	$scope.hidetabb=$rootScope.hidetab;
-	
+	//alert($cordovaNetwork.getNetwork());
 	if(localStorage.getItem('access_token')==null){
 		//$location.path("/login");
-		
 	}
 	else
 	{
@@ -64,29 +63,18 @@ angular.module('starter.controllers', [])
 		else if($scope.loginData.username==""){
 			$ionicLoading.hide()
 			
-			
-			var alertPopup = $ionicPopup.alert({
-				title: 'Sorry',
-				template: '<center>Please Enter Username</center>'
+			$cordovaDialogs.alert('Please Enter Username', 'Sorry', 'OK')
+			.then(function() {
 			});
-			   
-			   
-			 // $cordovaDialogs.alert('Please Entert Username', 'Sorry', 'ok')
-			// .then(function() {
-			// });
 			return false;
 			
 		}
 		else if($scope.loginData.password=="")
 		{
 			$ionicLoading.hide()
-			var alertPopup = $ionicPopup.alert({
-				title: 'Sorry',
-				template: '<center>Please Enter Password</center>'
+			$cordovaDialogs.alert('Please Enter Password', 'Sorry', 'ok')
+			.then(function() {
 			});
-			// $cordovaDialogs.alert('Please Enter Password', 'Sorry', 'ok')
-			// .then(function() {
-			// });
 			return false;
 		}
 		else

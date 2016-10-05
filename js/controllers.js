@@ -1895,11 +1895,11 @@ $scope.show1 = false;
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
 				
-				 $scope.paymeValues={};
-				$scope.paymeValues={};
-				  $scope.myForm.$setPristine();
-				  $scope.myForm.$error={};
-				  $scope.myForm.$setPristine();		
+				 $scope.transit={};
+				
+				  // $scope.myForm.$setPristine();
+				  // $scope.myForm.$error={};
+				  // $scope.myForm.$setPristine();		
 		});
 		return false;
 		}else if(data.status == "FAILED"){
@@ -1913,12 +1913,12 @@ $scope.show1 = false;
                      	$scope.imgSrc= '';
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
-				      $scope.paymeValues={};
-					  $scope.myForm.$setPristine();		
+				         $scope.transit={};
+					 
 					 		 
                      // $scope.ds=false;						
-				  $scope.paymeValues={};
-				  $scope.myForm.$setPristine();
+				 
+				 
 				 
 					 
 				     
@@ -1930,6 +1930,7 @@ $scope.show1 = false;
 		}
 		//$scope.Availablebalance=data.balances.BALANCE;
 	}).error(function(err){
+		
   //alert( JSON.stringify(err));
   });
    }
@@ -2390,11 +2391,8 @@ $scope.show1 = false;
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
 				
-				 $scope.paymeValues={};
-				$scope.paymeValues={};
-				  $scope.myForm.$setPristine();
-				  $scope.myForm.$error={};
-				  $scope.myForm.$setPristine();		
+				  $scope.parking={};
+					
 		});
 		return false;
 		}else if(data.status == "FAILED"){
@@ -2408,14 +2406,11 @@ $scope.show1 = false;
                      	$scope.imgSrc= '';
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
-				      $scope.paymeValues={};
-					  $scope.myForm.$setPristine();		
+				      $scope.parking={};
+					 
 					 		 
                      // $scope.ds=false;						
-				  $scope.paymeValues={};
-				  $scope.myForm.$setPristine();
 				 
-					 
 				     
 					
 				    
@@ -2708,7 +2703,7 @@ $scope.show1 = false;
 	}
 })
 
-.controller('TaxyearCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,	$rootScope) {
+.controller('TaxyearCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,	$rootScope,$sce) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
 	
@@ -2743,9 +2738,26 @@ $scope.show1 = false;
   });
  }
 
+ $scope.form1099=function($sce){
+  // $http.post(' http://app.sterlinghsa.com/api/v1/accounts/taxstatementpdf',{acct_num:$rootScope.hsaaccno,type:'1099',tax_year:$scope.tax_statement_list[0].TAX_YEAR},{headers: {'Content-Type':'application/pdf'}},{responseType : 'arraybuffer'})
+  // .success(function(data){
+   // alert("Data: " + JSON.stringify(data));
+   // var file = new Blob([ data ], {
+    // type : 'application/pdf'
+   // });
+   // //trick to download store a file having its URL
+   // var fileURL = URL.createObjectURL(file);
+   // var a         = document.createElement('a');
+   // a.href        = fileURL; 
+   // a.target      = '_blank';
+   // a.download    = 'yourfilename.pdf';
+   // document.body.appendChild(a);
+   // a.click();
+  // }).error(function(err){
+   // alert("err: " + JSON.stringify(err));
+  // });
  
- 
- 
+ }
  $scope.form1099=function(){
   // $http.post(' http://app.sterlinghsa.com/api/v1/accounts/taxstatementpdf',{acct_num:$rootScope.hsaaccno,type:'1099',tax_year:$scope.tax_statement_list[0].TAX_YEAR},{headers: {'Content-Type':'application/pdf'}},{responseType : 'arraybuffer'})
   // .success(function(data){
@@ -4131,7 +4143,7 @@ $scope.show1 = false;
 							 $location.path('/app/hra');
 							  
 						  }
-						    if($scope.acctype.COBRA!=null){
+						  if($scope.acctype.COBRA!=null){
 							   
 							 $scope.hidecobra=true;							 
 							   $location.path('/app/hsa');  

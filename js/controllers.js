@@ -4181,21 +4181,27 @@ $scope.openPDF = function() {
 			              // alert(JSON.stringify($rootScope.acctype));
 						  if($scope.acctype.HSA!=null)
 						  {
+							 
 							 $scope.hidehsa=true; 
+							 $scope.showHsamenu=true;
 							 $location.path('/app/hra');
 						  }
 						   if($scope.acctype.FSA!=null){
-						    $scope.hidefsa=true;							 
+						    $scope.hidefsa=true;
+							$scope.showFsamenu=true;
+							
 							 $location.path('/app/hra');
 							  
 						  }
 						  if($scope.acctype.COBRA!=null){
 							   
-							 $scope.hidecobra=true;							 
+							 $scope.hidecobra=true;
+                             $scope.showCobramenu=true;							 
 							   $location.path('/app/hsa');  
 						  }
 						  if($scope.acctype.HRA!=null){
 							 $scope.hidehra=true;
+							 $scope.showHramenu=true;	
 							 $location.path('/app/hra');  
 						  }
 						  
@@ -4209,6 +4215,11 @@ $scope.openPDF = function() {
   $scope.hidehsa=false;
   $scope.hidecobra=false;
   $scope.hidehra=false;
+  $scope.showCobramenu=false;
+  $scope.showHramenu=false;
+  $scope.showFsamenu=false;
+  $scope.showHsamenu=false;
+  
  $scope.exiqt = function() {
 	 
      var confirmPopup = $ionicPopup.confirm({

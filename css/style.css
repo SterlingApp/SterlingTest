@@ -722,6 +722,9 @@ ion-item.item:hover a {
     -moz-transition: background-color 2000ms ease-out;
      transition: background-color 2000ms ease-out;	 
 }
+.tab-Content{
+	margin-top:46px;
+}
 
 
 

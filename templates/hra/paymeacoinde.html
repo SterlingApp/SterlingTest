@@ -89,7 +89,7 @@
 	 <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.description.$dirty && myForm.description.$invalid  ,'no-errors' :myForm.description.$valid  }">
 	 <span class="input-label ItemlineHead1">Enter Description</span>
 							
-        <input type="text"   id="forminput" name="description" ng-model="acoinde.description" ng-pattern="/^[a-zA-Z0-9]*$/"  placeholder="Description"  required>
+        <input type="text"   id="forminput" name="description" ng-model="acoinde.description" ng-pattern="/^[a-zA-Z0-9.,\w -]*$/"  placeholder="Description"  required>
 		</label> 
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.description.$dirty && myForm.description.$invalid">

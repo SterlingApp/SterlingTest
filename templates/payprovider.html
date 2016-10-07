@@ -98,7 +98,7 @@ input[type=text]:focus {
 		<label class="item item-input item-floating-label formselect "  ng-class="{ 'has-errors' :myForm.patient.$dirty && myForm.patient.$invalid ,'no-errors' :myForm.patient.$valid }" >
 			 <span class="input-label ItemlineHead1">Enter Patient Name</span>
 			
-				 <input type="text"  name="patient" ng-model="payprovierValues.patient" id="forminput"  ng-pattern="/^[a-zA-Z0-9]*$/" placeholder="Enter Patient Name"  required>
+				 <input type="text"  name="patient" ng-model="payprovierValues.patient" id="forminput"  ng-pattern="/^[a-zA-Z\w -]*$/" placeholder="Enter Patient Name"  required>
 			
 			</label> 
 			<div class="row">
@@ -112,7 +112,7 @@ input[type=text]:focus {
         <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.description.$dirty && myForm.description.$invalid  ,'no-errors' :myForm.description.$valid  }">
 		<span class="input-label ItemlineHead1">Enter Description</span>
 							
-        <input type="text"   name="description" ng-model="payprovierValues.description" ng-pattern="/^[a-zA-Z0-9]*$/" id="forminput" placeholder="Enter Description"  required>
+        <input type="text"   name="description" ng-model="payprovierValues.description" ng-pattern="/^[a-zA-Z0-9 .,\w -]*$/" id="forminput" placeholder="Enter Description"  required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.description.$dirty && myForm.description.$invalid">

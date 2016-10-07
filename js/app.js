@@ -445,8 +445,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		 controller: 'CobraCtrl'
       }
     }
-  });
+  })
 
+  .state('cobraaccount', {
+    url: "/cobraaccount",
+    
+        templateUrl: "templates/cobra/cobraaccount.html",
+		 controller: 'CobraaccountCtrl'
+      
+  });
   $urlRouterProvider.otherwise('/login');
   
 

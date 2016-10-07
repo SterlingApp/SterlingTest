@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
          
    
      // });
-		window.location.href = 'index.html#app/hsa';
+		window.location.href = 'index.html#/app/hsa';
 	}
  
     $scope.logIn = function (loginData) {
@@ -94,7 +94,7 @@ angular.module('starter.controllers', [])
 					// alert(localStorage.getItem('access_token')+"--"+localStorage.getItem('username'));
 					
 					//$location.path("/app/portfolio");
-					window.location.href = 'index.html#/hsa';				
+					window.location.href = 'index.html#/app/hsa';				
 				}else if(data.status=="FAILED"){
 					 $ionicLoading.hide()
 					 $cordovaDialogs.alert('Username or password is incorrect ', 'Sorry', 'OK')
@@ -2968,7 +2968,7 @@ $scope.show1 = false;
 		//alert(JSON.stringify($rootScope.activity_list));
 			
 			$location.path("hsastatement");
-		
+		$scope.activity={};
 		
 	}).error(function(err){
 			alert(JSON.stringify(err));
@@ -3080,7 +3080,9 @@ $scope.show1 = false;
 	{
 		$rootScope.hidecontent=true;
 		//window.history.back();
+		$scope.activity={};
 		$location.path("app/hsa");
+		
 	}
 })
  
@@ -3472,7 +3474,7 @@ $scope.show1 = false;
   });
 	 $http.get('http://app.sterlinghsa.com/api/v1/accounts/payeeslist',{params:{'acc_num':'ICA300298'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 		//alert("1111");
 		$scope.payee=data.payee ;
 		//alert(JSON.stringify($scope.payee));
@@ -3570,19 +3572,7 @@ $scope.show1 = false;
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.hsaaccId=$rootScope.hsaaccId;
-	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
-   });
-   return false;
- }else{
+	
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/schedule",{params:{'acct_id':$scope.hsaaccId,'trans_type':'c'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){ 
 	     $ionicLoading.hide();
@@ -3614,7 +3604,7 @@ $scope.show1 = false;
    return false;
    
   });
- }
+ 
 	$scope.goback=function()
 	{
 		//$rootScope.hidecontent=false;
@@ -3630,19 +3620,7 @@ $scope.show1 = false;
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.hsaaccId=$rootScope.hsaaccId;
-	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
-   });
-   return false;
- }else{
+	
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/schedule",{params:{'acct_id':$scope.hsaaccId,'trans_type':'d'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){ 
 	      $ionicLoading.hide();
@@ -3675,7 +3653,7 @@ $scope.show1 = false;
    return false;
    
   });
- }
+ 
 	
 	$scope.goback=function()
 	{
@@ -4183,8 +4161,8 @@ $scope.show1 = false;
 	$scope.goback=function()
 	{
 		// $rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		//window.history.back();
+		$location.path("/app/hsa")
 	}
 	
 	
@@ -4228,7 +4206,18 @@ $scope.show1 = false;
 						  
 		      }).error(function(err){
 					// alert(JSON.stringify(err));
-         
+         $ionicLoading.hide();
+  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+   .then(function(buttonIndex) {
+	   if(buttonIndex=="1")
+			{
+				localStorage.clear();
+				window.location='login.html#/login';
+			}
+   });
+   return false;
+   
+  
    
      });
  
@@ -4420,13 +4409,13 @@ $scope.show1 = false;
 	
 	$scope.backcontrol=function()
 	{
-		$location.path("app/hsa")
+		$location.path("/app/hsa")
 	}
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=false;
-		window.history.back();
-		//$location.path("/hsa")
+		//window.history.back();
+		$location.path("/app/hsa")
 	}
 	
 	

@@ -59,39 +59,42 @@
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.amount.$dirty && myForm.amount.$invalid">
               <span ng-show="myForm.amount.$error.required"> Amount is required.</span>
+			  <p style="color:Red" ng-show=" myForm.amount.$error.number">Please Enter Number's Only.</p>
+		                     
            </span>
 		</div>
 		
         <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.starttransaction.$dirty && myForm.starttransaction.$invalid  ,'no-errors' :myForm.starttransaction.$valid  }">
-		<span class="input-label ItemlineHead1">Enter Start Date</span>
+		<span class="input-label ItemlineHead1">Enter Start Transaction Date</span>
 							
-        <input type="text" ng-click="getTransDate()" name="starttransaction" ng-model="parking.startTransDate"  id="forminput" placeholder="start Transaction Date"  required>
+        <input type="text" ng-click="getTransDate()" name="starttransaction" ng-model="parking.startTransDate"  id="forminput" placeholder="Enter start Transaction Date"  required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.starttransaction.$dirty && myForm.starttransaction.$invalid">
-              <span ng-show="myForm.starttransaction.$error.required"> Tansaction Date is required.</span>
+              <span ng-show="myForm.starttransaction.$error.required"> Start Tansaction Date is required.</span>
            </span>
 		</div>
 		
-		<label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endtransaction.$dirty && myForm.endtransaction.$invalid  ,'no-errors' :myForm.transaction.$valid  }">
-		<span class="input-label ItemlineHead1">Enter End Date</span>
+		<label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endtransaction.$dirty && myForm.endtransaction.$invalid  ,'no-errors' :myForm.endtransaction.$valid  }">
+		<span class="input-label ItemlineHead1">Enter End Transaction Date</span>
 							
-        <input type="text" ng-click="EndgetTransDate()" name="endtransaction" ng-model="parking.endTransDate"  id="forminput" placeholder="End Transaction Date"  required>
+        <input type="text" ng-click="EndgetTransDate()" name="endtransaction" ng-model="parking.endTransDate"  id="forminput" placeholder="Enter End Transaction Date"  required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.endtransaction.$dirty && myForm.endtransaction.$invalid">
-              <span ng-show="myForm.endtransaction.$error.required"> Tansaction Date is required.</span>
+              <span ng-show="myForm.endtransaction.$error.required">End Tansaction Date is required.</span>
            </span>
 		</div>
       <div>
 	 <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.description.$dirty && myForm.description.$invalid  ,'no-errors' :myForm.description.$valid  }">
 	 <span class="input-label ItemlineHead1">Enter Description</span>
 							
-        <input type="text"   id="forminput" name="description" ng-model="parking.description" placeholder="Description"  required>
+        <input type="text"   id="forminput" name="description"  ng-pattern="/^[a-zA-Z0-9]*$/"  ng-model="parking.description" placeholder="Enter Description"  required>
 		</label> 
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.description.$dirty && myForm.description.$invalid">
               <span ng-show="myForm.description.$error.required"> Description is required.</span>
+			   <p style="color:red" ng-show="myForm.description.$error.pattern"> Please Enter Text.</p>
           </span>
 		</div>
 		</div>

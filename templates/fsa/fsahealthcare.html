@@ -59,6 +59,8 @@
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.amount.$dirty && myForm.amount.$invalid">
               <span ng-show="myForm.amount.$error.required"> Amount is required.</span>
+			  <p style="color:Red" ng-show=" myForm.amount.$error.number">Please Enter Number's Only.</p>
+		                     
            </span>
 		</div>
 		

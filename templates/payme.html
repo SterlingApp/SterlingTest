@@ -1,6 +1,6 @@
 <ion-header-bar id="headerborder" class="headerborder" >
 	
-	<div class="home-head2 " ng-click="goback();">
+	<div class="home-head2 " ng-click="goback();paymeValues.myForm.$setPristine()">
 		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
     </div>
     <div class="home-head2 ">
@@ -73,7 +73,9 @@ input[type=text]:focus {
 							</label> 
 							<div class="row" >
 							  <span style="color:red" ng-if="myForm.amount.$dirty && myForm.amount.$invalid">
-                                <span> Amount is required.</span>
+                                <span style="color:Red" ng-show=" myForm.amount.$error.required"> Amount is required.</span>
+								<p style="color:Red" ng-show=" myForm.amount.$error.number">Please Enter Number's Only.</p>
+		                     
                               </span>
 							</div>
 						
@@ -82,11 +84,11 @@ input[type=text]:focus {
         <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid  ,'no-errors' :myForm.transaction.$valid  }">
 		<span class="input-label ItemlineHead1">Enter Transaction</span>
 							
-        <input type="text" ng-click="getTransDate()"  name="transaction" ng-model="paymeValues.TransDate" id="forminput" placeholder="Transaction Date"  required>
+        <input type="text" ng-click="getTransDate()"  name="transaction" ng-model="paymeValues.TransDate" id="forminput" placeholder="Enter Transaction Date"  required>
 		</label>
 		<div class="row" >
 		  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid ">
-              <span > Transaction Date is required.</span>
+              <span style="color:Red" ng-show=" myForm.transaction.$error.required" > Transaction Date is required.</span>
            </span>
 		</div>
     

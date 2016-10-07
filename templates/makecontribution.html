@@ -82,26 +82,28 @@
 							<span class="input-label ItemlineHead1">
 							Enter Amount
 							 </span>
-							<input type="number"  class="input-box1 input-boxfocus1" name="amount" ng-model="makecontribute.amount" id="forminput" placeholder="Enter Amount" required>
+							<input type="number"  class="input-box1 input-boxfocus1" name="amount" ng-model="makecontribute.amount" ng-pattern='\\d+' id="forminput" placeholder="Enter Amount" required>
 							</label> 
 							<div class="row">
-							  <span style="color:red" ng-show="myForm.amount.$dirty && myForm.amount.$invalid">
+							 <p style="color:Red" ng-show=" myForm.amount.$error.number">Please Enter Number's Only.</p>
+		                       <span style="color:red" ng-show="myForm.amount.$dirty && myForm.amount.$invalid">
                                 <span ng-show="myForm.amount.$error.required"> Amount is required.</span>
                               </span>
 							</div>
 						
-							<label class="item item-input item-floating-label formselect" >
+							<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.feeamount.$dirty && myForm.feeamount.$invalid ,'no-errors' :myForm.feeamount.$valid   }">
 							<span class="input-label ItemlineHead1">
 							Enter FeeAmount
 							 </span>
 							
-							<input type="number"   name="feeamount" ng-model="makecontribute.feeamount" id="forminput" placeholder="Optional Monthly Service Fee Amount($)">
+							<input type="number"   name="feeamount" ng-model="makecontribute.feeamount" ng-pattern='\\d+' id="forminput" placeholder="Optional Monthly Service Fee Amount($)" required>
 							</label> 
-							<!-- <div class="row">
-							  <span style="color:red" ng-show="myForm.feeamount.$dirty && myForm.feeamount.$invalid">
+							<div class="row">
+							<p style="color:Red" ng-show=" myForm.feeamount.$error.number">Please Enter Number's Only.</p>
+		                       <span style="color:red" ng-show="myForm.feeamount.$dirty && myForm.feeamount.$invalid">
                                 <span ng-show="myForm.feeamount.$error.required"> FeeAmount is required.</span>
                               </span>
-							</div> -->
+							</div>
 						 
 							 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors':myForm.transaction.$valid }">
                              <span class="input-label ItemlineHead1 ">

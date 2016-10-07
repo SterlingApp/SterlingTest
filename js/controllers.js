@@ -2706,37 +2706,39 @@ $scope.show1 = false;
 .controller('TaxyearCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,	$rootScope,$sce,$cordovaFileOpener2,$cordovaFileTransfer) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
-	
-	 $scope.username = localStorage.getItem('username');
+	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	if($cordovaNetwork.isOffline())
     {
      $ionicLoading.hide();
      $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-     .then(function(buttonIndex) {
+     .then(function(buttonIndex)
+	 {
 	 if(buttonIndex=="1")
-			{
+	  {
 				localStorage.clear();
 				window.location='login.html#/login';
-			}
-   });
-   return false;
- }else{
-    $http.get(" http://app.sterlinghsa.com/api/v1/accounts/taxstatement",{params:{'acct_id':$rootScope.hsaaccId},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
-   .success(function(data){
+	  }
+     });
+     return false;
+    }
+	else
+	{
+      $http.get(" http://app.sterlinghsa.com/api/v1/accounts/taxstatement",{params:{'acct_id':$rootScope.hsaaccId},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.      access_token} } )
+      .success(function(data){
      //alert("Data: " + JSON.stringify(data));
 	  $ionicLoading.hide();
 	 $scope.tax_statement_list = data.tax_statement_list;
    
-  }).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
+     }).error(function(err){
+      $ionicLoading.hide();
+      $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
+      .then(function() {
+     });
+      return false;
    
-  });
- }
+      });
+    }
 
  $scope.form1099=function($sce){
   // $http.post(' http://app.sterlinghsa.com/api/v1/accounts/taxstatementpdf',{acct_num:$rootScope.hsaaccno,type:'1099',tax_year:$scope.tax_statement_list[0].TAX_YEAR},{headers: {'Content-Type':'application/pdf'}},{responseType : 'arraybuffer'})
@@ -2784,25 +2786,30 @@ $scope.show1 = false;
    params : {acct_num:$rootScope.hsaaccno,type:'1099',tax_year:$scope.tax_statement_list[0].TAX_YEAR},
    headers : {
     'Content-type' : 'application/pdf',
+	'Content-Disposition': 'attachment',
+	'Authorization':$scope.access_token
    },
    responseType : 'arraybuffer'
   }).success(function(data, status, headers, config) {
+
    // TODO when WS success
    var file = new Blob([ data ], {
     type : 'application/pdf'
    });
    alert("Data: " + JSON.stringify(file));
-   var url = window.URL.createObjectURL(file);
+   var url = URL.createObjectURL(file);
+   
    prompt("",url);
+   window.open(url);
    $scope.content = $sce.trustAsResourceUrl(url);
    //trick to download store a file having its URL
-   var url = "http://www.pdf995.com/samples/pdf.pdf";
-   var filename = url.split("/").pop();
+   var url = url;
+   var filename = url;
    alert(filename);
    var targetPath = cordova.file.externalRootDirectory+filename;
    var trustHosts = true;
    var options = {};
-     alert(cordova.file.externalRootDirectory);
+     alert(targetPath);
 	  $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
       .then(function(result) {
         // Success!
@@ -2839,15 +2846,15 @@ $scope.show1 = false;
         // console.log('An error occurred: ' + JSON.stringify(err));
     // });
 // };
-$scope.openPDF = function() {
-	 alert();
-     var url = url;
-   var filename ='test.pdf';
-   var targetPath = cordova.file.externalRootDirectory+ filename;
-   var trustHosts = true
-   var options = {};
-     alert(JSON.stringify(url));
-};
+// $scope.openPDF = function() {
+	 // alert();
+     // var url = url;
+   // var filename ='test.pdf';
+   // var targetPath = cordova.file.externalRootDirectory+ filename;
+   // var trustHosts = true
+   // var options = {};
+     // alert(JSON.stringify(url));
+// };
   
 	$scope.goback=function()
 	{
@@ -2913,7 +2920,7 @@ $scope.openPDF = function() {
 })
 
 
-.controller('ActivitystmntCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+.controller('ActivitystmntCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$filter) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
 	$scope.username = localStorage.getItem('username');
@@ -2921,13 +2928,37 @@ $scope.openPDF = function() {
 	$rootScope.activity={startDate:'',EndtDate:''};
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
+	$scope.date = $filter('date')(new Date(),'MM/dd/yyyy');
+	// alert(JSON.stringify($scope.date));
 	
-	$scope.pick=function(){
+	$scope.pick=function(){	
 		// var data=$scope.activity;
-		if($scope.activity.EndtDate==""|| $scope.activity.startDate==""){
-			alert('Please select date');
-		}else{
-			$http.post('  http://app.sterlinghsa.com/api/v1/accounts/activitystatement',{fromdate:$rootScope.activity.startDate,todate:$rootScope.activity.EndtDate, 'account':$rootScope.hsaaccno },{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+		if($scope.activity.EndtDate=="" || $scope.activity.startDate ==""){
+			$cordovaDialogs.confirm('Please select date', 'Sorry', 'ok')
+     .then(function(buttonIndex)
+	 {
+	 if(buttonIndex=="1")
+	  {
+				localStorage.clear();
+				$location.path('activitystmnt');
+	  }
+     });
+			
+		}	
+		else if($scope.activity.startDate >$scope.date){
+			$cordovaDialogs.confirm('Cannot select future date in From date', 'Sorry', 'ok')
+     .then(function(buttonIndex)
+	 {
+	 if(buttonIndex=="1")
+	  {
+				localStorage.clear();
+				$location.path('activitystmnt');
+	  }
+     });
+			
+		}
+		else{
+			$http.post('http://app.sterlinghsa.com/api/v1/accounts/activitystatement',{fromdate:$rootScope.activity.startDate,todate:$rootScope.activity.EndtDate, 'account':$rootScope.hsaaccno },{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
 		
 		//alert(JSON.stringify(data));
@@ -2945,14 +2976,18 @@ $scope.openPDF = function() {
 		}
 		
 		
-	};
+	
+	
 	
 	$scope.getStartDate=function(){
 		
 	 var options = {
 				date: new Date(),
-				mode: 'date', // or 'time'
-				minDate: new Date(),
+				mode: 'date', 
+				
+				allowFutureDates: false,
+				allowOldDates: false,
+				
 				
 			}
 		   
@@ -3053,7 +3088,8 @@ $scope.openPDF = function() {
  
  .controller('ContributionCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
 		$rootScope.hidecontent=true;
-		$scope.back=function(){
+		$scope.back=function()
+		{
 			
 			window.history.back();
             window.history.reload();
@@ -3121,7 +3157,7 @@ $scope.openPDF = function() {
 					correctOrientation:true
 				};
 				$cordovaCamera.getPicture(options).then(function(imageData) {
-					$scope.imgSrc= imageData;
+				   $scope.imgSrc= imageData;
 				}, function(err) {
 				});
 			}

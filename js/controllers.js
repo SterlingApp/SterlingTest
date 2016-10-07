@@ -2976,15 +2976,13 @@ $scope.show1 = false;
 		}
 		
 		
-	
-	
+	};
 	
 	$scope.getStartDate=function(){
 		
 	 var options = {
 				date: new Date(),
 				mode: 'date', 
-				
 				allowFutureDates: false,
 				allowOldDates: false,
 				
@@ -3088,8 +3086,7 @@ $scope.show1 = false;
  
  .controller('ContributionCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
 		$rootScope.hidecontent=true;
-		$scope.back=function()
-		{
+		$scope.back=function(){
 			
 			window.history.back();
             window.history.reload();

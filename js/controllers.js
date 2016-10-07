@@ -2732,7 +2732,7 @@ $scope.show1 = false;
    
      }).error(function(err){
       $ionicLoading.hide();
-      $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
+      $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
       .then(function() {
      });
       return false;
@@ -2796,27 +2796,27 @@ $scope.show1 = false;
    var file = new Blob([ data ], {
     type : 'application/pdf'
    });
-   alert("Data: " + JSON.stringify(file));
+  // alert("Data: " + JSON.stringify(file));
    var url = URL.createObjectURL(file);
    
-   prompt("",url);
+   //prompt("",url);
    window.open(url);
    $scope.content = $sce.trustAsResourceUrl(url);
    //trick to download store a file having its URL
    var url = url;
    var filename = url;
-   alert(filename);
+  // alert(filename);
    var targetPath = cordova.file.externalRootDirectory+filename;
    var trustHosts = true;
    var options = {};
-     alert(targetPath);
+    // alert(targetPath);
 	  $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
       .then(function(result) {
         // Success!
-        alert('success'+JSON.stringify(result));
+       // alert('success'+JSON.stringify(result));
       }, function(error) {
         // Error
-        alert('error'+JSON.stringify(error));
+        //alert('error'+JSON.stringify(error));
       });
  
 	 
@@ -2829,7 +2829,7 @@ $scope.show1 = false;
    // a.click();
   }).error(function(data, status, headers, config) {
    //TODO when WS error
-   alert(JSON.stringify(data));
+  // alert(JSON.stringify(data));
   });
   
  }

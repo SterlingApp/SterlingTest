@@ -216,6 +216,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		  controller: 'ScheduledcontributeCtrl'
     })
 	.state('makecontribution', {
+	  cache: false,
       url: '/makecontribution',
           templateUrl: 'templates/makecontribution.html',
 		  controller: 'makecontributeCtrl'
@@ -264,6 +265,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 
 
   .state('payme', {
+	  cache: false,
       url: '/payme',
           templateUrl: 'templates/payme.html',
 		  controller: 'PaymeCtrl'
@@ -346,6 +348,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		  controller: 'StatementCtrl'
     })
 	.state('payprovider', {
+      cache: false,
       url: '/payprovider',
           templateUrl: 'templates/payprovider.html',
 		  controller: 'PayproviderCtrl'

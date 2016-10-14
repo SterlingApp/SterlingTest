@@ -250,6 +250,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
   
   
    .state('activitystmnt', {
+	     cache: false,
     url: '/activitystmnt',
         templateUrl: 'templates/activitystmnt.html',
 		controller: 'ActivitystmntCtrl'

@@ -119,7 +119,7 @@
 	      <label class="item item-input  item-floating-label formselect" ng-if="dependentName" ng-class="{ 'has-errors' :myForm.dependent.$dirty && myForm.dependent.$invalid  ,'no-errors' :myForm.dependent.$valid  }">
 		  <span class="input-label ItemlineHead1">Enter Dependent's Name</span>
 							
-        <input type="text"  id="forminput" name="dependent" ng-model="newclaimvalues.dependent"  ng-pattern="/^[a-zA-Z\w -]*$/" placeholder=" Dependent's Name"  required>
+        <input type="text"  id="forminput" name="dependent" ng-model="newclaimvalues.dependent"  ng-pattern="/^[a-zA-Z\w -]*$/" placeholder=" Enter Dependent's Name"  required>
 		</label> 
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.dependent.$dirty && myForm.dependent.$invalid">
@@ -133,7 +133,7 @@
 		<label class="item item-input  item-floating-label formselect"  ng-if="taxcontent" ng-class="{ 'has-errors' :myForm.taxid.$dirty && myForm.taxid.$invalid  ,'no-errors' :myForm.taxid.$valid  }">
 		  <span class="input-label ItemlineHead1">Enter Provider's Tax ID</span>
 							
-        <input type="text"  id="forminput" name="taxid" ng-model="newclaimvalues.taxid" ng-pattern="/^[a-zA-Z0-9\w -]*$/" placeholder="Provider's Tax ID"  required>
+        <input type="text"  id="forminput" name="taxid" ng-model="newclaimvalues.taxid" ng-pattern="/^[a-zA-Z0-9\w -]*$/" placeholder="Enter Provider's Tax ID"  required>
 		</label> 
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.taxid.$dirty && myForm.taxid.$invalid">

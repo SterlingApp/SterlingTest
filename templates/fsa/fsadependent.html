@@ -142,7 +142,7 @@
 		<label class="item item-input  item-floating-label formselect"  ng-if="taxcontent" ng-class="{ 'has-errors' :myForm.taxid.$dirty && myForm.taxid.$invalid  ,'no-errors' :myForm.taxid.$valid  }">
 		  <span class="input-label ItemlineHead1">Enter Provider's Tax ID</span>
 							
-        <input type="text"  id="forminput" name="taxid" ng-model="newclaimvalues.taxid"  ng-pattern="/^[a-zA-Z0-9\w -]*$/" placeholder="Provider's Tax ID"  required>
+        <input type="text"  id="forminput" name="taxid" ng-model="newclaimvalues.taxid"  ng-pattern="/^[a-zA-Z0-9\w -]*$/" placeholder="Enter Provider's Tax ID"  required>
 		</label> 
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.taxid.$dirty && myForm.taxid.$invalid">

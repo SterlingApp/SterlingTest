@@ -3197,7 +3197,7 @@ $scope.show1 = false;
     $scope.hsaaccId=$rootScope.hsaaccId;
     $scope.hsaaccno=$rootScope.hsaaccno;
 	$scope.msghide=true;
-	$scope.imgSrc=[];
+	
 	 // $scope.ds=true;
 	$scope.upload = function(){
 		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
@@ -3231,8 +3231,8 @@ $scope.show1 = false;
 				};
 				
 				$cordovaCamera.getPicture(options).then(function(imageData) {
-				  // $scope.imgSrc= imageData;
-				 $scope.imgSrc.push(imageData);
+				   $scope.imgSrc= imageData;
+				// $scope.imgSrc.push(imageData);
              
 				  // alert(JSON.stringify( $scope.imgSrc.push(imageData)));
 				}, function(err) {
@@ -3242,10 +3242,10 @@ $scope.show1 = false;
 		return false;
 	}
 	
-	$scope.deleteimg=function($index){
+	// $scope.deleteimg=function($index){
 		
-		$scope.imgSrc.splice($index,1)
-	}
+		// $scope.imgSrc.splice($index,1)
+	// }
 	
 	 $scope.TransDate="";
 	$scope.getTransDate=function(){
@@ -3434,7 +3434,7 @@ $scope.show1 = false;
 	localStorage.setItem("backCount","4");
 	$scope.hsaaccId=$rootScope.hsaaccId;
 	$scope.payprovierValues={selectPayee:'',patient_name:'',amount:'',TransDate:'',description:''};
-	$scope.imgSrc=[];
+	
 	$scope.TransDate="";
 	$scope.upload = function(){
 		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
@@ -3466,8 +3466,8 @@ $scope.show1 = false;
 					correctOrientation:true
 				};
 				$cordovaCamera.getPicture(options).then(function(imageData) {
-					//$scope.imgSrc= imageData;
-					 $scope.imgSrc.push(imageData);
+					$scope.imgSrc= imageData;
+					 //$scope.imgSrc.push(imageData);
 				}, function(err) {
 				});
 			}
@@ -3475,10 +3475,10 @@ $scope.show1 = false;
 		return false;
 	}
 	
-	$scope.deleteimg=function($index){
+	// $scope.deleteimg=function($index){
 		
-		$scope.imgSrc.splice($index,1)
-	}
+		// $scope.imgSrc.splice($index,1)
+	// }
 	$scope.getTransDate=function(){
 		
 		 var options = {

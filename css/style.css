@@ -568,6 +568,14 @@ hr{
 	font-size: 22px;
 	font-weight: normal;
 	font-style: normal;
+	color:#5985AF;
+}
+.togglemenu-text{
+	
+	font-family: 'Avenir Next LT Pro';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 18px;   
 }
 .linehr{
 	border-bottom: thin solid #e0e0e0;
@@ -671,7 +679,7 @@ font-size:30px;
 }
 .Main-Heading{
 	color:#fff; 
-	margin-top:22px;
+	/* margin-top:22px; */
 	font-family: 'Avenir Next LT Pro';
 	font-weight: normal;
 	font-style: normal;
@@ -725,6 +733,19 @@ ion-item.item:hover a {
 .tab-Content{
 	margin-top:46px;
 }
+.header-Actionbar{
+	height:20px;
+	margin-top:25px;
+	margin-right:15px;
+	float:right;
+}
+@media screen and (max-width: 464px) {
+			.header-Actionbar{
+				height:20px;
+	            margin-top:25px;
+	            margin-left:-12px;
+			}
+		}
 
 
 

@@ -213,16 +213,16 @@ angular.module('starter.controllers', [])
 	//REST API
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
-	if($cordovaNetwork.isOffline())
-    {
-     $ionicLoading.hide();
-     $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-     .then(function() {
-      });
-      return false;
-    }
-	else
-	{
+	// if($cordovaNetwork.isOffline())
+    // {
+     // $ionicLoading.hide();
+     // $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
+     // .then(function() {
+      // });
+      // return false;
+    // }
+	// else
+	// {
 	  $http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json;  charset=utf-8','Authorization':$scope.access_token} })
 	 .success(function(data){
 		//alert("Success-"+JSON.stringify(data));
@@ -248,7 +248,7 @@ angular.module('starter.controllers', [])
       return false;
    
   });
- }
+ // }
  $scope.goforward=function(){
 	 
         if($scope.acctype.HRA==null)
@@ -965,7 +965,7 @@ $scope.show1 = false;
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
 				
-				 $scope.paymeValues={};
+				 $scope.newclaimvalues={};
 					
 		});
 		return false;
@@ -980,7 +980,7 @@ $scope.show1 = false;
                      	$scope.imgSrc= '';
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
-				      $scope.paymeValues={};
+				      $scope.newclaimvalues={};
 					
 				 
 					 
@@ -3005,6 +3005,7 @@ $scope.show1 = false;
 	// alert(JSON.stringify($scope.date));
 	
 	$scope.pick=function(){	
+	
 		// var data=$scope.activity;
 		if($scope.activity.EndtDate=="" || $scope.activity.startDate ==""){
 			$cordovaDialogs.confirm('Please select date', 'Sorry', 'ok')
@@ -3031,6 +3032,9 @@ $scope.show1 = false;
 			
 		}
 		else{
+			$ionicLoading.show({
+		  template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
+		});
 			$http.post('http://app.sterlinghsa.com/api/v1/accounts/activitystatement',{fromdate:$rootScope.activity.startDate,todate:$rootScope.activity.EndtDate, 'account':$rootScope.hsaaccno },{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
 		
@@ -3039,7 +3043,7 @@ $scope.show1 = false;
 		$rootScope.activity_list=data.activity_list;
 		//alert(JSON.stringify($rootScope.summary_list));
 		//alert(JSON.stringify($rootScope.activity_list));
-			
+			$ionicLoading.hide();
 			$location.path("hsastatement");
 		$scope.activity={};
 		
@@ -3051,77 +3055,119 @@ $scope.show1 = false;
 		
 	};
 	
-	$scope.getStartDate=function(){
-		
-	 var options = {
-				date: new Date(),
-				mode: 'date', 
-				allowFutureDates: false,
-				allowOldDates: false,
-				
-				
-			}
-		   
-			$ionicPlatform.ready(function(){
-				$cordovaDatePicker.show(options).then(function(date){
-					
-					var date1=date.toString();
-					var dataas=date1.split(" ");
-					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-					//var mon = Month.indexOf(dataas[1]); 
-					var mon=""; 
-					if(Month.indexOf(dataas[1]).toString().length==1)
-					{
-						mon="0"+Month.indexOf(dataas[1]);
 
-					}
-					else
-					{
-						mon = Month.indexOf(dataas[1]);
-					}
+	$scope.getStartDate=function(){
+		var today = new Date();
+        var _minDate = new Date();
+        _minDate.setMonth(today.getMonth() -1000);
+
+        var mindate = ionic.Platform.isIOS() ? new Date(_minDate.getFullYear(), _minDate.getMonth(), _minDate.getDay()) :
+        (new Date(_minDate.getFullYear(), _minDate.getMonth(), _minDate.getDay())).valueOf();
+        var maxDate = ionic.Platform.isIOS() ? new Date() : (new Date()).valueOf();
+
+       $cordovaDatePicker.show({date: today,minDate: mindate,maxDate: maxDate}).then
+	   (function(date)
+	   {
+         var date1=date.toString();
+		 var dataas=date1.split(" ");
+		 var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+		 var mon=""; 
+		 if(Month.indexOf(dataas[1]).toString().length==1)
+		 {
+			mon="0"+Month.indexOf(dataas[1]);
+
+		 }
+		 else
+	     {
+		   mon = Month.indexOf(dataas[1]);
+		 }
 					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
 				
-					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-					$scope.activity.startDate=selectedDate;
-					// alert($scope.activity.startDate);
-				});
-			})
+		 var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+		 $scope.activity.startDate=selectedDate;
+	
+    });
+  
+
 		
 	};
 	$scope.getEndDate=function(){
-		
-		 var options = {
-				date: new Date(),
-				mode: 'date', // or 'time'
-				minDate: new Date(),
-				
-			}
-		   
-			$ionicPlatform.ready(function(){
-				$cordovaDatePicker.show(options).then(function(date){
-					
-					var date1=date.toString();
-					var dataas=date1.split(" ");
-					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-					//var mon = Month.indexOf(dataas[1]); 
-					var mon=""; 
-					if(Month.indexOf(dataas[1]).toString().length==1)
-					{
-						mon="0"+Month.indexOf(dataas[1]);
+		var today = new Date();
+		 // var _minDate = new Date();
+        // _minDate.setMonth(today.getMonth() +10);
+        var _maxDate = new Date();
+        _maxDate.setMonth(today.getMonth()+900);
 
-					}
-					else
-					{
-						mon = Month.indexOf(dataas[1]);
-					}
+        var maxdate = ionic.Platform.isIOS() ? new Date(_maxDate.getFullYear(),_maxDate.getMonth(),_maxDate.getDay()) :
+        (new Date(_maxDate.getFullYear(), _maxDate.getMonth(), _maxDate.getDay())).valueOf();
+        var minDate = ionic.Platform.isIOS() ? new Date() : (new Date()).valueOf();
+
+       $cordovaDatePicker.show({date: today,minDate: minDate,maxDate: maxdate, mode: 'date'}).then
+	   (function(date)
+	   {
+         var date1=date.toString();
+		 var dataas=date1.split(" ");
+		 var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					//var mon = Month.indexOf(dataas[1]); 
+		 var mon=""; 
+		 if(Month.indexOf(dataas[1]).toString().length==1)
+		 {
+			mon="0"+Month.indexOf(dataas[1]);
+
+		 }
+		 else
+	     {
+		   mon = Month.indexOf(dataas[1]);
+		 }
 					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
 				
-					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-					$scope.activity.EndtDate=selectedDate;
-				});
-			})
+		 var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+		 $scope.activity.EndtDate=selectedDate;
+	
+    });
+  
+		}
+		// var today = new Date();
+		 // var _minDate = new Date();
+        // _minDate.setMonth(today.getMonth() +10);
+
+		// var _maxDate = new Date();
+         // _maxDate.setMonth(today.getMonth() +10);
+ 
+ 
+   
+     // var maxdate = ionic.Platform.isIOS() ? new Date(_maxDate.getFullYear(), _maxDate.getMonth(), _maxDate.getDay()) : (new Date(_maxDate.getFullYear(), _maxDate.getMonth(), _maxDate.getDay())).valueOf();
+	  // var minDate = ionic.Platform.isIOS() ? new Date() :
+      // (new Date()).valueOf();
+      
+	     // $cordovaDatePicker.show({
+      // date: today,maxDate: maxdate,
+      // minDate: minDate
+	  
+    // }).then(function (date) {
+       // var date1=date.toString();
+					// var dataas=date1.split(" ");
+					// var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					
+					// var mon=""; 
+					// if(Month.indexOf(dataas[1]).toString().length==1)
+					// {
+						// mon="0"+Month.indexOf(dataas[1]);
+
+					// }
+					// else
+					// {
+						// mon = Month.indexOf(dataas[1]);
+					// }
+					
+				
+					// var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+					// $scope.activity.EndtDate=selectedDate;
+	
+    // });
 		
-	};
+	// };
 	// $scope.pick=function(){
 		// // var data=$scope.activity;
 		// if($scope.activity.EndtDate==""|| $scope.activity.startDate==""){
@@ -3257,13 +3303,13 @@ $scope.show1 = false;
 				
 			}
 		   
-			$ionicPlatform.ready(function(){
-				$cordovaDatePicker.show(options).then(function(date){
+			 $ionicPlatform.ready(function(){
+				 $cordovaDatePicker.show(options).then(function(date){
 					
 					var date1=date.toString();
 					var dataas=date1.split(" ");
 					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-					//var mon = Month.indexOf(dataas[1]); 
+					
 					var mon=""; 
 					if(Month.indexOf(dataas[1]).toString().length==1)
 					{
@@ -3274,12 +3320,12 @@ $scope.show1 = false;
 					{
 						mon = Month.indexOf(dataas[1]);
 					}
-					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
+					
 				
 					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
 					$scope.paymeValues.TransDate=selectedDate;
 				});
-			})
+			 })
 		
 	};
 	 	
@@ -3416,10 +3462,45 @@ $scope.show1 = false;
 	}
 		   
 }
-	
-	$scope.goback=function()
+$scope.payme2=function(myForm){
+		// alert();
+		$ionicLoading.show({
+		  template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
+		});
+		$http.post("http://app.sterlinghsa.com/api/v1/accounts/payme",{'hsa_acct_id': $scope.hsaaccId,'bank_acct_id':$scope.paymeValues.selectAccount.BANK_ACC_ID,'amount':$scope.paymeValues.amount,'category':$scope.paymeValues.category.LOOKUP_CODE,'trans_date':$scope.paymeValues.TransDate,"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	.success(function(data){
+		$ionicLoading.hide();
+		 $scope.paymeValues={};
+		// alert( JSON.stringify(data));
+		
+		
+		//$scope.Availablebalance=data.balances.BALANCE;
+	}).error(function(err){
+		$ionicLoading.hide();
+		 $scope.paymeValues={};
+  //alert( JSON.stringify(err));
+  });
+		
+		   
+	}
+	 $scope.$on('$ionicView.beforeEnter', function () {
+           $scope.goback();
+     });
+
+	$scope.goback=function(input)
 	{
-		$rootScope.hidecontent=true;
+		
+		// angular.forEach($scope.myForm, function (input) {
+        // if (input && input.hasOwnProperty('$viewValue')) 
+		// {
+         // input.$setPristine();
+        // }
+        // });
+		
+        $location.path("app/hsa");
+	    $scope.paymeValues={};
+        $scope.myForm.$setPristine();
+		$state.go('payme',null,{reload:true});
 		 //window.history.back();
 		
 		 
@@ -4387,7 +4468,7 @@ $scope.toggleSomething = function(){
   $scope.isVisible = !$scope.isVisible;
   $scope.isVisible1=false;
   $scope.isHra=false;
-   $scope.isCobra=false;
+  $scope.isCobra=false;
   console.log('make sure toggleSomething() is firing*');
 }
 
@@ -4395,7 +4476,7 @@ $scope.toggleSomething1 = function(){
   $scope.isVisible1 = !$scope.isVisible1;
    $scope.isVisible=false;
    $scope.isHra=false;
-    $scope.isCobra=false;
+   $scope.isCobra=false;
   console.log('make sure toggleSomething() is firing*');
 }
 $scope.toggleHra = function(){

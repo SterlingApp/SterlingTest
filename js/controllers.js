@@ -4232,7 +4232,19 @@ $scope.show1 = false;
   });	
   
    $scope.submitvalues=function()
+   
 	{
+		
+		if($scope.makecontribute.amount == 0){
+		
+		$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
+			.then(function() {
+				// $scope.paymeValues.amount={};
+				
+				
+		});
+		
+	}else{
 		$ionicLoading.show({
 		  template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
 		});
@@ -4266,7 +4278,7 @@ $scope.show1 = false;
 			//alert(JSON.stringify(err));
 		});
 	}
-   
+	}
 	$scope.goback=function()
 	{
 		// $rootScope.hidecontent=false;

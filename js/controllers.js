@@ -928,7 +928,7 @@ $scope.show1 = false;
 		if($scope.newclaimvalues.amount == 0){
 		$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
 			.then(function() {
-			$scope.newclaimvalues={};		
+			//$scope.newclaimvalues={};		
 		});
 		
 	}else{
@@ -966,10 +966,7 @@ $scope.show1 = false;
 				myEl.removeAttr('src');
 				
 				 $scope.paymeValues={};
-				$scope.paymeValues={};
-				  $scope.myForm.$setPristine();
-				  $scope.myForm.$error={};
-				  $scope.myForm.$setPristine();		
+					
 		});
 		return false;
 		}else if(data.status == "FAILED"){
@@ -984,11 +981,7 @@ $scope.show1 = false;
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
 				      $scope.paymeValues={};
-					  $scope.myForm.$setPristine();		
-					 		 
-                     // $scope.ds=false;						
-				  $scope.paymeValues={};
-				  $scope.myForm.$setPristine();
+					
 				 
 					 
 				     
@@ -1079,7 +1072,7 @@ $scope.show1 = false;
 	   if($scope.newclaimvalues.amount == 0){
 		$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
 			.then(function() {
-			 $scope.newclaimvalues={};	
+			// $scope.newclaimvalues={};	
 		});
 		
 	}else{
@@ -1113,7 +1106,7 @@ $scope.show1 = false;
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
-				 // $scope.newclaimvalues={};
+				 $scope.newclaimvalues={};
 				
 				  // $scope.myForm.$setPristine();		
 		});
@@ -1132,7 +1125,7 @@ $scope.show1 = false;
 				     	
 					 		 
                      // $scope.ds=false;						
-				  // $scope.newclaimvalues={};
+				   $scope.newclaimvalues={};
 				  // $scope.myForm.$setPristine();
 				    
 		});
@@ -1342,10 +1335,7 @@ $scope.show1 = false;
 				myEl.removeAttr('src');
 				
 				 $scope.paymeValues={};
-				$scope.paymeValues={};
-				  $scope.myForm.$setPristine();
-				  $scope.myForm.$error={};
-				  $scope.myForm.$setPristine();		
+					
 		});
 		return false;
 		}else if(data.status == "FAILED"){
@@ -1360,11 +1350,10 @@ $scope.show1 = false;
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
 				      $scope.paymeValues={};
-					  $scope.myForm.$setPristine();		
+					 	
 					 		 
                      // $scope.ds=false;						
-				  $scope.paymeValues={};
-				  $scope.myForm.$setPristine();
+				 
 				 
 					 
 				     
@@ -3367,7 +3356,7 @@ $scope.show1 = false;
 		
 		$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
 			.then(function() {
-				 $scope.paymeValues={};
+				// $scope.paymeValues.amount={};
 				
 				
 		});
@@ -3391,7 +3380,7 @@ $scope.show1 = false;
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
-				
+				 $scope.paymeValues={};
 				
 				
 		});
@@ -3407,7 +3396,7 @@ $scope.show1 = false;
                      	$scope.imgSrc= '';
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
-				     	
+				     	 $scope.paymeValues={};
 					 		 
                      // $scope.ds=false;						
 				  
@@ -3615,7 +3604,7 @@ $scope.show1 = false;
 			
 		$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
 			.then(function() {
-			$scope.payprovierValues={};
+			//$scope.payprovierValues.amount={};
 		});
 		
 	}else{
@@ -3636,7 +3625,7 @@ $scope.show1 = false;
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
-				
+				$scope.payprovierValues={};
 		});
 		return false;
 		}else if(data.status == "FAILED"){
@@ -3646,7 +3635,7 @@ $scope.show1 = false;
 				$scope.imgSrc= '';
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
-				
+				$scope.payprovierValues={};
 		});
 		return false;
 		}
@@ -5056,11 +5045,11 @@ $scope.show1 = false;
  
    $scope.submitValues=function(){
 	   
-	   if($scope.paymeValues.amount == 0){
+	   if($scope.acoinde.amount == 0){
 		
 		$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
 			.then(function() {
-				 $scope.paymeValues={};
+				// $scope.paymeValues={};
 				
 				
 		});
@@ -5093,10 +5082,7 @@ $scope.show1 = false;
 				myEl.removeAttr('src');
 				
 				 $scope.acoinde={};
-				$scope.acoinde={};
-				  $scope.myForm.$setPristine();
-				  $scope.myForm.$error={};
-				  $scope.myForm.$setPristine();		
+					
 		});
 		return false;
 		}else if(data.status == "FAILED"){
@@ -5111,11 +5097,7 @@ $scope.show1 = false;
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
 				      $scope.acoinde={};
-					  $scope.myForm.$setPristine();		
-					 		 
-                     // $scope.ds=false;						
-				  $scope.acoinde={};
-				  $scope.myForm.$setPristine();
+					 
 				
 		});
 		return false;
@@ -5190,11 +5172,11 @@ $scope.show1 = false;
 	
 	  $scope.submitValues=function(){
 		  
-		  if($scope.paymeValues.amount == 0){
+		  if($scope.provideracoinde.amount == 0){
 		
 		$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
 			.then(function() {
-				 $scope.paymeValues={};
+				// $scope.paymeValues={};
 				
 				
 		});
@@ -5227,10 +5209,7 @@ $scope.show1 = false;
 				myEl.removeAttr('src');
 				
 				 $scope.provideracoinde={};
-				$scope.provideracoinde={};
-				  $scope.myForm.$setPristine();
-				  $scope.myForm.$error={};
-				  $scope.myForm.$setPristine();		
+					
 		});
 		return false;
 		}else if(data.status == "FAILED"){
@@ -5245,11 +5224,7 @@ $scope.show1 = false;
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
 				      $scope.provideracoinde={};
-					  $scope.myForm.$setPristine();		
-					 		 
-                     // $scope.ds=false;						
-				  $scope.provideracoinde={};
-				  $scope.myForm.$setPristine();
+					  
 				 
 					 
 				      

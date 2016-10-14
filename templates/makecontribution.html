@@ -91,7 +91,7 @@
                               </span>
 							</div>
 						
-							<label class="item item-input item-floating-label formselect" ng-class="{ 'no-errors' :myForm.feeamount.$valid   }">
+							<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.feeamount.$dirty && myForm.feeamount.$invalid ,'no-errors' :myForm.feeamount.$valid   }">
 							<span class="input-label ItemlineHead1">
 							Enter FeeAmount
 							 </span>
@@ -100,8 +100,8 @@
 							</label> 
 							<div class="row">
 							<p style="color:Red" ng-show=" myForm.feeamount.$error.number">Please Enter Number's Only.</p>
-		                      <!--  <span style="color:red" ng-show="myForm.feeamount.$dirty && myForm.feeamount.$invalid">
-                               -->  <!-- <span ng-show="myForm.feeamount.$error.required"> FeeAmount is required.</span> -->
+		                       <span style="color:red" ng-show="myForm.feeamount.$dirty && myForm.feeamount.$invalid">
+                                <span ng-show="myForm.feeamount.$error.required"> FeeAmount is required.</span>
                               </span>
 							</div>
 						 
@@ -176,7 +176,7 @@
 
 		<div class="row">
 			<div class="col  text-center">
-				<button class="button button-calm button-small formButton1" type="submit" ng-click="submitvalues();myForm.$setPristine()" ng-disabled="myForm.$invalid && myForm.feeamount.$valid" style="background-color:#29B8E5;color:#fff;border-radius:8px;">SUBMIT</button>
+				<button class="button button-calm button-small formButton1" type="submit" ng-click="submitvalues();myForm.$setPristine()" ng-disabled="myForm.$invalid || myForm.feeamount.$invalid" style="background-color:#29B8E5;color:#fff;border-radius:8px;">SUBMIT</button>
 			</div> 
 		</div> 
 

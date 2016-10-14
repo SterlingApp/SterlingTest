@@ -1,7 +1,7 @@
 <ion-header-bar class="headerborder" >
 	 
 	 <div class="home-head2 " ng-click="goback();">
-		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
+		<i  class="ion ion-arrow-left-c back-icon"></i>
     </div>
     <div class="home-head2 ">
 		<p class="headertitle">Pay Provider</p>
@@ -134,12 +134,14 @@ input[type=text]:focus {
 		</div> 
 		</div> 
 		
-		<div class="row">
-       <div class="col text-center">
-      <img ng-src="{{imgSrc}}" id="receipt"/>
-      <input type="hidden" name="imgValue" ng-value="imgSrc" ng-model="payprovierValues.imgValue">
-       </div>
-       </div>
+		<div ng-repeat="image in imgSrc">
+	     <div class="row" >
+           <div class="col text-center">
+              <img ng-src="{{image}}" id="receipt"  ng-click="deleteimg($index)"/>
+               <input type="hidden" name="imgValue" ng-value="imgSrc" ng-model="payprovierValues.imgValue">
+           </div>
+         </div>
+	   </div>
 
 		<div class="row">
 			<div class="col text-center">

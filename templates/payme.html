@@ -1,7 +1,7 @@
 <ion-header-bar id="headerborder" class="headerborder" >
 	
-	<div class="home-head2 " ng-click="goback();">
-		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
+	<div class="home-head2" ng-click="goback();reset();">
+		<i  class="ion ion-arrow-left-c back-icon"></i>
     </div>
     <div class="home-head2 ">
 		<p style="margin-top:3px;margin-left:20px">Pay Me</p>
@@ -88,7 +88,7 @@ input[type=text]:focus {
 		</label>
 		<div class="row" >
 		  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid ">
-              <span style="color:Red" ng-show=" myForm.transaction.$error.required" > Transaction Date is required.</span>
+              <span style="color:red" ng-show=" myForm.transaction.$error.required" > Transaction Date is required.</span>
            </span>
 		</div>
     
@@ -111,25 +111,29 @@ input[type=text]:focus {
 			
 			       <div class="row">
 				      <div class="col text-center">
-			            <button class="button button-calm button-small icon-left ion-android-upload formButton1"   ng-click="upload();" type="submit">Upload</button>
-				      </div>
+			            <button class="button button-calm button-small icon-left ion-android-upload formButton1"   ng-click="upload();" type="submit" >Upload</button>
+				       <span ng-show="myForm.imgValue.$dirty && myForm.imgValue.$invalid"></span>
+					  </div>
 				   </div>
+				   
 		
-		       <div class="row">
-       <div class="col text-center">
-      <img ng-src="{{imgSrc}}" id="receipt"/>
-      <input type="hidden" name="imgValue" ng-value="imgSrc" ng-model="paymeValues.imgValue">
-       </div>
-       </div>
+		<div ng-repeat="image in imgSrc">
+	     <div class="row" >
+           <div class="col text-center">
+              <img ng-src="{{image}}" id="receipt"  ng-click="deleteimg($index)"/>
+	           <input type="hidden" name="imgValue" ng-value="imgSrc" ng-model="paymeValues.imgValue" >
+	            <!--  <span ng-show="myForm.imgValue.$dirty && myForm.imgValue.$invalid"></span>-->
+           </div>
+         </div>
+	    </div>
+		 
 				
-			    <div class="row">
+		<div class="row">
 				
-				    <div class="col text-center">
-				        <button class="button button-calm button-small formButton1"  ng-disabled="myForm.$invalid" type="submit" ng-click="payme(); myForm.$setPristine()">SUBMIT</button>
-				    </div>
-			    </div>
-				
-				
+		<div class="col text-center">
+		 <button class="button button-calm button-small formButton1"  ng-disabled="myForm.$invalid type="submit" ng-click="payme(); myForm.$setPristine()">SUBMIT</button>
+				 </div>
+			    </div>		
 		     
 
 					   
@@ -139,6 +143,9 @@ input[type=text]:focus {
 			
 		
 		</form>
+		
+		
+				
 		<!--  <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid || myForm.transaction.$touched ,'no-errors' :myForm.transaction.$valid  }">
 		<span class="input-label ItemlineHead1">Enter Transaction</span>
 							

@@ -29,12 +29,12 @@
 			
   </div>
   <div class="card" ng-repeat="data in tax_statement_list">
-			<div class="item ItemLinehr">
-				<span class="ItemHeadLine">Disbursements/Distributions</span>
+			<div class="item ItemLinehr item-text-wrap">
+				<span class="ItemHeadLine ">Disbursements/Distributions</span>
 			</div>
-			<div class="item item-avatar itemleft ItemLinehr">
+			<div class="item item-avatar itemleft  ItemLinehr">
 				<img src="img/item/Total-contribution.png">
-				<div class="ItemlineHead cardContent">Disbursements/Distributions </div>
+				<div class="ItemlineHead cardContent item-text-wrap">Disbursements/Distributions </div>
 				<div class="ItemlineValueText cardContent">{{data.DISB | currency}}</div>
 			</div>
 			
@@ -44,9 +44,9 @@
 			<div class="item  ItemLinehr">
 				<span class="ItemHeadLine">Interest Paid</span>
 			</div>
-			<div class="item item-avatar itemleft ItemLinehr">
+			<div class="item item-avatar itemleft  ItemLinehr">
 				<img src="img/item/Total-contribution.png">
-				<div class="ItemlineHead cardContent">Disbursements/Distributions </div>
+				<div class="ItemlineHead cardContent item-text-wrap">Disbursements/Distributions </div>
 				<div class="ItemlineValueText cardContent">{{data.INT | currency}}</div>
 			</div>
 			

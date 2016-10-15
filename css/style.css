@@ -556,7 +556,7 @@ hr{
 }
 
 .togglemenu{
-	position: fixed;
+	position: absolute;
 	width: 200px;
 	height: 100%;
 	right: 10px;
@@ -746,6 +746,7 @@ ion-item.item:hover a {
 	            margin-left:-12px;
 			}
 		}
+
 
 
 

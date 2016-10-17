@@ -696,6 +696,7 @@ font-size:30px;
 }
 .Main-Heading{
 	color:#fff; 
+	margin-top:20px !important; 
 	/* margin-top:22px; */
 	font-family: 'Avenir Next LT Pro';
 	font-weight: normal;
@@ -763,7 +764,36 @@ ion-item.item:hover a {
 	            margin-left:-12px;
 			}
 		}
-
+.login-Label{
+	background-color:#F3F3F3;
+	border-radius:10px;
+}
+.login-insetInput{
+	border-radius:10px;
+}
+.login-Button{
+	background-color: #547AAC;
+	color:#fff;
+	height:35px;
+	font-size:15px;
+	border-radius:8px;
+}
+.actionbar-Text{
+	color:#000;
+	margin-left:15px;
+	padding-top:20px;
+}
+.sidemenu-Logo{
+	margin-top:9px;
+}
+.sidemenu-BottomBorder{
+	border-left:none;
+	border-right:none;
+	border-top:none;
+	color: #fff;
+	padding: 7px 14px; 
+	position: relative;
+}
 
 
 

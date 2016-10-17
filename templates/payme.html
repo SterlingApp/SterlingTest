@@ -1,14 +1,17 @@
 <ion-header-bar id="headerborder" class="headerborder" >
 	
-	<div class="home-head2" ng-click="goback();reset();">
-		<i  class="ion ion-arrow-left-c back-icon"></i>
+	<div class="home-head2" ng-click="goback();">
+	<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
+		
     </div>
     <div class="home-head2 ">
-		<p style="margin-top:3px;margin-left:20px">Pay Me</p>
+		<p class="headertitle">Pay Me</p>
 	</div>
+	
 </ion-header-bar>
 
 <ion-view class="bgnew">
+
 	<style>
 	
 	
@@ -18,6 +21,8 @@ input[type=text]:focus {
 }
 	</style>
 	<ion-content>
+	
+	 
 	    <!-- <div class=" headerborder">
 				  
 			<div style="margin-left:20px;padding-top:30px;padding-bottom:03px;" >
@@ -145,41 +150,7 @@ input[type=text]:focus {
 		</form>
 		
 		
-				
-		<!--  <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid || myForm.transaction.$touched ,'no-errors' :myForm.transaction.$valid  }">
-		<span class="input-label ItemlineHead1">Enter Transaction</span>
-							
-        <input type="text" ng-click="getTransDate()"  name="transaction" ng-model="paymeValues.TransDate" id="forminput" placeholder="Transaction Date"  required>
-		</label>
-		<div class="row" >
-		  <span style="color:red" ng-show="myForm.transaction.$touched && myForm.transaction.$invalid ">
-              <span > Transaction Date is required.</span>
-           </span>
-		</div>
-   -->
-	<!-- <div class="list">
-							<label class="item item-input formlabel">
-							<input type="text" ng-click="getTransDate()" name="transaction" ng-model="paymeValues.TransDate" class="input-box input-boxfocus" id="forminput" placeholder="Transaction Date"  required>
-							</label>
-							<div class="row">
-							  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
-                                <span ng-show="myForm.transaction.$error.required"> Transaction Date is required.</span>
-                              </span>
-							</div>
-						</div>  -->
-						
-							  <!-- <div class="list">
-        <label class="item item-input item-floating-label formlabel" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors' :myForm.transaction.$valid   }">
-		<span class="input-label">Enter Transaction</span>
-							
-        <input type="text" ng-click="getTransDate()" name="transaction" ng-model="TransDate" class="input-box input-boxfocus " id="forminput" placeholder="Transaction Date"  required>
-		</label>
-		<div class="row">
-		  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
-              <span ng-show="myForm.transaction.$error.required"> Tansaction Date is required.</span>
-           </span>
-		</div>
-      </div>  -->
+		
 	  
 	</ion-content>
 </ion-view>

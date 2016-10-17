@@ -2,14 +2,7 @@
 <body ng-click="hideAll()">
 <ion-side-menus enable-menu-with-back-views="true"  >
    <ion-side-menu-content drag-content="false"  ng-click="hideAll()">
-      <!-- <ion-nav-bar class="bar-transparent"  ng-controller="HeaderCtrl">
-         <ion-nav-buttons  side="left">
-            <button class="button icon ion-navicon"  menu-toggle="left"></button>
-         </ion-nav-buttons>
-         <ion-nav-title style="" >
-            <img src="img/logo.png" style="width:170px;background-color:#000" class="center">
-         </ion-nav-title>
-      </ion-nav-bar > -->
+      
 	 
 	   <div style="background-size: 100%; border-bottom:1px solid #f4851f ;" ng-click="hideAll()" >
 		  <div style=" background-color:#f4851f ; height:83px;">
@@ -18,7 +11,7 @@
         <button class=" button-icon ion-navicon MenuToggle-btn" menu-toggle="left"></button>
        </div>
        <div class="col col-80  menufooter-text">
-        <h2 class="centerforhead Main-Heading" style="margin-top:20px">Sterling Administration</h2>
+        <h2 class="centerforhead Main-Heading">Sterling Administration</h2>
        </div>
        <div class="col col-30 ">
         <img class="header-Actionbar" src="img/new/dots1.png" ng-click="click1($event)" >
@@ -31,9 +24,9 @@
 	  <ion-tabs class=" tabs-striped tabs-top tabs-custom tabs-background-stable tabs-color-dark ">
 					
 		  <div class="togglemenu cardshadow1" ng-show="show1" style="height:100px;">            
-				<a href="#contact" style="color:#000;margin-left:15px;padding-top:20px;">Contact Us</a>
+				<a href="#contact" class="actionbar-Text">Contact Us</a>
 				<br>
-				<a ng-click="logOut()" style=" color:#000;margin-left:15px;padding-top:20px;">Logout</a>
+				<a ng-click="logOut()" class="actionbar-Text">Logout</a>
 								
 		  </div> 
 				
@@ -68,28 +61,13 @@
    <ion-side-menu  side="left" ng-controller="HeaderCtrl">
       
       <ion-content class="width" >
-			<div style="margin-top:9px;">
-				<div style="margin-left:10px;">
-					<img src="img/logo _icon.png" style="width:90%;">
+			<div class="sidemenu-Logo">
+				<div>
+					<img src="img/logo _icon.png" style="width:90%;margin-left:10px;">
 				</div>
-				<div class="item " style="border-left:none;border-right:none;border-top:none;color: #fff;padding: 7px 14px; position: relative;"></div>
+				<div class="item sidemenu-BottomBorder"></div>
 			</div>
-<!-- <div>
-<div style="margin-left:5px;margin-top:10px;">
-<div>
-<div style="margin-left:20px;margin-top:10px;">
-<div class="item " style="border-left:none;border-right:none;border-top:none;border-bottom:none;
-color: #fff; padding: 7px 14px; position: relative;margin-top:10px;">
-<img src="img/logo _icon.png" style="width:100%;">
-</div>
-</div>
-</div>
-</div>
-</div> -->
 
-<!-- <div class="item " style="border-left:none;border-right:none;border-top:none;
-color: #fff;padding: 7px 14px; position: relative;">
-</div> -->
         
          <ion-list class="custom ">
              <ion-item menu-close class="" href="#/app/portfolio">

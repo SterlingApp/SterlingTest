@@ -570,6 +570,8 @@ hr{
 	font-style: normal;
 	color:#5985AF;
 }
+
+
 .togglemenu-text{
 	
 	font-family: 'Avenir Next LT Pro';
@@ -607,9 +609,24 @@ hr{
 }
 @media  (max-width: 500px) {
     .ItemlineHead {
-       line-height:16px !important;
+       line-height:17px !important;
        
       
+    }
+}
+@media (max-width: 1024px) {
+    .ItemlineHead {
+       line-height:17px !important;
+    }
+}
+@media (max-width: 1280px) {
+    .ItemlineHead {
+       line-height:17px !important;
+    }
+}
+@media (max-width: 1920px) {
+    .ItemlineHead {
+       line-height:17px !important;
     }
 }
 .ItemlineHead1{

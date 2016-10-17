@@ -13,8 +13,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 	  $ionicPlatform.registerBackButtonAction(function (event) {
 		   var promise;
           if($state.current.name=="#/app/hsa"||$state.current.name=="login"){
-			  $cordovaToast
-             .show('Press again to exit', '250', 'bottom');
+			  // $cordovaToast
+             // .show('Press again to exit', '250', 'bottom');
 			  $ionicPlatform.onHardwareBackButton(function(event) {
 				   
                  // navigator.app.exitApp();

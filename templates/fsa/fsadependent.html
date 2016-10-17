@@ -4,32 +4,21 @@
 		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
     </div>
     <div class="home-head2 ">
-		<p style="margin-top:5px;margin-left:20px">{{newclaim_plantype}}</p>
+		<p class="headertitle">{{newclaim_plantype}}</p>
 		
 	</div>
 </ion-header-bar>
 <ion-view>
   <ion-content class="bgnew">
   
-  <ion-scroll >
-     <!--  <div class=" headerborder">
-				  
-			<div style="margin-left:20px;padding-top:30px;padding-bottom:03px;">
-		   
-				 <p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">$1,084.70</span></p>
-				 
-			</div>
-				
-		</div> -->
+  <ion-scroll>
+     
 	<form name="myForm">
     <div class="row responsive-sm">
 	<div class="col col-75 center">
 		 
      
-     <!--  <div class="card cardshadow headerborder">
-        <p><span class="lineHead1 cardContent">Available Balance</span><br><span class="lineValueText1 cardContent">$1,084.70</span></p>
-	  </div>
-       -->
+     
      <div class="card">
       
 	          <div class="item item-avatar">
@@ -68,17 +57,7 @@
 		                     
            </span>
 		</div>
-		<!-- <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid || myForm.transaction.$touched ,'no-errors' :myForm.transaction.$valid  }">
-		<span class="input-label ItemlineHead1">Enter Transaction</span>
-							
-        <input type="text" ng-click="getTransDate()"  name="transaction" ng-model="startTransDate" id="forminput" placeholder="Transaction Date"  required>
-		</label>
-		<div class="row">
-		  <span style="color:red" ng-show="myForm.transaction.$touched && myForm.transaction.$invalid ">
-              <span > Tansaction Date is required.</span>
-           </span>
-		</div> -->
-		
+	
 	
         <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.startTransDate.$dirty && myForm.startTransDate.$invalid  ,'no-errors' :myForm.startTransDate.$valid   }">
 		<span class="input-label ItemlineHead1">Enter start Transaction Date</span>
@@ -190,8 +169,3 @@
     </ion-content>
 </ion-scroll>
 </ion-view>
-<!-- <ion-footer-bar  class="footerborder" >
- 
-        <p class="footertext">&copy; 2016 Sterling Administration. All Rights Reserved.</p>
-  
- </ion-footer-bar> -->

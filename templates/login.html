@@ -5,6 +5,7 @@
   height: 100% !important;
   margin-top: -50px; /* the height of the centered content */
   text-align: center;
+  background-color:#E5E5E5;
 }
 .home .scroll {
   display: table-cell;
@@ -24,7 +25,7 @@
 
 }
 </style>
-<ion-view class="home" style="background-color:#E5E5E5;">
+<ion-view class="home">
 
   <ion-content  >
 	<div >
@@ -32,22 +33,22 @@
 		<div class="image">
 			<img src="img/new/logo1.png" style="width:200px">
 		</div>
-		<div style="padding:10px;">
-			<div class="list list-inset" style="border-radius:10px;">
-				<label class="item item-input" style="background-color:#F3F3F3;border-radius:10px">
+		<div >
+			<div class="list list-inset login-insetInput" >
+				<label class="item item-input login-Label">
 					<i class="icon ion-ios-person-outline"></i>
 					<input type="text" placeholder="Username" ng-model="loginData.username" style="padding:10px; ">
 				</label>
 			</div>
-			<div class="list list-inset" style="border-radius:10px">
-				<label class="item item-input"  style="background-color:#F3F3F3;border-radius:10px">
+			<div class="list list-inset login-insetInput">
+				<label class="item item-input login-Label">
 					<i class="icon ion-ios-unlocked-outline"></i>
 				<input type="password" placeholder="Password"  ng-model="loginData.password" style="padding:10px;">
 			  </label>
 			</div>
 			<div class="row">
 				<div class="col col-95">
-					<button class=" button-block" type="submit" ng-click="logIn(loginData)"  style="background-color: #547AAC;color:#fff;height:35px;font-size:15px;border-radius:8px">LOGIN</button>
+					<button class="button-block login-Button" type="submit" ng-click="logIn(loginData)">LOGIN</button>
 				</div> 
 			</div>
 		</div>

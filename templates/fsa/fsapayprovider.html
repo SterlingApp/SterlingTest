@@ -1,35 +1,28 @@
- <ion-header-bar id="headerborder" class="headerborder" >
-	
-	<div class="home-head2" ng-click="goback();">
-		
+<ion-header-bar id="headerborder" class="headerborder" >	
+	<div class="home-head2" ng-click="goback();">		
 		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
-    </div>
-    <div class="home-head2">
+	</div>
+	<div class="home-head2">
 		<p class="headertitle">Pay Provider</p>
 	</div>
 </ion-header-bar>
-
-<ion-view>
-    <ion-content class="bgnew">
-	
-   <style>
+<style>
 	.list{
 		padding-top: 20px !important;
 	}
-   </style>
-     
-    <div class="list">
-      <label class="item item-input item-select formselect " >
-				<span class="input-label ">
+</style>
+<ion-view>
+	<ion-content class="bgnew">
+		<div class="list">
+			<label class="item item-input item-select formselect " >
+				<span class="input-label">
 				select
 				</span>
-				
-				<select  name="selectplantype" ng-change="redirectTo(plan_type);plan_type='null'" ng-model="plan_type" ng-options="plan.MEANING for plan in plan_types" required>
-					<option selected disabled value="" class="ItemlineHead1"> Select Plan</option>
+
+				<select name="selectplantype" ng-change="redirectTo(plan_type);plan_type='null'" ng-model="plan_type" ng-options="plan.MEANING for plan in plan_types" required>
+				<option selected disabled value="" class="ItemlineHead1"> Select Plan</option>
 				</select>
 			</label>
-			</div>
-			
-      
-    </ion-content>
+		</div>
+	</ion-content>
 </ion-view>

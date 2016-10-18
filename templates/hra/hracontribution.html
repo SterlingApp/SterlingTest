@@ -8,29 +8,26 @@
 		<p class="headertitle">HRA Last 5 Contributions</p>
 	</div>
 </ion-header-bar>
-<ion-view >
+<ion-view>
 	<ion-content class="bgnew"> 
-	<div class="card" ng-repeat="data in transcation_list">
+		<div class="card" ng-repeat="data in transcation_list">
 			<div class="item ItemLinehr">
 				<span class="ItemHeadLine">{{data.FEE_DATE}}</span>
 			</div>
+			
 			<div class="item item-avatar itemleft ItemLinehr">
 				<img src="img/item/Total-contribution.png">
 				<div class="ItemlineHead cardContent">Fee name</div>
 				<div class="ItemlineValueText cardContent">{{data.FEE_NAME}}-{{data.PLAN_TYPE}}</div>
 			</div>
-			
+
 			<div class="item item-avatar itemleft">
 				<img src="img/item/account_balance.png">
 				<div class="ItemlineHead cardContent">Amount</div>
 				<div class="ItemlineValueText cardContent">{{data.AMOUNT | currency}}</div>
 			</div>
-			
-  </div>
-	
-	    
+		</div>
+
 		<div style="height: 10px;"></div>
-	
-		
 	</ion-content>
 </ion-view>
